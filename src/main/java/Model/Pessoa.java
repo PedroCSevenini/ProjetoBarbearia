@@ -26,6 +26,12 @@ abstract public class Pessoa {
         this.senha = senha;
         this.sexo = sexo;
     }
+
+    public int getId() {
+        return id;
+    }
+    
+    
     
     
     

@@ -6,23 +6,35 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalTime;
+import java.util.Date;
 
 /**
  *
  * @author pedro
  */
-abstract public class Horario {
+public class Horario {
     protected Servico servico;
     protected Date data;
-    protected Time horarioInicio;
+    protected LocalTime horarioInicio;
     protected Funcionario funcionario;
     protected static List<Horario> todosHorarios  =  new ArrayList<>();
 
-    public Horario(Servico servico, Date data, Time horarioInicio, Funcionario funcionario) {
+    private Horario(Servico servico, Date data, LocalTime horarioInicio, Funcionario funcionario) {
         this.servico = servico;
         this.data = data;
         this.horarioInicio = horarioInicio;
         this.funcionario = funcionario;
+    }
+    
+    public static Horario adicionaHorarioListaGeral(Servico servico, Date data, LocalTime horarioInicio, Funcionario funcionario){
+        Horario horario = new Horario(servico, data, horarioInicio, funcionario);
+        todosHorarios.add(horario);
+        return horario;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
     
     
