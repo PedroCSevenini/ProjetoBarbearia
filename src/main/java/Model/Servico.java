@@ -14,5 +14,14 @@ public class Servico {
     private double preco;
     private int duracao; // +1 para cada 15 min
     private String desc;
+
+    public Servico(int id, String nome, double preco, int duracao, String desc) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.duracao = duracao;
+        this.desc = desc;
+    }
+    
     
 }
