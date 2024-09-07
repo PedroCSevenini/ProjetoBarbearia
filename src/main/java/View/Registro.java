@@ -30,6 +30,8 @@ public class Registro extends javax.swing.JFrame {
         jTextFieldNome = new javax.swing.JTextField();
         jLabelCpf = new javax.swing.JLabel();
         jTextFieldCpf = new javax.swing.JTextField();
+        jLabelSexo = new javax.swing.JLabel();
+        jComboBoxSexo = new javax.swing.JComboBox<>();
         jLabelUsuario = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jLabelSenha = new javax.swing.JLabel();
@@ -51,7 +53,7 @@ public class Registro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro");
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(800, 350));
+        setMinimumSize(new java.awt.Dimension(696, 350));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelNome.setText("Nome");
@@ -65,7 +67,7 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(jTextFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 260, -1));
 
         jLabelCpf.setText("CPF");
-        getContentPane().add(jLabelCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
+        getContentPane().add(jLabelCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 30, 20));
 
         jTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,25 +76,36 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
 
+        jLabelSexo.setText("Sexo");
+        getContentPane().add(jLabelSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 20));
+
+        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Outro" }));
+        jComboBoxSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSexoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, -1));
+
         jLabelUsuario.setText("Usuário");
-        getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 20));
+        getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
 
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, -1));
+        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, -1));
 
         jLabelSenha.setText("Senha");
-        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, -1));
+        getContentPane().add(jPasswordFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 260, -1));
 
         jLabelEstado.setText("Estado");
         getContentPane().add(jLabelEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, 20));
@@ -210,6 +223,10 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNumeroActionPerformed
 
+    private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSexoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +266,7 @@ public class Registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplemento;
@@ -258,6 +276,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRua;
     private javax.swing.JLabel jLabelSenha;
+    private javax.swing.JLabel jLabelSexo;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldBairro;
