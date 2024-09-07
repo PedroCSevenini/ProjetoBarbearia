@@ -4,17 +4,25 @@
  */
 package View;
 
+import Controller.LoginController;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author pedro
  */
 public class Login extends javax.swing.JFrame {
 
+    private final LoginController controller;
+
     /**
      * Creates new form Login
      */
     public Login() {
+        
         initComponents();
+        controller = new LoginController(this);
     }
 
     /**
@@ -31,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabelLoginPrincipal = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
-        jButtonLogar = new javax.swing.JButton();
+        jButtonEntrar = new javax.swing.JButton();
         jButtonRegistrar = new javax.swing.JButton();
         jLabelFundoOpaco = new javax.swing.JLabel();
         jLabelLoginFundo = new javax.swing.JLabel();
@@ -70,14 +78,14 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 150, -1));
         getContentPane().add(jPasswordSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 150, -1));
 
-        jButtonLogar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButtonLogar.setText("Entrar");
-        jButtonLogar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEntrar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jButtonEntrar.setText("Entrar");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogarActionPerformed(evt);
+                jButtonEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 80, -1));
+        getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 80, -1));
 
         jButtonRegistrar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButtonRegistrar.setText("Registrar");
@@ -108,9 +116,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
-    private void jButtonLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogarActionPerformed
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        // Executa depois de clique no botão entrar
+        controller.entrar();
+        
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,7 +163,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonLogar;
+    private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JLabel jLabelFundoOpaco;
     private javax.swing.JLabel jLabelLoginFundo;
@@ -163,4 +173,20 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordSenha;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public JPasswordField getjPasswordSenha() {
+        return jPasswordSenha;
+    }
+
+    public void setjPasswordSenha(JPasswordField jPasswordSenha) {
+        this.jPasswordSenha = jPasswordSenha;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
 }

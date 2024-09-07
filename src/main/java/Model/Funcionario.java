@@ -14,9 +14,11 @@ import java.util.List;
 public class Funcionario extends Pessoa{
     private final int nivelAcesso = 2;
 
-    public Funcionario(int id, String nome, String cpf, Endereco endereco, String usuario, String senha, String sexo) {
-        super(id, nome, cpf, endereco, usuario, senha, sexo);
+    public Funcionario(int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
+        super(id, nome, cpf, endereco, sexo, nivelAcesso);
     }
+
+    
     
     public List visualizarAgendamento(){
         List<Horario> horarios = new ArrayList<>();

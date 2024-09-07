@@ -12,12 +12,13 @@ import java.time.LocalTime;
  *
  * @author pedro
  */
-public class Cliente extends Pessoa{
+public class Cliente extends Usuario{
     private int nivelAcesso  = 1;
-    private Horario horario;
+    private Horario horario = null;
 
-    public Cliente(int id, String nome, String cpf, Endereco endereco, String usuario, String senha, String sexo) {
-        super(id, nome, cpf, endereco, usuario, senha, sexo);
+  
+    public Cliente(Horario horario, String usuario, String senha, int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
+        super(usuario, senha, id, nome, cpf, endereco, sexo, nivelAcesso);
     }
     
     public boolean agendarHorario(Date data, LocalTime horaInicio, Servico servico, Funcionario funcionario){
