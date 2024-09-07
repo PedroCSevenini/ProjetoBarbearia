@@ -28,7 +28,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabelUsuario = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelLoginPrincipal = new javax.swing.JLabel();
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
         jButtonLogar = new javax.swing.JButton();
@@ -37,6 +37,8 @@ public class Login extends javax.swing.JFrame {
         jLabelLoginFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -53,11 +55,11 @@ public class Login extends javax.swing.JFrame {
         jLabelSenha.setText("Usuário");
         getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 70, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGIN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 130, 50));
+        jLabelLoginPrincipal.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabelLoginPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLoginPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLoginPrincipal.setText("LOGIN");
+        getContentPane().add(jLabelLoginPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 130, 50));
 
         jTextFieldUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -153,9 +155,9 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogar;
     private javax.swing.JButton jButtonRegistrar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFundoOpaco;
     private javax.swing.JLabel jLabelLoginFundo;
+    private javax.swing.JLabel jLabelLoginPrincipal;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPasswordField jPasswordSenha;
