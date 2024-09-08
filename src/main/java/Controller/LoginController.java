@@ -5,6 +5,7 @@
 package Controller;
 
 
+import BDO.UsuarioBanco;
 import View.Login;
 import Controller.Helper.LoginHelper; // NÃO SEI PORQUE ISSO FUNCIONA, NÃO FAZ SENTIDO NENHUM
 import Model.Usuario;
@@ -27,12 +28,14 @@ public class LoginController {
     public void entrar(){
         //Buscar Usuario direto da área Login
         Usuario usuario = helper.obterModelo();
-        
-        
-        
-        
-        
-               
+        //Verifica compatibilidade usúario e senha
+        UsuarioBanco bancoUsuario = new UsuarioBanco();
+        Usuario usuarioVerificado = bancoUsuario.verificaUsuarioSenha(usuario);
+        if(usuarioVerificado == null){
+            view.exibeMensagem("Usuario ou senha inválidos.");
+        }else{
+            
+        }       
     }
     
 }

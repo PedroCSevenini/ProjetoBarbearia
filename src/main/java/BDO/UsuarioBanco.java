@@ -18,6 +18,11 @@ import java.util.List;
  */
 public class UsuarioBanco {
     private final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Usuario.txt");
+
+    public UsuarioBanco() {
+    }
+    
+    
     
     public List retornaUsuarios(){
         List<Usuario> usuarios = new ArrayList<>();
@@ -30,10 +35,21 @@ public class UsuarioBanco {
                 String username = vet[1];
                 String senha = vet[2];
                 usuarios.add(new Usuario(id, username, senha));
+                line = br.readLine();
             }
         }catch(IOException e){
             System.out.println("Error: " + e.getMessage());
         }
         return usuarios;
+    }
+    
+    public Usuario verificaUsuarioSenha(Usuario usuario){
+        List<Usuario> usuarios = retornaUsuarios();
+        for(Usuario usuarioLista: usuarios){
+            if(usuarioLista.getUsuario().equals(usuario.getUsuario()) && usuarioLista.getSenha().equals(usuario.getSenha())){
+                return usuarioLista;
+            }
+        }
+        return null;
     }
 }

@@ -5,6 +5,7 @@
 package View;
 
 import Controller.LoginController;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -188,5 +189,8 @@ public class Login extends javax.swing.JFrame {
 
     public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
         this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+    public void exibeMensagem(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem);
     }
 }
