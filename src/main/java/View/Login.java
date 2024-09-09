@@ -115,6 +115,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         // TODO add your handling code here:
+        Registro registro = new Registro();
+        registro.setLocationRelativeTo(null);
+        registro.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
