@@ -4,16 +4,22 @@
  */
 package View;
 
+import Controller.RegistroController;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author pedro
  */
 public class Registro extends javax.swing.JFrame {
-
+    private final RegistroController controller;
     /**
      * Creates new form Registro
      */
     public Registro() {
+        this.controller = new RegistroController(this);
         initComponents();
     }
 
@@ -197,6 +203,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         // TODO add your handling code here:
+        controller.registrar();
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void jTextFieldEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEstadoActionPerformed
@@ -226,7 +233,7 @@ public class Registro extends javax.swing.JFrame {
     private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSexoActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -289,4 +296,93 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRua;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getjComboBoxSexo() {
+        return jComboBoxSexo;
+    }
+
+    public void setjComboBoxSexo(JComboBox<String> jComboBoxSexo) {
+        this.jComboBoxSexo = jComboBoxSexo;
+    }
+
+    public JPasswordField getjPasswordFieldSenha() {
+        return jPasswordFieldSenha;
+    }
+
+    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
+        this.jPasswordFieldSenha = jPasswordFieldSenha;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    public JTextField getjTextFieldCidade() {
+        return jTextFieldCidade;
+    }
+
+    public void setjTextFieldCidade(JTextField jTextFieldCidade) {
+        this.jTextFieldCidade = jTextFieldCidade;
+    }
+
+    public JTextField getjTextFieldComplemento() {
+        return jTextFieldComplemento;
+    }
+
+    public void setjTextFieldComplemento(JTextField jTextFieldComplemento) {
+        this.jTextFieldComplemento = jTextFieldComplemento;
+    }
+
+    public JTextField getjTextFieldCpf() {
+        return jTextFieldCpf;
+    }
+
+    public void setjTextFieldCpf(JTextField jTextFieldCpf) {
+        this.jTextFieldCpf = jTextFieldCpf;
+    }
+
+    public JTextField getjTextFieldEstado() {
+        return jTextFieldEstado;
+    }
+
+    public void setjTextFieldEstado(JTextField jTextFieldEstado) {
+        this.jTextFieldEstado = jTextFieldEstado;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldNumero() {
+        return jTextFieldNumero;
+    }
+
+    public void setjTextFieldNumero(JTextField jTextFieldNumero) {
+        this.jTextFieldNumero = jTextFieldNumero;
+    }
+
+    public JTextField getjTextFieldRua() {
+        return jTextFieldRua;
+    }
+
+    public void setjTextFieldRua(JTextField jTextFieldRua) {
+        this.jTextFieldRua = jTextFieldRua;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
 }
+

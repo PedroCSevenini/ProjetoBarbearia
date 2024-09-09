@@ -4,8 +4,7 @@
  */
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Date;
 import java.time.LocalTime;
 /**
@@ -13,12 +12,11 @@ import java.time.LocalTime;
  * @author pedro
  */
 public class Cliente extends Usuario{
-    private int nivelAcesso  = 1;
     private Horario horario = null;
 
   
-    public Cliente(Horario horario, String usuario, String senha, int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
-        super(usuario, senha, id, nome, cpf, endereco, sexo, nivelAcesso);
+    public Cliente(String usuario, String senha, int id, String nome, String cpf, Endereco endereco, String sexo) {
+        super(usuario, senha, id, nome, cpf, endereco, sexo, 1);
     }
     
     public boolean agendarHorario(Date data, LocalTime horaInicio, Servico servico, Funcionario funcionario){

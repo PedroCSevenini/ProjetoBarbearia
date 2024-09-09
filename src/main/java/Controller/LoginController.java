@@ -33,8 +33,9 @@ public class LoginController {
         Usuario usuarioVerificado = bancoUsuario.verificaUsuarioSenha(usuario);
         if(usuarioVerificado == null){
             view.exibeMensagem("Usuario ou senha inválidos.");
+            helper.limparLogin();
         }else{
-            
+             //Abre Proxima Tela
         }       
     }
     
