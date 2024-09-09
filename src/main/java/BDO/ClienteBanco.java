@@ -10,5 +10,5 @@ package BDO;
  * @author pedro
  */
 public class ClienteBanco {
-    
+    //public 
 }

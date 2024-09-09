@@ -52,4 +52,6 @@ public class UsuarioBanco {
         }
         return null;
     }
+    
+   // public boolean buscaUsuario(String Usuario)
 }

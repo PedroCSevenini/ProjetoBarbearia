@@ -5,7 +5,10 @@
 package Controller;
 
 import Controller.Helper.RegistroHelper;
+import Model.Cliente;
+import View.Login;
 import View.Registro;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +25,16 @@ public class RegistroController {
     
     
     public void registrar(){
-        //helper.verificaCamposObrigatorios();
+        if(helper.verificaCamposObrigatorios()){
+            Cliente modelo = helper.obtemModelo();
+            
+            JOptionPane.showMessageDialog(null, "Registrado com sucesso!");
+            Login login = new Login();
+            login.setVisible(true);
+            view.dispose();
+        }
+        else{
+            
+        }
     }
 }

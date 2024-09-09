@@ -18,6 +18,11 @@ public class Cliente extends Usuario{
     public Cliente(String usuario, String senha, int id, String nome, String cpf, Endereco endereco, String sexo) {
         super(usuario, senha, id, nome, cpf, endereco, sexo, 1);
     }
+
+    public Cliente(int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
+        super(id, nome, cpf, endereco, sexo, nivelAcesso);
+    }
+    
     
     public boolean agendarHorario(Date data, LocalTime horaInicio, Servico servico, Funcionario funcionario){
         if(horario != null){
