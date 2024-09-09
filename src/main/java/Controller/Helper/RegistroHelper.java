@@ -5,6 +5,7 @@
 package Controller.Helper;
 
 import BDO.PessoaBanco;
+import BDO.UsuarioBanco;
 import Model.Cliente;
 import Model.Endereco;
 import View.Registro;
@@ -16,21 +17,24 @@ import View.Registro;
 public class RegistroHelper {
     private final Registro view;
     private final PessoaBanco bancoPessoa;
+    private final UsuarioBanco bancoUsuario;
 
     public RegistroHelper(Registro view) {
         this.view = view;
         this.bancoPessoa = new PessoaBanco();
+        this.bancoUsuario = new UsuarioBanco();
     }
     
     public boolean verificaCamposObrigatorios(){
-        if("".equals(view.getjTextFieldNome().getText()) || "".equals(view.getjTextFieldCpf().getText()) 
-        || "".equals(view.getjComboBoxSexo().getSelectedItem()) 
-        || "".equals(view.getjPasswordFieldSenha().getText()) || "".equals(view.getjTextFieldUsuario().getText())  
+        
+        if("".equals(view.getjPasswordFieldSenha().getText()) 
+                || "".equals(view.getjTextFieldCpf().getText()) || "".equals((String)view.getjComboBoxSexo().getSelectedItem())
+                || "".equals(view.getjTextFieldNome().getText()) || "".equals(view.getjTextFieldUsuario().getText())  
         || "".equals(view.getjTextFieldEstado().getText()) || "".equals(view.getjTextFieldCidade().getText())
         || "".equals(view.getjTextFieldBairro().getText()) || "".equals(view.getjTextFieldRua().getText())
-        || "".equals(view.getjTextFieldNumero().getText()) || "".equals(view.getjTextFieldComplemento().getText())){
+        || "".equals(view.getjTextFieldNumero().getText()) || "".equals(view.getjTextFieldComplemento().getText())){      
             return false;    
-        }else{
+        }else{          
             return true;
         }
         
@@ -59,6 +63,11 @@ public class RegistroHelper {
         if(bancoPessoa.buscaCpf(modelo.getCpf())){
             return false;
         }
-        //if(bancoPessoa)
+        if(bancoUsuario.buscaUsuario(modelo.getUsuario())){
+            return false;
+        }
+        bancoUsuario.insereUsuario(modelo);
+        bancoPessoa.inserePessoa(modelo);
+        return true;
     }
 }

@@ -7,9 +7,12 @@ package BDO;
 import Model.Cliente;
 import Model.Endereco;
 import Model.Pessoa;
+import Model.Usuario;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,34 +52,46 @@ public class PessoaBanco {
         }catch(IOException e){
             System.out.println("Error: " + e.getMessage());
         }
+        
         return pessoas;
     }
     
-    public int retornaProximoID(){
-        List <Pessoa> pessoas = retornaPessoas();
-        if(pessoas == null){
-            return 0;
+    public int retornaProximoID() {
+        List<Pessoa> pessoas = retornaPessoas();
+        if (pessoas == null || pessoas.isEmpty()) {
+            return 1;
         }
+
         Pessoa ultimaPessoa = null;
-        int i = 0;
-        while(pessoas.get(i) != null){
+        for (int i = 0; i < pessoas.size(); i++) {
             ultimaPessoa = pessoas.get(i);
-            i++;
         }
-        return (ultimaPessoa == null ? 0 : ultimaPessoa.getId() + 1);
-    }
+
+        return (ultimaPessoa == null ? 1 : ultimaPessoa.getId() + 1);
+        }
     
-    public boolean buscaCpf(String cpf){
-        List <Pessoa> pessoas = retornaPessoas();
-        if(pessoas == null){
+    public boolean buscaCpf(String cpf) {
+        List<Pessoa> pessoas = retornaPessoas();
+        if (pessoas == null || pessoas.isEmpty()) {
             return false;
         }
-        int i = 0;
-        while(pessoas.get(i) != null){
-            if(pessoas.get(i).getCpf().equals(cpf)){
-                return true;
+        for (Pessoa pessoa : pessoas){
+            if (pessoa.getCpf().equals(cpf)){
+            return true;
             }
         }
         return false;
+    }
+    
+    public void inserePessoa(Pessoa novo){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))){
+            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getCpf() + "," +
+            novo.getEndereco().getEstado() + "," + novo.getEndereco().getCidade() + "," + novo.getEndereco().getBairro() + "," + novo.getEndereco().getRua() +
+            "," + novo.getEndereco().getNumero() + "," + novo.getEndereco().getComplemento() + "," + novo.getSexo() + "," + novo.getNivelAcesso();
+            bw.write(newLine);
+            bw.newLine();  
+        }catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }

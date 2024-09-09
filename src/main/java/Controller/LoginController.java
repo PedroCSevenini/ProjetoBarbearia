@@ -18,7 +18,7 @@ import Model.Usuario;
 public class LoginController {
     
     private final Login view;
-    private LoginHelper helper;
+    private final LoginHelper helper;
     
     public LoginController(Login view) {
         this.view = view;

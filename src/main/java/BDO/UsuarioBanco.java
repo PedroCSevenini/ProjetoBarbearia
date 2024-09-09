@@ -6,8 +6,10 @@ package BDO;
 
 import Model.Usuario;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,9 @@ public class UsuarioBanco {
         try(BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
             line = br.readLine();
+            if(line==null){
+                return null;
+            }
             while(line != null){
                 String [] vet = line.split(",");
                 int id = Integer.parseInt(vet[0]);
@@ -53,5 +58,28 @@ public class UsuarioBanco {
         return null;
     }
     
-   // public boolean buscaUsuario(String Usuario)
+    public boolean buscaUsuario(String usuario) {
+        List<Usuario> usuarios = retornaUsuarios();
+        if (usuarios == null || usuarios.isEmpty()) {
+            return false;
+        }
+
+    
+        for (Usuario user : usuarios) {
+            if (user.getUsuario().equals(usuario)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void insereUsuario(Usuario novo){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path,true))){
+            String newLine = novo.getId() + "," + novo.getUsuario() + "," + novo.getSenha();
+            bw.write(newLine);
+            bw.newLine();
+        }catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class RegistroController {
     private final Registro view;
-    private final RegistroHelper helper;
+    private RegistroHelper helper;
 
     public RegistroController(Registro view) {
         this.view = view;
@@ -27,13 +27,18 @@ public class RegistroController {
     public void registrar(){
         if(helper.verificaCamposObrigatorios()){
             Cliente modelo = helper.obtemModelo();
-            
-            JOptionPane.showMessageDialog(null, "Registrado com sucesso!");
-            Login login = new Login();
-            login.setVisible(true);
-            view.dispose();
+            if(helper.registrar(modelo)){
+                view.exibeMensagem("Registrado com sucesso!");
+                Login login = new Login();
+                login.setVisible(true);
+                view.dispose();
+            }else{
+                view.exibeMensagem("Usuário ou CPF já existente...");
+            }
         }
         else{
+            
+            view.exibeMensagem("Campos não preenchidos!");
             
         }
     }

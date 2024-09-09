@@ -6,6 +6,7 @@ package View;
 
 import Controller.RegistroController;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -19,8 +20,9 @@ public class Registro extends javax.swing.JFrame {
      * Creates new form Registro
      */
     public Registro() {
-        this.controller = new RegistroController(this);
+        
         initComponents();
+        this.controller = new RegistroController(this);
     }
 
     /**
@@ -383,6 +385,10 @@ public class Registro extends javax.swing.JFrame {
 
     public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
         this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+    
+    public void exibeMensagem(String mensagem){
+        JOptionPane.showMessageDialog(this, mensagem);
     }
 }
 
