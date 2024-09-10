@@ -32,6 +32,12 @@ public class RegistroHelper {
         String cpf = view.getjTextFieldCpf().getText();
         String estado = (String)(view.getjComboBoxEstado().getSelectedItem());
         String cidade = view.getjTextFieldCidade().getText();
+        String bairro = view.getjTextFieldBairro().getText();
+        String rua = view.getjTextFieldRua().getText();
+        String numero = view.getjTextFieldNumero().getText();
+        String complemento = view.getjTextFieldComplemento().getText();
+        String usuario = view.getjTextFieldUsuario().getText();
+        String senha = view.getjPasswordFieldSenha().getText();
         //Valida exceção nome
         if(!("".equals(nome))){
             String regexNome = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
@@ -43,20 +49,23 @@ public class RegistroHelper {
         }else{
             return ("Campo obrigatório faltando: Nome");
         }
+        //Valida exceção cpf
         if(!("".equals(cpf))){
             String regexCpf = "^\\d{11}$";
             Pattern patternCpf = Pattern.compile(regexCpf);
             Matcher matcherCpf = patternCpf.matcher(cpf);
             if(!matcherCpf.matches()){
-                return ("CPF inválido");
+                return ("CPF inválido(Somente números)");
             }
         }else{
             return ("Campo obrigatório faltando: CPF");
         }
+        //Valida exceção estado
         if(!(" ".equals(estado))){  
         }else{
             return ("Campo obrigatório faltando: Estado");
         }
+        //Valida exceção cidade
         if(!("".equals(cidade))){
             String regexCidade = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
             Pattern patternCidade = Pattern.compile(regexCidade);
@@ -67,20 +76,73 @@ public class RegistroHelper {
         }else{
             return ("Campo obrigatório faltando: Cidade");
         }
-        
-        
-            
-        
-                /*|| "".equals(view.getjTextFieldCpf().getText()) || "".equals((String)view.getjComboBoxSexo().getSelectedItem())
-                || "".equals(view.getjTextFieldNome().getText()) || "".equals(view.getjTextFieldUsuario().getText())  
-        || "".equals(view.getjTextFieldEstado().getText()) || "".equals(view.getjTextFieldCidade().getText())
-        || "".equals(view.getjTextFieldBairro().getText()) || "".equals(view.getjTextFieldRua().getText())
-        || "".equals(view.getjTextFieldNumero().getText()) || "".equals(view.getjTextFieldComplemento().getText())){      
-            return false;    
-        }else{          
-            return true;
-        }*/
-        return "Acabar";
+        //Valida exceção bairro
+        if(!("".equals(bairro))){
+            String regexBairro = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
+            Pattern patternBairro = Pattern.compile(regexBairro);
+            Matcher matcherBairro = patternBairro.matcher(bairro);
+            if(!matcherBairro.matches()){
+                return ("Bairro inválido");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Bairro");
+        }
+        //Valida exceção rua
+        if(!("".equals(rua))){
+            String regexRua = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
+            Pattern patternRua = Pattern.compile(regexRua);
+            Matcher matcherRua = patternRua.matcher(rua);
+            if(!matcherRua.matches()){
+                return ("Rua inválida");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Rua");
+        }
+        //Valida exceção numero
+        if(!("".equals(numero))){
+            String regexNumero= "^\\d+$";
+            Pattern patternNumero = Pattern.compile(regexNumero);
+            Matcher matcherNumero = patternNumero.matcher(numero);
+            if(!matcherNumero.matches()){
+                return ("Número inválido");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Número");
+        }
+        //Valida exceção complemento
+        if(!("".equals(complemento))){
+            String regexComplemento = "^[A-Za-z0-9]+(?: [A-Za-z0-9]+)*$";
+            Pattern patternComplemento = Pattern.compile(regexComplemento);
+            Matcher matcherComplemento = patternComplemento.matcher(complemento);
+            if(!matcherComplemento.matches()){
+                return ("Complemento inválido");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Complemento");
+        }
+        //Valida exceção usuario
+        if(!("".equals(usuario))){
+            String regexUsuario = "^[A-Za-z0-9]+$";
+            Pattern patternUsuario = Pattern.compile(regexUsuario);
+            Matcher matcherUsuario = patternUsuario.matcher(usuario);
+            if(!matcherUsuario.matches()){
+                return ("Usuário inválido(Apenas letras e números)");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Usuário");
+        }
+        //Valida exceção senha
+        if(!("".equals(senha))){
+            String regexSenha = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+            Pattern patternSenha = Pattern.compile(regexSenha);
+            Matcher matcherSenha = patternSenha.matcher(senha);
+            if(!matcherSenha.matches()){
+                return ("Senha inválida(8 digitos, somente letras e números)");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Senha");
+        }
+        return "Todos campos corretos";
     }
     
     public Cliente obtemModelo(){
