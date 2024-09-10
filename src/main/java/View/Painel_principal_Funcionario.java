@@ -41,6 +41,18 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         Confirmados = new javax.swing.JLabel();
         A_Confirmar = new javax.swing.JLabel();
         Tela_Cortes = new javax.swing.JPanel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jInternalFrame2 = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        Adiciona = new javax.swing.JButton();
+        Remove = new javax.swing.JButton();
+        Edita = new javax.swing.JButton();
         Barra_menu = new javax.swing.JMenuBar();
         Telas = new javax.swing.JMenu();
         Clientes1 = new javax.swing.JMenuItem();
@@ -127,17 +139,101 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         Tela_Principal.add(Tela_Funcionario, "Tela_Clientes");
 
         Tela_Cortes.setBackground(new java.awt.Color(255, 255, 255));
+        Tela_Cortes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout Tela_CortesLayout = new javax.swing.GroupLayout(Tela_Cortes);
-        Tela_Cortes.setLayout(Tela_CortesLayout);
-        Tela_CortesLayout.setHorizontalGroup(
-            Tela_CortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
+        jInternalFrame1.setTitle("Cortes");
+        jInternalFrame1.setVisible(true);
+
+        jInternalFrame2.setVisible(true);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Corte", "Corte + Cabelo", "Corte + Cabelo + Barba", "Progressiva", "Platinado" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
+        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
+        jInternalFrame2Layout.setHorizontalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
         );
-        Tela_CortesLayout.setVerticalGroup(
-            Tela_CortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+        jInternalFrame2Layout.setVerticalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
         );
+
+        jLabel1.setText("Valor:");
+
+        jTextField1.setText("R$ 150");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Observação:");
+
+        jScrollPane2.setViewportView(jTextPane1);
+
+        Adiciona.setText("Adicionar");
+
+        Remove.setText("Remover");
+
+        Edita.setText("Editar");
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(9, 9, 9)))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addComponent(Adiciona)
+                        .addGap(18, 18, 18)
+                        .addComponent(Remove)
+                        .addGap(18, 18, 18)
+                        .addComponent(Edita)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame2)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Adiciona)
+                    .addComponent(Remove)
+                    .addComponent(Edita))
+                .addGap(14, 14, 14))
+        );
+
+        Tela_Cortes.add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 440));
 
         Tela_Principal.add(Tela_Cortes, "Tela_Cortes");
 
@@ -206,6 +302,10 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         cl.show(Tela_Principal, "Tela_Cortes");
     }//GEN-LAST:event_Cortes1ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,13 +343,16 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel A_Confirmar;
+    private javax.swing.JButton Adiciona;
     private javax.swing.JMenuBar Barra_menu;
     private javax.swing.JMenuItem Clientes1;
     private javax.swing.JLabel Confirmados;
     private javax.swing.JButton Confirmar;
     private javax.swing.JMenuItem Cortes1;
+    private javax.swing.JButton Edita;
     private javax.swing.JButton Editar;
     private javax.swing.JButton Rejeitar;
+    private javax.swing.JButton Remove;
     private javax.swing.JButton Remover;
     private javax.swing.JScrollPane Scroll_Tabela_AConfirmar;
     private javax.swing.JScrollPane Scroll_Tabela_Confirmados;
@@ -259,5 +362,14 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
     private javax.swing.JPanel Tela_Funcionario;
     private javax.swing.JPanel Tela_Principal;
     private javax.swing.JMenu Telas;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
