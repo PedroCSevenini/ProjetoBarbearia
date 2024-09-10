@@ -30,7 +30,7 @@ public class RegistroController {
             if(helper.registrar(modelo)){
                 view.exibeMensagem("Registrado com sucesso!");
                 Login login = new Login();
-                login.setVisible(true);
+                login.setarLogin();
                 view.dispose();
             }else{
                 view.exibeMensagem("Usuário ou CPF já existente...");

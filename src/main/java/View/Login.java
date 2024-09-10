@@ -116,8 +116,7 @@ public class Login extends javax.swing.JFrame {
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         // TODO add your handling code here:
         Registro registro = new Registro();
-        registro.setLocationRelativeTo(null);
-        registro.setVisible(true);
+        registro.setarRegistro();
         this.dispose();
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
@@ -161,8 +160,7 @@ public class Login extends javax.swing.JFrame {
             public void run() {
                
                 Login login = new Login();
-                login.setLocationRelativeTo(null);
-                login.setVisible(true);
+                login.setarLogin();
             }
         });
     }
@@ -196,5 +194,12 @@ public class Login extends javax.swing.JFrame {
     }
     public void exibeMensagem(String mensagem){
         JOptionPane.showMessageDialog(null, mensagem);
+    }
+    
+    public void setarLogin(){
+        this.setLocationRelativeTo(null);
+        this.setSize(530, 580);
+        this.setResizable(false);
+        this.setVisible(true);
     }
 }

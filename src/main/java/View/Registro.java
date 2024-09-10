@@ -61,31 +61,30 @@ public class Registro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro");
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(696, 350));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelNome.setText("Nome");
-        getContentPane().add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 20));
+        getContentPane().add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
 
         jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 260, -1));
+        getContentPane().add(jTextFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, -1));
 
         jLabelCpf.setText("CPF");
-        getContentPane().add(jLabelCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 30, 20));
+        getContentPane().add(jLabelCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 30, 20));
 
         jTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCpfActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
+        getContentPane().add(jTextFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, -1));
 
         jLabelSexo.setText("Sexo");
-        getContentPane().add(jLabelSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 20));
+        getContentPane().add(jLabelSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 20));
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Outro" }));
         jComboBoxSexo.addActionListener(new java.awt.event.ActionListener() {
@@ -93,80 +92,80 @@ public class Registro extends javax.swing.JFrame {
                 jComboBoxSexoActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, -1));
+        getContentPane().add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 260, -1));
 
         jLabelUsuario.setText("Usuário");
-        getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 20));
+        getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 20));
 
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, -1));
+        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 260, -1));
 
         jLabelSenha.setText("Senha");
-        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 260, -1));
+        getContentPane().add(jPasswordFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 260, -1));
 
         jLabelEstado.setText("Estado");
-        getContentPane().add(jLabelEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, 20));
+        getContentPane().add(jLabelEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, 20));
 
         jLabelCidade.setText("Cidade");
-        getContentPane().add(jLabelCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 20));
+        getContentPane().add(jLabelCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, 20));
 
         jTextFieldCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCidadeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 260, -1));
+        getContentPane().add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 260, -1));
 
         jLabelBairro.setText("Bairro");
-        getContentPane().add(jLabelBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, 20));
+        getContentPane().add(jLabelBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 20));
 
         jTextFieldBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBairroActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 260, -1));
+        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 260, -1));
 
         jLabelRua.setText("Rua");
-        getContentPane().add(jLabelRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, 20));
+        getContentPane().add(jLabelRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, 20));
 
         jTextFieldRua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldRuaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 260, -1));
+        getContentPane().add(jTextFieldRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, -1));
 
         jLabelNumero.setText("Numero");
-        getContentPane().add(jLabelNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, 20));
+        getContentPane().add(jLabelNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, 20));
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNumeroActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 260, -1));
+        getContentPane().add(jTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 260, -1));
 
         jLabelComplemento.setText("Complemento");
-        getContentPane().add(jLabelComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        getContentPane().add(jLabelComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
 
         jTextFieldComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldComplementoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, -1));
+        getContentPane().add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 260, -1));
 
         jButtonRegistrar.setText("Registrar");
         jButtonRegistrar.setToolTipText("");
@@ -175,7 +174,7 @@ public class Registro extends javax.swing.JFrame {
                 jButtonRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Acre", "Alagoas", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
         jComboBoxEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -183,14 +182,10 @@ public class Registro extends javax.swing.JFrame {
                 jComboBoxEstadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 260, -1));
+        getContentPane().add(jComboBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 260, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfActionPerformed
         // TODO add your handling code here:
@@ -237,6 +232,10 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxEstadoActionPerformed
 
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
     
     
     /**
@@ -270,8 +269,9 @@ public class Registro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Registro registro = new Registro();
-                registro.setLocationRelativeTo(null);
-                registro.setVisible(true);
+                registro.setarRegistro();
+                
+                
             }
         });
     }
@@ -392,6 +392,13 @@ public class Registro extends javax.swing.JFrame {
     
     public void exibeMensagem(String mensagem){
         JOptionPane.showMessageDialog(this, mensagem);
+    }
+    
+    public void setarRegistro(){
+        this.setLocationRelativeTo(null);
+        this.setSize(700, 450);
+        this.setResizable(false);
+        this.setVisible(true);
     }
 }
 
