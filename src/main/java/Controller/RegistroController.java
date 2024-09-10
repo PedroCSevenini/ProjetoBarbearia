@@ -25,7 +25,7 @@ public class RegistroController {
     
     
     public void registrar(){
-        if(helper.verificaCamposObrigatorios()){
+        /*if(helper.verificaCamposObrigatorios()){
             Cliente modelo = helper.obtemModelo();
             if(helper.registrar(modelo)){
                 view.exibeMensagem("Registrado com sucesso!");
@@ -40,6 +40,6 @@ public class RegistroController {
             
             view.exibeMensagem("Campos não preenchidos!");
             
-        }
+        }*/
     }
 }

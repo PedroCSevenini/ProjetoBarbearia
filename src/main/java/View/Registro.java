@@ -45,7 +45,6 @@ public class Registro extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jLabelEstado = new javax.swing.JLabel();
-        jTextFieldEstado = new javax.swing.JTextField();
         jLabelCidade = new javax.swing.JLabel();
         jTextFieldCidade = new javax.swing.JTextField();
         jLabelBairro = new javax.swing.JLabel();
@@ -57,6 +56,7 @@ public class Registro extends javax.swing.JFrame {
         jLabelComplemento = new javax.swing.JLabel();
         jTextFieldComplemento = new javax.swing.JTextField();
         jButtonRegistrar = new javax.swing.JButton();
+        jComboBoxEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro");
@@ -118,13 +118,6 @@ public class Registro extends javax.swing.JFrame {
         jLabelEstado.setText("Estado");
         getContentPane().add(jLabelEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, 20));
 
-        jTextFieldEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEstadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 260, -1));
-
         jLabelCidade.setText("Cidade");
         getContentPane().add(jLabelCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 20));
 
@@ -184,6 +177,14 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
+        jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Acre", "Alagoas", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        jComboBoxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEstadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 260, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,10 +209,6 @@ public class Registro extends javax.swing.JFrame {
         controller.registrar();
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
-    private void jTextFieldEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEstadoActionPerformed
-
     private void jTextFieldCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCidadeActionPerformed
@@ -235,6 +232,12 @@ public class Registro extends javax.swing.JFrame {
     private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSexoActionPerformed
+
+    private void jComboBoxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEstadoActionPerformed
+
+    
     
     /**
      * @param args the command line arguments
@@ -275,6 +278,7 @@ public class Registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCidade;
@@ -292,7 +296,6 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldCpf;
-    private javax.swing.JTextField jTextFieldEstado;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JTextField jTextFieldRua;
@@ -347,12 +350,12 @@ public class Registro extends javax.swing.JFrame {
         this.jTextFieldCpf = jTextFieldCpf;
     }
 
-    public JTextField getjTextFieldEstado() {
-        return jTextFieldEstado;
+    public JComboBox<String> getjComboBoxEstado() {
+        return jComboBoxEstado;
     }
 
-    public void setjTextFieldEstado(JTextField jTextFieldEstado) {
-        this.jTextFieldEstado = jTextFieldEstado;
+    public void setjComboBoxEstado(JComboBox<String> jComboBoxEstado) {
+        this.jComboBoxEstado = jComboBoxEstado;
     }
 
     public JTextField getjTextFieldNome() {

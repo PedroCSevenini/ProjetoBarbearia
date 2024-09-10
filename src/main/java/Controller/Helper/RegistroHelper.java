@@ -9,6 +9,8 @@ import BDO.UsuarioBanco;
 import Model.Cliente;
 import Model.Endereco;
 import View.Registro;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  *
@@ -25,10 +27,51 @@ public class RegistroHelper {
         this.bancoUsuario = new UsuarioBanco();
     }
     
-    public boolean verificaCamposObrigatorios(){
+    public String verificaCamposObrigatorios(){
+        String nome = view.getjTextFieldNome().getText();
+        String cpf = view.getjTextFieldCpf().getText();
+        String estado = (String)(view.getjComboBoxEstado().getSelectedItem());
+        String cidade = view.getjTextFieldCidade().getText();
+        //Valida exceção nome
+        if(!("".equals(nome))){
+            String regexNome = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
+            Pattern patternNome = Pattern.compile(regexNome);
+            Matcher matcherNome = patternNome.matcher(nome);
+            if(!matcherNome.matches()){
+                return ("Nome inválido");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Nome");
+        }
+        if(!("".equals(cpf))){
+            String regexCpf = "^\\d{11}$";
+            Pattern patternCpf = Pattern.compile(regexCpf);
+            Matcher matcherCpf = patternCpf.matcher(cpf);
+            if(!matcherCpf.matches()){
+                return ("CPF inválido");
+            }
+        }else{
+            return ("Campo obrigatório faltando: CPF");
+        }
+        if(!(" ".equals(estado))){  
+        }else{
+            return ("Campo obrigatório faltando: Estado");
+        }
+        if(!("".equals(cidade))){
+            String regexCidade = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
+            Pattern patternCidade = Pattern.compile(regexCidade);
+            Matcher matcherCidade = patternCidade.matcher(cidade);
+            if(!matcherCidade.matches()){
+                return ("Cidade inválida");
+            }
+        }else{
+            return ("Campo obrigatório faltando: Cidade");
+        }
         
-        if("".equals(view.getjPasswordFieldSenha().getText()) 
-                || "".equals(view.getjTextFieldCpf().getText()) || "".equals((String)view.getjComboBoxSexo().getSelectedItem())
+        
+            
+        
+                /*|| "".equals(view.getjTextFieldCpf().getText()) || "".equals((String)view.getjComboBoxSexo().getSelectedItem())
                 || "".equals(view.getjTextFieldNome().getText()) || "".equals(view.getjTextFieldUsuario().getText())  
         || "".equals(view.getjTextFieldEstado().getText()) || "".equals(view.getjTextFieldCidade().getText())
         || "".equals(view.getjTextFieldBairro().getText()) || "".equals(view.getjTextFieldRua().getText())
@@ -36,8 +79,8 @@ public class RegistroHelper {
             return false;    
         }else{          
             return true;
-        }
-        
+        }*/
+        return "Acabar";
     }
     
     public Cliente obtemModelo(){
@@ -46,7 +89,7 @@ public class RegistroHelper {
         String sexo = (String)view.getjComboBoxSexo().getSelectedItem();
         String usuario = view.getjTextFieldUsuario().getText();
         String senha = view.getjPasswordFieldSenha().getText();
-        String estado = view.getjTextFieldEstado().getText();
+        String estado = (String)view.getjComboBoxEstado().getSelectedItem();
         String cidade = view.getjTextFieldCidade().getText();
         String bairro = view.getjTextFieldBairro().getText();
         String rua = view.getjTextFieldRua().getText();
