@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Model.Cliente;
 import Model.Servico;
 import java.time.DateTimeException;
 
@@ -12,13 +13,13 @@ public class Horario {
     private int id;
     private Servico servico;
     private DateTimeException horainicial;
-    private Clinte clinte;
+    private Cliente cliente;
 
-    public Horario(int id, Servico servico, DateTimeException horainicial, Clinte clinte) {
+    public Horario(int id, Servico servico, DateTimeException horainicial, Cliente clinte) {
         this.id = id;
         this.servico = servico;
         this.horainicial = horainicial;
-        this.clinte = clinte;
+        this.cliente = cliente;
     }
 
     public int getId() {
@@ -45,12 +46,12 @@ public class Horario {
         this.horainicial = horainicial;
     }
 
-    public Clinte getClinte() {
-        return clinte;
+    public Cliente getClinte() {
+        return cliente;
     }
 
-    public void setClinte(Clinte clinte) {
-        this.clinte = clinte;
+    public void setClinte(Cliente clinte) {
+        this.cliente = clinte;
     }
     
 }
