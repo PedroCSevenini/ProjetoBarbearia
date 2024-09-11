@@ -57,13 +57,16 @@ public class Registro extends javax.swing.JFrame {
         jTextFieldComplemento = new javax.swing.JTextField();
         jButtonRegistrar = new javax.swing.JButton();
         jComboBoxEstado = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro");
         setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelNome.setText("Nome");
+        jLabelNome.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelNome.setText("<html><font color='white'>Nome:</font></html>");
         getContentPane().add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
 
         jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +76,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, -1));
 
-        jLabelCpf.setText("CPF");
+        jLabelCpf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelCpf.setText("<html><font color='white'>CPF:</font></html>");
         getContentPane().add(jLabelCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 30, 20));
 
         jTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +87,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, -1));
 
-        jLabelSexo.setText("Sexo");
+        jLabelSexo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelSexo.setText("<html><font color='white'>Sexo:</font></html>");
         getContentPane().add(jLabelSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 20));
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Outro" }));
@@ -94,7 +99,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 260, -1));
 
-        jLabelUsuario.setText("Usuário");
+        jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelUsuario.setText("<html><font color='white'>Usuário:</font></html>");
         getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 20));
 
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +110,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 260, -1));
 
-        jLabelSenha.setText("Senha");
+        jLabelSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelSenha.setText("<html><font color='white'>Senha:</font></html>");
         getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -114,10 +121,12 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jPasswordFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 260, -1));
 
-        jLabelEstado.setText("Estado");
+        jLabelEstado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelEstado.setText("<html><font color='white'>Estado:</font></html>");
         getContentPane().add(jLabelEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, 20));
 
-        jLabelCidade.setText("Cidade");
+        jLabelCidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelCidade.setText("<html><font color='white'>Cidade:</font></html>");
         getContentPane().add(jLabelCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, 20));
 
         jTextFieldCidade.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +136,9 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 260, -1));
 
-        jLabelBairro.setText("Bairro");
+        jLabelBairro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelBairro.setText("<html><font color='white'>Bairro:</font></html>");
+        jLabelBairro.setToolTipText("");
         getContentPane().add(jLabelBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 20));
 
         jTextFieldBairro.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +148,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 260, -1));
 
-        jLabelRua.setText("Rua");
+        jLabelRua.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRua.setText("<html><font color='white'>Rua:</font></html>");
         getContentPane().add(jLabelRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, 20));
 
         jTextFieldRua.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +159,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, -1));
 
-        jLabelNumero.setText("Numero");
+        jLabelNumero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelNumero.setText("<html><font color='white'>Número:</font></html>");
         getContentPane().add(jLabelNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, 20));
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +170,8 @@ public class Registro extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 260, -1));
 
-        jLabelComplemento.setText("Complemento");
+        jLabelComplemento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelComplemento.setText("<html><font color='white'>Complemento:</font></html>");
         getContentPane().add(jLabelComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
 
         jTextFieldComplemento.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +197,9 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jComboBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 260, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/FundoRegistro_1.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,6 +297,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxSexo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplemento;
@@ -396,7 +414,7 @@ public class Registro extends javax.swing.JFrame {
     
     public void setarRegistro(){
         this.setLocationRelativeTo(null);
-        this.setSize(700, 450);
+        this.setSize(690, 450);
         this.setResizable(false);
         this.setVisible(true);
     }
