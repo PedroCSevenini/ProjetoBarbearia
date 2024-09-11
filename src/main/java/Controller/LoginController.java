@@ -6,7 +6,7 @@ package Controller;
 
 
 import BDO.UsuarioBanco;
-import View.Login;
+import View.LoginView;
 import Controller.Helper.LoginHelper; // NÃO SEI PORQUE ISSO FUNCIONA, NÃO FAZ SENTIDO NENHUM
 import Model.Usuario;
 
@@ -17,10 +17,10 @@ import Model.Usuario;
  */
 public class LoginController {
     
-    private final Login view;
+    private final LoginView view;
     private final LoginHelper helper;
     
-    public LoginController(Login view) {
+    public LoginController(LoginView view) {
         this.view = view;
         this.helper = new LoginHelper(view);
     }

@@ -5,16 +5,16 @@
 package Controller.Helper;
 
 import Model.Usuario;
-import View.Login;
+import View.LoginView;
 
 /**
  *
  * @author pedro
  */
 public class LoginHelper {
-    private final Login view;
+    private final LoginView view;
 
-    public LoginHelper(Login view) {
+    public LoginHelper(LoginView view) {
         this.view = view;
     }
     

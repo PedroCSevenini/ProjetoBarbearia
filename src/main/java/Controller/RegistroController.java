@@ -6,7 +6,7 @@ package Controller;
 
 import Controller.Helper.RegistroHelper;
 import Model.Cliente;
-import View.Login;
+import View.LoginView;
 import View.Registro;
 import javax.swing.JOptionPane;
 
@@ -29,7 +29,7 @@ public class RegistroController {
             Cliente modelo = helper.obtemModelo();
             if(helper.registrar(modelo)){
                 view.exibeMensagem("Registrado com sucesso!");
-                Login login = new Login();
+                LoginView login = new LoginView();
                 login.setarLogin();
                 view.dispose();
             }else{
