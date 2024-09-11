@@ -4,8 +4,6 @@
  */
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -14,28 +12,72 @@ import java.util.Date;
  * @author pedro
  */
 public class Horario {
+    protected int id;
     protected Servico servico;
     protected Date data;
     protected LocalTime horarioInicio;
     protected Funcionario funcionario;
-    protected static List<Horario> todosHorarios  =  new ArrayList<>();
+    protected Cliente cliente;
+    
 
-    private Horario(Servico servico, Date data, LocalTime horarioInicio, Funcionario funcionario) {
+    public Horario(int id, Servico servico, Date data, LocalTime horarioInicio, Funcionario funcionario) {
+        this.id = id;
         this.servico = servico;
         this.data = data;
         this.horarioInicio = horarioInicio;
         this.funcionario = funcionario;
     }
-    
-    public static Horario adicionaHorarioListaGeral(Servico servico, Date data, LocalTime horarioInicio, Funcionario funcionario){
-        Horario horario = new Horario(servico, data, horarioInicio, funcionario);
-        todosHorarios.add(horario);
-        return horario;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public LocalTime getHorarioInicio() {
+        return horarioInicio;
+    }
+
+    public void setHorarioInicio(LocalTime horarioInicio) {
+        this.horarioInicio = horarioInicio;
     }
 
     public Funcionario getFuncionario() {
         return funcionario;
     }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     
+    
+    
+
     
 }

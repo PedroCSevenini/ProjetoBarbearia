@@ -20,18 +20,6 @@ public class Funcionario extends Pessoa{
 
     
     
-    public List visualizarAgendamento(){
-        List<Horario> horarios = new ArrayList<>();
-        for (Horario horario : Horario.todosHorarios) {
-            if(horario.getFuncionario().getId() == id){
-                horarios.add(horario);
-            }
-        }
-        if(horarios.get(0) != null){
-            return horarios;
-        }
-        return null;
-    }
     
    
 }

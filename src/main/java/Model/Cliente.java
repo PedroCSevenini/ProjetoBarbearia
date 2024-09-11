@@ -25,10 +25,8 @@ public class Cliente extends Usuario{
     
     
     public boolean agendarHorario(Date data, LocalTime horaInicio, Servico servico, Funcionario funcionario){
-        if(horario != null){
-            return false;
-        }
-        horario = Horario.adicionaHorarioListaGeral(servico, data, horaInicio, funcionario);
+        
+        //horario = Horario.adicionaHorarioListaGeral(servico, data, horaInicio, funcionario);
         return true;
     }
     

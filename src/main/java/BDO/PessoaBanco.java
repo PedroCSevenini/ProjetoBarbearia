@@ -7,7 +7,6 @@ package BDO;
 import Model.Cliente;
 import Model.Endereco;
 import Model.Pessoa;
-import Model.Usuario;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
