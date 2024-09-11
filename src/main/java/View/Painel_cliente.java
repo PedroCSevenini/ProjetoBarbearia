@@ -28,134 +28,111 @@ public class Painel_cliente extends javax.swing.JFrame {
 
         Painel_principal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jListDatas = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jListHorarios = new javax.swing.JList<>();
+        jButtonAgenda = new javax.swing.JButton();
+        jComboBoxCortesDisponiveis = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jTextFieldValorCorte = new javax.swing.JTextField();
+        jButtonEditaAgenda = new javax.swing.JButton();
+        jButtonRemoveAgendamento = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jListStatusDeAgendamento = new javax.swing.JList<>();
+        Funcionarios = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datas Disponiveis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        Painel_principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jListDatas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datas Disponiveis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jListDatas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "11/09/2024", "12/09/2024", "13/09/2024", "14/09/2024", "15/09/2024", "16/09/2024", "17/09/2024", "18/09/2024", "19/09/2024", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList2);
 
-        jList3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Horarios Disponiveis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
+        Painel_principal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 125));
+
+        jListHorarios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Horarios Disponiveis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jListHorarios.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", " ", " ", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList3);
+        jScrollPane2.setViewportView(jListHorarios);
 
-        jButton1.setText("Agendar");
+        Painel_principal.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 200, 125));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cabelo", "Cabelo + Barba", "Cabelo + Barba + Sobrancelha" }));
+        jButtonAgenda.setText("Agendar");
+        Painel_principal.add(jButtonAgenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 334, 100, -1));
+
+        jComboBoxCortesDisponiveis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cabelo", "Cabelo + Barba", "Cabelo + Barba + Sobrancelha" }));
+        jComboBoxCortesDisponiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCortesDisponiveisActionPerformed(evt);
+            }
+        });
+        Painel_principal.add(jComboBoxCortesDisponiveis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 206, 20));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Cortes");
+        Painel_principal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Valor");
+        Painel_principal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
 
-        jTextField1.setText("R$ 150,00");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldValorCorte.setText("R$ 150,00");
+        jTextFieldValorCorte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldValorCorteActionPerformed(evt);
             }
         });
+        Painel_principal.add(jTextFieldValorCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 206, -1));
 
-        jButton3.setText("Editar");
+        jButtonEditaAgenda.setText("Editar");
+        Painel_principal.add(jButtonEditaAgenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 334, 100, -1));
 
-        jButton4.setText("Remover");
+        jButtonRemoveAgendamento.setText("Remover");
+        Painel_principal.add(jButtonRemoveAgendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 334, 100, -1));
 
-        jList1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agendado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListStatusDeAgendamento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agendado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
+        jListStatusDeAgendamento.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Data: 11/09/2024", "Hora: 09:00", "Valor: R$ 150,00" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList1);
+        jScrollPane3.setViewportView(jListStatusDeAgendamento);
 
-        javax.swing.GroupLayout Painel_principalLayout = new javax.swing.GroupLayout(Painel_principal);
-        Painel_principal.setLayout(Painel_principalLayout);
-        Painel_principalLayout.setHorizontalGroup(
-            Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_principalLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(73, 73, 73))
-            .addGroup(Painel_principalLayout.createSequentialGroup()
-                .addGroup(Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_principalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_principalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1)))
-            .addGroup(Painel_principalLayout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_principalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
-        );
-        Painel_principalLayout.setVerticalGroup(
-            Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_principalLayout.createSequentialGroup()
-                .addGroup(Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)))
-        );
+        Painel_principal.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 10, 200, 125));
+
+        Funcionarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Joao", "Lucas", "Matheus", "Fernando" }));
+        Funcionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FuncionariosActionPerformed(evt);
+            }
+        });
+        Painel_principal.add(Funcionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 38, 206, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Cabeleleiro");
+        Painel_principal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Painel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(Painel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(Painel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -163,9 +140,17 @@ public class Painel_cliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldValorCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorCorteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldValorCorteActionPerformed
+
+    private void FuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FuncionariosActionPerformed
+
+    private void jComboBoxCortesDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCortesDisponiveisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCortesDisponiveisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,19 +188,21 @@ public class Painel_cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Funcionarios;
     private javax.swing.JPanel Painel_principal;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonAgenda;
+    private javax.swing.JButton jButtonEditaAgenda;
+    private javax.swing.JButton jButtonRemoveAgendamento;
+    private javax.swing.JComboBox<String> jComboBoxCortesDisponiveis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JList<String> jListDatas;
+    private javax.swing.JList<String> jListHorarios;
+    private javax.swing.JList<String> jListStatusDeAgendamento;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldValorCorte;
     // End of variables declaration//GEN-END:variables
 }
