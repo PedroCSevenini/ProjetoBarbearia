@@ -1,26 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controller;
 
 
 import BDO.UsuarioBanco;
-import View.LoginView;
+import View.ViewLogin;
 import Controller.Helper.LoginHelper; // NÃO SEI PORQUE ISSO FUNCIONA, NÃO FAZ SENTIDO NENHUM
 import Model.Usuario;
 
 
-/**
- *
- * @author pedro
- */
 public class LoginController {
     
-    private final LoginView view;
+    private final ViewLogin view;
     private final LoginHelper helper;
     
-    public LoginController(LoginView view) {
+    public LoginController(ViewLogin view) {
         this.view = view;
         this.helper = new LoginHelper(view);
     }

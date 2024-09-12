@@ -8,12 +8,12 @@ import javax.swing.JFrame;
 import java.awt.Color;
 
 
-public class LoginView extends JFrame {
+public class ViewLogin extends JFrame {
 
     private final LoginController controller;
     
 
-    public LoginView() {
+    public ViewLogin() {
         initComponents();
         controller = new LoginController(this);
     }
@@ -68,7 +68,7 @@ public class LoginView extends JFrame {
         jLabelCadastre.setText("<html><u>Cadastre-se</u></html>");
         getContentPane().add(jLabelCadastre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, 20));
 
-        jButtonEntrar.setBackground(new java.awt.Color(31, 31, 31));
+        jButtonEntrar.setBackground(new java.awt.Color(0, 0, 0));
         jButtonEntrar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jButtonEntrar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntrar.setText("ENTRAR");
@@ -168,14 +168,16 @@ public class LoginView extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -183,7 +185,7 @@ public class LoginView extends JFrame {
             
             public void run() {
                
-                LoginView login = new LoginView();
+                ViewLogin login = new ViewLogin();
                 login.setarLogin();
             }
         });

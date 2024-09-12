@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controller;
 
 import Controller.Helper.RegistroHelper;
 import Model.Cliente;
-import View.LoginView;
+import View.ViewLogin;
 import View.Registro;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author pedro
- */
+
 public class RegistroController {
     private final Registro view;
     private RegistroHelper helper;
@@ -29,7 +23,7 @@ public class RegistroController {
             Cliente modelo = helper.obtemModelo();
             if(helper.registrar(modelo)){
                 view.exibeMensagem("Registrado com sucesso!");
-                LoginView login = new LoginView();
+                ViewLogin login = new ViewLogin();
                 login.setarLogin();
                 view.dispose();
             }else{
