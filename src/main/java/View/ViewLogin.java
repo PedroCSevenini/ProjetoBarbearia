@@ -31,6 +31,7 @@ public class ViewLogin extends JFrame {
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
         jLabelFundo = new javax.swing.JLabel();
+        jTextFieldUsuario1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -116,6 +117,18 @@ public class ViewLogin extends JFrame {
         jLabelFundo.setPreferredSize(new java.awt.Dimension(780, 580));
         getContentPane().add(jLabelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 580));
 
+        jTextFieldUsuario1.setBackground(new Color(0,0,0,0));
+        jTextFieldUsuario1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jTextFieldUsuario1.setForeground(new Color(255, 255, 255));
+        jTextFieldUsuario1.setBorder(null);
+        jTextFieldUsuario1.setCaretColor(new Color(255, 255, 255));
+        jTextFieldUsuario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUsuario1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 380, 30));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -126,7 +139,7 @@ public class ViewLogin extends JFrame {
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         
-        Registro registro = new Registro();
+        ViewRegistro registro = new ViewRegistro();
         registro.setarRegistro();
         this.dispose();
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
@@ -153,6 +166,10 @@ public class ViewLogin extends JFrame {
         jButtonEntrar.setBackground(Color.BLACK);
         jButtonEntrar.setForeground(Color.WHITE);
     }//GEN-LAST:event_jButtonEntrarMouseExited
+
+    private void jTextFieldUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuario1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUsuario1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -201,6 +218,7 @@ public class ViewLogin extends JFrame {
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPasswordField jPasswordSenha;
     private javax.swing.JTextField jTextFieldUsuario;
+    private javax.swing.JTextField jTextFieldUsuario1;
     // End of variables declaration//GEN-END:variables
 
     

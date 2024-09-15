@@ -11,18 +11,26 @@ package Model;
 abstract public class Pessoa {
     protected int id;
     protected String nome;
-    protected String cpf;
-    protected Endereco endereco;
-    protected String sexo;
+    protected String telefone;
+    protected String dataNasc;
+    protected String email;
     protected int nivelAcesso;
 
-    public Pessoa(int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
+    public Pessoa(int id, String nome, String telefone, String dataNasc, String email, int nivelAcesso) {
         this.id = id;
         this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.sexo = sexo;
+        this.telefone = telefone;
+        this.dataNasc = dataNasc;
+        this.email = email;
         this.nivelAcesso = nivelAcesso;
+    }
+    
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public Pessoa(int id) {
@@ -45,29 +53,23 @@ abstract public class Pessoa {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getDataNasc() {
+        return dataNasc;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
+   
 
     public int getNivelAcesso() {
         return nivelAcesso;

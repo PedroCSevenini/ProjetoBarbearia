@@ -1,2 +1,4 @@
-ID,NOME,CPF,ESTADO,CIDADE,BAIRRO,RUA,NUMERO,COMPLEMENTO,SEXO,NIVELACESSO
-1,Pedro Caetano,23558976534,Minas Gerais,Muriaé,Centro,Rua das Rosas,256,Apto203,Masculino,1
+ID, NOME, EMAIL, TELEFONE, DATANASC, NIVELACESSO
+1,Pedro Albo,pedroalbo@gmail.com,32988487008,03/09/2002,1
+2,Kaka Oliveira,pedroalboooo@gmail.com,32988487009,09/08/2003,1
+3,Pedro Caetano,pedroseveninii@gmail.com,32988487010,20/02/2004,1

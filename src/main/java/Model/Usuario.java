@@ -12,14 +12,14 @@ public class Usuario extends Pessoa{
     protected String usuario;
     protected String senha;
 
-    public Usuario(String usuario, String senha, int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
-        super(id, nome, cpf, endereco, sexo, nivelAcesso);
+    public Usuario(String usuario, String senha, int id, String nome, String telefone, String dataNasc, String email, int nivelAcesso) {
+        super(id, nome, telefone, dataNasc, email, nivelAcesso);
         this.usuario = usuario;
         this.senha = senha;
     }
 
-    public Usuario(int id, String nome, String cpf, Endereco endereco, String sexo, int nivelAcesso) {
-        super(id, nome, cpf, endereco, sexo, nivelAcesso);
+    public Usuario(int id, String nome, String telefone, String dataNasc, String email, int nivelAcesso) {
+        super(id, nome, telefone, dataNasc, email, nivelAcesso);
     }
     
     public Usuario(int id, String usuario, String senha) {

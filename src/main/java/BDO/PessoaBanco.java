@@ -5,7 +5,6 @@
 package BDO;
 
 import Model.Cliente;
-import Model.Endereco;
 import Model.Pessoa;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,23 +28,17 @@ public class PessoaBanco {
             String line = br.readLine();
             line = br.readLine();
             if(line == null){
-                return null;
+                return pessoas;
             }
             while(line != null){
                 String [] vet = line.split(",");
                 int id = Integer.parseInt(vet[0]);
                 String nome = vet[1];
-                String cpf = vet[2];
-                String estado = vet[3];
-                String cidade = vet[4];
-                String bairro = vet[5];
-                String rua = vet[6];
-                int numero = Integer.parseInt(vet[7]);
-                String complemento = vet[8];
-                String sexo = vet[9];
-                int nivelAcesso = Integer.parseInt(vet[10]);
-                Endereco endereco = new Endereco(estado,cidade,bairro,rua,numero,complemento);
-                pessoas.add(new Cliente(id, nome, cpf, endereco, sexo, nivelAcesso));
+                String email = vet[2];
+                String telefone = vet[3];
+                String dataNasc = vet[4];
+                int nivelAcesso = Integer.parseInt(vet[5]);
+                pessoas.add(new Cliente(id, nome, telefone, dataNasc, email, nivelAcesso));
                 line = br.readLine();
             }
         }catch(IOException e){
@@ -69,14 +62,14 @@ public class PessoaBanco {
         return (ultimaPessoa == null ? 1 : ultimaPessoa.getId() + 1);
         }
     
-    public boolean buscaCpf(String cpf) {
+    public boolean buscaTelefone(String telefone) {
         List<Pessoa> pessoas = retornaPessoas();
         if (pessoas == null || pessoas.isEmpty()) {
             return false;
         }
         for (Pessoa pessoa : pessoas){
-            if (pessoa.getCpf().equals(cpf)){
-            return true;
+            if (pessoa.getTelefone().equals(telefone)){
+                return true;
             }
         }
         return false;
@@ -84,13 +77,27 @@ public class PessoaBanco {
     
     public void inserePessoa(Pessoa novo){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))){
-            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getCpf() + "," +
-            novo.getEndereco().getEstado() + "," + novo.getEndereco().getCidade() + "," + novo.getEndereco().getBairro() + "," + novo.getEndereco().getRua() +
-            "," + novo.getEndereco().getNumero() + "," + novo.getEndereco().getComplemento() + "," + novo.getSexo() + "," + novo.getNivelAcesso();
+            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getEmail() + "," +
+            novo.getTelefone() + ","+ novo.getDataNasc()+  "," + novo.getNivelAcesso();
             bw.write(newLine);
             bw.newLine();  
         }catch(IOException e){
             System.out.println("Error: " + e.getMessage());
         }
+    }
+    
+    public boolean buscaEmail(String email) {
+        List<Pessoa> pessoas = retornaPessoas();
+        System.out.println(email);
+        if (pessoas == null || pessoas.isEmpty()) {
+            return false;
+        }
+        for (Pessoa pessoa : pessoas){
+            System.out.println(pessoa.getEmail());
+            if (pessoa.getEmail().equals(email)){
+                return true;
+            }
+        }
+        return false;
     }
 }

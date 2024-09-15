@@ -4,7 +4,7 @@ package Controller;
 
 import BDO.UsuarioBanco;
 import View.ViewLogin;
-import Controller.Helper.LoginHelper; // NÃO SEI PORQUE ISSO FUNCIONA, NÃO FAZ SENTIDO NENHUM
+import Controller.Helper.LoginHelper;
 import Model.Usuario;
 
 
