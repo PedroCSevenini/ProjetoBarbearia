@@ -2,10 +2,13 @@
 package Controller;
 
 
+import BDO.PessoaBanco;
 import BDO.UsuarioBanco;
 import View.ViewLogin;
 import Controller.Helper.LoginHelper;
+import Model.Pessoa;
 import Model.Usuario;
+import View.ViewCliente;
 
 
 public class LoginController {
@@ -22,13 +25,19 @@ public class LoginController {
         //Buscar Usuario direto da área Login
         Usuario usuario = helper.obterModelo();
         //Verifica compatibilidade usúario e senha
-        UsuarioBanco bancoUsuario = new UsuarioBanco();
-        Usuario usuarioVerificado = bancoUsuario.verificaUsuarioSenha(usuario);
+        Usuario usuarioVerificado = UsuarioBanco.verificaUsuarioSenha(usuario);
         if(usuarioVerificado == null){
             view.exibeMensagem("Usuario ou senha inválidos.");
             helper.limparLogin();
         }else{
+            Pessoa pessoa = PessoaBanco.procurarPessoaPorID(usuarioVerificado.getId());
+            if(pessoa.getNivelAcesso() == 1){
+                ViewCliente telaCliente = new ViewCliente(pessoa);
+                telaCliente.setarCliente();
+                view.dispose();
+            }
              //Abre Proxima Tela
+            
         }       
     }
     

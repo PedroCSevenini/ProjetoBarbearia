@@ -19,14 +19,14 @@ import java.util.List;
  * @author pedro
  */
 public class UsuarioBanco {
-    private final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Usuario.txt");
+    private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Usuario.txt");
 
     public UsuarioBanco() {
     }
     
     
     
-    public List retornaUsuarios(){
+    public static List retornaUsuarios(){
         List<Usuario> usuarios = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
@@ -48,7 +48,7 @@ public class UsuarioBanco {
         return usuarios;
     }
     
-    public Usuario verificaUsuarioSenha(Usuario usuario){
+    public static Usuario verificaUsuarioSenha(Usuario usuario){
         List<Usuario> usuarios = retornaUsuarios();
         for(Usuario usuarioLista: usuarios){
             if(usuarioLista.getUsuario().equals(usuario.getUsuario()) && usuarioLista.getSenha().equals(usuario.getSenha())){
@@ -82,4 +82,6 @@ public class UsuarioBanco {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    
+    
 }

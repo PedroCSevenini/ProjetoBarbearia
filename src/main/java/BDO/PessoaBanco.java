@@ -20,9 +20,9 @@ import java.util.List;
  * @author pedro
  */
 public class PessoaBanco {
-    private final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Pessoa.txt");
+    private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Pessoa.txt");
     
-    public List retornaPessoas(){
+    public static List retornaPessoas(){
         List<Pessoa> pessoas = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
@@ -88,16 +88,28 @@ public class PessoaBanco {
     
     public boolean buscaEmail(String email) {
         List<Pessoa> pessoas = retornaPessoas();
-        System.out.println(email);
         if (pessoas == null || pessoas.isEmpty()) {
             return false;
         }
         for (Pessoa pessoa : pessoas){
-            System.out.println(pessoa.getEmail());
             if (pessoa.getEmail().equals(email)){
                 return true;
             }
         }
         return false;
+    }
+    
+    public static Pessoa procurarPessoaPorID(int id){
+        List<Pessoa> pessoas = retornaPessoas();
+        if (pessoas == null || pessoas.isEmpty()) {
+            return null;
+        }
+        for (Pessoa pessoa : pessoas){
+            System.out.println(pessoa.getEmail());
+            if (pessoa.getId() == id){
+                return pessoa;
+            }
+        }
+        return null;
     }
 }

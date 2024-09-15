@@ -1,5 +1,6 @@
 
 package View;
+import Model.Pessoa;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -10,14 +11,29 @@ import javax.swing.JButton;
 public class ViewCliente extends javax.swing.JFrame {
     
    private JButton botaoAtual = null; // Armazena o botão atualmente clicado
+   private final Pessoa pessoa;
     
     
-    public ViewCliente() {
+    public ViewCliente(Pessoa pessoa) { //metodo do botão entrar
         initComponents();
+        this.pessoa = pessoa;
         jPanelInicio.setVisible(true); // Torna o jPanel4 invisível inicialmente
         jPanelUsuario.setVisible(false);
         jPanelAgendamento.setVisible(false);
         jButtonInicio.setBackground(Color.YELLOW);
+        
+        botaoAtual = jButtonInicio; // Nenhum botão está selecionado inicialmente
+       
+    }
+    
+    public ViewCliente() { //metodo de teste
+        initComponents();
+        this.pessoa = null;
+        jPanelInicio.setVisible(true); // Torna o jPanel4 invisível inicialmente
+        jPanelUsuario.setVisible(false);
+        jPanelAgendamento.setVisible(false);
+        jButtonInicio.setBackground(Color.YELLOW);
+        
         botaoAtual = jButtonInicio; // Nenhum botão está selecionado inicialmente
        
     }
@@ -686,4 +702,10 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JToggleButton jToggleButtonNovoAgendamento;
     // End of variables declaration//GEN-END:variables
+    public void setarCliente(){
+        this.setLocationRelativeTo(null);
+        //this.setSize(700, 610);
+        this.setResizable(false);
+        this.setVisible(true);
+    }
 }
