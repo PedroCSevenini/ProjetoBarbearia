@@ -91,9 +91,9 @@ public class ViewLogin extends JFrame {
 
         jTextFieldUsuario.setBackground(new Color(0,0,0,0));
         jTextFieldUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jTextFieldUsuario.setForeground(new Color(255, 255, 255));
+        jTextFieldUsuario.setForeground(new Color(0,0,0));
         jTextFieldUsuario.setBorder(null);
-        jTextFieldUsuario.setCaretColor(new Color(255, 255, 255));
+        jTextFieldUsuario.setCaretColor(new Color(0, 0, 0));
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -102,9 +102,10 @@ public class ViewLogin extends JFrame {
         getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 380, 30));
 
         jPasswordSenha.setBackground(new Color(0,0,0,0));
-        jPasswordSenha.setForeground(new Color(255,255,255));
+        jPasswordSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jPasswordSenha.setForeground(new Color(0,0,0));
         jPasswordSenha.setBorder(null);
-        jPasswordSenha.setCaretColor(new Color(255,255,255));
+        jPasswordSenha.setCaretColor(new Color(0,0,0));
         jPasswordSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordSenhaActionPerformed(evt);

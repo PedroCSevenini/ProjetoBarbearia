@@ -11,15 +11,51 @@ package Model;
 public class Servico {
     protected int id;
     private String nome;
-    private double preco;
+    private String preco;
     private int duracao; // +1 para cada 15 min
     private String desc;
 
-    public Servico(int id, String nome, double preco, int duracao, String desc) {
+    public Servico(int id, String nome, String preco, int duracao, String desc) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.duracao = duracao;
+        this.desc = desc;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
         this.desc = desc;
     }
     

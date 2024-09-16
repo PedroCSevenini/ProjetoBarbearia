@@ -7,6 +7,7 @@ package Model;
 
 import java.util.Date;
 import java.time.LocalTime;
+import java.util.Objects;
 /**
  *
  * @author pedro
@@ -26,8 +27,22 @@ public class Cliente extends Usuario{
         super(id, nome, telefone, dataNasc, email, nivelAcesso);
     }
     
-    
-    
+    @Override
+    public boolean equals(Object obj) {
+    if (this == obj) {
+        return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+        return false;
+    }
+    Cliente cliente = (Cliente) obj;
+    return this.getId() == cliente.getId();  // ou qualquer outra condição que faça sentido
+}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());  // Utilize os mesmos atributos que estão sendo usados no equals
+    }
     
     
 

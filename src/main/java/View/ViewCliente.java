@@ -1,9 +1,11 @@
 
 package View;
+import Controller.ClienteController;
 import Model.Pessoa;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 /**
  *
  * @author geova
@@ -12,15 +14,19 @@ public class ViewCliente extends javax.swing.JFrame {
     
    private JButton botaoAtual = null; // Armazena o botão atualmente clicado
    private final Pessoa pessoa;
+   private final ClienteController controller;
     
     
     public ViewCliente(Pessoa pessoa) { //metodo do botão entrar
         initComponents();
         this.pessoa = pessoa;
+        this.controller = new ClienteController(this);
         jPanelInicio.setVisible(true); // Torna o jPanel4 invisível inicialmente
         jPanelUsuario.setVisible(false);
         jPanelAgendamento.setVisible(false);
         jButtonInicio.setBackground(Color.YELLOW);
+        
+                
         
         botaoAtual = jButtonInicio; // Nenhum botão está selecionado inicialmente
        
@@ -28,6 +34,7 @@ public class ViewCliente extends javax.swing.JFrame {
     
     public ViewCliente() { //metodo de teste
         initComponents();
+        this.controller = new ClienteController(this);
         this.pessoa = null;
         jPanelInicio.setVisible(true); // Torna o jPanel4 invisível inicialmente
         jPanelUsuario.setVisible(false);
@@ -142,11 +149,11 @@ public class ViewCliente extends javax.swing.JFrame {
             jPanelDosBotaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDosBotaoLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(jPanelDosBotaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSair)
-                    .addComponent(jButtonPerfil)
-                    .addComponent(jButtonAgendamento)
-                    .addComponent(jButtonInicio))
+                .addGroup(jPanelDosBotaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonAgendamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDosBotaoLayout.createSequentialGroup()
                 .addContainerGap()
@@ -511,6 +518,7 @@ public class ViewCliente extends javax.swing.JFrame {
     if (botaoAtual != null) {
         botaoAtual.setBackground(null);
     }
+   controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
 
     resetarCoresDosBotoes(); // Reseta a cor de todos os botões
 
@@ -521,6 +529,8 @@ public class ViewCliente extends javax.swing.JFrame {
     jPanelAgendamento.setVisible(false);
     jPanelUsuario.setVisible(false);
     jPanelInicio.setVisible(true);
+    
+    
     
     jPanelAbreBotao.revalidate();
     jPanelAbreBotao.repaint(); 
@@ -536,6 +546,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
     jButtonAgendamento.setBackground(Color.BLACK); // Define a cor do botão clicado
     botaoAtual = jButtonAgendamento;
+    
 
     // Gerencia a visibilidade dos painéis
     jPanelUsuario.setVisible(false);
@@ -561,7 +572,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
     jButtonPerfil.setBackground(Color.BLUE); // Define a cor do botão clicado
     botaoAtual = jButtonPerfil;
-
+    
     // Gerencia a visibilidade dos painéis
     jPanelUsuario.setVisible(true);
     jPanelInicio.setVisible(false);
@@ -707,5 +718,16 @@ public class ViewCliente extends javax.swing.JFrame {
         //this.setSize(700, 610);
         this.setResizable(false);
         this.setVisible(true);
+        controller.mostrarHorario(pessoa.getId());
     }
+
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
+    }
+
+    public void setjTextArea1(JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
+    }
+    
+    
 }

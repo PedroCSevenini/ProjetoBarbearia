@@ -22,6 +22,10 @@ public class Funcionario extends Pessoa{
         super(id);
     }
 
+    public Funcionario(int id, String nome, String telefone, String dataNasc, String email, int nivelAcesso) {
+        super(id, nome, telefone, dataNasc, email, nivelAcesso);
+    }
+
     
     
     

@@ -14,18 +14,19 @@ import java.util.Date;
 public class Horario {
     protected int id;
     protected Servico servico;
-    protected Date data;
-    protected LocalTime horarioInicio;
-    protected Funcionario funcionario;
+    protected String data;
+    protected String  horarioInicio;
+    protected Funcionario  funcionario;
     protected Cliente cliente;
     
 
-    public Horario(int id, Servico servico, Date data, LocalTime horarioInicio, Funcionario funcionario) {
+    public Horario(int id, Servico servico, String data, String horarioInicio, Funcionario funcionario, Cliente cliente) {
         this.id = id;
         this.servico = servico;
         this.data = data;
         this.horarioInicio = horarioInicio;
         this.funcionario = funcionario;
+        this.cliente = cliente;
     }
 
     public int getId() {
@@ -44,22 +45,7 @@ public class Horario {
         this.servico = servico;
     }
 
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public LocalTime getHorarioInicio() {
-        return horarioInicio;
-    }
-
-    public void setHorarioInicio(LocalTime horarioInicio) {
-        this.horarioInicio = horarioInicio;
-    }
-
+   
     public Funcionario getFuncionario() {
         return funcionario;
     }
@@ -75,6 +61,23 @@ public class Horario {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getHorarioInicio() {
+        return horarioInicio;
+    }
+
+    public void setHorarioInicio(String horarioInicio) {
+        this.horarioInicio = horarioInicio;
+    }
+    
     
     
     
