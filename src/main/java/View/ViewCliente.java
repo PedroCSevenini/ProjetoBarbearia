@@ -15,6 +15,7 @@ public class ViewCliente extends javax.swing.JFrame {
    private JButton botaoAtual = null; // Armazena o botão atualmente clicado
    private final Pessoa pessoa;
    private final ClienteController controller;
+   
     
     
     public ViewCliente(Pessoa pessoa) { //metodo do botão entrar
@@ -25,6 +26,15 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelUsuario.setVisible(false);
         jPanelAgendamento.setVisible(false);
         jButtonInicio.setBackground(Color.YELLOW);
+        jPanelFilial.setVisible(false);
+        jPanelFuncionario2.setVisible(false);
+        jPanelServico.setVisible(false);
+        jPanelDataHora.setVisible(false);
+        jPanelFilial.setVisible(false);
+        jPanelFuncionario2.setVisible(false);
+        jPanelServico.setVisible(false);
+        jPanelDataHora.setVisible(false);
+        jPanelCortes.setVisible(false);
         
                 
         
@@ -59,18 +69,18 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelAbreBotao = new javax.swing.JPanel();
         jPanelAgendamento = new javax.swing.JPanel();
         jPanelBotoes = new javax.swing.JPanel();
-        jPanelHorario = new javax.swing.JButton();
+        jPanelFuncionario2 = new javax.swing.JButton();
         jButtonFilial = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jPanelHorario1 = new javax.swing.JButton();
-        jPanelHorario2 = new javax.swing.JButton();
+        jPanelServico = new javax.swing.JButton();
         jTextArea3 = new javax.swing.JTextArea();
         jButtonagendar1 = new javax.swing.JButton();
-        jPaneHora = new javax.swing.JPanel();
+        jPanelDataHora = new javax.swing.JPanel();
         jPanel1Data1 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel8 = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jPanelHora1 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -186,12 +196,16 @@ public class ViewCliente extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jPanelAbreBotao.setLayout(new java.awt.BorderLayout());
+        jPanelAbreBotao.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelAgendamento.setPreferredSize(new java.awt.Dimension(400, 500));
-        jPanelAgendamento.setLayout(new java.awt.CardLayout());
 
-        jPanelHorario.setText("Horario");
+        jPanelFuncionario2.setText("Proficional");
+        jPanelFuncionario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPanelFuncionario2ActionPerformed(evt);
+            }
+        });
 
         jButtonFilial.setText("Filial");
         jButtonFilial.addActionListener(new java.awt.event.ActionListener() {
@@ -203,8 +217,18 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel10.setText("selecione os detalhes do seu Agendamento ");
 
         jPanelHorario1.setText("Horario");
+        jPanelHorario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPanelHorario1ActionPerformed(evt);
+            }
+        });
 
-        jPanelHorario2.setText("Horario");
+        jPanelServico.setText("Serviços");
+        jPanelServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPanelServicoActionPerformed(evt);
+            }
+        });
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -221,13 +245,13 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGroup(jPanelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanelHorario2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelServico, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanelHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10)
                         .addComponent(jButtonFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanelHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonagendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanelBotoesLayout.setVerticalGroup(
             jPanelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,21 +261,17 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelHorario2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelServico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonagendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        jPanelAgendamento.add(jPanelBotoes, "card2");
-
-        jPaneHora.setLayout(new java.awt.CardLayout());
 
         jButton10.setText("Horarios Disponiveis");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -270,31 +290,28 @@ public class ViewCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Data1Layout.createSequentialGroup()
                 .addGroup(jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Data1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                            .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel8))
                     .addGroup(jPanel1Data1Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel8)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Data1Layout.setVerticalGroup(
             jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Data1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(43, 43, 43)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPaneHora.add(jPanel1Data1, "card3");
-
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setText("Horarios DIsponiveis");
+        jLabel18.setText("Horarios Disponiveis");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -308,27 +325,47 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelHora1Layout.setHorizontalGroup(
             jPanelHora1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHora1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(jPanelHora1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHora1Layout.createSequentialGroup()
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHora1Layout.createSequentialGroup()
                         .addComponent(jLabel18)
-                        .addGap(73, 73, 73)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addGap(113, 113, 113))))
         );
         jPanelHora1Layout.setVerticalGroup(
             jPanelHora1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHora1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
-        jPaneHora.add(jPanelHora1, "card2");
-
-        jPanelAgendamento.add(jPaneHora, "card3");
+        javax.swing.GroupLayout jPanelDataHoraLayout = new javax.swing.GroupLayout(jPanelDataHora);
+        jPanelDataHora.setLayout(jPanelDataHoraLayout);
+        jPanelDataHoraLayout.setHorizontalGroup(
+            jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDataHoraLayout.createSequentialGroup()
+                .addGroup(jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelDataHoraLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel1Data1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanelDataHoraLayout.setVerticalGroup(
+            jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataHoraLayout.createSequentialGroup()
+                .addGroup(jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelHora1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelDataHoraLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1Data1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
 
         jLabel9.setText("Selecione os Serviços");
 
@@ -353,7 +390,7 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addGroup(jPanelCortesLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(58, 58, 58))
         );
@@ -368,8 +405,6 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addComponent(jButtonConfirmar)
                 .addContainerGap())
         );
-
-        jPanelAgendamento.add(jPanelCortes, "card4");
 
         jPanelFuncionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -408,8 +443,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel5.setText("Sevenini");
         jPanelFuncionario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
 
-        jPanelAgendamento.add(jPanelFuncionario, "card5");
-
         jPanelFilial.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Selecione uma das Filiais");
@@ -418,23 +451,42 @@ public class ViewCliente extends javax.swing.JFrame {
         jComboBoxFiliais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barbaeria dfgdf" }));
         jPanelFilial.add(jComboBoxFiliais, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 93, 172, 64));
 
-        jPanelAgendamento.add(jPanelFilial, "card6");
-
         jLabel4.setText("Selecione os detalhes do seu Agendamento");
-        jPanelAgendamento.add(jLabel4, "card7");
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jTextArea2.setText("voce selecionou\nFilial X\nBarbeiro X\nCortes X\nHorario X\n\nTotal a Pagar: R$ 00,00\n");
         jScrollPane2.setViewportView(jTextArea2);
 
-        jPanelAgendamento.add(jScrollPane2, "card10");
-
         jButtonagendar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButtonagendar.setText("Agendar");
-        jPanelAgendamento.add(jButtonagendar, "card11");
 
-        jPanelAbreBotao.add(jPanelAgendamento, java.awt.BorderLayout.PAGE_END);
+        javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
+        jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
+        jPanelAgendamentoLayout.setHorizontalGroup(
+            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelCortes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButtonagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanelAgendamentoLayout.setVerticalGroup(
+            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelCortes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButtonagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanelAbreBotao.add(jPanelAgendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 390, -1));
 
         jPanelUsuario.setPreferredSize(new java.awt.Dimension(400, 500));
 
@@ -449,7 +501,7 @@ public class ViewCliente extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanelAbreBotao.add(jPanelUsuario, java.awt.BorderLayout.CENTER);
+        jPanelAbreBotao.add(jPanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 390, -510));
 
         jPanelInicio.setPreferredSize(new java.awt.Dimension(400, 500));
 
@@ -505,7 +557,7 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jPanelAbreBotao.add(jPanelInicio, java.awt.BorderLayout.PAGE_START);
+        jPanelAbreBotao.add(jPanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, -1));
 
         jPanel4.add(jPanelAbreBotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 390, 490));
 
@@ -604,12 +656,20 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelInicio.setVisible(false);
         jPanelAgendamento.setVisible(true);
 
-        jPanelAbreBotao.revalidate();
-        jPanelAbreBotao.repaint();
+        jPanelAgendamento.revalidate();
+        jPanelAgendamento.repaint();
     }//GEN-LAST:event_jToggleButtonNovoAgendamentoActionPerformed
 
     private void jButtonFilialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilialActionPerformed
         // TODO add your handling code here:
+        jPanelFilial.setVisible(true);
+        jPanelFuncionario2.setVisible(false);
+        jPanelServico.setVisible(false);
+        jPanelDataHora.setVisible(false);
+        jPanelCortes.setVisible(false);
+
+
+        
     }//GEN-LAST:event_jButtonFilialActionPerformed
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
@@ -622,7 +682,35 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+       jPanelHora1.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jPanelFuncionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPanelFuncionario2ActionPerformed
+        // TODO add your handling code here:
+        jPanelFilial.setVisible(false);
+        jPanelFuncionario2.setVisible(true);
+        jPanelServico.setVisible(false);
+        jPanelDataHora.setVisible(false);
+        jPanelCortes.setVisible(false);
+    }//GEN-LAST:event_jPanelFuncionario2ActionPerformed
+
+    private void jPanelServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPanelServicoActionPerformed
+        // TODO add your handling code here:
+        jPanelFilial.setVisible(false);
+        jPanelFuncionario2.setVisible(false);
+        jPanelServico.setVisible(true);
+        jPanelDataHora.setVisible(false);
+        jPanelCortes.setVisible(false);
+    }//GEN-LAST:event_jPanelServicoActionPerformed
+
+    private void jPanelHorario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPanelHorario1ActionPerformed
+        // TODO add your handling code here:
+        jPanelFilial.setVisible(false);
+        jPanelFuncionario2.setVisible(false);
+        jPanelServico.setVisible(false);
+        jPanelDataHora.setVisible(true);
+        jPanelCortes.setVisible(false);
+    }//GEN-LAST:event_jPanelHorario1ActionPerformed
     private void resetarCoresDosBotoes() {
         jButtonInicio.setBackground(null); // Define a cor padrão
         jButtonAgendamento.setBackground(null); // Define a cor padrão
@@ -689,7 +777,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPaneHora;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel1Data1;
     private javax.swing.JPanel jPanel4;
@@ -698,15 +785,16 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAgendamento;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelCortes;
+    private javax.swing.JPanel jPanelDataHora;
     private javax.swing.JPanel jPanelDosBotao;
     private javax.swing.JPanel jPanelFilial;
     private javax.swing.JPanel jPanelFuncionario;
+    private javax.swing.JButton jPanelFuncionario2;
     private javax.swing.JPanel jPanelHora1;
-    private javax.swing.JButton jPanelHorario;
     private javax.swing.JButton jPanelHorario1;
-    private javax.swing.JButton jPanelHorario2;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelLogo;
+    private javax.swing.JButton jPanelServico;
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
