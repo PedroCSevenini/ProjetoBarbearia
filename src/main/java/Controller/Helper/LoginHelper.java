@@ -34,7 +34,6 @@ public class LoginHelper {
     }
     
     public void limparLogin(){
-        view.getjTextFieldUsuario().setText("");
         view.getjPasswordSenha().setText("");
     }
     

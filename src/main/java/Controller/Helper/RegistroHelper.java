@@ -32,99 +32,92 @@ public class RegistroHelper {
         String email = view.getjTextFieldEmail().getText();
         String dataNasc = view.getjTextFieldDataNasc().getText();
         String usuario = view.getjTextFieldUsuario().getText();
-        String senha = view.getjPasswordFieldSenha().getText();
-        //Valida exceção nome
-        if(!("".equals(nome))){
-            String regexNome = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
-            Pattern patternNome = Pattern.compile(regexNome);
-            Matcher matcherNome = patternNome.matcher(nome);
-            if(!matcherNome.matches()){
-                return ("Nome inválido");
-            }
-        }else{
-            return ("Campo obrigatório faltando: Nome");
+        String senha = new String(view.getjPasswordFieldSenha().getPassword());
+
+        // Verifica campo Nome
+        if(nome.isEmpty()){
+            return "Campo obrigatório faltando: Nome";
         }
-        //Valida exceção telefone
-        if(!("".equals(telefone))){
-            String regexTelefone = "^\\d{10,11}$"; // 10 ou 11 dígitos
-            Pattern patternTelefone = Pattern.compile(regexTelefone);
-            Matcher matcherTelefone = patternTelefone.matcher(telefone);
-            if(!matcherTelefone.matches()){
-                return ("Telefone inválido(Somente números)");
-            }
-        }else{
-            return ("Campo obrigatório faltando: Telefone");
+        String regexNome = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
+        if(!nome.matches(regexNome)){
+            return "Nome inválido";
         }
-        //Valida exceção email
-        if(!("".equals(email))){
-            String regexEmail = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
-            Pattern patternEmail = Pattern.compile(regexEmail);
-            Matcher matcherEmail = patternEmail.matcher(email);
-            if(!matcherEmail.matches()){
-                return ("Email inválido");
-            }
-        }else{
-            return ("Campo obrigatório faltando: Email");
+
+        // Verifica campo Telefone
+        if(telefone.isEmpty()){
+            return "Campo obrigatório faltando: Telefone";
         }
-        //Valida exceção data de nascimento
-        if(!("".equals(dataNasc))){
-            String regexDataNasc = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";
-            Pattern patternDataNasc = Pattern.compile(regexDataNasc);
-            Matcher matcherDataNasc = patternDataNasc.matcher(dataNasc);
-            if(!matcherDataNasc.matches()){
-                return ("Data de nascimento inválida(Formato: XX/XX/XXXX)");
-            }
-        }else{
-            return ("Campo obrigatório faltando: Data de nascimento");
+        String regexTelefone = "^\\d{10,11}$"; // 10 ou 11 dígitos
+        if(!telefone.matches(regexTelefone)){
+            return "Telefone inválido (Somente números)";
         }
-        //Valida exceção usuario
-        if(!("".equals(usuario))){
-            String regexUsuario = "^[a-zA-Z0-9]+$";
-            Pattern patternUsuario = Pattern.compile(regexUsuario);
-            Matcher matcherUsuario= patternUsuario.matcher(usuario);
-            if(!matcherUsuario.matches()){
-                return ("Usuário inválido(apenas letras e numeros sem espaços)");
-            }
-        }else{
-            return ("Campo obrigatório faltando: Data de nascimento");
+
+        // Verifica campo Email
+        if(email.isEmpty()){
+            return "Campo obrigatório faltando: Email";
         }
-        //Valida exceção senha
-        if(!("".equals(senha))){
-            String regexSenha = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
-            Pattern patternSenha = Pattern.compile(regexSenha);
-            Matcher matcherSenha= patternSenha.matcher(senha);
-            if(!matcherSenha.matches()){
-                return ("Senha inválida(no mínimo 8 dígitos, apenas letras e numeros)");
-            }
-        }else{
-            return ("Campo obrigatório faltando: Senha");
+        String regexEmail = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        if(!email.matches(regexEmail)){
+            return "Email inválido";
+        }
+
+        // Verifica campo Data de Nascimento
+        if(dataNasc.isEmpty()){
+            return "Campo obrigatório faltando: Data de nascimento";
+        }
+        String regexDataNasc = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";
+        if(!dataNasc.matches(regexDataNasc)){
+            return "Data de nascimento inválida (Formato: XX/XX/XXXX)";
+        }
+
+        // Verifica campo Usuário
+        if(usuario.isEmpty()){
+            return "Campo obrigatório faltando: Usuário";
+        }
+        String regexUsuario = "^[a-zA-Z0-9]+$";
+        if(!usuario.matches(regexUsuario)){
+            return "Usuário inválido (Apenas letras e números, sem espaços)";
+        }
+        // Verifica campo Senha
+        if(senha.isEmpty()){
+            return "Campo obrigatório faltando: Senha";
+        }
+        String regexSenha = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+        if(!senha.matches(regexSenha)){
+            return "Senha inválida (No mínimo 8 dígitos, apenas letras e números)";
         }
         return "Todos campos corretos";
     }
     
-    public Cliente obtemModelo(){
+    public Cliente obtemModelo() {
         String nome = view.getjTextFieldNome().getText();
         String email = view.getjTextFieldEmail().getText();
         String telefone = view.getjTextFieldTelefone().getText();
         String dataNasc = view.getjTextFieldDataNasc().getText();
         String usuario = view.getjTextFieldUsuario().getText();
-        String senha = view.getjPasswordFieldSenha().getText();
+        String senha = new String(view.getjPasswordFieldSenha().getPassword());
         int id = bancoPessoa.retornaProximoID();
         Cliente modelo = new Cliente(usuario, senha, id, nome, telefone, dataNasc, email);
         return modelo;
-        
-    }
-    
+}
+
     public String registrar(Cliente modelo){
+        // Verifica se telefone já está registrado
         if(bancoPessoa.buscaTelefone(modelo.getTelefone())){
             return "Telefone já registrado.";
         }
+    
+        // Verifica se email já está registrado
         if(bancoPessoa.buscaEmail(modelo.getEmail())){
             return "Email já registrado.";
         }
+    
+        // Verifica se usuário já está registrado
         if(bancoUsuario.buscaUsuario(modelo.getUsuario())){
             return "Usuário já registrado.";
         }
+    
+        // Se tudo estiver correto, insere o cliente no banco
         bancoUsuario.insereUsuario(modelo);
         bancoPessoa.inserePessoa(modelo);
         return "Registrado com sucesso";

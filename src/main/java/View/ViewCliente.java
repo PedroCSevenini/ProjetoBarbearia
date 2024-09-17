@@ -227,7 +227,7 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addComponent(jButtonFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanelHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonagendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanelBotoesLayout.setVerticalGroup(
             jPanelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +277,7 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Data1Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jLabel8)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel1Data1Layout.setVerticalGroup(
             jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +314,7 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHora1Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(73, 73, 73)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanelHora1Layout.setVerticalGroup(
             jPanelHora1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,9 +458,11 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jLabel7.setText("Seus Agendamentos");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Dia:\n\nHora:\n");
+        jTextArea1.setText("Não há horário marcado.");
         jScrollPane1.setViewportView(jTextArea1);
 
         jToggleButtonNovoAgendamento.setText("Novo Agendamento");
@@ -498,7 +500,7 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(jToggleButtonNovoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -518,7 +520,7 @@ public class ViewCliente extends javax.swing.JFrame {
     if (botaoAtual != null) {
         botaoAtual.setBackground(null);
     }
-   controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
+    controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
 
     resetarCoresDosBotoes(); // Reseta a cor de todos os botões
 
