@@ -1,23 +1,22 @@
-
 package View;
+
 import Controller.ClienteController;
 import Model.Pessoa;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+
 /**
  *
  * @author geova
  */
 public class ViewCliente extends javax.swing.JFrame {
-    
-   private JButton botaoAtual = null; // Armazena o botão atualmente clicado
-   private final Pessoa pessoa;
-   private final ClienteController controller;
-   
-    
-    
+
+    private JButton botaoAtual = null; // Armazena o botão atualmente clicado
+    private final Pessoa pessoa;
+    private final ClienteController controller;
+
     public ViewCliente(Pessoa pessoa) { //metodo do botão entrar
         initComponents();
         this.pessoa = pessoa;
@@ -26,22 +25,11 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelUsuario.setVisible(false);
         jPanelAgendamento.setVisible(false);
         jButtonInicio.setBackground(Color.YELLOW);
-        jPanelFilial.setVisible(false);
-        jPanelFuncionario2.setVisible(false);
-        jPanelServico.setVisible(false);
-        jPanelDataHora.setVisible(false);
-        jPanelFilial.setVisible(false);
-        jPanelFuncionario2.setVisible(false);
-        jPanelServico.setVisible(false);
-        jPanelDataHora.setVisible(false);
-        jPanelCortes.setVisible(false);
-        
-                
-        
+
         botaoAtual = jButtonInicio; // Nenhum botão está selecionado inicialmente
-       
+
     }
-    
+
     public ViewCliente() { //metodo de teste
         initComponents();
         this.controller = new ClienteController(this);
@@ -50,9 +38,9 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelUsuario.setVisible(false);
         jPanelAgendamento.setVisible(false);
         jButtonInicio.setBackground(Color.YELLOW);
-        
+
         botaoAtual = jButtonInicio; // Nenhum botão está selecionado inicialmente
-       
+
     }
 
     @SuppressWarnings("unchecked")
@@ -97,10 +85,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelFilial = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxFiliais = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButtonagendar = new javax.swing.JButton();
         jPanelUsuario = new javax.swing.JPanel();
         jPanelInicio = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -199,6 +183,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelAbreBotao.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelAgendamento.setPreferredSize(new java.awt.Dimension(400, 500));
+        jPanelAgendamento.setLayout(new java.awt.CardLayout());
 
         jPanelFuncionario2.setText("Proficional");
         jPanelFuncionario2.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +258,10 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanelAgendamento.add(jPanelBotoes, "card2");
+
+        jPanelDataHora.setLayout(new java.awt.CardLayout());
+
         jButton10.setText("Horarios Disponiveis");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,7 +286,7 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel1Data1Layout.setVerticalGroup(
             jPanel1Data1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,6 +298,8 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jPanelDataHora.add(jPanel1Data1, "card3");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("Horarios Disponiveis");
@@ -341,31 +332,12 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanelDataHoraLayout = new javax.swing.GroupLayout(jPanelDataHora);
-        jPanelDataHora.setLayout(jPanelDataHoraLayout);
-        jPanelDataHoraLayout.setHorizontalGroup(
-            jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDataHoraLayout.createSequentialGroup()
-                .addGroup(jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelDataHoraLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel1Data1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanelDataHoraLayout.setVerticalGroup(
-            jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataHoraLayout.createSequentialGroup()
-                .addGroup(jPanelDataHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelHora1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelDataHoraLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1Data1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        jPanelDataHora.add(jPanelHora1, "card2");
+
+        jPanelAgendamento.add(jPanelDataHora, "card3");
 
         jLabel9.setText("Selecione os Serviços");
 
@@ -390,7 +362,7 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addGroup(jPanelCortesLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(jButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(58, 58, 58))
         );
@@ -401,10 +373,12 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addComponent(jButtonConfirmar)
                 .addContainerGap())
         );
+
+        jPanelAgendamento.add(jPanelCortes, "card4");
 
         jPanelFuncionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -443,6 +417,8 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel5.setText("Sevenini");
         jPanelFuncionario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
 
+        jPanelAgendamento.add(jPanelFuncionario, "card5");
+
         jPanelFilial.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Selecione uma das Filiais");
@@ -451,40 +427,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jComboBoxFiliais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barbaeria dfgdf" }));
         jPanelFilial.add(jComboBoxFiliais, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 93, 172, 64));
 
-        jLabel4.setText("Selecione os detalhes do seu Agendamento");
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("voce selecionou\nFilial X\nBarbeiro X\nCortes X\nHorario X\n\nTotal a Pagar: R$ 00,00\n");
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jButtonagendar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButtonagendar.setText("Agendar");
-
-        javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
-        jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
-        jPanelAgendamentoLayout.setHorizontalGroup(
-            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelCortes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButtonagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanelAgendamentoLayout.setVerticalGroup(
-            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelCortes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanelDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButtonagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jPanelAgendamento.add(jPanelFilial, "card6");
 
         jPanelAbreBotao.add(jPanelAgendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 390, -1));
 
@@ -565,50 +508,100 @@ public class ViewCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void inicializarPaineis() {
+        jPanelAgendamento.add(jPanelFilial);
+        jPanelAgendamento.add(jPanelFuncionario2);
+        jPanelAgendamento.add(jPanelServico);
+        jPanelAgendamento.add(jPanelDataHora);
+        jPanelAgendamento.add(jPanelCortes);
+
+        // Define a visibilidade inicial dos painéis
+        mostrarPainel("Inicio"); // Ou qualquer painel que você deseja exibir inicialmente
+    }
+    private void mostrarPainel(String painelParaMostrar) {
+        // Oculta todos os painéis
+        jPanelFilial.setVisible(false);
+        jPanelFuncionario2.setVisible(false);
+        jPanelServico.setVisible(false);
+        jPanelDataHora.setVisible(false);
+        jPanelCortes.setVisible(false);
+        
+        // Mostra o painel especificado
+        switch (painelParaMostrar) {
+            case "Filial":
+                jPanelFilial.setVisible(true);
+                break;
+            case "Funcionario":
+                jPanelFuncionario2.setVisible(true);
+                break;
+            case "Servico":
+                jPanelServico.setVisible(true);
+                break;
+            case "DataHora":
+                jPanelDataHora.setVisible(true);
+                break;
+            case "Cortes":
+                jPanelCortes.setVisible(true);
+                break;
+            case "Inicio":
+                // Caso de visibilidade inicial ou padrão
+                break;
+            default:
+                // Caso nenhum painel seja especificado
+                break;
+        }
+        
+        jPanelAgendamento.revalidate();
+        jPanelAgendamento.repaint();
+    }
+    private void resetarCoresDosBotoes() {
+        jButtonInicio.setBackground(null); // Define a cor padrão
+        jButtonAgendamento.setBackground(null); // Define a cor padrão
+        jButtonPerfil.setBackground(null); // Define a cor padrão
+    }
+
+    
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
-    // Restaura a cor do botão anteriormente clicado
-    if (botaoAtual != null) {
-        botaoAtual.setBackground(null);
-    }
-    controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
+        // Restaura a cor do botão anteriormente clicado
+        if (botaoAtual != null) {
+            botaoAtual.setBackground(null);
+        }
+        controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
 
-    resetarCoresDosBotoes(); // Reseta a cor de todos os botões
+        resetarCoresDosBotoes(); // Reseta a cor de todos os botões
 
-    jButtonInicio.setBackground(Color.YELLOW); // Define a cor do botão clicado
-    botaoAtual = jButtonInicio;
+        jButtonInicio.setBackground(Color.YELLOW); // Define a cor do botão clicado
+        botaoAtual = jButtonInicio;
 
-    // Gerencia a visibilidade dos painéis
-    jPanelAgendamento.setVisible(false);
-    jPanelUsuario.setVisible(false);
-    jPanelInicio.setVisible(true);
-    
-    
-    
-    jPanelAbreBotao.revalidate();
-    jPanelAbreBotao.repaint(); 
+        // Gerencia a visibilidade dos painéis
+        jPanelAgendamento.setVisible(false);
+        jPanelUsuario.setVisible(false);
+        jPanelInicio.setVisible(true);
+
+        jPanelAbreBotao.revalidate();
+        jPanelAbreBotao.repaint();
     }//GEN-LAST:event_jButtonInicioActionPerformed
-    
+
     private void jButtonAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgendamentoActionPerformed
         // TODO add your handling code here:
-    if (botaoAtual != null) {
-        botaoAtual.setBackground(null);
-    }
+        if (botaoAtual != null) {
+            botaoAtual.setBackground(null);
+        }
 
-    resetarCoresDosBotoes(); // Reseta a cor de todos os botões
+        resetarCoresDosBotoes(); // Reseta a cor de todos os botões
 
-    jButtonAgendamento.setBackground(Color.BLACK); // Define a cor do botão clicado
-    botaoAtual = jButtonAgendamento;
-    
+        jButtonAgendamento.setBackground(Color.BLACK); // Define a cor do botão clicado
+        botaoAtual = jButtonAgendamento;
 
-    // Gerencia a visibilidade dos painéis
-    jPanelUsuario.setVisible(false);
-    jPanelInicio.setVisible(false);
-    jPanelAgendamento.setVisible(true);
-    
-    jPanelAbreBotao.revalidate();
-    jPanelAbreBotao.repaint(); 
+        // Gerencia a visibilidade dos painéis
+        jPanelUsuario.setVisible(false);
+        jPanelInicio.setVisible(false);
+        jPanelAgendamento.setVisible(true);
+
+        jPanelAbreBotao.revalidate();
+        jPanelAbreBotao.repaint();
 
     }//GEN-LAST:event_jButtonAgendamentoActionPerformed
 
@@ -618,22 +611,22 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
         // TODO add your handling code here:
-    if (botaoAtual != null) {
-        botaoAtual.setBackground(null);
-    }
-    
-    resetarCoresDosBotoes(); // Reseta a cor de todos os botões
+        if (botaoAtual != null) {
+            botaoAtual.setBackground(null);
+        }
 
-    jButtonPerfil.setBackground(Color.BLUE); // Define a cor do botão clicado
-    botaoAtual = jButtonPerfil;
-    
-    // Gerencia a visibilidade dos painéis
-    jPanelUsuario.setVisible(true);
-    jPanelInicio.setVisible(false);
-    jPanelAgendamento.setVisible(false);
-    
-    jPanelAbreBotao.revalidate();
-    jPanelAbreBotao.repaint();
+        resetarCoresDosBotoes(); // Reseta a cor de todos os botões
+
+        jButtonPerfil.setBackground(Color.BLUE); // Define a cor do botão clicado
+        botaoAtual = jButtonPerfil;
+
+        // Gerencia a visibilidade dos painéis
+        jPanelUsuario.setVisible(true);
+        jPanelInicio.setVisible(false);
+        jPanelAgendamento.setVisible(false);
+
+        jPanelAbreBotao.revalidate();
+        jPanelAbreBotao.repaint();
     }//GEN-LAST:event_jButtonPerfilActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
@@ -662,19 +655,8 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private void jButtonFilialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilialActionPerformed
         // TODO add your handling code here:
-        jPanelFilial.setVisible(true);
-        jPanelFuncionario2.setVisible(false);
-        jPanelServico.setVisible(false);
-        jPanelDataHora.setVisible(false);
-        jPanelCortes.setVisible(false);
-
-
-        
+        mostrarPainel("Filial");
     }//GEN-LAST:event_jButtonFilialActionPerformed
-
-    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
@@ -682,40 +664,29 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-       jPanelHora1.setVisible(true);
+        jPanelHora1.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jPanelFuncionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPanelFuncionario2ActionPerformed
         // TODO add your handling code here:
-        jPanelFilial.setVisible(false);
-        jPanelFuncionario2.setVisible(true);
-        jPanelServico.setVisible(false);
-        jPanelDataHora.setVisible(false);
-        jPanelCortes.setVisible(false);
+        mostrarPainel("Funcionario");
     }//GEN-LAST:event_jPanelFuncionario2ActionPerformed
 
     private void jPanelServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPanelServicoActionPerformed
         // TODO add your handling code here:
-        jPanelFilial.setVisible(false);
-        jPanelFuncionario2.setVisible(false);
-        jPanelServico.setVisible(true);
-        jPanelDataHora.setVisible(false);
-        jPanelCortes.setVisible(false);
+        mostrarPainel("Servico");
     }//GEN-LAST:event_jPanelServicoActionPerformed
 
     private void jPanelHorario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPanelHorario1ActionPerformed
         // TODO add your handling code here:
-        jPanelFilial.setVisible(false);
-        jPanelFuncionario2.setVisible(false);
-        jPanelServico.setVisible(false);
-        jPanelDataHora.setVisible(true);
-        jPanelCortes.setVisible(false);
+        mostrarPainel("DataHora");
     }//GEN-LAST:event_jPanelHorario1ActionPerformed
-    private void resetarCoresDosBotoes() {
-        jButtonInicio.setBackground(null); // Define a cor padrão
-        jButtonAgendamento.setBackground(null); // Define a cor padrão
-        jButtonPerfil.setBackground(null); // Define a cor padrão
-    }
+
+    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConfirmarActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
@@ -760,7 +731,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonPerfil;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JButton jButtonagendar;
     private javax.swing.JButton jButtonagendar1;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -771,7 +741,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -797,13 +766,11 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JButton jPanelServico;
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JToggleButton jToggleButtonNovoAgendamento;
     // End of variables declaration//GEN-END:variables
-    public void setarCliente(){
+    public void setarCliente() {
         this.setLocationRelativeTo(null);
         //this.setSize(700, 610);
         this.setResizable(false);
@@ -818,6 +785,5 @@ public class ViewCliente extends javax.swing.JFrame {
     public void setjTextArea1(JTextArea jTextArea1) {
         this.jTextArea1 = jTextArea1;
     }
-    
-    
+
 }
