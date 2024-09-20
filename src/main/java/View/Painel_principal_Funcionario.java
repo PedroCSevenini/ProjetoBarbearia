@@ -40,6 +40,12 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         Tabela_a_Confirmar = new javax.swing.JTable();
         Confirmados = new javax.swing.JLabel();
         A_Confirmar = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
         Tela_Cortes = new javax.swing.JPanel();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jInternalFrame2 = new javax.swing.JInternalFrame();
@@ -71,7 +77,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
                 RejeitarActionPerformed(evt);
             }
         });
-        Tela_Funcionario.add(Rejeitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 120, -1));
+        Tela_Funcionario.add(Rejeitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 110, -1));
 
         Confirmar.setText("Confirmar");
         Confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +85,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
                 ConfirmarActionPerformed(evt);
             }
         });
-        Tela_Funcionario.add(Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 120, -1));
+        Tela_Funcionario.add(Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 110, -1));
 
         Remover.setText("Remover");
         Remover.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +93,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
                 RemoverActionPerformed(evt);
             }
         });
-        Tela_Funcionario.add(Remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 120, -1));
+        Tela_Funcionario.add(Remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 110, -1));
 
         Editar.setText("Editar");
         Editar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +101,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
                 EditarActionPerformed(evt);
             }
         });
-        Tela_Funcionario.add(Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 120, -1));
+        Tela_Funcionario.add(Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 110, -1));
 
         Tabela_Confirmados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,7 +117,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         Tabela_Confirmados.setPreferredSize(new java.awt.Dimension(0, 80));
         Scroll_Tabela_Confirmados.setViewportView(Tabela_Confirmados);
 
-        Tela_Funcionario.add(Scroll_Tabela_Confirmados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 250, 330));
+        Tela_Funcionario.add(Scroll_Tabela_Confirmados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 240, 330));
 
         Tabela_a_Confirmar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,7 +132,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         ));
         Scroll_Tabela_AConfirmar.setViewportView(Tabela_a_Confirmar);
 
-        Tela_Funcionario.add(Scroll_Tabela_AConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 250, 330));
+        Tela_Funcionario.add(Scroll_Tabela_AConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 250, 330));
 
         Confirmados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Confirmados.setText("Confirmados");
@@ -134,7 +140,25 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
 
         A_Confirmar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         A_Confirmar.setText("A Confirmar");
-        Tela_Funcionario.add(A_Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 22, -1, -1));
+        Tela_Funcionario.add(A_Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+
+        jTextField2.setText("jTextField2");
+        Tela_Funcionario.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+
+        jTextField3.setText("jTextField3");
+        Tela_Funcionario.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+
+        jTextField4.setText("jTextField4");
+        Tela_Funcionario.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+
+        jTextField5.setText("jTextField5");
+        Tela_Funcionario.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+
+        jTextField6.setText("jTextField6");
+        Tela_Funcionario.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+
+        jTextField7.setText("jTextField7");
+        Tela_Funcionario.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
 
         Tela_Principal.add(Tela_Funcionario, "Tela_Clientes");
 
@@ -264,7 +288,7 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tela_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Tela_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,6 +395,12 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

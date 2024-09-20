@@ -50,6 +50,9 @@ public class UsuarioBanco {
     
     public static Usuario verificaUsuarioSenha(Usuario usuario){
         List<Usuario> usuarios = retornaUsuarios();
+        if (usuarios == null || usuarios.isEmpty()) {
+            return null;
+        }
         for(Usuario usuarioLista: usuarios){
             if(usuarioLista.getUsuario().equals(usuario.getUsuario()) && usuarioLista.getSenha().equals(usuario.getSenha())){
                 return usuarioLista;

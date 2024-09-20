@@ -20,7 +20,7 @@ import java.util.List;
 public class PessoaBanco {
     private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Pessoa.txt");
     
-    public static List retornaPessoas(){
+    public List retornaPessoas(){
         List<Pessoa> pessoas = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
@@ -74,7 +74,7 @@ public class PessoaBanco {
         return clientes;
     }
     
-    public static List retornaFuncionarios(){
+    public List retornaFuncionarios(){
         List<Funcionario> funcionarios = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
@@ -153,7 +153,7 @@ public class PessoaBanco {
         return false;
     }
     
-    public static Pessoa procurarPessoaPorID(int id){
+    public Pessoa procurarPessoaPorID(int id){
         List<Pessoa> pessoas = retornaPessoas();
         if (pessoas == null || pessoas.isEmpty()) {
             return null;
@@ -167,7 +167,7 @@ public class PessoaBanco {
         return null;
     }
     
-    public static Funcionario procuraFuncionarioPorID(int id){
+    public Funcionario procuraFuncionarioPorID(int id){
         List<Funcionario> funcionarios = retornaFuncionarios();
         if (funcionarios == null || funcionarios.isEmpty()) {
             return null;

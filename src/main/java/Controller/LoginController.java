@@ -30,7 +30,8 @@ public class LoginController {
             view.exibeMensagem("Usuario ou senha inválidos.");
             helper.limparLogin();
         }else{
-            Pessoa pessoa = PessoaBanco.procurarPessoaPorID(usuarioVerificado.getId());
+            PessoaBanco banco = new PessoaBanco();
+            Pessoa pessoa = banco.procurarPessoaPorID(usuarioVerificado.getId());
             if(pessoa.getNivelAcesso() == 1){
                 ViewCliente telaCliente = new ViewCliente(pessoa);
                 telaCliente.setarCliente();

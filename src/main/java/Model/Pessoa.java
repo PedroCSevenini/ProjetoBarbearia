@@ -79,14 +79,9 @@ abstract public class Pessoa {
         this.nivelAcesso = nivelAcesso;
     }
     
-    
-    
-
-    
-    
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
     
 }

@@ -5,6 +5,7 @@ import BDO.HorarioBanco;
 import BDO.PessoaBanco;
 import Model.Horario;
 import View.ViewCliente;
+import java.util.List;
 
 
 /**
@@ -29,4 +30,6 @@ public class ClienteHelper {
         String line =  "Não há horário marcado.";
         view.getjTextArea1().setText(line);
     }
+    
+     
 }

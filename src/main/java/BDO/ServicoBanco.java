@@ -1,7 +1,5 @@
 
 package BDO;
-
-import static BDO.PessoaBanco.retornaFuncionarios;
 import Model.Cliente;
 import Model.Funcionario;
 import Model.Pessoa;
@@ -20,7 +18,7 @@ import java.util.List;
 public class ServicoBanco{
     private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Servico.txt");
     
-    public static List retornaServicos(){
+    public List retornaServicos(){
         List<Servico> servicos = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))){
             String line = br.readLine();
@@ -45,7 +43,7 @@ public class ServicoBanco{
         return servicos;
     }
     
-    public static Servico procuraServicoPorID(int id){
+    public Servico procuraServicoPorID(int id){
         List<Servico> servicos = retornaServicos();
         if (servicos == null || servicos.isEmpty()) {
             return null;

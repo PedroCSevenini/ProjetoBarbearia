@@ -34,10 +34,12 @@ public class HorarioBanco {
             while(line!=null){
                 String [] vet = line.split(",");
                 int id = Integer.parseInt(vet[0]);
-                Servico servico = ServicoBanco.procuraServicoPorID(Integer.parseInt(vet[1]));
+                ServicoBanco bancoServico =  new ServicoBanco();
+                Servico servico = bancoServico.procuraServicoPorID(Integer.parseInt(vet[1]));
                 String data = vet[2];
                 String horaInicio = vet[3];
-                Funcionario funcionario = PessoaBanco.procuraFuncionarioPorID(Integer.parseInt(vet[4]));
+                PessoaBanco banco = new PessoaBanco();
+                Funcionario funcionario = banco.procuraFuncionarioPorID(Integer.parseInt(vet[4]));
                 Cliente cliente = PessoaBanco.procuraClientePorID(Integer.parseInt(vet[5]));
                 
                 horarios.add(new Horario(id,servico,data,horaInicio,funcionario,cliente));
