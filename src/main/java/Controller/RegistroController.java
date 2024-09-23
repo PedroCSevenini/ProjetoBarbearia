@@ -19,7 +19,7 @@ public class RegistroController {
     
     
     public void registrar(){
-        if(helper.verificaCamposObrigatorios().equals("Todos campos corretos")){
+        if(helper.verificaCamposObrigatorios()){
             Cliente modelo = helper.obtemModelo();
             String line = helper.registrar(modelo);
             if(line.equals("Registrado com sucesso")){
@@ -30,9 +30,6 @@ public class RegistroController {
             }else{
                 view.exibeMensagem(line);
             }
-        }
-        else{
-            view.exibeMensagem(helper.verificaCamposObrigatorios());        
         }
     }
 }

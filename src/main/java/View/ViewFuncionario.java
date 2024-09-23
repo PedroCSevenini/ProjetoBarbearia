@@ -10,12 +10,12 @@ import java.awt.CardLayout;
  *
  * @author geova
  */
-public class Painel_principal_Funcionario extends javax.swing.JFrame {
+public class ViewFuncionario extends javax.swing.JFrame {
 
     /**
      * Creates new form Painel_principal_Funcionario
      */
-    public Painel_principal_Funcionario() {
+    public ViewFuncionario() {
         initComponents();
     }
 
@@ -348,20 +348,21 @@ public class Painel_principal_Funcionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Painel_principal_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Painel_principal_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Painel_principal_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Painel_principal_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Painel_principal_Funcionario().setVisible(true);
+                new ViewFuncionario().setVisible(true);
             }
         });
     }

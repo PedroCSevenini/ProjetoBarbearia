@@ -15,6 +15,7 @@ import javax.swing.JTextField;
  * @author pedro
  */
 import java.awt.Color;
+import javax.swing.JLabel;
 public class ViewRegistro extends javax.swing.JFrame {
     private final RegistroController controller;
     /**
@@ -35,6 +36,7 @@ public class ViewRegistro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelAviso = new javax.swing.JLabel();
         jLabelPreEntrar = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jLabelEntrar = new javax.swing.JLabel();
@@ -57,6 +59,9 @@ public class ViewRegistro extends javax.swing.JFrame {
         setTitle("Registro");
         setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelAviso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        getContentPane().add(jLabelAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 645, 410, 20));
 
         jLabelPreEntrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelPreEntrar.setForeground(new java.awt.Color(0, 0, 0));
@@ -258,6 +263,14 @@ public class ViewRegistro extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
+    public JLabel getjLabelAviso() {
+        return jLabelAviso;
+    }
+
+    public void setjLabelAviso(JLabel jLabelAviso) {
+        this.jLabelAviso = jLabelAviso;
+    }
+
     
     
     /**
@@ -302,6 +315,7 @@ public class ViewRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonRegistrar;
+    private javax.swing.JLabel jLabelAviso;
     private javax.swing.JLabel jLabelDataNasc;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEntrar;
