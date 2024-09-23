@@ -23,6 +23,13 @@ public class Servico {
         this.desc = desc;
     }
 
+    public Servico(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
@@ -59,9 +66,9 @@ public class Servico {
         this.desc = desc;
     }
 
-    public int getTokens() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+    public String toString(){
+        return preco != null ? nome + "(R$" + preco + ")" : nome;
     }
-    
     
 }

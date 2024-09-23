@@ -69,40 +69,65 @@ public class HorarioBanco {
         return null;
     }
 
-    private List consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario) {
+    private List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario, Servico servico) {
+        // Retorna todos os horários marcados do funcionário
         List<Horario> horariosMarcados = retornaHorariosMarcadosFuncionario(idFuncionario);
+
+        // Lista de horários disponíveis
         List<String> horariosDisponiveis = new ArrayList<>();
 
-       
-        for (int horas = 7; horas <= 18; horas++) {
+        // Gera os horários de 7:00 até 18:00 em intervalos de 15 minutos
+        for (int horas = 7; horas < 18; horas++) {
             for (int minutos = 0; minutos < 60; minutos += 15) {
                 String horarioFormatado = String.format("%02d:%02d", horas, minutos);
                 horariosDisponiveis.add(horarioFormatado);
             }
         }
 
-        
+        // Remove os horários ocupados
         for (Horario horarioMarcado : horariosMarcados) {
             if (horarioMarcado.getData().equals(dataSelecionada)) {
-                String horarioInicio = horarioMarcado.getHorarioInicio(); 
-                int duracao = horarioMarcado.getServico().getDuracao();
+                String horarioInicio = horarioMarcado.getHorarioInicio(); // Hora de início do serviço
+                int duracaoMarcada = horarioMarcado.getServico().getDuracao() * 15; // Duração em minutos
+
                 int horasInicio = Integer.parseInt(horarioInicio.split(":")[0]);
-                int minutosInicio = Integer.parseInt(horarioInicio.split(":")[1]);             
-                for (int i = 0; i < duracao; i++) {                   
+                int minutosInicio = Integer.parseInt(horarioInicio.split(":")[1]);
+
+                // Remover os horários ocupados pelo serviço
+                for (int i = 0; i < duracaoMarcada; i += 15) {
                     String horarioOcupado = String.format("%02d:%02d", horasInicio, minutosInicio);
-                    horariosDisponiveis.remove(horarioOcupado); 
+                    horariosDisponiveis.remove(horarioOcupado); // Remove o horário ocupado
                     minutosInicio += 15;
+
                     if (minutosInicio == 60) {
                         minutosInicio = 0;
-                        horasInicio++;
+                        horasInicio++; // Avança a hora quando os minutos chegam a 60
                     }
                 }
             }
         }
 
-        return horariosDisponiveis;
-    }
+        // Duração do serviço a ser marcado (multiplicado por 15 para converter para minutos)
+        int duracaoServico = servico.getDuracao() * 15; // Exemplo: 2 * 15 = 30 minutos
 
+        // Verificar se há intervalos consecutivos disponíveis para a duração do serviço
+        List<String> horariosValidos = new ArrayList<>();
+        for (int i = 0; i < horariosDisponiveis.size(); i++) {
+            boolean disponivel = true;
+            for (int j = 0; j < duracaoServico / 15; j++) {
+                int indice = i + j;
+                if (indice >= horariosDisponiveis.size()) {
+                    disponivel = false;
+                    break;
+                }
+            }
+            if (disponivel) {
+                horariosValidos.add(horariosDisponiveis.get(i));
+            }
+        }
+
+        return horariosValidos; // Retorna os horários ainda disponíveis que suportam a duração do serviço
+    }
 
     private void adicionarHorarioIndisponivel(String dataSelecionada, String horarioInicio, Servico servico, Funcionario funcionario, Cliente cliente) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(path, true))) {

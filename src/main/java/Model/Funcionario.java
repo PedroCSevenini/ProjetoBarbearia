@@ -26,10 +26,13 @@ public class Funcionario extends Pessoa{
         super(id, nome, telefone, dataNasc, email, nivelAcesso);
     }
 
-    
-    public String toString(){
-        return getNome();
+    public Funcionario(int id, String nome) {
+        super(id, nome);
     }
+
+    
+    
+    
     
    
 }

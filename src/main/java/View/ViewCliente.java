@@ -7,12 +7,15 @@ package View;
 import BDO.PessoaBanco;
 import Controller.ClienteController;
 import Model.Pessoa;
+import Model.Servico;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -32,27 +35,17 @@ public class ViewCliente extends javax.swing.JFrame {
     private Color colorDefaultPerfil = new Color(121,121,121);
     
 
-    private List<String> gerarTodosHorarios() {
-        List<String> horarios = new ArrayList<>();
-        LocalTime inicio = LocalTime.of(7, 0);  // Começando às 7:00
-        LocalTime fim = LocalTime.of(18, 0);    // Terminando às 18:00
-
-        while (!inicio.isAfter(fim)) {
-            horarios.add(inicio.toString());  // Adiciona o horário formatado como HH:mm
-            inicio = inicio.plusMinutes(15);  // Incrementa 15 minutos
-        }
-
-        return horarios;
-    }
 
     public ViewCliente() {
         initComponents();
         controller = new ClienteController(this);
         this.pessoa = null;
-        preencherComboBoxHorarios();  // Chama o método para preencher a JComboBox
+        
         colorDefaultInicio = new Color(121,121,121);
         colorDefaultAgendamento = new Color(78,78,78);
         colorDefaultPerfil = new Color(78,78,78);
+        jSelecionaData.setEnabled(false);
+        jComboBoxHorarios.setEnabled(false);
         JPanelBtnInicio.setBackground(colorDefaultInicio);
         jPanelBtnAgendamento.setBackground(colorDefaultAgendamento);
         jPanelBtnPerfil.setBackground(colorDefaultPerfil);
@@ -63,6 +56,8 @@ public class ViewCliente extends javax.swing.JFrame {
         initComponents();
         controller = new ClienteController(this);
         this.pessoa = pessoa;
+        jSelecionaData.setEnabled(false);
+        jComboBoxHorarios.setEnabled(false);
         colorDefaultInicio = new Color(121,121,121);
         colorDefaultAgendamento = new Color(78,78,78);
         colorDefaultPerfil = new Color(78,78,78);
@@ -105,12 +100,13 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabelNovoAgendamento = new javax.swing.JLabel();
         jButtonNovoAgendamento = new javax.swing.JButton();
         jPanelAgendamento = new javax.swing.JPanel();
-        jButtonDataHorario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButtonMarcar = new javax.swing.JButton();
         jComboBoxFuncionario = new javax.swing.JComboBox<>();
         jComboBoxServico = new javax.swing.JComboBox<>();
+        jSelecionaData = new com.toedter.calendar.JDateChooser();
+        jComboBoxHorarios = new javax.swing.JComboBox<>();
         jPanelPerfil = new javax.swing.JPanel();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
@@ -121,12 +117,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabelEmail = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
         jLabelDataDeNascimento = new javax.swing.JLabel();
-        jPanelDataEHora = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBoxHorarios = new javax.swing.JComboBox<>();
-        jButtonAgandaHorario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -347,13 +337,6 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
-        jButtonDataHorario.setText("Data e Horário");
-        jButtonDataHorario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDataHorarioActionPerformed(evt);
-            }
-        });
-
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -366,41 +349,62 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um funcionário" }));
+        jComboBoxFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFuncionarioActionPerformed(evt);
+            }
+        });
 
-        jComboBoxServico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um corte" }));
+        jComboBoxServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxServicoActionPerformed(evt);
+            }
+        });
+
+        jSelecionaData.setToolTipText("");
+        jSelecionaData.setDateFormatString("dd/MM/YYYY");
+        jSelecionaData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSelecionaDataPropertyChange(evt);
+            }
+        });
+
+        jComboBoxHorarios.setToolTipText("");
+        jComboBoxHorarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHorariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
         jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
         jPanelAgendamentoLayout.setHorizontalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAgendamentoLayout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonDataHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addGap(198, 198, 198)
+                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jButtonMarcar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSelecionaData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanelAgendamentoLayout.setVerticalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(52, 52, 52)
                 .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxServico, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonDataHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jSelecionaData, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(35, 35, 35)
                 .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -477,72 +481,6 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jTabbedPaneAbas.addTab("tab3", jPanelPerfil);
 
-        jDateChooser1.setToolTipText("");
-        jDateChooser1.setDateFormatString("dd/MM/YYYY");
-        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jDateChooser1PropertyChange(evt);
-            }
-        });
-
-        jLabel2.setText("Data");
-
-        jLabel3.setText("Horarios Disponiveis ");
-
-        jComboBoxHorarios.setToolTipText("");
-        jComboBoxHorarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxHorariosActionPerformed(evt);
-            }
-        });
-
-        jButtonAgandaHorario.setText("Agenda");
-        jButtonAgandaHorario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAgandaHorarioActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelDataEHoraLayout = new javax.swing.GroupLayout(jPanelDataEHora);
-        jPanelDataEHora.setLayout(jPanelDataEHoraLayout);
-        jPanelDataEHoraLayout.setHorizontalGroup(
-            jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBoxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
-            .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jButtonAgandaHorario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelDataEHoraLayout.setVerticalGroup(
-            jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
-                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataEHoraLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxHorarios))
-                .addGap(162, 162, 162)
-                .addComponent(jButtonAgandaHorario)
-                .addContainerGap(157, Short.MAX_VALUE))
-        );
-
-        jTabbedPaneAbas.addTab("tab4", jPanelDataEHora);
-
         jPanelFundo.add(jTabbedPaneAbas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 620, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -560,15 +498,7 @@ public class ViewCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void preencherComboBoxHorarios() {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 7);
-        cal.set(Calendar.MINUTE, 0);
-
-        while (cal.get(Calendar.HOUR_OF_DAY) < 18 || (cal.get(Calendar.HOUR_OF_DAY) == 18 && cal.get(Calendar.MINUTE) == 0)) {
-            jComboBoxHorarios.addItem(sdf.format(cal.getTime()));  // Adiciona ao jComboBoxHorarios
-            cal.add(Calendar.MINUTE, 15);
-        }
+        controller.implementarHorarioDisponiveis();
     }
 
     private void jButtonNovoAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoAgendamentoActionPerformed
@@ -649,12 +579,6 @@ public class ViewCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JPanelBtnInicioAncestorAdded
 
-    private void jButtonDataHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDataHorarioActionPerformed
-        // TODO add your handling code here:
-        jTabbedPaneAbas.setSelectedIndex(3);
-
-    }//GEN-LAST:event_jButtonDataHorarioActionPerformed
-
     private void jPanelAgendamentoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanelAgendamentoAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanelAgendamentoAncestorAdded
@@ -662,66 +586,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private void jTabbedPaneAbasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPaneAbasAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPaneAbasAncestorAdded
-
-    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
-        // TODO add your handling code here:
-        if (evt.getOldValue() != null) {
-            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
-            String dataSelecionada = ff.format(jDateChooser1.getCalendar().getTime());
-            //jTextFieldData.setText(dataSelecionada);
-
-            // Gera todos os horários possíveis (entre 7:00 e 18:00)
-            List<String> todosHorarios = gerarTodosHorarios();
-
-            // Consulta o banco de dados para obter os horários indisponíveis da data selecionada
-            List<String> horariosIndisponiveis = consultarHorariosIndisponiveis(dataSelecionada);
-
-            // Remove os horários indisponíveis da lista de todos os horários
-            todosHorarios.removeAll(horariosIndisponiveis);
-
-            // Limpa a JComboBox de horários
-            jComboBoxHorarios.removeAllItems();
-
-            // Preenche a JComboBox com os horários disponíveis
-            for (String horario : todosHorarios) {
-                jComboBoxHorarios.addItem(horario);
-            }
-        }
-
-
-    }//GEN-LAST:event_jDateChooser1PropertyChange
-
-    private void jButtonAgandaHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgandaHorarioActionPerformed
-//        // TODO add your handling code here:
-//        // Capturar a data do jTextFieldData (que já foi preenchida com a data do jDateChooser)
-//        //String dataSelecionada = jTextFieldData.getText();
-//
-//        // Capturar o horário selecionado na jComboBoxHorarios
-//        //String horarioSelecionado = (String) jComboBoxHorarios.getSelectedItem();
-//
-//        String servicoSelecionado = (String) jComboBoxServico.getSelectedItem();
-//
-//        String funcionarioSelecionado = (String) jComboBoxFuncionario.getSelectedItem();
-//
-//        String clienteSelecionado = null;
-//
-//        // Verificar se algo foi selecionado
-//        if (dataSelecionada != null && horarioSelecionado != null) {
-//            // Aqui você chama a função que adiciona o horário indisponível no banco de dados
-//            // Adicione também os objetos de Servico, Funcionario e Cliente se forem necessários
-//            adicionarHorarioIndisponivel(dataSelecionada, horarioSelecionado, servicoSelecionado, funcionarioSelecionado, clienteSelecionado);
-//
-//            // Exibe uma mensagem confirmando que o horário foi salvo
-//            JOptionPane.showMessageDialog(this, "Horário salvo com sucesso!");
-//
-//            // Opcional: Limpar ou resetar os campos após salvar
-//            jComboBoxHorarios.setSelectedIndex(-1);
-//            //jTextFieldData.setText("");
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Por favor, selecione uma data e um horário.");
-//        }
-//        
-    }//GEN-LAST:event_jButtonAgandaHorarioActionPerformed
  
     private void jComboBoxHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHorariosActionPerformed
         // TODO add your handling code here:
@@ -744,9 +608,49 @@ public class ViewCliente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jPanelBtnPerfilMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jComboBoxFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncionarioActionPerformed
+        Pessoa funcionarioSelecionado = (Pessoa) jComboBoxFuncionario.getSelectedItem();
+    
+        if (funcionarioSelecionado != null && funcionarioSelecionado.getId() != 0) {  
+            jSelecionaData.setEnabled(true);
+        }else{
+            jSelecionaData.setEnabled(false);
+            jSelecionaData.setDate(null);
+        }
+    }//GEN-LAST:event_jComboBoxFuncionarioActionPerformed
+
+    private void jSelecionaDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSelecionaDataPropertyChange
+        if ("date".equals(evt.getPropertyName())) {  
+            Date dataSelecionada = (Date) evt.getNewValue(); 
+            if (dataSelecionada == null) {
+                return; 
+            }
+            Calendar hoje = Calendar.getInstance();
+            hoje.add(Calendar.DAY_OF_YEAR, 1);  
+            if (dataSelecionada.before(hoje.getTime())){    
+                jComboBoxHorarios.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Por favor, selecione uma data a partir de amanhã.", "Data Inválida", JOptionPane.ERROR_MESSAGE);
+                
+                
+            }else{
+                jComboBoxHorarios.setEnabled(true);
+            }  
+        }
+    }//GEN-LAST:event_jSelecionaDataPropertyChange
+
+    private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxServicoActionPerformed
+
+    public JComboBox<String> getjComboBoxHorarios() {
+        return jComboBoxHorarios;
+    }
+
+    public void setjComboBoxHorarios(JComboBox<String> jComboBoxHorarios) {
+        this.jComboBoxHorarios = jComboBoxHorarios;
+    }
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -783,17 +687,12 @@ public class ViewCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelBtnInicio;
-    private javax.swing.JButton jButtonAgandaHorario;
-    private javax.swing.JButton jButtonDataHorario;
     private javax.swing.JButton jButtonMarcar;
     private javax.swing.JButton jButtonNovoAgendamento;
-    private javax.swing.JComboBox<String> jComboBoxFuncionario;
+    private javax.swing.JComboBox<Pessoa> jComboBoxFuncionario;
     private javax.swing.JComboBox<String> jComboBoxHorarios;
-    private javax.swing.JComboBox<String> jComboBoxServico;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox<Servico> jComboBoxServico;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelDataDeNascimento;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelIconCalendario;
@@ -815,12 +714,12 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBtnNovoAgendamento;
     private javax.swing.JPanel jPanelBtnPerfil;
     private javax.swing.JPanel jPanelBtnSair;
-    private javax.swing.JPanel jPanelDataEHora;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelPerfil;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneAgendado;
+    private com.toedter.calendar.JDateChooser jSelecionaData;
     private javax.swing.JTabbedPane jTabbedPaneAbas;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextAreaAgendado;
@@ -848,7 +747,7 @@ public class ViewCliente extends javax.swing.JFrame {
         this.jTextAreaAgendado = jTextArea1;
     }
 
-    public JComboBox<String> getjComboBoxFuncionario() {
+    public JComboBox<Pessoa> getjComboBoxFuncionario() {
         return jComboBoxFuncionario;
     }
 
@@ -884,25 +783,35 @@ public class ViewCliente extends javax.swing.JFrame {
         this.jTextFieldTelefone = jTextFieldTelefone;
     }
 
-    public void setjComboBoxFuncionario(JComboBox<String> jComboBoxFuncionario) {
+    public void setjComboBoxFuncionario(JComboBox<Pessoa> jComboBoxFuncionario) {
         this.jComboBoxFuncionario = jComboBoxFuncionario;
     }
 
-    public JComboBox<String> getjComboBoxServico() {
+    public JComboBox<Servico> getjComboBoxServico() {
         return jComboBoxServico;
     }
 
-    public void setjComboBoxServico(JComboBox<String> jComboBoxServico) {
+    public void setjComboBoxServico(JComboBox<Servico> jComboBoxServico) {
         this.jComboBoxServico = jComboBoxServico;
     }
 
-    private List<String> consultarHorariosIndisponiveis(String dataSelecionada) {
-        List<String> horariosIndisponiveis = new ArrayList<>();
-        // Implementação de leitura do CSV para verificar horários
-        return horariosIndisponiveis;
+    public JDateChooser getjSelecionaData() {
+        return jSelecionaData;
     }
 
-    private void adicionarHorarioIndisponivel(String dataSelecionada, String horarioSelecionado, String servicoSelecionado, String funcionarioSelecionado, String clienteSelecionado) {
-       // Implementação de escrita no CSV
+    public void setjSelecionaData(JDateChooser jSelecionaData) {
+        this.jSelecionaData = jSelecionaData;
     }
+
+//    private List<String> consultarHorariosIndisponiveis(String dataSelecionada) {
+//        List<String> horariosIndisponiveis = new ArrayList<>();
+//        // Implementação de leitura do CSV para verificar horários
+//        return horariosIndisponiveis;
+//    }
+//
+//    private void adicionarHorarioIndisponivel(String dataSelecionada, String horarioSelecionado, String servicoSelecionado, String funcionarioSelecionado, String clienteSelecionado) {
+//       // Implementação de escrita no CSV
+//    }
+    
+    
 }

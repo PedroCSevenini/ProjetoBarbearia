@@ -33,10 +33,11 @@ public class  ClienteController{
     
     public void setarComboBoxFuncionario(){
         PessoaBanco banco =  new PessoaBanco();
-        List <Pessoa> funcionarios = banco.retornaFuncionarios();      
+        List <Pessoa> funcionarios = banco.retornaFuncionarios();
+        view.getjComboBoxFuncionario().addItem(new Funcionario(0, "Selecione um funcionário"));
         try {
             for(Pessoa funcionario : funcionarios){
-                view.getjComboBoxFuncionario().addItem(funcionario.getNome());
+                view.getjComboBoxFuncionario().addItem(funcionario);
             }
         }catch (NullPointerException e) {
             System.out.println("Não existem funcionários registrados.");
@@ -47,8 +48,13 @@ public class  ClienteController{
     public void setarComboBoxServico(){
         ServicoBanco banco =  new ServicoBanco();
         List <Servico> servicos = banco.retornaServicos();
-        for(Servico servico : servicos){
-            view.getjComboBoxServico().addItem(servico.getNome() +" (R$" + servico.getPreco() +")");
+        view.getjComboBoxServico().addItem(new Servico(0, "Selecione um serviço"));
+        try {
+            for(Servico servico : servicos){
+                view.getjComboBoxServico().addItem(servico);
+            }
+        }catch (NullPointerException e) {
+            System.out.println("Não existem serviços registrados.");
         }
     }
     
@@ -56,6 +62,16 @@ public class  ClienteController{
     
     public void atualizarPerfil(Pessoa pessoa){
         helper.mostrarCamposPerfil(pessoa);
+    }
+    
+    public void implementarHorarioDisponiveis(){
+        Pessoa funcionarioSelecionado = (Pessoa)view.getjComboBoxFuncionario().getSelectedItem();
+        
+        if(funcionarioSelecionado != null){
+            int id = funcionarioSelecionado.getId();
+            String data = view.getjSelecionaData().getDateFormatString();
+            System.out.println(data);
+        }
     }
     
 }
