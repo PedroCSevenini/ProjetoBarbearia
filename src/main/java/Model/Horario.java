@@ -18,6 +18,7 @@ public class Horario {
     protected String  horarioInicio;
     protected Funcionario  funcionario;
     protected Cliente cliente;
+    protected boolean marcado;
     
 
     public Horario(int id, Servico servico, String data, String horarioInicio, Funcionario funcionario, Cliente cliente) {
@@ -27,7 +28,28 @@ public class Horario {
         this.horarioInicio = horarioInicio;
         this.funcionario = funcionario;
         this.cliente = cliente;
+        this.marcado = false;
     }
+
+    public Horario(int id, Servico servico, String data, String horarioInicio, Funcionario funcionario, Cliente cliente, boolean marcado) {
+        this.id = id;
+        this.servico = servico;
+        this.data = data;
+        this.horarioInicio = horarioInicio;
+        this.funcionario = funcionario;
+        this.cliente = cliente;
+        this.marcado = marcado;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
+    }
+    
+    
 
     public int getId() {
         return id;

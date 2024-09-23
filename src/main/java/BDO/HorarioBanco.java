@@ -32,7 +32,7 @@ public class HorarioBanco {
             String line = br.readLine();
             line = br.readLine();
             if (line == null) {
-                return null;
+                return horarios;
             }
             while (line != null) {
                 String[] vet = line.split(",");
@@ -44,8 +44,9 @@ public class HorarioBanco {
                 PessoaBanco banco = new PessoaBanco();
                 Funcionario funcionario = banco.procuraFuncionarioPorID(Integer.parseInt(vet[4]));
                 Cliente cliente = PessoaBanco.procuraClientePorID(Integer.parseInt(vet[5]));
+                boolean marcado = Boolean.parseBoolean(vet[6]);
 
-                horarios.add(new Horario(id, servico, data, horaInicio, funcionario, cliente));
+                horarios.add(new Horario(id, servico, data, horaInicio, funcionario, cliente, marcado));
                 line = br.readLine();
             }
         } catch (IOException e) {
@@ -55,9 +56,7 @@ public class HorarioBanco {
     }
 
     public static Horario retornaHorarioDoCliente(Cliente cliente) {
-
         List<Horario> horarios = retornaHorarios();
-
         if (horarios == null || horarios.isEmpty()) {
             return null;
         }
@@ -70,25 +69,40 @@ public class HorarioBanco {
         return null;
     }
 
-    private List<String> consultarHorariosIndisponiveis(String dataSelecionada) {
-        List<String> horariosIndisponiveis = new ArrayList<>();
-        String linha;
+    private List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario) {
+        List<Horario> horariosMarcados = retornaHorariosMarcadosFuncionario(idFuncionario);
+        List<String> horariosDisponiveis = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            while ((linha = br.readLine()) != null) {
-                String[] dados = linha.split(","); 
-                String data = dados[0];  
-                String horarioInicio = dados[1];  
-                if (data.equals(dataSelecionada)) {
-                    horariosIndisponiveis.add(horarioInicio);
-                }
+       
+        for (int horas = 7; horas <= 18; horas++) {
+            for (int minutos = 0; minutos < 60; minutos += 15) {
+                String horarioFormatado = String.format("%02d:%02d", horas, minutos);
+                horariosDisponiveis.add(horarioFormatado);
             }
-        } catch (IOException e) {
-            System.out.println("Erro: " + e.getMessage());
         }
 
-        return horariosIndisponiveis;
+        
+        for (Horario horarioMarcado : horariosMarcados) {
+            if (horarioMarcado.getData().equals(dataSelecionada)) {
+                String horarioInicio = horarioMarcado.getHoraInicio(); 
+                int duracao = horarioMarcado.getServico().getDuracao();
+                int horasInicio = Integer.parseInt(horarioInicio.split(":")[0]);
+                int minutosInicio = Integer.parseInt(horarioInicio.split(":")[1]);             
+                for (int i = 0; i < duracao; i++) {                   
+                    String horarioOcupado = String.format("%02d:%02d", horasInicio, minutosInicio);
+                    horariosDisponiveis.remove(horarioOcupado); 
+                    minutosInicio += 15;
+                    if (minutosInicio == 60) {
+                        minutosInicio = 0;
+                        horasInicio++;
+                    }
+                }
+            }
+        }
+
+        return horariosDisponiveis;
     }
+
 
     private void adicionarHorarioIndisponivel(String dataSelecionada, String horarioInicio, Servico servico, Funcionario funcionario, Cliente cliente) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(path, true))) {
@@ -97,5 +111,21 @@ public class HorarioBanco {
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
         }
+    }
+    
+    public List retornaHorariosMarcadosFuncionario(int idFuncionario){
+        List <Horario> todosHorarios = retornaHorarios();
+        if(todosHorarios.isEmpty()){
+            return new ArrayList<>();
+        }
+        List <Horario> horariosMarcados = new ArrayList<>();
+        for(Horario horarioGeral: todosHorarios){
+            if(horarioGeral.getFuncionario().getId() == idFuncionario && horarioGeral.isMarcado()){
+                horariosMarcados.add(horarioGeral);
+            }
+        }
+        return horariosMarcados;
+        
+        
     }
 }

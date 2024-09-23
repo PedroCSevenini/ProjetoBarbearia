@@ -117,7 +117,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
         Tabela_Confirmados.setPreferredSize(new java.awt.Dimension(0, 80));
         Scroll_Tabela_Confirmados.setViewportView(Tabela_Confirmados);
 
-        Tela_Funcionario.add(Scroll_Tabela_Confirmados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 240, 330));
+        Tela_Funcionario.add(Scroll_Tabela_Confirmados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 270, 330));
 
         Tabela_a_Confirmar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,7 +132,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
         ));
         Scroll_Tabela_AConfirmar.setViewportView(Tabela_a_Confirmar);
 
-        Tela_Funcionario.add(Scroll_Tabela_AConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 340, 330));
+        Tela_Funcionario.add(Scroll_Tabela_AConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 360, 330));
 
         Confirmados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Confirmados.setText("Confirmados");
