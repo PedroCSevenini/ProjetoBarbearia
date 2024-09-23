@@ -61,6 +61,8 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelAviso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelAviso.setForeground(new java.awt.Color(255, 0, 51));
+        jLabelAviso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabelAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 645, 410, 20));
 
         jLabelPreEntrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N

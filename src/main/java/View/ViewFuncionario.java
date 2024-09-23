@@ -132,7 +132,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
         ));
         Scroll_Tabela_AConfirmar.setViewportView(Tabela_a_Confirmar);
 
-        Tela_Funcionario.add(Scroll_Tabela_AConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 250, 330));
+        Tela_Funcionario.add(Scroll_Tabela_AConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 340, 330));
 
         Confirmados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Confirmados.setText("Confirmados");
@@ -140,7 +140,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
 
         A_Confirmar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         A_Confirmar.setText("A Confirmar");
-        Tela_Funcionario.add(A_Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+        Tela_Funcionario.add(A_Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 150, -1));
 
         jTextField2.setText("jTextField2");
         Tela_Funcionario.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
@@ -288,7 +288,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tela_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+            .addComponent(Tela_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

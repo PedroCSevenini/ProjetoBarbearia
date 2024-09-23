@@ -9,12 +9,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.mycompany.projetobarbearia.ProjetoBarbearia</exec.mainClass>
+        <exec.mainClass>View.ViewLogin</exec.mainClass>
     </properties>
     <build>
         <resources>
-            <!-- Mantém a pasta padrão de recursos -->
-            <!-- Adiciona sua pasta customizada de imagens -->
             <resource>
                 <directory>src/main/java/</directory>
             </resource>
