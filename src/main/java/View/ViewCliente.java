@@ -17,6 +17,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -102,10 +103,15 @@ public class ViewCliente extends javax.swing.JFrame {
         jComboBoxFuncionario = new javax.swing.JComboBox<>();
         jComboBoxServico = new javax.swing.JComboBox<>();
         jPanelPerfil = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldTelefone = new javax.swing.JTextField();
+        jTextFieldDataNasc = new javax.swing.JTextField();
+        jLabelImagemUsuario = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
+        jLabelTelefone = new javax.swing.JLabel();
+        jLabelDataDeNascimento = new javax.swing.JLabel();
         jPanelDataEHora = new javax.swing.JPanel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
@@ -393,43 +399,72 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jTabbedPaneAbas.addTab("tab1", jPanelAgendamento);
 
-        jTextField1.setText("jTextField1");
+        jTextFieldNome.setEditable(false);
 
-        jTextField2.setText("jTextField2");
+        jTextFieldEmail.setEditable(false);
 
-        jTextField3.setText("jTextField3");
+        jTextFieldTelefone.setEditable(false);
 
-        jTextField4.setText("jTextField4");
+        jTextFieldDataNasc.setEditable(false);
+
+        jLabelImagemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/imagem-do-usuario-com-fundo-preto (1).png"))); // NOI18N
+
+        jLabelNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelNome.setText("Nome");
+
+        jLabelEmail.setText("Email");
+
+        jLabelTelefone.setText("Telefone");
+
+        jLabelDataDeNascimento.setText("Data de Nascimento");
 
         javax.swing.GroupLayout jPanelPerfilLayout = new javax.swing.GroupLayout(jPanelPerfil);
         jPanelPerfil.setLayout(jPanelPerfilLayout);
         jPanelPerfilLayout.setHorizontalGroup(
             jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPerfilLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(110, 110, 110))
+            .addGroup(jPanelPerfilLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                    .addComponent(jLabelNome)
+                    .addComponent(jLabelTelefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDataDeNascimento)
+                    .addComponent(jLabelEmail)
+                    .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldDataNasc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelPerfilLayout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(jLabelImagemUsuario)
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanelPerfilLayout.setVerticalGroup(
             jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
-                .addGap(18, 18, 18)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabelImagemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(294, Short.MAX_VALUE))
+                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTelefone)
+                    .addComponent(jLabelDataDeNascimento))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65))
         );
 
         jTabbedPaneAbas.addTab("tab3", jPanelPerfil);
@@ -695,6 +730,11 @@ public class ViewCliente extends javax.swing.JFrame {
     private void jPanelBtnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPerfilMouseClicked
         // TODO add your handling code here:
         jTabbedPaneAbas.setSelectedIndex(2);
+        try{
+            controller.atualizarPerfil(pessoa);
+        }catch(Exception e){
+            System.out.println("Erro: " + e.getMessage());
+        }
         colorDefaultInicio = new Color(78,78,78);
         colorDefaultAgendamento = new Color(78,78,78);
         colorDefaultPerfil = new Color(121,121,121);
@@ -754,11 +794,16 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelDataDeNascimento;
+    private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelIconCalendario;
     private javax.swing.JLabel jLabelIconInicio;
     private javax.swing.JLabel jLabelIconPerfil;
     private javax.swing.JLabel jLabelIconSair;
+    private javax.swing.JLabel jLabelImagemUsuario;
+    private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNovoAgendamento;
+    private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelTituloAgendamento;
     private javax.swing.JLabel jLabelTituloInicio;
     private javax.swing.JLabel jLabelTituloPerfi;
@@ -779,11 +824,11 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPaneAbas;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextAreaAgendado;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextFieldData;
+    private javax.swing.JTextField jTextFieldDataNasc;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
     public void setarCliente() {
@@ -806,6 +851,38 @@ public class ViewCliente extends javax.swing.JFrame {
 
     public JComboBox<String> getjComboBoxFuncionario() {
         return jComboBoxFuncionario;
+    }
+
+    public JTextField getjTextFieldDataNasc() {
+        return jTextFieldDataNasc;
+    }
+
+    public void setjTextFieldDataNasc(JTextField jTextFieldDataNasc) {
+        this.jTextFieldDataNasc = jTextFieldDataNasc;
+    }
+
+    public JTextField getjTextFieldEmail() {
+        return jTextFieldEmail;
+    }
+
+    public void setjTextFieldEmail(JTextField jTextFieldEmail) {
+        this.jTextFieldEmail = jTextFieldEmail;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldTelefone() {
+        return jTextFieldTelefone;
+    }
+
+    public void setjTextFieldTelefone(JTextField jTextFieldTelefone) {
+        this.jTextFieldTelefone = jTextFieldTelefone;
     }
 
     public void setjComboBoxFuncionario(JComboBox<String> jComboBoxFuncionario) {

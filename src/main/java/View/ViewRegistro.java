@@ -106,7 +106,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 670, 520, 50));
 
         jTextFieldNome.setBackground(new Color(0,0,0,0));
-        jTextFieldNome.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jTextFieldNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldNome.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNome.setBorder(null);
         jTextFieldNome.setCaretColor(new Color(255, 255, 255));
@@ -123,7 +123,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabelTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 90, 20));
 
         jTextFieldTelefone.setBackground(new Color(0,0,0,0));
-        jTextFieldTelefone.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jTextFieldTelefone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldTelefone.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTelefone.setBorder(null);
         jTextFieldTelefone.setCaretColor(new Color(255, 255, 255));
@@ -140,7 +140,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 90, 20));
 
         jTextFieldEmail.setBackground(new Color(0,0,0,0));
-        jTextFieldEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jTextFieldEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldEmail.setBorder(null);
         jTextFieldEmail.setCaretColor(new Color(255, 255, 255));
@@ -149,7 +149,7 @@ public class ViewRegistro extends javax.swing.JFrame {
                 jTextFieldEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 490, 30));
+        getContentPane().add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 353, 490, 30));
 
         jLabelDataNasc.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelDataNasc.setForeground(new java.awt.Color(0, 0, 0));
@@ -157,7 +157,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabelDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 180, 20));
 
         jTextFieldDataNasc.setBackground(new Color(0,0,0,0));
-        jTextFieldDataNasc.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jTextFieldDataNasc.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldDataNasc.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldDataNasc.setBorder(null);
         jTextFieldDataNasc.setCaretColor(new Color(255, 255, 255));
@@ -166,7 +166,7 @@ public class ViewRegistro extends javax.swing.JFrame {
                 jTextFieldDataNascActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 490, 30));
+        getContentPane().add(jTextFieldDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 435, 490, 30));
 
         jLabelUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(0, 0, 0));
@@ -174,7 +174,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 484, 90, -1));
 
         jTextFieldUsuario.setBackground(new Color(0,0,0,0));
-        jTextFieldUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jTextFieldUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.setCaretColor(new Color(255, 255, 255));
@@ -183,7 +183,7 @@ public class ViewRegistro extends javax.swing.JFrame {
                 jTextFieldUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, 490, 30));
+        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 517, 490, 30));
 
         jLabelSenha.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelSenha.setForeground(new java.awt.Color(0, 0, 0));
@@ -191,7 +191,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 90, 20));
 
         jPasswordFieldSenha.setBackground(new Color(0,0,0,0));
-        jPasswordFieldSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jPasswordFieldSenha.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jPasswordFieldSenha.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordFieldSenha.setBorder(null);
         jPasswordFieldSenha.setCaretColor(new Color(255,255,255));

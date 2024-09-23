@@ -52,6 +52,10 @@ public class  ClienteController{
         }
     }
     
-    //public 
+    
+    
+    public void atualizarPerfil(Pessoa pessoa){
+        helper.mostrarCamposPerfil(pessoa);
+    }
     
 }

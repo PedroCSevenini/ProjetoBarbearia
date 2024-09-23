@@ -90,7 +90,7 @@ public class ViewLogin extends JFrame {
         getContentPane().add(jButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 420, 50));
 
         jTextFieldUsuario.setBackground(new Color(0,0,0,0));
-        jTextFieldUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jTextFieldUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldUsuario.setForeground(new Color(0,0,0));
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.setCaretColor(new Color(0, 0, 0));
@@ -102,7 +102,7 @@ public class ViewLogin extends JFrame {
         getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 226, 380, 30));
 
         jPasswordSenha.setBackground(new Color(0,0,0,0));
-        jPasswordSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jPasswordSenha.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jPasswordSenha.setForeground(new Color(0,0,0));
         jPasswordSenha.setBorder(null);
         jPasswordSenha.setCaretColor(new Color(0,0,0));
