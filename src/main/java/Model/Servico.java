@@ -58,6 +58,10 @@ public class Servico {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    public int getTokens() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

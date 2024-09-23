@@ -4,3 +4,4 @@ ID, NOME, EMAIL, TELEFONE, DATANASC, NIVELACESSO
 3,Pedro Caetano,pedroseveninii@gmail.com,32988487010,20/02/2004,1
 4,Simba Souza,simba@gmail.com,32988487010,20/02/2004,2
 5,Yan Dias,yandias@gmail.com,32837481234,25/06/2003,1
+6,Geovanni,fdasdfafas@sdasdasd.com,32984647830,22/11/2001,1
