@@ -24,11 +24,10 @@ import java.io.PrintWriter;
  */
 public class HorarioBanco {
 
-    private static final File arquivoCSV = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/horarios_indisponiveis.csv");
+    private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Horario.txt");
 
     public static List retornaHorarios() {
         List<Horario> horarios = new ArrayList<>();
-        String path = null;
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
             line = br.readLine();
@@ -75,30 +74,28 @@ public class HorarioBanco {
         List<String> horariosIndisponiveis = new ArrayList<>();
         String linha;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivoCSV))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             while ((linha = br.readLine()) != null) {
-                String[] dados = linha.split(",");  // Supondo que o CSV esteja separado por vírgulas
-                String data = dados[0];  // Primeira coluna é a data
-                String horarioInicio = dados[1];  // Segunda coluna é o horário
-
-                // Se a data no arquivo CSV for igual à data selecionada, adiciona o horário à lista
+                String[] dados = linha.split(","); 
+                String data = dados[0];  
+                String horarioInicio = dados[1];  
                 if (data.equals(dataSelecionada)) {
                     horariosIndisponiveis.add(horarioInicio);
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
 
         return horariosIndisponiveis;
     }
 
     private void adicionarHorarioIndisponivel(String dataSelecionada, String horarioInicio, Servico servico, Funcionario funcionario, Cliente cliente) {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(arquivoCSV, true))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(path, true))) {
             // Escreve a data, horário e outros dados no arquivo CSV, separados por vírgula
             pw.println(dataSelecionada + "," + horarioInicio + "," + servico.getId() + "," + funcionario.getId() + "," + cliente.getId());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 }

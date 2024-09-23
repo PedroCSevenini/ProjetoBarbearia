@@ -26,6 +26,10 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private final ClienteController controller;
     private final Pessoa pessoa;
+    private Color colorDefaultInicio = new Color(121,121,121);
+    private Color colorDefaultAgendamento = new Color(121,121,121);
+    private Color colorDefaultPerfil = new Color(121,121,121);
+    
 
     private List<String> gerarTodosHorarios() {
         List<String> horarios = new ArrayList<>();
@@ -188,6 +192,9 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelBtnPerfil.setBackground(new java.awt.Color(78, 78, 78));
         jPanelBtnPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelBtnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelBtnPerfilMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelBtnPerfilMouseEntered(evt);
             }
@@ -538,12 +545,25 @@ public class ViewCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTabbedPaneAbas.setSelectedIndex(0);
         controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
+        colorDefaultInicio = new Color(121,121,121);
+        colorDefaultAgendamento = new Color(78,78,78);
+        colorDefaultPerfil = new Color(78,78,78);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnAgendamento.setBackground(colorDefaultAgendamento);
+        jPanelBtnPerfil.setBackground(colorDefaultPerfil);
+        
 
     }//GEN-LAST:event_JPanelBtnInicioMouseClicked
 
     private void jPanelBtnAgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnAgendamentoMouseClicked
         // TODO add your handling code here:
         jTabbedPaneAbas.setSelectedIndex(1);
+        colorDefaultInicio = new Color(78,78,78);
+        colorDefaultAgendamento = new Color(121,121,121);
+        colorDefaultPerfil = new Color(78,78,78);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnAgendamento.setBackground(colorDefaultAgendamento);
+        jPanelBtnPerfil.setBackground(colorDefaultPerfil);
     }//GEN-LAST:event_jPanelBtnAgendamentoMouseClicked
 
     private void JPanelBtnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseEntered
@@ -553,12 +573,12 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private void JPanelBtnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseExited
         // TODO add your handling code here:
-        JPanelBtnInicio.setBackground(new Color(78, 78, 78));
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
     }//GEN-LAST:event_JPanelBtnInicioMouseExited
 
     private void jPanelBtnAgendamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnAgendamentoMouseExited
         // TODO add your handling code here:
-        jPanelBtnAgendamento.setBackground(new Color(78, 78, 78));
+        jPanelBtnAgendamento.setBackground(colorDefaultAgendamento);
     }//GEN-LAST:event_jPanelBtnAgendamentoMouseExited
 
     private void jPanelBtnAgendamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnAgendamentoMouseEntered
@@ -573,7 +593,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
     private void jPanelBtnPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPerfilMouseExited
         // TODO add your handling code here:
-        jPanelBtnPerfil.setBackground(new Color(78, 78, 78));
+        jPanelBtnPerfil.setBackground(colorDefaultPerfil);
     }//GEN-LAST:event_jPanelBtnPerfilMouseExited
 
     private void jPanelBtnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseEntered
@@ -671,6 +691,18 @@ public class ViewCliente extends javax.swing.JFrame {
     private void jComboBoxHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHorariosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxHorariosActionPerformed
+
+    private void jPanelBtnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPerfilMouseClicked
+        // TODO add your handling code here:
+        jTabbedPaneAbas.setSelectedIndex(2);
+        colorDefaultInicio = new Color(78,78,78);
+        colorDefaultAgendamento = new Color(78,78,78);
+        colorDefaultPerfil = new Color(121,121,121);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnAgendamento.setBackground(colorDefaultAgendamento);
+        jPanelBtnPerfil.setBackground(colorDefaultPerfil);
+        
+    }//GEN-LAST:event_jPanelBtnPerfilMouseClicked
 
     /**
      * @param args the command line arguments

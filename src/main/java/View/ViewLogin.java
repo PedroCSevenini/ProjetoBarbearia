@@ -38,20 +38,20 @@ public class ViewLogin extends JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabelUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUsuario.setText("Usuário: ");
         getContentPane().add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 90, 30));
 
-        jLabelSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabelSenha.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelSenha.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 90, 40));
 
-        jLabelTextoCadastro.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTextoCadastro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelTextoCadastro.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTextoCadastro.setText("Ainda não tem uma conta?");
-        getContentPane().add(jLabelTextoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 180, 20));
+        getContentPane().add(jLabelTextoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 190, 20));
 
         jButtonRegistrar.setBackground(new Color(0,0,0,0));
         jButtonRegistrar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -62,12 +62,12 @@ public class ViewLogin extends JFrame {
                 jButtonRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 90, 20));
+        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 90, 20));
 
         jLabelCadastre.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabelCadastre.setForeground(new java.awt.Color(0, 0, 0));
         jLabelCadastre.setText("<html><u>Cadastre-se</u></html>");
-        getContentPane().add(jLabelCadastre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, 20));
+        getContentPane().add(jLabelCadastre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, 20));
 
         jButtonEntrar.setBackground(new java.awt.Color(0, 0, 0));
         jButtonEntrar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -99,7 +99,7 @@ public class ViewLogin extends JFrame {
                 jTextFieldUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 380, 30));
+        getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 226, 380, 30));
 
         jPasswordSenha.setBackground(new Color(0,0,0,0));
         jPasswordSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -111,7 +111,7 @@ public class ViewLogin extends JFrame {
                 jPasswordSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 380, 30));
+        getContentPane().add(jPasswordSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 323, 380, 30));
 
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/FundoViewLogin.png"))); // NOI18N
         jLabelFundo.setAlignmentX(0.5F);
