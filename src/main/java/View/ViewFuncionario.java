@@ -418,13 +418,9 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }
     
     private void initTableListenersConfirmados() {
-    // Obtenha o modelo de seleção de linhas da tabela
-        TabelaConfirmados.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
-            // Verifica se a seleção ainda está sendo alterada
+        TabelaConfirmados.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {        
             if (!event.getValueIsAdjusting()) {
                 int selectedRow = TabelaConfirmados.getSelectedRow();
-                
-                // Verifica se uma linha foi selecionada
                 if (selectedRow >= 0) {
                     jTextFieldCliente.setText(TabelaConfirmados.getValueAt(selectedRow, 4).toString());
                     jTextFieldData.setText(TabelaConfirmados.getValueAt(selectedRow, 2).toString());

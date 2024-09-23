@@ -126,7 +126,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jComboBoxHorarios = new javax.swing.JComboBox<>();
-        jTextFieldData = new javax.swing.JTextField();
         jButtonAgandaHorario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -478,6 +477,8 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jTabbedPaneAbas.addTab("tab3", jPanelPerfil);
 
+        jDateChooser1.setToolTipText("");
+        jDateChooser1.setDateFormatString("dd/MM/YYYY");
         jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jDateChooser1PropertyChange(evt);
@@ -495,12 +496,6 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDataActionPerformed(evt);
-            }
-        });
-
         jButtonAgandaHorario.setText("Agenda");
         jButtonAgandaHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,11 +509,10 @@ public class ViewCliente extends javax.swing.JFrame {
             jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldData)
+                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -531,19 +525,20 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelDataEHoraLayout.setVerticalGroup(
             jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDataEHoraLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDataEHoraLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDataEHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxHorarios))
-                .addGap(26, 26, 26)
-                .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
+                .addGap(162, 162, 162)
                 .addComponent(jButtonAgandaHorario)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         jTabbedPaneAbas.addTab("tab4", jPanelDataEHora);
@@ -696,10 +691,6 @@ public class ViewCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jDateChooser1PropertyChange
 
-    private void jTextFieldDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDataActionPerformed
-
     private void jButtonAgandaHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgandaHorarioActionPerformed
         // TODO add your handling code here:
         // Capturar a data do jTextFieldData (que já foi preenchida com a data do jDateChooser)
@@ -833,7 +824,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPaneAbas;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextAreaAgendado;
-    private javax.swing.JTextField jTextFieldData;
     private javax.swing.JTextField jTextFieldDataNasc;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
