@@ -100,9 +100,7 @@ public class Horario {
         this.horarioInicio = horarioInicio;
     }
 
-    public String getHoraInicio() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
     
     
     

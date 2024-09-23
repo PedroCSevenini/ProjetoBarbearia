@@ -9,6 +9,7 @@ import Controller.Helper.LoginHelper;
 import Model.Pessoa;
 import Model.Usuario;
 import View.ViewCliente;
+import View.ViewFuncionario;
 
 
 public class LoginController {
@@ -35,6 +36,11 @@ public class LoginController {
             if(pessoa.getNivelAcesso() == 1){
                 ViewCliente telaCliente = new ViewCliente(pessoa);
                 telaCliente.setarCliente();
+                view.dispose();
+            }
+            if(pessoa.getNivelAcesso() == 2){
+                ViewFuncionario telaFuncionario = new ViewFuncionario(pessoa);
+                telaFuncionario.setarFuncionario();
                 view.dispose();
             }
              //Abre Proxima Tela

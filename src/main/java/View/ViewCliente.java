@@ -104,6 +104,13 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelBtnNovoAgendamento = new javax.swing.JPanel();
         jLabelNovoAgendamento = new javax.swing.JLabel();
         jButtonNovoAgendamento = new javax.swing.JButton();
+        jPanelAgendamento = new javax.swing.JPanel();
+        jButtonDataHorario = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButtonMarcar = new javax.swing.JButton();
+        jComboBoxFuncionario = new javax.swing.JComboBox<>();
+        jComboBoxServico = new javax.swing.JComboBox<>();
         jPanelPerfil = new javax.swing.JPanel();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
@@ -121,13 +128,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jComboBoxHorarios = new javax.swing.JComboBox<>();
         jTextFieldData = new javax.swing.JTextField();
         jButtonAgandaHorario = new javax.swing.JButton();
-        jPanelAgendamento = new javax.swing.JPanel();
-        jButtonDataHorario = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButtonMarcar = new javax.swing.JButton();
-        jComboBoxFuncionario = new javax.swing.JComboBox<>();
-        jComboBoxServico = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -266,9 +266,9 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(235, 235, 235));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Início");
-        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 90, -1));
+        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 100, -1));
 
-        jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -10, 620, 100));
+        jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 620, 90));
 
         jTabbedPaneAbas.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -337,6 +337,76 @@ public class ViewCliente extends javax.swing.JFrame {
         );
 
         jTabbedPaneAbas.addTab("tab2", jPanelInicio);
+
+        jPanelAgendamento.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanelAgendamentoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jButtonDataHorario.setText("Data e Horário");
+        jButtonDataHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDataHorarioActionPerformed(evt);
+            }
+        });
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jButtonMarcar.setText("Marcar");
+        jButtonMarcar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMarcarActionPerformed(evt);
+            }
+        });
+
+        jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um funcionário" }));
+
+        jComboBoxServico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um corte" }));
+
+        javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
+        jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
+        jPanelAgendamentoLayout.setHorizontalGroup(
+            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
+                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAgendamentoLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonDataHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                            .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
+        jPanelAgendamentoLayout.setVerticalGroup(
+            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxServico, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDataHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        jTabbedPaneAbas.addTab("tab1", jPanelAgendamento);
 
         jTextFieldNome.setEditable(false);
 
@@ -477,76 +547,6 @@ public class ViewCliente extends javax.swing.JFrame {
         );
 
         jTabbedPaneAbas.addTab("tab4", jPanelDataEHora);
-
-        jPanelAgendamento.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jPanelAgendamentoAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        jButtonDataHorario.setText("Data e Horário");
-        jButtonDataHorario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDataHorarioActionPerformed(evt);
-            }
-        });
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jButtonMarcar.setText("Marcar");
-        jButtonMarcar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMarcarActionPerformed(evt);
-            }
-        });
-
-        jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um funcionário" }));
-
-        jComboBoxServico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um corte" }));
-
-        javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
-        jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
-        jPanelAgendamentoLayout.setHorizontalGroup(
-            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAgendamentoLayout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonDataHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(196, Short.MAX_VALUE))
-        );
-        jPanelAgendamentoLayout.setVerticalGroup(
-            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxServico, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonDataHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        jTabbedPaneAbas.addTab("tab1", jPanelAgendamento);
 
         jPanelFundo.add(jTabbedPaneAbas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 620, 480));
 

@@ -69,7 +69,7 @@ public class HorarioBanco {
         return null;
     }
 
-    private List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario) {
+    private List consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario) {
         List<Horario> horariosMarcados = retornaHorariosMarcadosFuncionario(idFuncionario);
         List<String> horariosDisponiveis = new ArrayList<>();
 
@@ -84,7 +84,7 @@ public class HorarioBanco {
         
         for (Horario horarioMarcado : horariosMarcados) {
             if (horarioMarcado.getData().equals(dataSelecionada)) {
-                String horarioInicio = horarioMarcado.getHoraInicio(); 
+                String horarioInicio = horarioMarcado.getHorarioInicio(); 
                 int duracao = horarioMarcado.getServico().getDuracao();
                 int horasInicio = Integer.parseInt(horarioInicio.split(":")[0]);
                 int minutosInicio = Integer.parseInt(horarioInicio.split(":")[1]);             
@@ -127,5 +127,35 @@ public class HorarioBanco {
         return horariosMarcados;
         
         
+    }
+    
+    public List retornaHorariosPendentesFuncionario(int idFuncionario){
+        List <Horario> todosHorarios = retornaHorarios();
+        
+        if(todosHorarios.isEmpty()){
+            return new ArrayList<>();
+        }
+        List <Horario> horariosMarcados = new ArrayList<>();
+        for(Horario horarioGeral: todosHorarios){
+            if(horarioGeral.getFuncionario().getId() == idFuncionario && !horarioGeral.isMarcado()){
+                horariosMarcados.add(horarioGeral);
+            }
+        }
+        return horariosMarcados;
+        
+        
+    }
+    
+    public Horario retornaHorarioPorID(int id){
+        List<Horario> horarios = retornaHorarios(); // Obtém a lista de horários
+        if (horarios == null || horarios.isEmpty()){
+            return null;
+        }
+        for (Horario horario : horarios){
+            if (horario.getId() == id){
+                return horario;
+            }
+        }
+        return null; 
     }
 }
