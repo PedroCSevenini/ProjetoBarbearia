@@ -668,7 +668,7 @@ public class ViewCliente extends javax.swing.JFrame {
         if (evt.getOldValue() != null) {
             SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
             String dataSelecionada = ff.format(jDateChooser1.getCalendar().getTime());
-            jTextFieldData.setText(dataSelecionada);
+            //jTextFieldData.setText(dataSelecionada);
 
             // Gera todos os horários possíveis (entre 7:00 e 18:00)
             List<String> todosHorarios = gerarTodosHorarios();
@@ -692,35 +692,35 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jDateChooser1PropertyChange
 
     private void jButtonAgandaHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgandaHorarioActionPerformed
-        // TODO add your handling code here:
-        // Capturar a data do jTextFieldData (que já foi preenchida com a data do jDateChooser)
-        String dataSelecionada = jTextFieldData.getText();
-
-        // Capturar o horário selecionado na jComboBoxHorarios
-        String horarioSelecionado = (String) jComboBoxHorarios.getSelectedItem();
-
-        String servicoSelecionado = (String) jComboBoxServico.getSelectedItem();
-
-        String funcionarioSelecionado = (String) jComboBoxFuncionario.getSelectedItem();
-
-        String clienteSelecionado = null;
-
-        // Verificar se algo foi selecionado
-        if (dataSelecionada != null && horarioSelecionado != null) {
-            // Aqui você chama a função que adiciona o horário indisponível no banco de dados
-            // Adicione também os objetos de Servico, Funcionario e Cliente se forem necessários
-            adicionarHorarioIndisponivel(dataSelecionada, horarioSelecionado, servicoSelecionado, funcionarioSelecionado, clienteSelecionado);
-
-            // Exibe uma mensagem confirmando que o horário foi salvo
-            JOptionPane.showMessageDialog(this, "Horário salvo com sucesso!");
-
-            // Opcional: Limpar ou resetar os campos após salvar
-            jComboBoxHorarios.setSelectedIndex(-1);
-            jTextFieldData.setText("");
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor, selecione uma data e um horário.");
-        }
-        
+//        // TODO add your handling code here:
+//        // Capturar a data do jTextFieldData (que já foi preenchida com a data do jDateChooser)
+//        //String dataSelecionada = jTextFieldData.getText();
+//
+//        // Capturar o horário selecionado na jComboBoxHorarios
+//        //String horarioSelecionado = (String) jComboBoxHorarios.getSelectedItem();
+//
+//        String servicoSelecionado = (String) jComboBoxServico.getSelectedItem();
+//
+//        String funcionarioSelecionado = (String) jComboBoxFuncionario.getSelectedItem();
+//
+//        String clienteSelecionado = null;
+//
+//        // Verificar se algo foi selecionado
+//        if (dataSelecionada != null && horarioSelecionado != null) {
+//            // Aqui você chama a função que adiciona o horário indisponível no banco de dados
+//            // Adicione também os objetos de Servico, Funcionario e Cliente se forem necessários
+//            adicionarHorarioIndisponivel(dataSelecionada, horarioSelecionado, servicoSelecionado, funcionarioSelecionado, clienteSelecionado);
+//
+//            // Exibe uma mensagem confirmando que o horário foi salvo
+//            JOptionPane.showMessageDialog(this, "Horário salvo com sucesso!");
+//
+//            // Opcional: Limpar ou resetar os campos após salvar
+//            jComboBoxHorarios.setSelectedIndex(-1);
+//            //jTextFieldData.setText("");
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Por favor, selecione uma data e um horário.");
+//        }
+//        
     }//GEN-LAST:event_jButtonAgandaHorarioActionPerformed
  
     private void jComboBoxHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHorariosActionPerformed
