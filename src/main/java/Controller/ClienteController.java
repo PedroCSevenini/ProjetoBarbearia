@@ -1,6 +1,7 @@
 
 package Controller;
 
+import BDO.HorarioBanco;
 import BDO.PessoaBanco;
 import BDO.ServicoBanco;
 import Controller.Helper.ClienteHelper;
@@ -8,6 +9,8 @@ import Model.Funcionario;
 import Model.Pessoa;
 import Model.Servico;
 import View.ViewCliente;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -64,13 +67,43 @@ public class  ClienteController{
         helper.mostrarCamposPerfil(pessoa);
     }
     
-    public void implementarHorarioDisponiveis(){
-        Pessoa funcionarioSelecionado = (Pessoa)view.getjComboBoxFuncionario().getSelectedItem();
+    public void implementarHorarioDisponiveis() {
+        HorarioBanco bd = new HorarioBanco();
+        Pessoa funcionarioSelecionado = (Pessoa) view.getjComboBoxFuncionario().getSelectedItem();
+        Servico servicoSelecionado = (Servico) view.getjComboBoxServico().getSelectedItem();
+
+        // Verifica se o funcionário e o serviço estão selecionados
+        if (funcionarioSelecionado == null || servicoSelecionado == null) {
+            // Mensagem para o usuário sobre seleção inválida
+            view.getjLabelAviso().setText("Por favor, selecione um funcionário e um serviço.");
+            return;
+        }
+
+        int id = funcionarioSelecionado.getId();
+
         
-        if(funcionarioSelecionado != null){
-            int id = funcionarioSelecionado.getId();
-            String data = view.getjSelecionaData().getDateFormatString();
-            System.out.println(data);
+        Date dataSelecionada = view.getjSelecionaData().getDate();
+        if (dataSelecionada == null) {
+            view.getjLabelAviso().setText("Por favor, selecione uma data válida.");
+            return; 
+        }
+       
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = formato.format(dataSelecionada);
+
+       
+        List<String> horariosDisponiveis = bd.consultarHorariosDisponiveisFuncionario(dataFormatada, id, servicoSelecionado);
+
+       
+        view.getjComboBoxHorarios().removeAllItems();
+        view.getjComboBoxHorarios().addItem("Selecione um horário");
+
+        if (horariosDisponiveis.isEmpty()){
+            view.getjLabelAviso().setVisible(true);
+        } else {
+            for (String horario : horariosDisponiveis) {
+                view.getjComboBoxHorarios().addItem(horario);
+            }
         }
     }
     

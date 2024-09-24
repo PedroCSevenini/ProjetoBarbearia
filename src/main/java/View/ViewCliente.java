@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -107,6 +108,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jComboBoxServico = new javax.swing.JComboBox<>();
         jSelecionaData = new com.toedter.calendar.JDateChooser();
         jComboBoxHorarios = new javax.swing.JComboBox<>();
+        jLabelAviso = new javax.swing.JLabel();
         jPanelPerfil = new javax.swing.JPanel();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
@@ -362,7 +364,7 @@ public class ViewCliente extends javax.swing.JFrame {
         });
 
         jSelecionaData.setToolTipText("");
-        jSelecionaData.setDateFormatString("dd/MM/YYYY");
+        jSelecionaData.setDateFormatString("dd/MM/yyyy");
         jSelecionaData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jSelecionaDataPropertyChange(evt);
@@ -376,6 +378,10 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabelAviso.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jLabelAviso.setForeground(new java.awt.Color(255, 0, 51));
+        jLabelAviso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
         jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
         jPanelAgendamentoLayout.setHorizontalGroup(
@@ -383,12 +389,14 @@ public class ViewCliente extends javax.swing.JFrame {
             .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
                 .addGap(198, 198, 198)
                 .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jButtonMarcar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSelecionaData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jButtonMarcar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSelecionaData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanelAgendamentoLayout.setVerticalGroup(
@@ -404,7 +412,9 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addComponent(jComboBoxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -611,11 +621,13 @@ public class ViewCliente extends javax.swing.JFrame {
     private void jComboBoxFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncionarioActionPerformed
         Pessoa funcionarioSelecionado = (Pessoa) jComboBoxFuncionario.getSelectedItem();
     
-        if (funcionarioSelecionado != null && funcionarioSelecionado.getId() != 0) {  
+        if (funcionarioSelecionado != null && funcionarioSelecionado.getId() != 0 && ((Servico) jComboBoxServico.getSelectedItem()).getId() != 0) {  
             jSelecionaData.setEnabled(true);
         }else{
             jSelecionaData.setEnabled(false);
             jSelecionaData.setDate(null);
+            jComboBoxHorarios.setEnabled(false);
+            jComboBoxHorarios.removeAllItems();
         }
     }//GEN-LAST:event_jComboBoxFuncionarioActionPerformed
 
@@ -626,20 +638,43 @@ public class ViewCliente extends javax.swing.JFrame {
                 return; 
             }
             Calendar hoje = Calendar.getInstance();
+            hoje.set(Calendar.HOUR_OF_DAY, 0);
+            hoje.set(Calendar.MINUTE, 0);
+            hoje.set(Calendar.SECOND, 0);
+            hoje.set(Calendar.MILLISECOND, 0);
             hoje.add(Calendar.DAY_OF_YEAR, 1);  
             if (dataSelecionada.before(hoje.getTime())){    
                 jComboBoxHorarios.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Por favor, selecione uma data a partir de amanhã.", "Data Inválida", JOptionPane.ERROR_MESSAGE);
-                
-                
+                jComboBoxHorarios.removeAllItems();
+                mostrarAviso("Por favor, selecione uma data a partir de amanhã.");    
+                jSelecionaData.setDate(null);
             }else{
                 jComboBoxHorarios.setEnabled(true);
+                preencherComboBoxHorarios();
+                jLabelAviso.setText("");
             }  
         }
     }//GEN-LAST:event_jSelecionaDataPropertyChange
 
+    public JLabel getjLabelAviso() {
+        return jLabelAviso;
+    }
+
+    public void setjLabelAviso(JLabel jLabelAviso) {
+        this.jLabelAviso = jLabelAviso;
+    }
+
     private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
-        
+        Servico servicoSelecionado = (Servico) jComboBoxServico.getSelectedItem();
+    
+        if (servicoSelecionado != null && servicoSelecionado.getId() != 0 && ((Pessoa)jComboBoxFuncionario.getSelectedItem()).getId() != 0) {  
+            jSelecionaData.setEnabled(true);
+        }else{
+            jSelecionaData.setEnabled(false);
+            jSelecionaData.setDate(null);
+            jComboBoxHorarios.setEnabled(false);
+            jComboBoxHorarios.removeAllItems();
+        }
     }//GEN-LAST:event_jComboBoxServicoActionPerformed
 
     public JComboBox<String> getjComboBoxHorarios() {
@@ -693,6 +728,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxHorarios;
     private javax.swing.JComboBox<Servico> jComboBoxServico;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelAviso;
     private javax.swing.JLabel jLabelDataDeNascimento;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelIconCalendario;
@@ -737,6 +773,10 @@ public class ViewCliente extends javax.swing.JFrame {
         controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
         controller.setarComboBoxFuncionario();
         controller.setarComboBoxServico();
+    }
+    
+    public void mostrarAviso(String aviso){
+        this.getjLabelAviso().setText(aviso);
     }
 
     public JTextArea getjTextArea1() {

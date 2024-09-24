@@ -69,7 +69,7 @@ public class HorarioBanco {
         return null;
     }
 
-    private List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario, Servico servico) {
+    public List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario, Servico servico) {
         // Retorna todos os horários marcados do funcionário
         List<Horario> horariosMarcados = retornaHorariosMarcadosFuncionario(idFuncionario);
 
@@ -116,7 +116,7 @@ public class HorarioBanco {
             boolean disponivel = true;
             for (int j = 0; j < duracaoServico / 15; j++) {
                 int indice = i + j;
-                if (indice >= horariosDisponiveis.size()) {
+                if (indice >= horariosDisponiveis.size() || !horariosDisponiveis.contains(horariosDisponiveis.get(indice))) {
                     disponivel = false;
                     break;
                 }
