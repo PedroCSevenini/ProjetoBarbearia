@@ -4,27 +4,18 @@
  */
 package View;
 
-import BDO.HorarioBanco;
+
 import Controller.FuncionarioController;
-import Model.Horario;
 import Model.Pessoa;
-import java.awt.CardLayout;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author geova
- */
+
 public class ViewFuncionario extends javax.swing.JFrame {
     private final Pessoa funcionario;
     private final FuncionarioController controller;
-    /**
-     * Creates new form Painel_principal_Funcionario
-     */
     public ViewFuncionario() {
         initComponents();
         this.funcionario = null;
@@ -38,6 +29,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }
 
     
+
     
     public ViewFuncionario(Pessoa funcionario) {
         initComponents();
@@ -49,10 +41,6 @@ public class ViewFuncionario extends javax.swing.JFrame {
         Editar.setEnabled(false);
         Confirmar.setEnabled(false);
         Rejeitar.setEnabled(false);
-        
-     
-        
-        
     }
     
     @SuppressWarnings("unchecked")
@@ -68,14 +56,15 @@ public class ViewFuncionario extends javax.swing.JFrame {
         TabelaPendentes = new javax.swing.JTable();
         Confirmados = new javax.swing.JLabel();
         A_Confirmar = new javax.swing.JLabel();
-        jTextFieldCliente = new javax.swing.JTextField();
-        jTextFieldServiço = new javax.swing.JTextField();
+        jTextFieldNomeCliente = new javax.swing.JTextField();
+        jTextFieldNomeServico = new javax.swing.JTextField();
+        jTextFieldTelefoneCliente = new javax.swing.JTextField();
         jTextFieldData = new javax.swing.JTextField();
-        jTextFieldHorario = new javax.swing.JTextField();
         Scroll_Tabela_Confirmados = new javax.swing.JScrollPane();
         TabelaConfirmados = new javax.swing.JTable();
-        jLabelCliente = new javax.swing.JLabel();
-        jLabelCliente1 = new javax.swing.JLabel();
+        jLabelNomeCliente = new javax.swing.JLabel();
+        jLabelNomeServico = new javax.swing.JLabel();
+        jLabelTelefone = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +98,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
             }
         });
 
+        TabelaPendentes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TabelaPendentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -132,11 +122,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TabelaPendentes.setColumnSelectionAllowed(true);
         TabelaPendentes.setPreferredSize(new java.awt.Dimension(0, 80));
+        TabelaPendentes.setRowSelectionAllowed(true);
+        TabelaPendentes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TabelaPendentes.getTableHeader().setReorderingAllowed(false);
         Scroll_Tabela_Pendentes.setViewportView(TabelaPendentes);
-        TabelaPendentes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TabelaPendentes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         if (TabelaPendentes.getColumnModel().getColumnCount() > 0) {
             TabelaPendentes.getColumnModel().getColumn(0).setResizable(false);
             TabelaPendentes.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -158,16 +149,19 @@ public class ViewFuncionario extends javax.swing.JFrame {
         A_Confirmar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         A_Confirmar.setText("Pendentes");
 
-        jTextFieldCliente.setEditable(false);
-        jTextFieldCliente.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNomeCliente.setEditable(false);
+        jTextFieldNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldClienteActionPerformed(evt);
+                jTextFieldNomeClienteActionPerformed(evt);
             }
         });
 
-        jTextFieldData.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNomeServico.setEditable(false);
+
+        jTextFieldTelefoneCliente.setEditable(false);
+        jTextFieldTelefoneCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDataActionPerformed(evt);
+                jTextFieldTelefoneClienteActionPerformed(evt);
             }
         });
 
@@ -197,7 +191,6 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TabelaConfirmados.setColumnSelectionAllowed(true);
         TabelaConfirmados.setName(""); // NOI18N
         TabelaConfirmados.setPreferredSize(new java.awt.Dimension(0, 400));
         TabelaConfirmados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -208,7 +201,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
             }
         });
         Scroll_Tabela_Confirmados.setViewportView(TabelaConfirmados);
-        TabelaConfirmados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TabelaConfirmados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         if (TabelaConfirmados.getColumnModel().getColumnCount() > 0) {
             TabelaConfirmados.getColumnModel().getColumn(0).setResizable(false);
             TabelaConfirmados.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -222,11 +215,14 @@ public class ViewFuncionario extends javax.swing.JFrame {
             TabelaConfirmados.getColumnModel().getColumn(5).setPreferredWidth(50);
         }
 
-        jLabelCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabelCliente.setText("Nome");
+        jLabelNomeCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabelNomeCliente.setText("Nome");
 
-        jLabelCliente1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabelCliente1.setText("Serviço");
+        jLabelNomeServico.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabelNomeServico.setText("Serviço");
+
+        jLabelTelefone.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabelTelefone.setText("Telefone");
 
         javax.swing.GroupLayout Tela_FuncionarioLayout = new javax.swing.GroupLayout(Tela_Funcionario);
         Tela_Funcionario.setLayout(Tela_FuncionarioLayout);
@@ -244,16 +240,15 @@ public class ViewFuncionario extends javax.swing.JFrame {
                         .addComponent(Scroll_Tabela_Confirmados, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNomeServico, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
-                        .addComponent(jTextFieldData)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextFieldServiço, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
-                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCliente1)
-                            .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCliente))
+                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelNomeServico)
+                            .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                            .addComponent(jLabelNomeCliente)
+                            .addComponent(jLabelTelefone)
+                            .addComponent(jTextFieldTelefoneCliente)
+                            .addComponent(jTextFieldData))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,18 +277,19 @@ public class ViewFuncionario extends javax.swing.JFrame {
                     .addComponent(Scroll_Tabela_Confirmados, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Scroll_Tabela_Pendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabelCliente)
+                        .addComponent(jLabelNomeCliente)
+                        .addGap(4, 4, 4)
+                        .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabelNomeServico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabelCliente1)
+                        .addComponent(jTextFieldNomeServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldServiço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jTextFieldTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -319,12 +315,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldClienteActionPerformed
+    private void jTextFieldNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeClienteActionPerformed
+
+    }//GEN-LAST:event_jTextFieldNomeClienteActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_EditarActionPerformed
 
     private void RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverActionPerformed
@@ -333,62 +329,24 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_RemoverActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
-        // TODO add your handling code here:
+        controller.confirmarHorarioSelecionado();
+        atualizaTabela();
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void RejeitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RejeitarActionPerformed
-
+        controller.removerHorarioSelecionadoPendentes();
+        atualizaTabela();
     }//GEN-LAST:event_RejeitarActionPerformed
 
-    private void jTextFieldDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataActionPerformed
+    private void jTextFieldTelefoneClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneClienteActionPerformed
         
-    }//GEN-LAST:event_jTextFieldDataActionPerformed
+    }//GEN-LAST:event_jTextFieldTelefoneClienteActionPerformed
 
     private void TabelaConfirmadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaConfirmadosMouseClicked
 
     }//GEN-LAST:event_TabelaConfirmadosMouseClicked
 
-    public JTextField getjTextFieldCliente() {
-        return jTextFieldCliente;
-    }
-
-    public void setjTextFieldCliente(JTextField jTextFieldCliente) {
-        this.jTextFieldCliente = jTextFieldCliente;
-    }
-
-    public JTextField getjTextFieldData() {
-        return jTextFieldData;
-    }
-
-    public void setjTextFieldData(JTextField jTextFieldData) {
-        this.jTextFieldData = jTextFieldData;
-    }
-
-    public JTextField getjTextFieldHorario() {
-        return jTextFieldHorario;
-    }
-
-    public void setjTextFieldHorario(JTextField jTextFieldHorario) {
-        this.jTextFieldHorario = jTextFieldHorario;
-    }
-
-    public JTextField getjTextFieldServiço() {
-        return jTextFieldServiço;
-    }
-
-    public void setjTextFieldServiço(JTextField jTextFieldServiço) {
-        this.jTextFieldServiço = jTextFieldServiço;
-    }
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -428,23 +386,23 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }
             
     public void atualizaTabela(){
-        controller.adicionaCamposTabelaConfirmados(funcionario != null ? funcionario.getId() : 0);
-        controller.adicionaCamposTabelaPendentes(funcionario != null ? funcionario.getId() : 0);
+        controller.adicionaCamposTabelaConfirmados();
+        controller.adicionaCamposTabelaPendentes();
     }
     
     private void initTableListenersConfirmados() {
         TabelaConfirmados.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {        
             if (!event.getValueIsAdjusting()) {
                 int selectedRow = TabelaConfirmados.getSelectedRow();
-                Remover.setEnabled(true);
-                Editar.setEnabled(true);
-                Confirmar.setEnabled(false);
-                Rejeitar.setEnabled(false);
+                
                 if (selectedRow >= 0) {
-                    jTextFieldCliente.setText(TabelaConfirmados.getValueAt(selectedRow, 4).toString());
-                    jTextFieldData.setText(TabelaConfirmados.getValueAt(selectedRow, 2).toString());
-                    jTextFieldHorario.setText(TabelaConfirmados.getValueAt(selectedRow, 3).toString());
-                    jTextFieldServiço.setText(TabelaConfirmados.getValueAt(selectedRow, 1).toString());
+                    Remover.setEnabled(true);
+                    Editar.setEnabled(true);
+                    Confirmar.setEnabled(false);
+                    Rejeitar.setEnabled(false);
+                    TabelaPendentes.clearSelection();
+                    controller.atualizaCamposConfirmados();
+                    
                 }
             }
         });
@@ -456,10 +414,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
             if (!event.getValueIsAdjusting()) {
                 int selectedRow = TabelaPendentes.getSelectedRow();
                 if (selectedRow >= 0) {
-                    jTextFieldCliente.setText(TabelaPendentes.getValueAt(selectedRow, 4).toString());
-                    jTextFieldData.setText(TabelaPendentes.getValueAt(selectedRow, 2).toString());
-                    jTextFieldHorario.setText(TabelaPendentes.getValueAt(selectedRow, 3).toString());
-                    jTextFieldServiço.setText(TabelaPendentes.getValueAt(selectedRow, 1).toString());
+                    Remover.setEnabled(false);
+                    Editar.setEnabled(false);
+                    Confirmar.setEnabled(true);
+                    Rejeitar.setEnabled(true);
+                    TabelaConfirmados.clearSelection();
+                    controller.atualizaCamposPendentes();
                 }
             }
         });
@@ -483,30 +443,42 @@ public class ViewFuncionario extends javax.swing.JFrame {
     private javax.swing.JTable TabelaConfirmados;
     private javax.swing.JTable TabelaPendentes;
     private javax.swing.JPanel Tela_Funcionario;
-    private javax.swing.JLabel jLabelCliente;
-    private javax.swing.JLabel jLabelCliente1;
-    private javax.swing.JTextField jTextFieldCliente;
+    private javax.swing.JLabel jLabelNomeCliente;
+    private javax.swing.JLabel jLabelNomeServico;
+    private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JTextField jTextFieldData;
-    private javax.swing.JTextField jTextFieldHorario;
-    private javax.swing.JTextField jTextFieldServiço;
+    private javax.swing.JTextField jTextFieldNomeCliente;
+    private javax.swing.JTextField jTextFieldNomeServico;
+    private javax.swing.JTextField jTextFieldTelefoneCliente;
     // End of variables declaration//GEN-END:variables
 
     public JTable getTabelaConfirmados() {
         return TabelaConfirmados;
     }
 
-    public void setTabelaConfirmados(JTable TabelaConfirmados) {
-        this.TabelaConfirmados = TabelaConfirmados;
-    }
-
     public JTable getTabelaPendentes() {
         return TabelaPendentes;
     }
-
-    public void setTabelaPendentes(JTable TabelaPendentes) {
-        this.TabelaPendentes = TabelaPendentes;
+    
+   
+    public Pessoa getFuncionario() {
+        return funcionario;
     }
 
+    public JTextField getjTextFieldNomeCliente() {
+        return jTextFieldNomeCliente;
+    }
+
+    public JTextField getjTextFieldNomeServico() {
+        return jTextFieldNomeServico;
+    }
+
+    public JTextField getjTextFieldTelefoneCliente() {
+        return jTextFieldTelefoneCliente;
+    }
+
+    
+    
     
     
 }
