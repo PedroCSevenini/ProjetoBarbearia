@@ -6,6 +6,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 
 public class ViewLogin extends JFrame {
@@ -36,6 +37,7 @@ public class ViewLogin extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(new ImageIcon("src/main/java/View/imagens/barba-16px.png").getImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
