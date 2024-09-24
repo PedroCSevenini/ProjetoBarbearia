@@ -183,4 +183,43 @@ public class HorarioBanco {
         }
         return null; 
     }
+    
+    public boolean removeHorarioPorID(int id) {
+        List<Horario> horariosAtualizados = new ArrayList<>();
+        List<Horario> horarios = retornaHorarios();
+
+        boolean horarioRemovido = false;
+
+        if (horarios == null || horarios.isEmpty()) {
+            return false;
+        }
+
+        for (Horario horario : horarios) {
+            if (horario.getId() != id) {
+                horariosAtualizados.add(horario);
+            } else {
+                horarioRemovido = true; // Indica que o horário foi removido
+            }
+        }
+
+        if (horarioRemovido) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                pw.println("id,servicoId,data,horaInicio,funcionarioId,clienteId,marcado");
+                for (Horario horario : horariosAtualizados) {
+                    pw.println(horario.getId() + "," + 
+                               horario.getServico().getId() + "," + 
+                               horario.getData() + "," + 
+                               horario.getHorarioInicio() + "," + 
+                               horario.getFuncionario().getId() + "," + 
+                               horario.getCliente().getId() + "," + 
+                               horario.isMarcado());
+                }
+            } catch(IOException e){
+                System.out.println("Erro ao remover o horário: " + e.getMessage());
+                return false;
+            }
+        }
+
+        return horarioRemovido;
+    }
 }

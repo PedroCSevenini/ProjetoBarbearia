@@ -29,9 +29,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
         initComponents();
         this.funcionario = null;
         this.controller = new FuncionarioController(this);
-        initTableListenersConfirmados();
-      
+        initTableListenersConfirmados();  
         initTableListenersPendentes();
+        Remover.setEnabled(false);
+        Editar.setEnabled(false);
+        Confirmar.setEnabled(false);
+        Rejeitar.setEnabled(false);
     }
 
     
@@ -42,6 +45,11 @@ public class ViewFuncionario extends javax.swing.JFrame {
         this.controller = new FuncionarioController(this);
         initTableListenersConfirmados();
         initTableListenersPendentes();
+        Remover.setEnabled(false);
+        Editar.setEnabled(false);
+        Confirmar.setEnabled(false);
+        Rejeitar.setEnabled(false);
+        
      
         
         
@@ -320,7 +328,8 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_EditarActionPerformed
 
     private void RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverActionPerformed
-        // TODO add your handling code here:
+        controller.removerHorarioSelecionado();
+        atualizaTabela();
     }//GEN-LAST:event_RemoverActionPerformed
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
@@ -328,11 +337,11 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void RejeitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RejeitarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_RejeitarActionPerformed
 
     private void jTextFieldDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldDataActionPerformed
 
     private void TabelaConfirmadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaConfirmadosMouseClicked
@@ -427,6 +436,10 @@ public class ViewFuncionario extends javax.swing.JFrame {
         TabelaConfirmados.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {        
             if (!event.getValueIsAdjusting()) {
                 int selectedRow = TabelaConfirmados.getSelectedRow();
+                Remover.setEnabled(true);
+                Editar.setEnabled(true);
+                Confirmar.setEnabled(false);
+                Rejeitar.setEnabled(false);
                 if (selectedRow >= 0) {
                     jTextFieldCliente.setText(TabelaConfirmados.getValueAt(selectedRow, 4).toString());
                     jTextFieldData.setText(TabelaConfirmados.getValueAt(selectedRow, 2).toString());
@@ -439,13 +452,9 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }
     
     private void initTableListenersPendentes() {
-    // Obtenha o modelo de seleção de linhas da tabela
         TabelaPendentes.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
-            // Verifica se a seleção ainda está sendo alterada
             if (!event.getValueIsAdjusting()) {
                 int selectedRow = TabelaPendentes.getSelectedRow();
-                
-                // Verifica se uma linha foi selecionada
                 if (selectedRow >= 0) {
                     jTextFieldCliente.setText(TabelaPendentes.getValueAt(selectedRow, 4).toString());
                     jTextFieldData.setText(TabelaPendentes.getValueAt(selectedRow, 2).toString());

@@ -7,7 +7,9 @@ package Controller;
 import BDO.HorarioBanco;
 import Model.Horario;
 import View.ViewFuncionario;
+import java.awt.HeadlessException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,6 +69,33 @@ public class FuncionarioController {
         }
         int tamanho = model.getRowCount()*20;
         view.getTabelaPendentes().setPreferredSize(new java.awt.Dimension(view.getTabelaPendentes().getWidth(), tamanho));
+    }
+    
+    public void removerHorarioSelecionado(){
+        HorarioBanco bd = new HorarioBanco();
+        try{
+            int selectedRow = view.getTabelaConfirmados().getSelectedRow();
+            int idHorario = Integer.parseInt(view.getTabelaConfirmados().getValueAt(selectedRow, 0).toString());
+            Object[] options = {"Sim", "Cancelar"};
+            int opcao = JOptionPane.showOptionDialog(
+                    null, 
+                    "Deseja remover esse horário?", 
+                    "Confirmação de Remoção",      
+                    JOptionPane.YES_NO_OPTION,     
+                    JOptionPane.WARNING_MESSAGE,   
+                    null,                          
+                    options,                       
+                    options[0]                     
+            );
+            if (opcao == JOptionPane.YES_OPTION) {
+                bd.removeHorarioPorID(idHorario);
+            }  
+        }catch(HeadlessException | NumberFormatException e){
+            System.out.println("Nenhum valor selecionado!");
+        }
+        
+        
+        
     }
     
    

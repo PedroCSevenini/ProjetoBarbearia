@@ -687,12 +687,10 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxServicoActionPerformed
 
     private void jPanelBtnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
+       this.dispose();
     }//GEN-LAST:event_jPanelBtnSairMouseClicked
 
     private void jLabelSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSairMouseClicked
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jLabelSairMouseClicked
 
