@@ -3,19 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import BDO.PessoaBanco;
+import BDO.ServicoBanco;
+import Controller.ClienteController;
+import Model.Pessoa;
+import Model.Servico;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
+import java.awt.event.ItemListener;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class ViewAdmin extends javax.swing.JFrame {
 
 
     public ViewAdmin() {
         initComponents();
-        jPanel3Lateral.setVisible(false); 
-        jPanel3Lateral1.setVisible(false); 
-        jPanelEditarCorte.setVisible(false); 
-        jPanelAdcionaCorte.setVisible(false); 
-        jPanelLateralBotoes.setVisible(false); 
-        jPanelEditarFuncionario.setVisible(false); 
         
     }
 
@@ -28,64 +40,467 @@ public class ViewAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelFundo = new javax.swing.JPanel();
+        jPanelBarraPrincipal = new javax.swing.JPanel();
+        JPanelBtnInicio = new javax.swing.JPanel();
+        jLabelIconInicio = new javax.swing.JLabel();
+        jLabelTituloInicio = new javax.swing.JLabel();
+        jPanelBtnCortes = new javax.swing.JPanel();
+        jLabelIconCalendario = new javax.swing.JLabel();
+        jLabelTituloAgendamento = new javax.swing.JLabel();
+        jPanelBtnPessoas = new javax.swing.JPanel();
+        jLabelIconPerfil = new javax.swing.JLabel();
+        jLabelTituloPerfi = new javax.swing.JLabel();
+        jPanelBtnSair = new javax.swing.JPanel();
+        jLabelIconSair = new javax.swing.JLabel();
+        jLabelTituloSair = new javax.swing.JLabel();
+        jPanelBarraPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTabbedPanePessoas = new javax.swing.JTabbedPane();
+        jPanelInicio = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanelAgendamento = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        jPanelFundo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelFundo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelBarraPrincipal.setBackground(new java.awt.Color(31, 31, 31));
+        jPanelBarraPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JPanelBtnInicio.setBackground(new java.awt.Color(78, 78, 78));
+        JPanelBtnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JPanelBtnInicio.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                JPanelBtnInicioAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        JPanelBtnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JPanelBtnInicioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JPanelBtnInicioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JPanelBtnInicioMouseExited(evt);
+            }
+        });
+        JPanelBtnInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelIconInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelIconInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/casa.png"))); // NOI18N
+        JPanelBtnInicio.add(jLabelIconInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+
+        jLabelTituloInicio.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloInicio.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTituloInicio.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloInicio.setText("Início");
+        JPanelBtnInicio.add(jLabelTituloInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 80, 50));
+
+        jPanelBarraPrincipal.add(JPanelBtnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 50));
+
+        jPanelBtnCortes.setBackground(new java.awt.Color(78, 78, 78));
+        jPanelBtnCortes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanelBtnCortes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelBtnCortesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanelBtnCortesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelBtnCortesMouseExited(evt);
+            }
+        });
+        jPanelBtnCortes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelIconCalendario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelIconCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/calendario.png"))); // NOI18N
+        jPanelBtnCortes.add(jLabelIconCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+
+        jLabelTituloAgendamento.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloAgendamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTituloAgendamento.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloAgendamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloAgendamento.setText("Cortes");
+        jPanelBtnCortes.add(jLabelTituloAgendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 100, 50));
+
+        jPanelBarraPrincipal.add(jPanelBtnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 50));
+
+        jPanelBtnPessoas.setBackground(new java.awt.Color(78, 78, 78));
+        jPanelBtnPessoas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanelBtnPessoas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelBtnPessoasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanelBtnPessoasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelBtnPessoasMouseExited(evt);
+            }
+        });
+        jPanelBtnPessoas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelIconPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelIconPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/usuario.png"))); // NOI18N
+        jPanelBtnPessoas.add(jLabelIconPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+
+        jLabelTituloPerfi.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloPerfi.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTituloPerfi.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloPerfi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloPerfi.setText("Pessoas");
+        jPanelBtnPessoas.add(jLabelTituloPerfi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 60, 32));
+
+        jPanelBarraPrincipal.add(jPanelBtnPessoas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 230, 50));
+
+        jPanelBtnSair.setBackground(new java.awt.Color(78, 78, 78));
+        jPanelBtnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanelBtnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanelBtnSairMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelBtnSairMouseExited(evt);
+            }
+        });
+        jPanelBtnSair.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelIconSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/abertura-da-porta-aberta.png"))); // NOI18N
+        jPanelBtnSair.add(jLabelIconSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
+
+        jLabelTituloSair.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloSair.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTituloSair.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloSair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloSair.setText("Sair");
+        jPanelBtnSair.add(jLabelTituloSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 80, 32));
+
+        jPanelBarraPrincipal.add(jPanelBtnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 230, 50));
+
+        jPanelFundo.add(jPanelBarraPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 530));
+
+        jPanelBarraPanel.setBackground(new java.awt.Color(120, 120, 120));
+        jPanelBarraPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanelBarraPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(235, 235, 235));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Início");
+        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 100, -1));
+
+        jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 620, 90));
+
+        jTabbedPanePessoas.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTabbedPanePessoasAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jPanelInicio.setEnabled(false);
+        jPanelInicio.setPreferredSize(new java.awt.Dimension(628, 445));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setText("Bem vindo Adiministrador");
+
+        javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
+        jPanelInicio.setLayout(jPanelInicioLayout);
+        jPanelInicioLayout.setHorizontalGroup(
+            jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInicioLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel2)
+                .addContainerGap(115, Short.MAX_VALUE))
+        );
+        jPanelInicioLayout.setVerticalGroup(
+            jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInicioLayout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(jLabel2)
+                .addContainerGap(219, Short.MAX_VALUE))
+        );
+
+        jTabbedPanePessoas.addTab("tab1", jPanelInicio);
+
+        jPanelAgendamento.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanelAgendamentoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
+        jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
+        jPanelAgendamentoLayout.setHorizontalGroup(
+            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
+        );
+        jPanelAgendamentoLayout.setVerticalGroup(
+            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
+        );
+
+        jTabbedPanePessoas.addTab("tab2", jPanelAgendamento);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        jLabel3.setText("Clientes");
+
+        jLabel4.setText("Funcionarios");
+
+        jButton1.setText("Remover Funcionario");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(105, 105, 105))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPanePessoas.addTab("tab3", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 628, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 459, Short.MAX_VALUE)
+        );
+
+        jTabbedPanePessoas.addTab("tab4", jPanel2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGap(0, 628, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGap(0, 459, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, "card2");
+        jTabbedPanePessoas.addTab("tab5", jPanel3);
 
-        jMenu1.setText("Pessoas");
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 628, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 459, Short.MAX_VALUE)
+        );
 
-        jMenuItem1.setText("Funcionario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
+        jTabbedPanePessoas.addTab("tab6", jPanel4);
 
-        jMenuItem3.setText("Clientes");
-        jMenu1.add(jMenuItem3);
+        jPanelFundo.add(jTabbedPanePessoas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 620, 480));
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Cortes");
-
-        jMenuItem2.setText("Editar");
-        jMenu2.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
+        getContentPane().add(jPanelFundo, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void JPanelBtnInicioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JPanelBtnInicioAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_JPanelBtnInicioAncestorAdded
+
+    private void JPanelBtnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseClicked
+
+        // TODO add your handling code here:
+        jTabbedPanePessoas.setSelectedIndex(0);
+        controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
+        colorDefaultInicio = new Color(121,121,121);
+        colorDefaultAgendamento = new Color(78,78,78);
+        colorDefaultPerfil = new Color(78,78,78);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+
+    }//GEN-LAST:event_JPanelBtnInicioMouseClicked
+
+    private void JPanelBtnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseEntered
+        // TODO add your handling code here:
+        JPanelBtnInicio.setBackground(new Color(121, 121, 121));
+    }//GEN-LAST:event_JPanelBtnInicioMouseEntered
+
+    private void JPanelBtnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseExited
+        // TODO add your handling code here:
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+    }//GEN-LAST:event_JPanelBtnInicioMouseExited
+
+    private void jPanelBtnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseClicked
+        // TODO add your handling code here:
+        jTabbedPanePessoas.setSelectedIndex(1);
+        colorDefaultInicio = new Color(78,78,78);
+        colorDefaultAgendamento = new Color(121,121,121);
+        colorDefaultPerfil = new Color(78,78,78);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+    }//GEN-LAST:event_jPanelBtnCortesMouseClicked
+
+    private void jPanelBtnCortesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseEntered
+        // TODO add your handling code here:
+        jPanelBtnCortes.setBackground(new Color(121, 121, 121));
+    }//GEN-LAST:event_jPanelBtnCortesMouseEntered
+
+    private void jPanelBtnCortesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseExited
+        // TODO add your handling code here:
+        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+    }//GEN-LAST:event_jPanelBtnCortesMouseExited
+
+    private void jPanelBtnPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseClicked
+
+        jTabbedPanePessoas.setSelectedIndex(2);
+        try{
+            controller.atualizarPerfil(pessoa);
+        }catch(Exception e){
+            System.out.println("Erro: " + e.getMessage());
+        }
+        colorDefaultInicio = new Color(78,78,78);
+        colorDefaultAgendamento = new Color(78,78,78);
+        colorDefaultPerfil = new Color(121,121,121);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+
+    }//GEN-LAST:event_jPanelBtnPessoasMouseClicked
+
+    private void jPanelBtnPessoasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseEntered
+        // TODO add your handling code here:
+        jPanelBtnPessoas.setBackground(new Color(121, 121, 121));
+    }//GEN-LAST:event_jPanelBtnPessoasMouseEntered
+
+    private void jPanelBtnPessoasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseExited
+        // TODO add your handling code here:
+        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+    }//GEN-LAST:event_jPanelBtnPessoasMouseExited
+
+    private void jPanelBtnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseEntered
+        // TODO add your handling code here:
+        jPanelBtnSair.setBackground(new Color(121, 121, 121));
+    }//GEN-LAST:event_jPanelBtnSairMouseEntered
+
+    private void jPanelBtnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseExited
+        // TODO add your handling code here:
+        jPanelBtnSair.setBackground(new Color(78, 78, 78));
+    }//GEN-LAST:event_jPanelBtnSairMouseExited
+
+    private void jPanelAgendamentoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanelAgendamentoAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanelAgendamentoAncestorAdded
+
+    private void jTabbedPanePessoasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPanePessoasAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPanePessoasAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -123,13 +538,38 @@ public class ViewAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel JPanelBtnInicio;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelIconCalendario;
+    private javax.swing.JLabel jLabelIconInicio;
+    private javax.swing.JLabel jLabelIconPerfil;
+    private javax.swing.JLabel jLabelIconSair;
+    private javax.swing.JLabel jLabelTituloAgendamento;
+    private javax.swing.JLabel jLabelTituloInicio;
+    private javax.swing.JLabel jLabelTituloPerfi;
+    private javax.swing.JLabel jLabelTituloSair;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelAgendamento;
+    private javax.swing.JPanel jPanelBarraPanel;
+    private javax.swing.JPanel jPanelBarraPrincipal;
+    private javax.swing.JPanel jPanelBtnCortes;
+    private javax.swing.JPanel jPanelBtnPessoas;
+    private javax.swing.JPanel jPanelBtnSair;
+    private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JPanel jPanelInicio;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTabbedPane jTabbedPanePessoas;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
 }
