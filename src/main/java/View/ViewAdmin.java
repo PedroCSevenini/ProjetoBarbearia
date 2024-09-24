@@ -206,11 +206,11 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBarraPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanelBarraPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(235, 235, 235));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Início");
-        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 100, -1));
+        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 90));
 
         jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 620, 90));
 
@@ -416,13 +416,13 @@ public class ViewAdmin extends javax.swing.JFrame {
 
         // TODO add your handling code here:
         jTabbedPanePessoas.setSelectedIndex(0);
-        controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
-        colorDefaultInicio = new Color(121,121,121);
-        colorDefaultAgendamento = new Color(78,78,78);
-        colorDefaultPerfil = new Color(78,78,78);
-        JPanelBtnInicio.setBackground(colorDefaultInicio);
-        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
-        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+//        controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
+//        colorDefaultInicio = new Color(121,121,121);
+//        colorDefaultAgendamento = new Color(78,78,78);
+//        colorDefaultPerfil = new Color(78,78,78);
+//        JPanelBtnInicio.setBackground(colorDefaultInicio);
+//        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+//        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
 
     }//GEN-LAST:event_JPanelBtnInicioMouseClicked
 
@@ -433,18 +433,18 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void JPanelBtnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseExited
         // TODO add your handling code here:
-        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        //JPanelBtnInicio.setBackground(colorDefaultInicio);
     }//GEN-LAST:event_JPanelBtnInicioMouseExited
 
     private void jPanelBtnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseClicked
         // TODO add your handling code here:
         jTabbedPanePessoas.setSelectedIndex(1);
-        colorDefaultInicio = new Color(78,78,78);
+        /*colorDefaultInicio = new Color(78,78,78);
         colorDefaultAgendamento = new Color(121,121,121);
         colorDefaultPerfil = new Color(78,78,78);
         JPanelBtnInicio.setBackground(colorDefaultInicio);
         jPanelBtnCortes.setBackground(colorDefaultAgendamento);
-        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+        jPanelBtnPessoas.setBackground(colorDefaultPerfil);*/
     }//GEN-LAST:event_jPanelBtnCortesMouseClicked
 
     private void jPanelBtnCortesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseEntered
@@ -454,23 +454,23 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnCortesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseExited
         // TODO add your handling code here:
-        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+//        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
     }//GEN-LAST:event_jPanelBtnCortesMouseExited
 
     private void jPanelBtnPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseClicked
 
-        jTabbedPanePessoas.setSelectedIndex(2);
-        try{
-            controller.atualizarPerfil(pessoa);
-        }catch(Exception e){
-            System.out.println("Erro: " + e.getMessage());
-        }
-        colorDefaultInicio = new Color(78,78,78);
-        colorDefaultAgendamento = new Color(78,78,78);
-        colorDefaultPerfil = new Color(121,121,121);
-        JPanelBtnInicio.setBackground(colorDefaultInicio);
-        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
-        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+//        jTabbedPanePessoas.setSelectedIndex(2);
+//        try{
+//            controller.atualizarPerfil(pessoa);
+//        }catch(Exception e){
+//            System.out.println("Erro: " + e.getMessage());
+//        }
+//        colorDefaultInicio = new Color(78,78,78);
+//        colorDefaultAgendamento = new Color(78,78,78);
+//        colorDefaultPerfil = new Color(121,121,121);
+//        JPanelBtnInicio.setBackground(colorDefaultInicio);
+//        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+//        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
 
     }//GEN-LAST:event_jPanelBtnPessoasMouseClicked
 
@@ -481,7 +481,7 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnPessoasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseExited
         // TODO add your handling code here:
-        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+        //jPanelBtnPessoas.setBackground(colorDefaultPerfil);
     }//GEN-LAST:event_jPanelBtnPessoasMouseExited
 
     private void jPanelBtnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseEntered

@@ -79,6 +79,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jPanelFundo = new javax.swing.JPanel();
         jPanelBarraPrincipal = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         JPanelBtnInicio = new javax.swing.JPanel();
         jLabelIconInicio = new javax.swing.JLabel();
         jLabelTituloInicio = new javax.swing.JLabel();
@@ -92,7 +93,8 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabelIconSair = new javax.swing.JLabel();
         jLabelTituloSair = new javax.swing.JLabel();
         jPanelBarraPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelSair = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jTabbedPaneAbas = new javax.swing.JTabbedPane();
         jPanelInicio = new javax.swing.JPanel();
         jScrollPaneAgendado = new javax.swing.JScrollPane();
@@ -101,8 +103,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabelNovoAgendamento = new javax.swing.JLabel();
         jButtonNovoAgendamento = new javax.swing.JButton();
         jPanelAgendamento = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jButtonMarcar = new javax.swing.JButton();
         jComboBoxFuncionario = new javax.swing.JComboBox<>();
         jComboBoxServico = new javax.swing.JComboBox<>();
@@ -129,6 +129,9 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jPanelBarraPrincipal.setBackground(new java.awt.Color(31, 31, 31));
         jPanelBarraPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/barba.png"))); // NOI18N
+        jPanelBarraPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 120, 150));
 
         JPanelBtnInicio.setBackground(new java.awt.Color(78, 78, 78));
         JPanelBtnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -226,6 +229,9 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelBtnSair.setBackground(new java.awt.Color(78, 78, 78));
         jPanelBtnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelBtnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelBtnSairMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelBtnSairMouseEntered(evt);
             }
@@ -253,11 +259,20 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelBarraPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanelBarraPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(235, 235, 235));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Início");
-        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 100, -1));
+        jLabelSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/cruz.png"))); // NOI18N
+        jLabelSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelSairMouseClicked(evt);
+            }
+        });
+        jPanelBarraPanel.add(jLabelSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 10, -1, 30));
+
+        jLabelTitulo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("Início");
+        jPanelBarraPanel.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 90));
 
         jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 620, 90));
 
@@ -339,11 +354,6 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
         jButtonMarcar.setText("Marcar");
         jButtonMarcar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,32 +397,28 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelAgendamentoLayout.setHorizontalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
+                .addGap(193, 193, 193)
                 .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2)
-                        .addComponent(jButtonMarcar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSelecionaData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBoxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(188, Short.MAX_VALUE))
+                    .addComponent(jButtonMarcar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSelecionaData, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                    .addComponent(jComboBoxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanelAgendamentoLayout.setVerticalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(93, 93, 93)
                 .addComponent(jComboBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(jComboBoxServico, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(jSelecionaData, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(jComboBoxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(46, 46, 46)
                 .addComponent(jLabelAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonMarcar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -523,6 +529,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
         // TODO add your handling code here:
         jTabbedPaneAbas.setSelectedIndex(0);
+        jLabelTitulo.setText("Início");
         controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
         colorDefaultInicio = new Color(121,121,121);
         colorDefaultAgendamento = new Color(78,78,78);
@@ -537,6 +544,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private void jPanelBtnAgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnAgendamentoMouseClicked
         // TODO add your handling code here:
         jTabbedPaneAbas.setSelectedIndex(1);
+        jLabelTitulo.setText("Agendamento");
         colorDefaultInicio = new Color(78,78,78);
         colorDefaultAgendamento = new Color(121,121,121);
         colorDefaultPerfil = new Color(78,78,78);
@@ -609,6 +617,7 @@ public class ViewCliente extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println("Erro: " + e.getMessage());
         }
+        jLabelTitulo.setText("Perfil");
         colorDefaultInicio = new Color(78,78,78);
         colorDefaultAgendamento = new Color(78,78,78);
         colorDefaultPerfil = new Color(121,121,121);
@@ -677,13 +686,17 @@ public class ViewCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxServicoActionPerformed
 
-    public JComboBox<String> getjComboBoxHorarios() {
-        return jComboBoxHorarios;
-    }
+    private void jPanelBtnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jPanelBtnSairMouseClicked
 
-    public void setjComboBoxHorarios(JComboBox<String> jComboBoxHorarios) {
-        this.jComboBoxHorarios = jComboBoxHorarios;
-    }
+    private void jLabelSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSairMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jLabelSairMouseClicked
+
+    
 
     
     public static void main(String args[]) {
@@ -738,7 +751,9 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelImagemUsuario;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNovoAgendamento;
+    private javax.swing.JLabel jLabelSair;
     private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelTituloAgendamento;
     private javax.swing.JLabel jLabelTituloInicio;
     private javax.swing.JLabel jLabelTituloPerfi;
@@ -753,11 +768,9 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelPerfil;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneAgendado;
     private com.toedter.calendar.JDateChooser jSelecionaData;
     private javax.swing.JTabbedPane jTabbedPaneAbas;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextAreaAgendado;
     private javax.swing.JTextField jTextFieldDataNasc;
     private javax.swing.JTextField jTextFieldEmail;
@@ -841,6 +854,14 @@ public class ViewCliente extends javax.swing.JFrame {
 
     public void setjSelecionaData(JDateChooser jSelecionaData) {
         this.jSelecionaData = jSelecionaData;
+    }
+    
+    public JComboBox<String> getjComboBoxHorarios() {
+        return jComboBoxHorarios;
+    }
+
+    public void setjComboBoxHorarios(JComboBox<String> jComboBoxHorarios) {
+        this.jComboBoxHorarios = jComboBoxHorarios;
     }
 
 //    private List<String> consultarHorariosIndisponiveis(String dataSelecionada) {

@@ -23,7 +23,9 @@ public class FuncionarioController {
     }
     
     public void adicionaCamposTabelaConfirmados(int idFuncionario){
+        //view.getTabelaConfirmados().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         DefaultTableModel model = (DefaultTableModel) view.getTabelaConfirmados().getModel();
+        
         model.setRowCount(0);
         HorarioBanco bd = new HorarioBanco();
         List<Horario> horariosFuncionario = bd.retornaHorariosMarcadosFuncionario(idFuncionario);
@@ -37,21 +39,22 @@ public class FuncionarioController {
                     horario.getCliente(),
                     horario.getServico().getPreco()        
                 });
+                
             }
         }
+        int tamanho = model.getRowCount()*20;
+        view.getTabelaConfirmados().setPreferredSize(new java.awt.Dimension(view.getTabelaConfirmados().getWidth(), tamanho));
+        
+        
     }
     
     public void adicionaCamposTabelaPendentes(int idFuncionario){
         DefaultTableModel model = (DefaultTableModel) view.getTabelaPendentes().getModel();
-        System.out.println("Oi1");
         model.setRowCount(0);
         HorarioBanco bd = new HorarioBanco();
         List<Horario> horariosFuncionario = bd.retornaHorariosPendentesFuncionario(idFuncionario);
-        System.out.println(idFuncionario);
         for(Horario horario : horariosFuncionario){
-            System.out.println(horario.isMarcado());
             if(horario.isMarcado() == false){
-                System.out.println("Oi3");
                 model.addRow(new Object[]{
                     horario.getId(),
                     horario.getServico().getNome(),
@@ -62,6 +65,8 @@ public class FuncionarioController {
                 });
             }
         }
+        int tamanho = model.getRowCount()*20;
+        view.getTabelaPendentes().setPreferredSize(new java.awt.Dimension(view.getTabelaPendentes().getWidth(), tamanho));
     }
     
    

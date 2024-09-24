@@ -163,6 +163,9 @@ public class ViewFuncionario extends javax.swing.JFrame {
             }
         });
 
+        Scroll_Tabela_Confirmados.setColumnHeaderView(null);
+
+        TabelaConfirmados.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         TabelaConfirmados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -186,7 +189,10 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TabelaConfirmados.setPreferredSize(new java.awt.Dimension(0, 80));
+        TabelaConfirmados.setColumnSelectionAllowed(true);
+        TabelaConfirmados.setName(""); // NOI18N
+        TabelaConfirmados.setPreferredSize(new java.awt.Dimension(0, 400));
+        TabelaConfirmados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TabelaConfirmados.getTableHeader().setReorderingAllowed(false);
         TabelaConfirmados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
