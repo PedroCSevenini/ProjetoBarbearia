@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 
@@ -13,7 +9,6 @@ import java.util.Objects;
  * @author pedro
  */
 public class Cliente extends Usuario{
-    private Horario horario = null;
 
     public Cliente(String usuario, String senha, int id, String nome, String telefone, String dataNasc, String email) {
         super(usuario, senha, id, nome, telefone, dataNasc, email, 1);

@@ -295,7 +295,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jTextAreaAgendado.setText("Não há horário marcado.");
         jScrollPaneAgendado.setViewportView(jTextAreaAgendado);
 
-        jLabelNovoAgendamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelNovoAgendamento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelNovoAgendamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNovoAgendamento.setText("Novo Agendamento");
 
@@ -335,7 +335,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addComponent(jScrollPaneAgendado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jPanelBtnNovoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,7 +405,7 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addComponent(jComboBoxServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSelecionaData, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                     .addComponent(jComboBoxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         jPanelAgendamentoLayout.setVerticalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,12 +469,12 @@ public class ViewCliente extends javax.swing.JFrame {
             .addGroup(jPanelPerfilLayout.createSequentialGroup()
                 .addGap(182, 182, 182)
                 .addComponent(jLabelImagemUsuario)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanelPerfilLayout.setVerticalGroup(
             jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jLabelImagemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -522,7 +522,7 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNovoAgendamentoActionPerformed
 
     private void jButtonMarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarActionPerformed
-        // TODO add your handling code here:
+        controller.marcarHorario();
     }//GEN-LAST:event_jButtonMarcarActionPerformed
 
     private void JPanelBtnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseClicked
@@ -665,13 +665,7 @@ public class ViewCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jSelecionaDataPropertyChange
 
-    public JLabel getjLabelAviso() {
-        return jLabelAviso;
-    }
-
-    public void setjLabelAviso(JLabel jLabelAviso) {
-        this.jLabelAviso = jLabelAviso;
-    }
+    
 
     private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
         Servico servicoSelecionado = (Servico) jComboBoxServico.getSelectedItem();
@@ -861,16 +855,18 @@ public class ViewCliente extends javax.swing.JFrame {
     public void setjComboBoxHorarios(JComboBox<String> jComboBoxHorarios) {
         this.jComboBoxHorarios = jComboBoxHorarios;
     }
+    
+    public JLabel getjLabelAviso() {
+        return jLabelAviso;
+    }
 
-//    private List<String> consultarHorariosIndisponiveis(String dataSelecionada) {
-//        List<String> horariosIndisponiveis = new ArrayList<>();
-//        // Implementação de leitura do CSV para verificar horários
-//        return horariosIndisponiveis;
-//    }
-//
-//    private void adicionarHorarioIndisponivel(String dataSelecionada, String horarioSelecionado, String servicoSelecionado, String funcionarioSelecionado, String clienteSelecionado) {
-//       // Implementação de escrita no CSV
-//    }
+    public void setjLabelAviso(JLabel jLabelAviso) {
+        this.jLabelAviso = jLabelAviso;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
     
     
 }

@@ -156,7 +156,7 @@ public class HorarioBanco {
     }
     
     public Horario retornaHorarioPorID(int id){
-        List<Horario> horarios = retornaHorarios(); // Obtém a lista de horários
+        List<Horario> horarios = retornaHorarios(); 
         if (horarios == null || horarios.isEmpty()){
             return null;
         }
@@ -168,7 +168,7 @@ public class HorarioBanco {
         return null; 
     }
     
-    public boolean removeHorarioPorID(int id) {
+    public boolean removeHorarioPorID(int id){
         List<Horario> horariosAtualizados = new ArrayList<>();
         List<Horario> horarios = retornaHorarios();
 
@@ -242,4 +242,48 @@ public class HorarioBanco {
         return horarioMarcado;
     }
     
+    
+    public boolean verificaHorarioPorId(int id){
+        List<Horario> horarios = retornaHorarios(); 
+        if (horarios == null || horarios.isEmpty()){
+            return false;
+        }
+        for (Horario horario : horarios){
+            if (horario.getCliente().getId() == id){
+                return true;
+            }
+        }
+        return false; 
+    }
+    
+    public int retornaProximoID() {
+        List<Horario> horarios = retornaHorarios();
+        if (horarios == null || horarios.isEmpty()) {
+            return 1;
+        }
+
+        Horario ultimoHorario = null;
+        for (int i = 0; i < horarios.size(); i++) {
+            ultimoHorario = horarios.get(i);
+        }
+
+        return (ultimoHorario == null ? 1 : ultimoHorario.getId() + 1);
+    }
+    
+    public boolean adicionarHorario(Servico servico, String data, String horaInicio, Funcionario funcionario, Cliente cliente, boolean marcado) {
+        int novoId = retornaProximoID();
+        try(PrintWriter pw = new PrintWriter(new FileWriter(path, true))){
+            pw.println(novoId + "," + 
+                       servico.getId() + "," + 
+                       data + "," + 
+                       horaInicio + "," + 
+                       funcionario.getId() + "," + 
+                       cliente.getId() + "," + 
+                       marcado);
+        }catch (IOException e){
+            System.out.println("Erro ao adicionar o horário: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
 }

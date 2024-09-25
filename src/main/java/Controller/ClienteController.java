@@ -5,6 +5,7 @@ import BDO.HorarioBanco;
 import BDO.PessoaBanco;
 import BDO.ServicoBanco;
 import Controller.Helper.ClienteHelper;
+import Model.Cliente;
 import Model.Funcionario;
 import Model.Pessoa;
 import Model.Servico;
@@ -30,8 +31,9 @@ public class  ClienteController{
     }
     
     public void mostrarHorario(int id){
-        if(id != 0)
+        if(id != 0){
             helper.mostrarMensagemNoText(id);
+        }
     }
     
     public void setarComboBoxFuncionario(){
@@ -107,4 +109,26 @@ public class  ClienteController{
         }
     }
     
+    public void marcarHorario(){
+        HorarioBanco bdHorario = new HorarioBanco();
+        ServicoBanco bdServico = new ServicoBanco();
+        PessoaBanco bdPessoa = new PessoaBanco();
+        if(!bdHorario.verificaHorarioPorId(view.getPessoa().getId())){
+            Servico servico = (Servico)(view.getjComboBoxServico().getSelectedItem());
+            Date dataSelecionada = view.getjSelecionaData().getDate();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            String data = formato.format(dataSelecionada);
+            String horario = (String)view.getjComboBoxHorarios().getSelectedItem();
+            Funcionario funcionario = (Funcionario) view.getjComboBoxFuncionario().getSelectedItem();
+            Cliente cliente = PessoaBanco.procuraClientePorID(view.getPessoa().getId());
+            boolean marcado = false;
+            if(bdHorario.adicionarHorario(servico, data, horario, funcionario, cliente, marcado)){
+                view.mostrarAviso("Horário marcado!");
+            }else{
+                view.mostrarAviso("Erro ao adicionar horário...");
+            }
+        }else{
+            view.mostrarAviso("Já possui um horário marcado ou pendente...");
+        }
+    }
 }

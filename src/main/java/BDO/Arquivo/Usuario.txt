@@ -5,3 +5,4 @@ ID,USUARIO,SENHA
 4,simba,senha
 5,yandias,senha123
 6,GeovanniMoreira,senha123
+7,bruninhabs,brunalinda1

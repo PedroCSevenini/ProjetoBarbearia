@@ -25,6 +25,11 @@ public class ClienteHelper {
         if(horario != null){
             String line = "Dia: " + horario.getData() + "\nHorário: " + horario.getHorarioInicio()
                     + "\nFuncionário: " + horario.getFuncionario().getNome() + "\nPreço: R$" + horario.getServico().getPreco();
+            if(horario.isMarcado()){
+                line += "\nStatus: Marcado";
+            }else{
+                line += "\nStatus: Pendente";
+            }
             view.getjTextArea1().setText(line);
             return;
         }

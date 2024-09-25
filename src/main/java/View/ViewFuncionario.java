@@ -190,9 +190,10 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TabelaConfirmados.setColumnSelectionAllowed(true);
+        TabelaConfirmados.setCellSelectionEnabled(false);
         TabelaConfirmados.setName(""); // NOI18N
         TabelaConfirmados.setPreferredSize(new java.awt.Dimension(0, 400));
+        TabelaConfirmados.setRowSelectionAllowed(true);
         TabelaConfirmados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TabelaConfirmados.getTableHeader().setReorderingAllowed(false);
         TabelaConfirmados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -354,15 +355,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
 
@@ -388,6 +386,12 @@ public class ViewFuncionario extends javax.swing.JFrame {
     public void atualizaTabela(){
         controller.adicionaCamposTabelaConfirmados();
         controller.adicionaCamposTabelaPendentes();
+        TabelaPendentes.clearSelection();
+        TabelaConfirmados.clearSelection();
+        Remover.setEnabled(false);
+        Editar.setEnabled(false);
+        Confirmar.setEnabled(false);
+        Rejeitar.setEnabled(false);  
     }
     
     private void initTableListenersConfirmados() {
