@@ -166,6 +166,7 @@ public class PessoaBanco {
         }
         return null;
     }
+
     
     public Funcionario procuraFuncionarioPorID(int id){
         List<Funcionario> funcionarios = retornaFuncionarios();
@@ -192,6 +193,4 @@ public class PessoaBanco {
         }
         return null;
     }
-    
-    
 }

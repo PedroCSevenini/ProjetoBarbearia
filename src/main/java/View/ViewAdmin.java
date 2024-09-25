@@ -102,6 +102,9 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBtnSair = new javax.swing.JPanel();
         jLabelIconSair = new javax.swing.JLabel();
         jLabelTituloSair = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelIconPerfil1 = new javax.swing.JLabel();
+        jLabelTituloPerfi2 = new javax.swing.JLabel();
         jPanelBarraPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPanePessoas = new javax.swing.JTabbedPane();
@@ -115,16 +118,10 @@ public class ViewAdmin extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jPanelPessoas = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTableFuncionarios = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableClientes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jPanelAdicionaFuncionario = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -143,6 +140,10 @@ public class ViewAdmin extends javax.swing.JFrame {
         jTextFieldValorCorte = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextFieldTempoCorte = new javax.swing.JTextField();
+        jPanelFuncionarios = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableFuncionarios = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -188,7 +189,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelTituloInicio.setText("Início");
         JPanelBtnInicio.add(jLabelTituloInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 80, 50));
 
-        jPanelBarraPrincipal.add(JPanelBtnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 50));
+        jPanelBarraPrincipal.add(JPanelBtnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 50));
 
         jPanelBtnCortes.setBackground(new java.awt.Color(78, 78, 78));
         jPanelBtnCortes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -216,7 +217,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelTituloAgendamento.setText("Cortes");
         jPanelBtnCortes.add(jLabelTituloAgendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 100, 50));
 
-        jPanelBarraPrincipal.add(jPanelBtnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 50));
+        jPanelBarraPrincipal.add(jPanelBtnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 50));
 
         jPanelBtnPessoas.setBackground(new java.awt.Color(78, 78, 78));
         jPanelBtnPessoas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -241,10 +242,10 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelTituloPerfi.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabelTituloPerfi.setForeground(new java.awt.Color(235, 235, 235));
         jLabelTituloPerfi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTituloPerfi.setText("Pessoas");
+        jLabelTituloPerfi.setText("Clientes");
         jPanelBtnPessoas.add(jLabelTituloPerfi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 60, 32));
 
-        jPanelBarraPrincipal.add(jPanelBtnPessoas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 230, 50));
+        jPanelBarraPrincipal.add(jPanelBtnPessoas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 50));
 
         jPanelBtnSair.setBackground(new java.awt.Color(78, 78, 78));
         jPanelBtnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -269,6 +270,45 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBtnSair.add(jLabelTituloSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 80, 32));
 
         jPanelBarraPrincipal.add(jPanelBtnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 230, 50));
+
+        jPanel1.setBackground(new java.awt.Color(78, 78, 78));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        jLabelIconPerfil1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelIconPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/usuario.png"))); // NOI18N
+
+        jLabelTituloPerfi2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloPerfi2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTituloPerfi2.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloPerfi2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloPerfi2.setText("Funcionarios");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabelIconPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jLabelTituloPerfi2)
+                .addGap(44, 44, 44))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelIconPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTituloPerfi2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanelBarraPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 230, 50));
 
         jPanelFundo.add(jPanelBarraPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 530));
 
@@ -390,28 +430,15 @@ public class ViewAdmin extends javax.swing.JFrame {
 
         jTabbedPanePessoas.addTab("Cortes", jPanelAgendamento);
 
-        jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTableFuncionarios);
-
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Título 5", "Título 6"
             }
         ));
         jScrollPane4.setViewportView(jTableClientes);
@@ -419,72 +446,40 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Clientes");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Funcionarios");
-
-        jButton3.setText("Remover");
-
         jButton4.setText("Remover ");
-
-        jButton5.setText("Editar");
-
-        jButton6.setText("Novo");
 
         javax.swing.GroupLayout jPanelPessoasLayout = new javax.swing.GroupLayout(jPanelPessoas);
         jPanelPessoas.setLayout(jPanelPessoasLayout);
         jPanelPessoasLayout.setHorizontalGroup(
             jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(90, 90, 90))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
                 .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
                     .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton5)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton6))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(16, 16, 16))
+                        .addGap(269, 269, 269)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanelPessoasLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPessoasLayout.setVerticalGroup(
             jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(40, 40, 40)
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jTabbedPanePessoas.addTab("Pessoas", jPanelPessoas);
+        jTabbedPanePessoas.addTab("Clientes", jPanelPessoas);
 
         jLabel6.setText("Nome");
 
@@ -598,6 +593,47 @@ public class ViewAdmin extends javax.swing.JFrame {
 
         jTabbedPanePessoas.addTab("Adiciona Corte", jPanelAdicionaCorte);
 
+        jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ));
+        jScrollPane5.setViewportView(jTableFuncionarios);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel13.setText("Funcionarios");
+
+        javax.swing.GroupLayout jPanelFuncionariosLayout = new javax.swing.GroupLayout(jPanelFuncionarios);
+        jPanelFuncionarios.setLayout(jPanelFuncionariosLayout);
+        jPanelFuncionariosLayout.setHorizontalGroup(
+            jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                .addGap(244, 244, 244)
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelFuncionariosLayout.setVerticalGroup(
+            jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFuncionariosLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
+        );
+
+        jTabbedPanePessoas.addTab("Funcionarios", jPanelFuncionarios);
+
         jPanelFundo.add(jTabbedPanePessoas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 620, 480));
 
         getContentPane().add(jPanelFundo, "card2");
@@ -703,6 +739,11 @@ public class ViewAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        jTabbedPanePessoas.setSelectedIndex(5);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -752,17 +793,14 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel JPanelBtnInicio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -771,11 +809,14 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelIconCalendario;
     private javax.swing.JLabel jLabelIconInicio;
     private javax.swing.JLabel jLabelIconPerfil;
+    private javax.swing.JLabel jLabelIconPerfil1;
     private javax.swing.JLabel jLabelIconSair;
     private javax.swing.JLabel jLabelTituloAgendamento;
     private javax.swing.JLabel jLabelTituloInicio;
     private javax.swing.JLabel jLabelTituloPerfi;
+    private javax.swing.JLabel jLabelTituloPerfi2;
     private javax.swing.JLabel jLabelTituloSair;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAdicionaCorte;
     private javax.swing.JPanel jPanelAdicionaFuncionario;
     private javax.swing.JPanel jPanelAgendamento;
@@ -784,12 +825,13 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBtnCortes;
     private javax.swing.JPanel jPanelBtnPessoas;
     private javax.swing.JPanel jPanelBtnSair;
+    private javax.swing.JPanel jPanelFuncionarios;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelPessoas;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPanePessoas;
     private javax.swing.JTable jTableClientes;
     private javax.swing.JTable jTableCortes;
@@ -807,7 +849,9 @@ public class ViewAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void atualizaTabela(){
-        controller.adicionaCamposTabelaCortes();  
+        controller.adicionaCamposTabelaCortes(); 
+        controller.adicionaCamposFuncionarios();
+        controller.adicionaCamposClientes();
     }
 //    public void atualizaTabela(){
 //        controller.adicionaCamposTabelaCortes();
