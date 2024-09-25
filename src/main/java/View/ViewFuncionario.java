@@ -123,7 +123,6 @@ public class ViewFuncionario extends javax.swing.JFrame {
             }
         });
         TabelaPendentes.setPreferredSize(new java.awt.Dimension(0, 80));
-        TabelaPendentes.setRowSelectionAllowed(true);
         TabelaPendentes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TabelaPendentes.getTableHeader().setReorderingAllowed(false);
         Scroll_Tabela_Pendentes.setViewportView(TabelaPendentes);
@@ -191,6 +190,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TabelaConfirmados.setColumnSelectionAllowed(true);
         TabelaConfirmados.setName(""); // NOI18N
         TabelaConfirmados.setPreferredSize(new java.awt.Dimension(0, 400));
         TabelaConfirmados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);

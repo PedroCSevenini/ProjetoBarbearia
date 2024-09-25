@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+
 import BDO.PessoaBanco;
 import BDO.ServicoBanco;
+import Controller.AdminController;
 import Controller.ClienteController;
 import Model.Pessoa;
 import Model.Servico;
@@ -20,17 +22,61 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
 
 public class ViewAdmin extends javax.swing.JFrame {
-    private Color colorDefaultInicio = new Color(121,121,121);
-    private Color colorDefaultCortes = new Color(121,121,121);
-    private Color colorDefaultPessoas = new Color(121,121,121);
+    private AdminController controller;
+    private final Pessoa admin;
+    private Color colorDefaultInicio = new Color(121, 121, 121);
+    private Color colorDefaultCortes = new Color(121, 121, 121);
+    private Color colorDefaultPessoas = new Color(121, 121, 121);
+
+    public ViewAdmin(Pessoa admin) {
+        this.admin = admin;
+        initComponents();
+        this.controller = new AdminController(this);
+    }
 
     public ViewAdmin() {
         initComponents();
-        
+        this.controller = new AdminController(this);
+        this.admin = null;
+
+    }
+
+    public JTable getjTableClientes() {
+        return jTableClientes;
+    }
+
+    public void setjTableClientes(JTable jTableClientes) {
+        this.jTableClientes = jTableClientes;
+    }
+
+    public JTable getjTableCortes() {
+        return jTableCortes;
+    }
+
+    public void setjTableCortes(JTable jTableCortes) {
+        this.jTableCortes = jTableCortes;
+    }
+
+    public JTable getjTableFuncionarios() {
+        return jTableFuncionarios;
+    }
+
+    public void setjTableFuncionarios(JTable jTableFuncionarios) {
+        this.jTableFuncionarios = jTableFuncionarios;
+    }
+
+    public JTextField getjTextFieldDataNascimento() {
+        return jTextFieldDataNascimento;
+    }
+
+    public void setjTextFieldDataNascimento(JTextField jTextFieldDataNascimento) {
+        this.jTextFieldDataNascimento = jTextFieldDataNascimento;
     }
 
     /**
@@ -63,12 +109,16 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanelAgendamento = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCortes = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
         jPanelPessoas = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableFuncionarios = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jTableClientes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -279,7 +329,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCortes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -290,28 +340,57 @@ public class ViewAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableCortes);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel12.setText("Cortes");
+
+        jToggleButton1.setText("Remover Corte");
+
+        jToggleButton2.setText("Editar Corte");
+
+        jToggleButton3.setText("Novo Corte");
 
         javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
         jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
         jPanelAgendamentoLayout.setHorizontalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(259, 259, 259))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))
+                    .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jToggleButton2)
+                        .addGap(64, 64, 64)
+                        .addComponent(jToggleButton1)
+                        .addGap(76, 76, 76)
+                        .addComponent(jToggleButton3)
+                        .addContainerGap())))
         );
         jPanelAgendamentoLayout.setVerticalGroup(
             jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(47, 47, 47)
+                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(jToggleButton2)
+                    .addComponent(jToggleButton3))
+                .addGap(25, 25, 25))
         );
 
         jTabbedPanePessoas.addTab("Cortes", jPanelAgendamento);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -322,9 +401,9 @@ public class ViewAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jTableFuncionarios);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -335,10 +414,12 @@ public class ViewAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(jTableClientes);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Clientes");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Funcionarios");
 
         jButton3.setText("Remover");
@@ -354,11 +435,11 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelPessoasLayout.setHorizontalGroup(
             jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
+                .addGap(118, 118, 118)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(105, 105, 105))
+                .addGap(90, 90, 90))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
                 .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPessoasLayout.createSequentialGroup()
@@ -368,20 +449,20 @@ public class ViewAdmin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelPessoasLayout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addGap(26, 26, 26)
                         .addComponent(jButton5)
                         .addGap(31, 31, 31)
                         .addComponent(jButton6))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
         jPanelPessoasLayout.setVerticalGroup(
             jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
@@ -532,13 +613,13 @@ public class ViewAdmin extends javax.swing.JFrame {
 
         // TODO add your handling code here:
         jTabbedPanePessoas.setSelectedIndex(0);
-//        controller.mostrarHorario(pessoa != null ? pessoa.getId() : 0);
-//        colorDefaultInicio = new Color(121,121,121);
-//        colorDefaultAgendamento = new Color(78,78,78);
-//        colorDefaultPerfil = new Color(78,78,78);
-//        JPanelBtnInicio.setBackground(colorDefaultInicio);
-//        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
-//        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+        colorDefaultInicio = new Color(121, 121, 121);
+        colorDefaultCortes = new Color(78, 78, 78);
+        colorDefaultPessoas = new Color(78, 78, 78);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnCortes.setBackground(colorDefaultCortes);
+        jPanelBtnPessoas.setBackground(colorDefaultPessoas);
+
 
     }//GEN-LAST:event_JPanelBtnInicioMouseClicked
 
@@ -548,19 +629,20 @@ public class ViewAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_JPanelBtnInicioMouseEntered
 
     private void JPanelBtnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseExited
-        // TODO add your handling code here:
-        //JPanelBtnInicio.setBackground(colorDefaultInicio);
+        
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
     }//GEN-LAST:event_JPanelBtnInicioMouseExited
 
     private void jPanelBtnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseClicked
         // TODO add your handling code here:
+
         jTabbedPanePessoas.setSelectedIndex(1);
-        /*colorDefaultInicio = new Color(78,78,78);
-        colorDefaultAgendamento = new Color(121,121,121);
-        colorDefaultPerfil = new Color(78,78,78);
+        colorDefaultInicio = new Color(78, 78, 78);
+        colorDefaultCortes = new Color(121, 121, 121);
+        colorDefaultPessoas = new Color(78, 78, 78);
         JPanelBtnInicio.setBackground(colorDefaultInicio);
-        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
-        jPanelBtnPessoas.setBackground(colorDefaultPerfil);*/
+        jPanelBtnCortes.setBackground(colorDefaultCortes);
+        jPanelBtnPessoas.setBackground(colorDefaultPessoas);
     }//GEN-LAST:event_jPanelBtnCortesMouseClicked
 
     private void jPanelBtnCortesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseEntered
@@ -570,23 +652,18 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnCortesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseExited
         // TODO add your handling code here:
-//        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
+        jPanelBtnCortes.setBackground(colorDefaultCortes);
     }//GEN-LAST:event_jPanelBtnCortesMouseExited
 
     private void jPanelBtnPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseClicked
 
-//        jTabbedPanePessoas.setSelectedIndex(2);
-//        try{
-//            controller.atualizarPerfil(pessoa);
-//        }catch(Exception e){
-//            System.out.println("Erro: " + e.getMessage());
-//        }
-//        colorDefaultInicio = new Color(78,78,78);
-//        colorDefaultAgendamento = new Color(78,78,78);
-//        colorDefaultPerfil = new Color(121,121,121);
-//        JPanelBtnInicio.setBackground(colorDefaultInicio);
-//        jPanelBtnCortes.setBackground(colorDefaultAgendamento);
-//        jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+        jTabbedPanePessoas.setSelectedIndex(2);
+        colorDefaultInicio = new Color(78, 78, 78);
+        colorDefaultCortes = new Color(78, 78, 78);
+        colorDefaultPessoas = new Color(121, 121, 121);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
+        jPanelBtnCortes.setBackground(colorDefaultCortes);
+        jPanelBtnPessoas.setBackground(colorDefaultPessoas);
 
     }//GEN-LAST:event_jPanelBtnPessoasMouseClicked
 
@@ -597,7 +674,7 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnPessoasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseExited
         // TODO add your handling code here:
-        //jPanelBtnPessoas.setBackground(colorDefaultPerfil);
+        jPanelBtnPessoas.setBackground(colorDefaultPessoas);
     }//GEN-LAST:event_jPanelBtnPessoasMouseExited
 
     private void jPanelBtnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseEntered
@@ -656,9 +733,19 @@ public class ViewAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewAdmin().setVisible(true);
+                ViewAdmin view = new ViewAdmin();
+                view.setarAdmin();
+                view.atualizaTabela();
+                
             }
         });
+        
+    }
+    public void setarAdmin(){
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.atualizaTabela();
+        this.setVisible(true); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -672,6 +759,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -703,9 +791,9 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPanePessoas;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTableClientes;
+    private javax.swing.JTable jTableCortes;
+    private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JTextField jTextFieldDataNascimento;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
@@ -713,5 +801,33 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTelefone;
     private javax.swing.JTextField jTextFieldTempoCorte;
     private javax.swing.JTextField jTextFieldValorCorte;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
-}
+
+    public void atualizaTabela(){
+        controller.adicionaCamposTabelaCortes();  
+    }
+//    public void atualizaTabela(){
+//        controller.adicionaCamposTabelaCortes();
+//    }
+//    
+//    private void initTableListenersConfirmados() {
+//        TabelaConfirmados.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {        
+//            if (!event.getValueIsAdjusting()) {
+//                int selectedRow = TabelaConfirmados.getSelectedRow();
+//                
+//                if (selectedRow >= 0) {
+//                    Remover.setEnabled(true);
+//                    Editar.setEnabled(true);
+//                    Confirmar.setEnabled(false);
+//                    Rejeitar.setEnabled(false);
+//                    TabelaPendentes.clearSelection();
+//                    controller.atualizaCamposConfirmados();
+//                    
+//                }
+//            }
+//        });
+//        
+    }
