@@ -7,6 +7,12 @@ package View;
 
 import Controller.FuncionarioController;
 import Model.Pessoa;
+import Model.Servico;
+import com.toedter.calendar.JDateChooser;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -16,6 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 public class ViewFuncionario extends javax.swing.JFrame {
     private final Pessoa funcionario;
     private final FuncionarioController controller;
+    
     public ViewFuncionario() {
         initComponents();
         this.funcionario = null;
@@ -57,14 +64,20 @@ public class ViewFuncionario extends javax.swing.JFrame {
         Confirmados = new javax.swing.JLabel();
         A_Confirmar = new javax.swing.JLabel();
         jTextFieldNomeCliente = new javax.swing.JTextField();
-        jTextFieldNomeServico = new javax.swing.JTextField();
         jTextFieldTelefoneCliente = new javax.swing.JTextField();
-        jTextFieldData = new javax.swing.JTextField();
         Scroll_Tabela_Confirmados = new javax.swing.JScrollPane();
         TabelaConfirmados = new javax.swing.JTable();
         jLabelNomeCliente = new javax.swing.JLabel();
-        jLabelNomeServico = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
+        jLabelNomeServico = new javax.swing.JLabel();
+        jLabelData = new javax.swing.JLabel();
+        jLabelHorario = new javax.swing.JLabel();
+        jComboBoxServico = new javax.swing.JComboBox<>();
+        jButtonConfirmarEdicao = new javax.swing.JButton();
+        jButtonCancelarEdicao = new javax.swing.JButton();
+        jSelecionaData = new com.toedter.calendar.JDateChooser();
+        jComboBoxHorario = new javax.swing.JComboBox<>();
+        jLabelAviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,8 +168,6 @@ public class ViewFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldNomeServico.setEditable(false);
-
         jTextFieldTelefoneCliente.setEditable(false);
         jTextFieldTelefoneCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,11 +230,57 @@ public class ViewFuncionario extends javax.swing.JFrame {
         jLabelNomeCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelNomeCliente.setText("Nome");
 
+        jLabelTelefone.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabelTelefone.setText("Telefone");
+
         jLabelNomeServico.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelNomeServico.setText("Serviço");
 
-        jLabelTelefone.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabelTelefone.setText("Telefone");
+        jLabelData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabelData.setText("Data");
+
+        jLabelHorario.setText("Horário");
+
+        jComboBoxServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxServicoActionPerformed(evt);
+            }
+        });
+
+        jButtonConfirmarEdicao.setText("Confirmar");
+        jButtonConfirmarEdicao.setEnabled(false);
+        jButtonConfirmarEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarEdicaoActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelarEdicao.setText("Cancelar");
+        jButtonCancelarEdicao.setEnabled(false);
+        jButtonCancelarEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarEdicaoActionPerformed(evt);
+            }
+        });
+
+        jSelecionaData.setToolTipText("");
+        jSelecionaData.setDateFormatString("dd/MM/yyyy");
+        jSelecionaData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSelecionaDataPropertyChange(evt);
+            }
+        });
+
+        jComboBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um horário" }));
+        jComboBoxHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHorarioActionPerformed(evt);
+            }
+        });
+
+        jLabelAviso.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabelAviso.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelAviso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout Tela_FuncionarioLayout = new javax.swing.GroupLayout(Tela_Funcionario);
         Tela_Funcionario.setLayout(Tela_FuncionarioLayout);
@@ -232,31 +289,39 @@ public class ViewFuncionario extends javax.swing.JFrame {
             .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
                 .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Remover, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
-                        .addContainerGap(12, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Scroll_Tabela_Confirmados, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNomeServico, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
-                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelNomeServico)
-                            .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldTelefoneCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxServico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSelecionaData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                    .addComponent(jComboBoxHorario, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelAviso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Tela_FuncionarioLayout.createSequentialGroup()
+                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelNomeCliente)
                             .addComponent(jLabelTelefone)
-                            .addComponent(jTextFieldTelefoneCliente)
-                            .addComponent(jTextFieldData))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabelNomeServico)
+                            .addComponent(jLabelData)
+                            .addComponent(jLabelHorario))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
+                        .addComponent(jButtonConfirmarEdicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
                         .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Rejeitar, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                        .addComponent(Rejeitar, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
                     .addComponent(Scroll_Tabela_Pendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
@@ -274,32 +339,45 @@ public class ViewFuncionario extends javax.swing.JFrame {
                     .addComponent(Confirmados)
                     .addComponent(A_Confirmar))
                 .addGap(8, 8, 8)
-                .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Scroll_Tabela_Confirmados, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Scroll_Tabela_Pendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
+                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Scroll_Tabela_Confirmados, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Scroll_Tabela_Pendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Remover)
+                                .addComponent(Editar)
+                                .addComponent(jButtonConfirmarEdicao))
+                            .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Confirmar)
+                                .addComponent(Rejeitar)
+                                .addComponent(jButtonCancelarEdicao))))
                     .addGroup(Tela_FuncionarioLayout.createSequentialGroup()
                         .addComponent(jLabelNomeCliente)
                         .addGap(4, 4, 4)
                         .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jTextFieldTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelNomeServico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNomeServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Remover)
-                        .addComponent(Editar))
-                    .addGroup(Tela_FuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Confirmar)
-                        .addComponent(Rejeitar)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .addComponent(jLabelData)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSelecionaData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelHorario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,7 +399,15 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeClienteActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        
+        Remover.setEnabled(false);
+        Editar.setEnabled(false);
+        Confirmar.setEnabled(false);
+        Rejeitar.setEnabled(false);
+        jButtonConfirmarEdicao.setEnabled(false);
+        jButtonCancelarEdicao.setEnabled(true);
+        jComboBoxServico.setEnabled(true);
+        jSelecionaData.setEnabled(true);
+               
     }//GEN-LAST:event_EditarActionPerformed
 
     private void RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverActionPerformed
@@ -346,6 +432,64 @@ public class ViewFuncionario extends javax.swing.JFrame {
     private void TabelaConfirmadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaConfirmadosMouseClicked
 
     }//GEN-LAST:event_TabelaConfirmadosMouseClicked
+
+    private void jButtonConfirmarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarEdicaoActionPerformed
+        controller.editaHorario();
+        atualizaTabela();
+        
+    }//GEN-LAST:event_jButtonConfirmarEdicaoActionPerformed
+
+    private void jButtonCancelarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarEdicaoActionPerformed
+        atualizaTabela();
+    }//GEN-LAST:event_jButtonCancelarEdicaoActionPerformed
+
+    private void jComboBoxServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxServicoActionPerformed
+        Servico servicoSelecionado = (Servico) jComboBoxServico.getSelectedItem();
+    
+        if (servicoSelecionado != null && servicoSelecionado.getId() != 0 && jButtonCancelarEdicao.isEnabled()) {  
+            jSelecionaData.setEnabled(true);
+        }else{
+            jSelecionaData.setEnabled(false);
+            jSelecionaData.setDate(null);
+            jComboBoxHorario.setEnabled(false);
+            jComboBoxHorario.removeAllItems();
+        }
+    }//GEN-LAST:event_jComboBoxServicoActionPerformed
+
+    private void jSelecionaDataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSelecionaDataPropertyChange
+        if ("date".equals(evt.getPropertyName())) {
+            Date dataSelecionada = (Date) evt.getNewValue();
+            if (dataSelecionada == null) {
+                return;
+            }
+            Calendar hoje = Calendar.getInstance();
+            hoje.set(Calendar.HOUR_OF_DAY, 0);
+            hoje.set(Calendar.MINUTE, 0);
+            hoje.set(Calendar.SECOND, 0);
+            hoje.set(Calendar.MILLISECOND, 0);
+            hoje.add(Calendar.DAY_OF_YEAR, 1);
+            if (dataSelecionada.before(hoje.getTime())){
+                jComboBoxHorario.setEnabled(false);
+                jComboBoxHorario.removeAllItems();
+                mostrarAviso("Por favor, selecione uma data a partir de amanhã.");
+                jSelecionaData.setDate(null);
+            }else{
+                jComboBoxHorario.setEnabled(true);
+                controller.implementarHorariosDisponiveis();
+                jLabelAviso.setText("");
+            }
+        }
+    }//GEN-LAST:event_jSelecionaDataPropertyChange
+
+    private void jComboBoxHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHorarioActionPerformed
+        String horarioSelecionado = (String) jComboBoxHorario.getSelectedItem();
+    
+        if (horarioSelecionado != null && !horarioSelecionado.equals("Selecione um horário")){
+            jButtonConfirmarEdicao.setEnabled(true);
+        } else {
+            jButtonConfirmarEdicao.setEnabled(false);
+        }
+    }//GEN-LAST:event_jComboBoxHorarioActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -375,23 +519,37 @@ public class ViewFuncionario extends javax.swing.JFrame {
     }
     
     public void setarFuncionario(){
+        controller.setarComboBoxServico();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.atualizaTabela();
         this.setVisible(true);
         
         
+        
     }
             
     public void atualizaTabela(){
+        controller.limpaHorariosPassados();
         controller.adicionaCamposTabelaConfirmados();
         controller.adicionaCamposTabelaPendentes();
         TabelaPendentes.clearSelection();
         TabelaConfirmados.clearSelection();
+        
         Remover.setEnabled(false);
         Editar.setEnabled(false);
         Confirmar.setEnabled(false);
-        Rejeitar.setEnabled(false);  
+        Rejeitar.setEnabled(false);
+        jButtonConfirmarEdicao.setEnabled(false);
+        jButtonCancelarEdicao.setEnabled(false);
+        
+        
+        jTextFieldNomeCliente.setText("");
+        jTextFieldTelefoneCliente.setText("");
+        jComboBoxServico.setSelectedIndex(0);
+        jComboBoxServico.setEnabled(false);
+        jSelecionaData.setEnabled(false);
+        
     }
     
     private void initTableListenersConfirmados() {
@@ -447,12 +605,18 @@ public class ViewFuncionario extends javax.swing.JFrame {
     private javax.swing.JTable TabelaConfirmados;
     private javax.swing.JTable TabelaPendentes;
     private javax.swing.JPanel Tela_Funcionario;
+    private javax.swing.JButton jButtonCancelarEdicao;
+    private javax.swing.JButton jButtonConfirmarEdicao;
+    private javax.swing.JComboBox<String> jComboBoxHorario;
+    private javax.swing.JComboBox<Servico> jComboBoxServico;
+    private javax.swing.JLabel jLabelAviso;
+    private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelHorario;
     private javax.swing.JLabel jLabelNomeCliente;
     private javax.swing.JLabel jLabelNomeServico;
     private javax.swing.JLabel jLabelTelefone;
-    private javax.swing.JTextField jTextFieldData;
+    private com.toedter.calendar.JDateChooser jSelecionaData;
     private javax.swing.JTextField jTextFieldNomeCliente;
-    private javax.swing.JTextField jTextFieldNomeServico;
     private javax.swing.JTextField jTextFieldTelefoneCliente;
     // End of variables declaration//GEN-END:variables
 
@@ -473,16 +637,35 @@ public class ViewFuncionario extends javax.swing.JFrame {
         return jTextFieldNomeCliente;
     }
 
-    public JTextField getjTextFieldNomeServico() {
-        return jTextFieldNomeServico;
+    public JComboBox<Servico> getjComboBoxServico() {
+        return jComboBoxServico;
     }
+
+    
 
     public JTextField getjTextFieldTelefoneCliente() {
         return jTextFieldTelefoneCliente;
     }
 
-    
-    
+    public JButton getjButtonConfirmarEdicao() {
+        return jButtonConfirmarEdicao;
+    }
+
+    public JLabel getjLabelAviso() {
+        return jLabelAviso;
+    }
+
+    public JDateChooser getjSelecionaData() {
+        return jSelecionaData;
+    }
+
+    public JComboBox<String> getjComboBoxHorario() {
+        return jComboBoxHorario;
+    }
+
+    public void mostrarAviso(String aviso){
+        this.getjLabelAviso().setText(aviso);
+    }
     
     
 }

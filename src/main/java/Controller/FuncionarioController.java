@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import BDO.HorarioBanco;
+import BDO.ServicoBanco;
 import Model.Horario;
+import Model.Pessoa;
+import Model.Servico;
 import View.ViewFuncionario;
 import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -159,7 +160,7 @@ public class FuncionarioController {
         Horario horarioId = bd.retornaHorarioPorID(idHorario);
         view.getjTextFieldNomeCliente().setText(horarioId.getCliente().getNome());
         view.getjTextFieldTelefoneCliente().setText(horarioId.getCliente().getTelefone());
-        view.getjTextFieldNomeServico().setText(horarioId.getServico().getNome()); 
+        setarServicoNoComboBox(horarioId.getServico()); 
     }
     
     public void atualizaCamposPendentes(){
@@ -169,7 +170,97 @@ public class FuncionarioController {
         Horario horarioId = bd.retornaHorarioPorID(idHorario);
         view.getjTextFieldNomeCliente().setText(horarioId.getCliente().getNome());
         view.getjTextFieldTelefoneCliente().setText(horarioId.getCliente().getTelefone());
-        view.getjTextFieldNomeServico().setText(horarioId.getServico().getNome()); 
+        setarServicoNoComboBox(horarioId.getServico()); 
     }
    
+    public void setarComboBoxServico(){
+        ServicoBanco banco =  new ServicoBanco();
+        List <Servico> servicos = banco.retornaServicos();
+        view.getjComboBoxServico().addItem(new Servico(0, "Selecione um serviço"));
+        try {
+            for(Servico servico : servicos){
+                view.getjComboBoxServico().addItem(servico);
+            }
+        }catch (NullPointerException e) {
+            System.out.println("Não existem serviços registrados.");
+        }
+        view.getjComboBoxServico().setEnabled(false);
+    }
+    
+    public void setarServicoNoComboBox(Servico servicoSelecionado) {
+        for (int i = 0; i < view.getjComboBoxServico().getItemCount(); i++){
+            Servico servico = (Servico) view.getjComboBoxServico().getItemAt(i);
+            if (servico.getId() == servicoSelecionado.getId()){
+                view.getjComboBoxServico().setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
+    public void implementarHorariosDisponiveis(){
+        HorarioBanco bd = new HorarioBanco();
+        Pessoa funcionarioSelecionado = view.getFuncionario();
+        Servico servicoSelecionado = (Servico) view.getjComboBoxServico().getSelectedItem();
+
+        
+        if(funcionarioSelecionado == null || servicoSelecionado == null){
+            view.getjLabelAviso().setText("Por favor, selecione um funcionário e um serviço.");
+            return;
+        }
+
+        int id = funcionarioSelecionado.getId();
+
+        
+        Date dataSelecionada = view.getjSelecionaData().getDate();
+        if (dataSelecionada == null) {
+            view.getjLabelAviso().setText("Por favor, selecione uma data válida.");
+            return; 
+        }
+       
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = formato.format(dataSelecionada);
+
+       
+        List<String> horariosDisponiveis = bd.consultarHorariosDisponiveisFuncionario(dataFormatada, id, servicoSelecionado);
+
+       
+        view.getjComboBoxHorario().removeAllItems();
+        view.getjComboBoxHorario().addItem("Selecione um horário");
+
+        if (horariosDisponiveis.isEmpty()){
+            view.getjLabelAviso().setVisible(true);
+        } else {
+            for (String horario : horariosDisponiveis) {
+                view.getjComboBoxHorario().addItem(horario);
+            }
+        }
+    }
+    
+    
+    public void editaHorario(){
+        HorarioBanco bdHorario = new HorarioBanco();
+        
+        int selectedRow = view.getTabelaConfirmados().getSelectedRow();
+        int idHorario = Integer.parseInt(view.getTabelaConfirmados().getValueAt(selectedRow, 0).toString());
+        
+        Servico servico = (Servico)(view.getjComboBoxServico().getSelectedItem());
+        
+        Date dataSelecionada = view.getjSelecionaData().getDate();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String data = formato.format(dataSelecionada);
+        String horario = (String)view.getjComboBoxHorario().getSelectedItem();
+        
+        if(bdHorario.editarHorario(idHorario,servico, data, horario)){
+            view.mostrarAviso("Horário editado");
+        }else{
+            view.mostrarAviso("Erro ao editar horário...");
+        }
+    }
+    
+    public void limpaHorariosPassados(){
+        HorarioBanco bdHorario = new HorarioBanco();
+        bdHorario.removerHorariosPassados();
+    }
+    
+    
 }

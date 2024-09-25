@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -72,6 +75,8 @@ public class HorarioBanco {
     public List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario, Servico servico){
         List<Horario> horariosMarcados = retornaHorariosMarcadosFuncionario(idFuncionario);
         List<String> horariosDisponiveis = new ArrayList<>();
+
+       
         for(int horas = 7; horas < 18; horas++){
             for (int minutos = 0; minutos < 60; minutos += 15){
                 String horarioFormatado = String.format("%02d:%02d", horas, minutos);
@@ -79,21 +84,22 @@ public class HorarioBanco {
             }
         }
 
-        for(Horario horarioMarcado : horariosMarcados){
-            if(horarioMarcado.getData().equals(dataSelecionada)){
+        
+        for (Horario horarioMarcado : horariosMarcados) {
+            if (horarioMarcado.getData().equals(dataSelecionada)) {
                 String horarioInicio = horarioMarcado.getHorarioInicio();
                 int duracaoMarcada = horarioMarcado.getServico().getDuracao() * 15;
 
                 int horasInicio = Integer.parseInt(horarioInicio.split(":")[0]);
                 int minutosInicio = Integer.parseInt(horarioInicio.split(":")[1]);
 
-               
-                for(int i = 0; i < duracaoMarcada; i += 15){
+                
+                for (int i = 0; i < duracaoMarcada; i += 15) {
                     String horarioOcupado = String.format("%02d:%02d", horasInicio, minutosInicio);
                     horariosDisponiveis.remove(horarioOcupado);
                     minutosInicio += 15;
 
-                    if(minutosInicio == 60){
+                    if (minutosInicio == 60) {
                         minutosInicio = 0;
                         horasInicio++;
                     }
@@ -104,22 +110,59 @@ public class HorarioBanco {
         int duracaoServico = servico.getDuracao() * 15; 
 
         List<String> horariosValidos = new ArrayList<>();
-        for(int i = 0; i < horariosDisponiveis.size(); i++){
+        for (int i = 0; i < horariosDisponiveis.size(); i++) {
+            String horarioInicioNovoServico = horariosDisponiveis.get(i);
+
+            
+            int horasInicioNovoServico = Integer.parseInt(horarioInicioNovoServico.split(":")[0]);
+            int minutosInicioNovoServico = Integer.parseInt(horarioInicioNovoServico.split(":")[1]);
+
+            
+            int horasFimNovoServico = horasInicioNovoServico;
+            int minutosFimNovoServico = minutosInicioNovoServico + duracaoServico;
+
+            while (minutosFimNovoServico >= 60) {
+                minutosFimNovoServico -= 60;
+                horasFimNovoServico++;
+            }
+
             boolean disponivel = true;
-            for(int j = 0; j < duracaoServico / 15; j++){
-                int indice = i + j;
-                if(indice >= horariosDisponiveis.size() || !horariosDisponiveis.contains(horariosDisponiveis.get(indice))){
-                    disponivel = false;
-                    break;
+
+            
+            for (Horario horarioMarcado : horariosMarcados) {
+                if (horarioMarcado.getData().equals(dataSelecionada)) {
+                    String horarioInicioMarcado = horarioMarcado.getHorarioInicio();
+                    int duracaoMarcada = horarioMarcado.getServico().getDuracao() * 15;
+
+                    int horasInicioMarcado = Integer.parseInt(horarioInicioMarcado.split(":")[0]);
+                    int minutosInicioMarcado = Integer.parseInt(horarioInicioMarcado.split(":")[1]);
+
+                    
+                    int horasFimMarcado = horasInicioMarcado;
+                    int minutosFimMarcado = minutosInicioMarcado + duracaoMarcada;
+
+                    while (minutosFimMarcado >= 60) {
+                        minutosFimMarcado -= 60;
+                        horasFimMarcado++;
+                    }
+
+                   
+                    if (!((horasFimNovoServico <= horasInicioMarcado && minutosFimNovoServico <= minutosInicioMarcado)
+                          || (horasInicioNovoServico >= horasFimMarcado && minutosInicioNovoServico >= minutosFimMarcado))) {
+                        disponivel = false;
+                        break;
+                    }
                 }
             }
-            if(disponivel){
-                horariosValidos.add(horariosDisponiveis.get(i));
+
+            
+            if (disponivel) {
+                horariosValidos.add(horarioInicioNovoServico);
             }
         }
 
-        return horariosValidos;
-    }
+    return horariosValidos;
+}
 
     
     public List retornaHorariosMarcadosFuncionario(int idFuncionario){
@@ -129,7 +172,7 @@ public class HorarioBanco {
         }
         List <Horario> horariosMarcados = new ArrayList<>();
         for(Horario horarioGeral: todosHorarios){
-            if(horarioGeral.getFuncionario().getId() == idFuncionario && horarioGeral.isMarcado()){
+            if(horarioGeral.getFuncionario().getId() == idFuncionario){//Alterado para os horários na pendência não conseguirem serem marcados duas vezes
                 horariosMarcados.add(horarioGeral);
             }
         }
@@ -285,5 +328,90 @@ public class HorarioBanco {
             return false;
         }
         return true;
+    }
+    
+    public boolean editarHorario(int idHorario, Servico servico, String data, String horario) {
+        List<Horario> horarios = retornaHorarios();
+
+        boolean horarioEditado = false;
+        if(horarios == null || horarios.isEmpty()){
+            return false;
+        }
+
+        for(Horario h : horarios){
+            if(h.getId() == idHorario){
+                h.setServico(servico);
+                h.setData(data);
+                h.setHorarioInicio(horario);
+                horarioEditado = true;
+                break;
+            }
+        }
+
+        if(horarioEditado){
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))){
+                pw.println("id,servicoId,data,horaInicio,funcionarioId,clienteId,marcado");
+                for (Horario h : horarios) {
+                    pw.println(h.getId() + "," +
+                               h.getServico().getId() + "," +
+                               h.getData() + "," +
+                               h.getHorarioInicio() + "," +
+                               h.getFuncionario().getId() + "," +
+                               h.getCliente().getId() + "," +
+                               h.isMarcado());
+                }
+                return true;
+            }catch(IOException e){
+                System.out.println("Erro ao editar o horário: " + e.getMessage());
+                return false;
+            }
+        }
+        return false;
+    }
+    
+    public boolean removerHorariosPassados() {
+        List<Horario> horarios = retornaHorarios();
+        List<Horario> horariosAtualizados = new ArrayList<>();
+        boolean houveRemocao = false;
+
+        Date agora = new Date();
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+
+        for (Horario horario : horarios) {
+            try {
+                String dataHorarioCompleto = horario.getData() + " " + horario.getHorarioInicio();
+                SimpleDateFormat formatoCompleto = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                Date dataHorario = formatoCompleto.parse(dataHorarioCompleto);
+
+                if (dataHorario.after(agora)) {
+                    horariosAtualizados.add(horario);
+                } else {
+                    houveRemocao = true;
+                }
+            } catch (ParseException e) {
+                System.out.println("Erro ao converter a data ou horário: " + e.getMessage());
+            }
+        }
+
+        if (houveRemocao) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                pw.println("id,servicoId,data,horaInicio,funcionarioId,clienteId,marcado");
+                for (Horario horario : horariosAtualizados) {
+                    pw.println(horario.getId() + "," +
+                               horario.getServico().getId() + "," +
+                               horario.getData() + "," +
+                               horario.getHorarioInicio() + "," +
+                               horario.getFuncionario().getId() + "," +
+                               horario.getCliente().getId() + "," +
+                               horario.isMarcado());
+                }
+            } catch (IOException e) {
+                System.out.println("Erro ao atualizar o banco de horários: " + e.getMessage());
+                return false;
+            }
+        }
+
+        return houveRemocao;
     }
 }
