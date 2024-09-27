@@ -116,7 +116,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         jTextFieldNome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldNome.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNome.setBorder(null);
-        jTextFieldNome.setCaretColor(new Color(255, 255, 255));
+        jTextFieldNome.setCaretColor(new Color(0, 0, 0));
         jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNomeActionPerformed(evt);
@@ -133,7 +133,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         jTextFieldTelefone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldTelefone.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTelefone.setBorder(null);
-        jTextFieldTelefone.setCaretColor(new Color(255, 255, 255));
+        jTextFieldTelefone.setCaretColor(new Color(0, 0, 0));
         jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTelefoneActionPerformed(evt);
@@ -150,7 +150,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         jTextFieldEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldEmail.setBorder(null);
-        jTextFieldEmail.setCaretColor(new Color(255, 255, 255));
+        jTextFieldEmail.setCaretColor(new Color(0, 0, 0));
         jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmailActionPerformed(evt);
@@ -167,7 +167,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         jTextFieldDataNasc.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldDataNasc.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldDataNasc.setBorder(null);
-        jTextFieldDataNasc.setCaretColor(new Color(255, 255, 255));
+        jTextFieldDataNasc.setCaretColor(new Color(0, 0, 0));
         jTextFieldDataNasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDataNascActionPerformed(evt);
@@ -184,7 +184,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         jTextFieldUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldUsuario.setBorder(null);
-        jTextFieldUsuario.setCaretColor(new Color(255, 255, 255));
+        jTextFieldUsuario.setCaretColor(new Color(0, 0, 0));
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -201,7 +201,7 @@ public class ViewRegistro extends javax.swing.JFrame {
         jPasswordFieldSenha.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jPasswordFieldSenha.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordFieldSenha.setBorder(null);
-        jPasswordFieldSenha.setCaretColor(new Color(255,255,255));
+        jPasswordFieldSenha.setCaretColor(new Color(0, 0, 0));
         jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldSenhaActionPerformed(evt);

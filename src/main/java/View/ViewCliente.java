@@ -632,6 +632,8 @@ public class ViewCliente extends javax.swing.JFrame {
     
         if (funcionarioSelecionado != null && funcionarioSelecionado.getId() != 0 && ((Servico) jComboBoxServico.getSelectedItem()).getId() != 0) {  
             jSelecionaData.setEnabled(true);
+            jComboBoxHorarios.removeAllItems();
+            preencherComboBoxHorarios();
         }else{
             jSelecionaData.setEnabled(false);
             jSelecionaData.setDate(null);
@@ -672,6 +674,8 @@ public class ViewCliente extends javax.swing.JFrame {
     
         if (servicoSelecionado != null && servicoSelecionado.getId() != 0 && ((Pessoa)jComboBoxFuncionario.getSelectedItem()).getId() != 0) {  
             jSelecionaData.setEnabled(true);
+            jComboBoxHorarios.removeAllItems();
+            preencherComboBoxHorarios();
         }else{
             jSelecionaData.setEnabled(false);
             jSelecionaData.setDate(null);
@@ -681,7 +685,9 @@ public class ViewCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxServicoActionPerformed
 
     private void jPanelBtnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseClicked
-       this.dispose();
+        ViewLogin login =  new ViewLogin();
+        login.setarLogin();
+        this.dispose();
     }//GEN-LAST:event_jPanelBtnSairMouseClicked
 
     private void jLabelSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSairMouseClicked

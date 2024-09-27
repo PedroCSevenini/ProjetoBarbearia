@@ -4,10 +4,7 @@
  */
 package Model;
 
-/**
- *
- * @author pedro
- */
+
 abstract public class Pessoa {
     protected int id;
     protected String nome;

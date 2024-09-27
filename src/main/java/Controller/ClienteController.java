@@ -118,7 +118,13 @@ public class  ClienteController{
             Date dataSelecionada = view.getjSelecionaData().getDate();
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             String data = formato.format(dataSelecionada);
+            if(view.getjComboBoxHorarios().getSelectedIndex() == 0){
+                view.mostrarAviso("Selecione um horário.");
+                return;
+            }
             String horario = (String)view.getjComboBoxHorarios().getSelectedItem();
+            
+                
             Funcionario funcionario = (Funcionario) view.getjComboBoxFuncionario().getSelectedItem();
             Cliente cliente = PessoaBanco.procuraClientePorID(view.getPessoa().getId());
             boolean marcado = false;

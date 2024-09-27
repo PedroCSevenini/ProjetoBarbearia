@@ -4,10 +4,6 @@
  */
 package Model;
 
-/**
- *
- * @author pedro
- */
 public class Servico {
     protected int id;
     private String nome;
@@ -27,7 +23,6 @@ public class Servico {
         this.id = id;
         this.nome = nome;
     }
-    
     
 
     public int getId() {

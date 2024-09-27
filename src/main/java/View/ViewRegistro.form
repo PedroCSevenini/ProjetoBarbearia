@@ -162,7 +162,7 @@
           <Border info="null"/>
         </Property>
         <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new Color(255, 255, 255)" type="code"/>
+          <Connection code="new Color(0, 0, 0)" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -205,7 +205,7 @@
           <Border info="null"/>
         </Property>
         <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new Color(255, 255, 255)" type="code"/>
+          <Connection code="new Color(0, 0, 0)" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -248,7 +248,7 @@
           <Border info="null"/>
         </Property>
         <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new Color(255, 255, 255)" type="code"/>
+          <Connection code="new Color(0, 0, 0)" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -291,7 +291,7 @@
           <Border info="null"/>
         </Property>
         <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new Color(255, 255, 255)" type="code"/>
+          <Connection code="new Color(0, 0, 0)" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -334,7 +334,7 @@
           <Border info="null"/>
         </Property>
         <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new Color(255, 255, 255)" type="code"/>
+          <Connection code="new Color(0, 0, 0)" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -377,7 +377,7 @@
           <Border info="null"/>
         </Property>
         <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new Color(255,255,255)" type="code"/>
+          <Connection code="new Color(0, 0, 0)" type="code"/>
         </Property>
       </Properties>
       <Events>
