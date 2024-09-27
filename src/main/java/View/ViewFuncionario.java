@@ -448,6 +448,8 @@ public class ViewFuncionario extends javax.swing.JFrame {
     
         if (servicoSelecionado != null && servicoSelecionado.getId() != 0 && jButtonCancelarEdicao.isEnabled()) {  
             jSelecionaData.setEnabled(true);
+            jComboBoxHorario.removeAllItems();
+            controller.implementarHorariosDisponiveis();
         }else{
             jSelecionaData.setEnabled(false);
             jSelecionaData.setDate(null);
@@ -475,6 +477,7 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 jSelecionaData.setDate(null);
             }else{
                 jComboBoxHorario.setEnabled(true);
+                jComboBoxHorario.removeAllItems();
                 controller.implementarHorariosDisponiveis();
                 jLabelAviso.setText("");
             }
@@ -560,6 +563,9 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 if (selectedRow >= 0) {
                     Remover.setEnabled(true);
                     Editar.setEnabled(true);
+                    jButtonCancelarEdicao.setEnabled(false);
+                    jButtonConfirmarEdicao.setEnabled(false);
+                    jComboBoxServico.setEnabled(false);
                     Confirmar.setEnabled(false);
                     Rejeitar.setEnabled(false);
                     TabelaPendentes.clearSelection();

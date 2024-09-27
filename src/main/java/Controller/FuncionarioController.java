@@ -215,9 +215,11 @@ public class FuncionarioController {
        
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String dataFormatada = formato.format(dataSelecionada);
-
+        
+        int selectedRow = view.getTabelaConfirmados().getSelectedRow();
+        int idHorario = Integer.parseInt(view.getTabelaConfirmados().getValueAt(selectedRow, 0).toString());
        
-        List<String> horariosDisponiveis = bd.consultarHorariosDisponiveisFuncionario(dataFormatada, id, servicoSelecionado);
+        List<String> horariosDisponiveis = bd.consultarHorariosDisponiveisFuncionario(dataFormatada, id, servicoSelecionado, idHorario);
 
        
         view.getjComboBoxHorario().removeAllItems();

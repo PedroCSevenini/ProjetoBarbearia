@@ -6,3 +6,4 @@ ID, NOME, EMAIL, TELEFONE, DATANASC, NIVELACESSO
 5,Yan Dias,yandias@gmail.com,32837481234,25/06/2003,1
 6,Geovanni,fdasdfafas@sdasdasd.com,32984647830,22/11/2001,1
 7,bruna,contatosbruninha@icloud.com,22988168431,31/05/2003,1
+8,Kaique Dias,kaiquedias@gmail.com,32981832834,20/02/2001,1

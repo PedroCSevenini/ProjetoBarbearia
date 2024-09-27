@@ -99,9 +99,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jPanelInicio = new javax.swing.JPanel();
         jScrollPaneAgendado = new javax.swing.JScrollPane();
         jTextAreaAgendado = new javax.swing.JTextArea();
-        jPanelBtnNovoAgendamento = new javax.swing.JPanel();
-        jLabelNovoAgendamento = new javax.swing.JLabel();
-        jButtonNovoAgendamento = new javax.swing.JButton();
         jPanelAgendamento = new javax.swing.JPanel();
         jButtonMarcar = new javax.swing.JButton();
         jComboBoxFuncionario = new javax.swing.JComboBox<>();
@@ -295,51 +292,21 @@ public class ViewCliente extends javax.swing.JFrame {
         jTextAreaAgendado.setText("Não há horário marcado.");
         jScrollPaneAgendado.setViewportView(jTextAreaAgendado);
 
-        jLabelNovoAgendamento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelNovoAgendamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNovoAgendamento.setText("Novo Agendamento");
-
-        jButtonNovoAgendamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNovoAgendamentoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelBtnNovoAgendamentoLayout = new javax.swing.GroupLayout(jPanelBtnNovoAgendamento);
-        jPanelBtnNovoAgendamento.setLayout(jPanelBtnNovoAgendamentoLayout);
-        jPanelBtnNovoAgendamentoLayout.setHorizontalGroup(
-            jPanelBtnNovoAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelNovoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButtonNovoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanelBtnNovoAgendamentoLayout.setVerticalGroup(
-            jPanelBtnNovoAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBtnNovoAgendamentoLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabelNovoAgendamento)
-                .addContainerGap(11, Short.MAX_VALUE))
-            .addComponent(jButtonNovoAgendamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
         jPanelInicio.setLayout(jPanelInicioLayout);
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addGap(159, 159, 159)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPaneAgendado)
-                    .addComponent(jPanelBtnNovoAgendamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addComponent(jScrollPaneAgendado, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addComponent(jScrollPaneAgendado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jPanelBtnNovoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(116, 116, 116))
         );
 
         jTabbedPaneAbas.addTab("tab2", jPanelInicio);
@@ -516,10 +483,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private void preencherComboBoxHorarios() {
         controller.implementarHorarioDisponiveis();
     }
-
-    private void jButtonNovoAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoAgendamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNovoAgendamentoActionPerformed
 
     private void jButtonMarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarActionPerformed
         controller.marcarHorario();
@@ -734,7 +697,6 @@ public class ViewCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelBtnInicio;
     private javax.swing.JButton jButtonMarcar;
-    private javax.swing.JButton jButtonNovoAgendamento;
     private javax.swing.JComboBox<Pessoa> jComboBoxFuncionario;
     private javax.swing.JComboBox<String> jComboBoxHorarios;
     private javax.swing.JComboBox<Servico> jComboBoxServico;
@@ -748,7 +710,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelIconSair;
     private javax.swing.JLabel jLabelImagemUsuario;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JLabel jLabelNovoAgendamento;
     private javax.swing.JLabel jLabelSair;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelTitulo;
@@ -760,7 +721,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBarraPanel;
     private javax.swing.JPanel jPanelBarraPrincipal;
     private javax.swing.JPanel jPanelBtnAgendamento;
-    private javax.swing.JPanel jPanelBtnNovoAgendamento;
     private javax.swing.JPanel jPanelBtnPerfil;
     private javax.swing.JPanel jPanelBtnSair;
     private javax.swing.JPanel jPanelFundo;

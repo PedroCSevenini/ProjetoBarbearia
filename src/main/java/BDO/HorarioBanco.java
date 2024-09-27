@@ -165,6 +165,102 @@ public class HorarioBanco {
         return horariosValidos;
     }
 
+    public List<String> consultarHorariosDisponiveisFuncionario(String dataSelecionada, int idFuncionario, Servico servico, int idHorarioIgnorar) {
+        List<Horario> horariosMarcados = retornaHorariosMarcadosFuncionario(idFuncionario);
+        List<String> horariosDisponiveis = new ArrayList<>();
+
+        // Adiciona horários disponíveis das 07:00 às 18:00 em intervalos de 15 minutos
+        for (int horas = 7; horas < 18; horas++) {
+            for (int minutos = 0; minutos < 60; minutos += 15) {
+                String horarioFormatado = String.format("%02d:%02d", horas, minutos);
+                horariosDisponiveis.add(horarioFormatado);
+            }
+        }
+
+        // Remove os horários ocupados, exceto o horário que deve ser ignorado
+        for (Horario horarioMarcado : horariosMarcados) {
+            if (horarioMarcado.getId() == idHorarioIgnorar) {
+                continue; // Ignora o horário marcado que coincide com o idHorarioIgnorar
+            }
+            if (horarioMarcado.getData().equals(dataSelecionada)) {
+                String horarioInicio = horarioMarcado.getHorarioInicio();
+                int duracaoMarcada = horarioMarcado.getServico().getDuracao() * 15; // em minutos
+
+                int horasInicio = Integer.parseInt(horarioInicio.split(":")[0]);
+                int minutosInicio = Integer.parseInt(horarioInicio.split(":")[1]);
+                int minutosFim = minutosInicio + duracaoMarcada;
+
+                // Ajustar horas se os minutos estourarem
+                int horasFim = horasInicio;
+                while (minutosFim >= 60) {
+                    minutosFim -= 60;
+                    horasFim++;
+                }
+
+                // Remover horários que colidem
+                for (int i = horasInicio; i <= horasFim; i++) {
+                    for (int j = (i == horasInicio ? minutosInicio : 0); j < (i == horasFim ? minutosFim : 60); j += 15) {
+                        String horarioOcupado = String.format("%02d:%02d", i, j);
+                        horariosDisponiveis.remove(horarioOcupado);
+                    }
+                }
+            }
+        }
+
+        // Verifica horários válidos para o novo serviço
+        int duracaoServico = servico.getDuracao() * 15; // duração em minutos
+        List<String> horariosValidos = new ArrayList<>();
+        for (String horario : horariosDisponiveis) {
+            int horasNovoServico = Integer.parseInt(horario.split(":")[0]);
+            int minutosNovoServico = Integer.parseInt(horario.split(":")[1]);
+
+            int horasFimNovoServico = horasNovoServico;
+            int minutosFimNovoServico = minutosNovoServico + duracaoServico - 15;
+
+            // Ajustar horas se os minutos estourarem
+            while (minutosFimNovoServico >= 60) {
+                minutosFimNovoServico -= 60;
+                horasFimNovoServico++;
+            }
+
+            // Verifique se o novo serviço colide com horários ocupados
+            boolean disponivel = true;
+            for (Horario horarioMarcado : horariosMarcados) {
+                if (horarioMarcado.getId() == idHorarioIgnorar) {
+                    continue; // Ignora o horário que coincide com idHorarioIgnorar
+                }
+                if (horarioMarcado.getData().equals(dataSelecionada)) {
+                    String horarioInicioMarcado = horarioMarcado.getHorarioInicio();
+                    int duracaoMarcada = horarioMarcado.getServico().getDuracao() * 15;
+
+                    int horasInicioMarcado = Integer.parseInt(horarioInicioMarcado.split(":")[0]);
+                    int minutosInicioMarcado = Integer.parseInt(horarioInicioMarcado.split(":")[1]);
+                    int minutosFimMarcado = minutosInicioMarcado + duracaoMarcada - 15;
+
+                    // Ajustar horas se os minutos estourarem
+                    int horasFimMarcado = horasInicioMarcado;
+                    while (minutosFimMarcado >= 60) {
+                        minutosFimMarcado -= 60;
+                        horasFimMarcado++;
+                    }
+
+                    // Checar se os horários colidem
+                    if (!((horasFimNovoServico < horasInicioMarcado) || (horasNovoServico >= horasFimMarcado))) {
+                        disponivel = false;
+                        break;
+                    }
+                }
+            }
+
+            // Adicionar apenas se o horário estiver disponível
+            if (disponivel) {
+                horariosValidos.add(horario);
+            }
+        }
+
+        return horariosValidos;
+    }
+
     public List retornaHorariosMarcadosFuncionario(int idFuncionario) {
         List<Horario> todosHorarios = retornaHorarios();
         if (todosHorarios.isEmpty()) {
