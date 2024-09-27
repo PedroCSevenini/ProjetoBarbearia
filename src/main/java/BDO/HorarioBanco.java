@@ -121,7 +121,7 @@ public class HorarioBanco {
             int minutosNovoServico = Integer.parseInt(horario.split(":")[1]);
 
             int horasFimNovoServico = horasNovoServico;
-            int minutosFimNovoServico = minutosNovoServico + duracaoServico;
+            int minutosFimNovoServico = minutosNovoServico + duracaoServico - 15;
 
             // Ajustar horas se os minutos estourarem
             while (minutosFimNovoServico >= 60) {
@@ -138,7 +138,7 @@ public class HorarioBanco {
 
                     int horasInicioMarcado = Integer.parseInt(horarioInicioMarcado.split(":")[0]);
                     int minutosInicioMarcado = Integer.parseInt(horarioInicioMarcado.split(":")[1]);
-                    int minutosFimMarcado = minutosInicioMarcado + duracaoMarcada;
+                    int minutosFimMarcado = minutosInicioMarcado + duracaoMarcada - 15;
 
                     // Ajustar horas se os minutos estourarem
                     int horasFimMarcado = horasInicioMarcado;
