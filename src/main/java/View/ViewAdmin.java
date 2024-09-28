@@ -122,6 +122,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jTableClientes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButtonEditarCli = new javax.swing.JButton();
         jPanelAdicionaFuncionario = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -144,6 +145,9 @@ public class ViewAdmin extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableFuncionarios = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonRemover = new javax.swing.JButton();
+        jButtonNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -440,13 +444,33 @@ public class ViewAdmin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Título 5", "Título 6"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(jTableClientes);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Clientes");
 
         jButton4.setText("Remover ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButtonEditarCli.setText("Editar");
+        jButtonEditarCli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEditarCliMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelPessoasLayout = new javax.swing.GroupLayout(jPanelPessoas);
         jPanelPessoas.setLayout(jPanelPessoasLayout);
@@ -462,10 +486,12 @@ public class ViewAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jButtonEditarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
         );
         jPanelPessoasLayout.setVerticalGroup(
             jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,7 +501,9 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButtonEditarCli))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -605,22 +633,51 @@ public class ViewAdmin extends javax.swing.JFrame {
             }
         ));
         jScrollPane5.setViewportView(jTableFuncionarios);
+        if (jTableFuncionarios.getColumnModel().getColumnCount() > 0) {
+            jTableFuncionarios.getColumnModel().getColumn(0).setResizable(false);
+            jTableFuncionarios.getColumnModel().getColumn(1).setResizable(false);
+            jTableFuncionarios.getColumnModel().getColumn(2).setResizable(false);
+            jTableFuncionarios.getColumnModel().getColumn(3).setResizable(false);
+            jTableFuncionarios.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel13.setText("Funcionarios");
+
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEditarMouseClicked(evt);
+            }
+        });
+
+        jButtonRemover.setText("Remover");
+
+        jButtonNovo.setText("Novo");
 
         javax.swing.GroupLayout jPanelFuncionariosLayout = new javax.swing.GroupLayout(jPanelFuncionarios);
         jPanelFuncionarios.setLayout(jPanelFuncionariosLayout);
         jPanelFuncionariosLayout.setHorizontalGroup(
             jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
+                    .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                        .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                                .addGap(244, 244, 244)
+                                .addComponent(jLabel13))
+                            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelFuncionariosLayout.setVerticalGroup(
             jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -629,7 +686,12 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addGap(44, 44, 44)
+                .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonRemover)
+                    .addComponent(jButtonNovo))
+                .addContainerGap())
         );
 
         jTabbedPanePessoas.addTab("Funcionarios", jPanelFuncionarios);
@@ -744,6 +806,21 @@ public class ViewAdmin extends javax.swing.JFrame {
         jTabbedPanePessoas.setSelectedIndex(5);
     }//GEN-LAST:event_jPanel1MouseClicked
 
+    private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
+        // TODO add your handling code here:
+        controller.editarFuncionario();
+    }//GEN-LAST:event_jButtonEditarMouseClicked
+
+    private void jButtonEditarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarCliMouseClicked
+        // TODO add your handling code here:
+        controller.editarCliente();
+    }//GEN-LAST:event_jButtonEditarCliMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        controller.removerCliente();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -794,6 +871,10 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonEditarCli;
+    private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonRemover;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
