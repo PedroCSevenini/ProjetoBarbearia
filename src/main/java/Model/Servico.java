@@ -9,14 +9,12 @@ public class Servico {
     private String nome;
     private String preco;
     private int duracao; // +1 para cada 15 min
-    private String desc;
 
-    public Servico(int id, String nome, String preco, int duracao, String desc) {
+    public Servico(int id, String nome, String preco, int duracao) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.duracao = duracao;
-        this.desc = desc;
     }
 
     public Servico(int id, String nome) {
@@ -53,13 +51,6 @@ public class Servico {
         this.duracao = duracao;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
     @Override
     public String toString(){

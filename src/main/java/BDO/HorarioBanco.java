@@ -507,4 +507,46 @@ public class HorarioBanco {
 
         return houveRemocao;
     }
+
+    public boolean removerHorariosPorServicoId(int idServico) {
+        List<Horario> horariosAtualizados = new ArrayList<>();
+        List<Horario> horarios = retornaHorarios();
+        boolean houveRemocao = false;
+
+        if (horarios == null || horarios.isEmpty()) {
+            return false;
+        }
+
+        // Itera sobre os horários e remove os que estão relacionados ao id do serviço
+        for (Horario horario : horarios) {
+            if (horario.getServico().getId() != idServico) {
+                horariosAtualizados.add(horario); // Adiciona apenas os que não estão relacionados ao serviço
+            } else {
+                houveRemocao = true; // Indica que ao menos um horário foi removido
+            }
+        }
+
+        // Se houve remoção, atualiza o arquivo
+        if (houveRemocao) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                pw.println("id,servicoId,data,horaInicio,funcionarioId,clienteId,marcado");
+                for (Horario horario : horariosAtualizados) {
+                    pw.println(horario.getId() + ","
+                            + horario.getServico().getId() + ","
+                            + horario.getData() + ","
+                            + horario.getHorarioInicio() + ","
+                            + horario.getFuncionario().getId() + ","
+                            + horario.getCliente().getId() + ","
+                            + horario.isMarcado());
+                }
+                return true;
+            } catch (IOException e) {
+                System.out.println("Erro ao atualizar o banco de horários: " + e.getMessage());
+                return false;
+            }
+        }
+        return houveRemocao; // Retorna se houve remoção ou não
+    }
+    
+    
 }

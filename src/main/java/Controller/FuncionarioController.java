@@ -93,6 +93,7 @@ public class FuncionarioController {
             );
             if (opcao == JOptionPane.YES_OPTION) {
                 bd.removeHorarioPorID(idHorario);
+                
             }  
         }catch(HeadlessException | NumberFormatException e){
             System.out.println("Nenhum valor selecionado!");

@@ -213,17 +213,20 @@ public class PessoaBanco {
         return null;
     }
 
-    public void atualizaArquivoCSV(List<Pessoa> pessoas){
-                // Atualiza o arquivo CSV
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, false))) {
-            for (Pessoa pessoa : pessoas) {
-                String linha = pessoa.getId() + "," + pessoa.getNome() + "," + pessoa.getEmail() + ","
-                        + pessoa.getTelefone() + "," + pessoa.getDataNasc() + "," + pessoa.getNivelAcesso();
-                bw.write(linha);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Erro ao atualizar arquivo: " + e.getMessage());
-        }
-    }
+    
+    
+//    public void atualizaArquivoCSV(List<Pessoa> pessoas){
+//        
+//        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, false))) {
+//            
+//            for (Pessoa pessoa : pessoas) {
+//                String linha = pessoa.getId() + "," + pessoa.getNome() + "," + pessoa.getEmail() + ","
+//                        + pessoa.getTelefone() + "," + pessoa.getDataNasc() + "," + pessoa.getNivelAcesso();
+//                bw.write(linha);
+//                bw.newLine();
+//            }
+//        } catch (IOException e) {
+//            System.out.println("Erro ao atualizar arquivo: " + e.getMessage());
+//        }
+//    }
 }

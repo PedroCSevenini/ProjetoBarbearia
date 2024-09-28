@@ -19,9 +19,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -38,12 +40,14 @@ public class ViewAdmin extends javax.swing.JFrame {
         this.admin = admin;
         initComponents();
         this.controller = new AdminController(this);
+        initTableListenersCortes();
     }
 
     public ViewAdmin() {
         initComponents();
         this.controller = new AdminController(this);
         this.admin = null;
+        initTableListenersCortes();
 
     }
 
@@ -56,11 +60,11 @@ public class ViewAdmin extends javax.swing.JFrame {
     }
 
     public JTable getjTableCortes() {
-        return jTableCortes;
+        return jTableServico;
     }
 
     public void setjTableCortes(JTable jTableCortes) {
-        this.jTableCortes = jTableCortes;
+        this.jTableServico = jTableCortes;
     }
 
     public JTable getjTableFuncionarios() {
@@ -95,7 +99,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelTituloInicio = new javax.swing.JLabel();
         jPanelBtnCortes = new javax.swing.JPanel();
         jLabelIconCalendario = new javax.swing.JLabel();
-        jLabelTituloAgendamento = new javax.swing.JLabel();
+        jLabelTituloServicosPainel = new javax.swing.JLabel();
         jPanelBtnPessoas = new javax.swing.JPanel();
         jLabelIconPerfil = new javax.swing.JLabel();
         jLabelTituloPerfi = new javax.swing.JLabel();
@@ -106,21 +110,19 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelIconPerfil1 = new javax.swing.JLabel();
         jLabelTituloPerfi2 = new javax.swing.JLabel();
         jPanelBarraPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTabbedPanePessoas = new javax.swing.JTabbedPane();
+        jLabelTituloPrincipal = new javax.swing.JLabel();
+        jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanelInicio = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanelAgendamento = new javax.swing.JPanel();
+        jPanelCortes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCortes = new javax.swing.JTable();
-        jLabel12 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jPanelPessoas = new javax.swing.JPanel();
+        jTableServico = new javax.swing.JTable();
+        jButtonEditarServico = new javax.swing.JButton();
+        jButtonNovoServicoAba = new javax.swing.JButton();
+        jButtonRemoverServico = new javax.swing.JButton();
+        jPanelClientes = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableClientes = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButtonEditarCli = new javax.swing.JButton();
         jPanelAdicionaFuncionario = new javax.swing.JPanel();
@@ -134,13 +136,15 @@ public class ViewAdmin extends javax.swing.JFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanelAdicionaCorte = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextFieldNomeCorte = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextFieldValorCorte = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextFieldTempoCorte = new javax.swing.JTextField();
+        jLabelNovoServicoNome = new javax.swing.JLabel();
+        jTextFieldNovoServicoNome = new javax.swing.JTextField();
+        jLabelNovoServicoValor = new javax.swing.JLabel();
+        jTextFieldNovoServicoValor = new javax.swing.JTextField();
+        jLabelNovoServicoDuracao = new javax.swing.JLabel();
+        jTextFieldNovoServicoDuracao = new javax.swing.JTextField();
+        jButtonNovoServico = new javax.swing.JButton();
+        jButtonNovoServicoVoltar = new javax.swing.JButton();
+        jLabelAvisoNovoServico = new javax.swing.JLabel();
         jPanelFuncionarios = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableFuncionarios = new javax.swing.JTable();
@@ -148,6 +152,14 @@ public class ViewAdmin extends javax.swing.JFrame {
         jButtonEditar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
         jButtonNovo = new javax.swing.JButton();
+        jPanelEditarCortes = new javax.swing.JPanel();
+        jTextFieldEditarServicoNome = new javax.swing.JTextField();
+        jTextFieldEditarServicoValor = new javax.swing.JTextField();
+        jLabelEditarServicoValor = new javax.swing.JLabel();
+        jLabelEditarServicoNome = new javax.swing.JLabel();
+        jButtonConfirmarEditarServico = new javax.swing.JButton();
+        jButtonCancelarEditarServico = new javax.swing.JButton();
+        jLabelAvisoEditarServico = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -214,12 +226,12 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelIconCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/calendario.png"))); // NOI18N
         jPanelBtnCortes.add(jLabelIconCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
-        jLabelTituloAgendamento.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelTituloAgendamento.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabelTituloAgendamento.setForeground(new java.awt.Color(235, 235, 235));
-        jLabelTituloAgendamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTituloAgendamento.setText("Cortes");
-        jPanelBtnCortes.add(jLabelTituloAgendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 100, 50));
+        jLabelTituloServicosPainel.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloServicosPainel.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabelTituloServicosPainel.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloServicosPainel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloServicosPainel.setText("Serviços");
+        jPanelBtnCortes.add(jLabelTituloServicosPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 100, 50));
 
         jPanelBarraPrincipal.add(jPanelBtnCortes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 50));
 
@@ -297,19 +309,17 @@ public class ViewAdmin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabelIconPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(jLabelTituloPerfi2)
-                .addGap(44, 44, 44))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelIconPerfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelTituloPerfi2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelTituloPerfi2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelIconPerfil1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
         );
 
         jPanelBarraPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 230, 50));
@@ -320,17 +330,17 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBarraPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanelBarraPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(235, 235, 235));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Início");
-        jPanelBarraPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 90));
+        jLabelTituloPrincipal.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabelTituloPrincipal.setForeground(new java.awt.Color(235, 235, 235));
+        jLabelTituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloPrincipal.setText("Início");
+        jPanelBarraPanel.add(jLabelTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 90));
 
         jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 620, 90));
 
-        jTabbedPanePessoas.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jTabbedPaneMenu.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTabbedPanePessoasAncestorAdded(evt);
+                jTabbedPaneMenuAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -342,30 +352,27 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelInicio.setPreferredSize(new java.awt.Dimension(628, 445));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setText("Bem vindo Adiministrador");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Bem-vindo, Admin");
 
         javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
         jPanelInicio.setLayout(jPanelInicioLayout);
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel2)
-                .addContainerGap(115, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addComponent(jLabel2)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
-        jTabbedPanePessoas.addTab("Inicio", jPanelInicio);
+        jTabbedPaneMenu.addTab("Inicio", jPanelInicio);
 
-        jPanelAgendamento.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jPanelCortes.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jPanelAgendamentoAncestorAdded(evt);
+                jPanelCortesAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -373,66 +380,94 @@ public class ViewAdmin extends javax.swing.JFrame {
             }
         });
 
-        jTableCortes.setModel(new javax.swing.table.DefaultTableModel(
+        jTableServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NOME", "PREÇO", "DURAÇÃO"
             }
-        ));
-        jScrollPane1.setViewportView(jTableCortes);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel12.setText("Cortes");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jToggleButton1.setText("Remover Corte");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableServico.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableServico);
+        if (jTableServico.getColumnModel().getColumnCount() > 0) {
+            jTableServico.getColumnModel().getColumn(0).setMinWidth(30);
+            jTableServico.getColumnModel().getColumn(0).setMaxWidth(30);
+            jTableServico.getColumnModel().getColumn(1).setMaxWidth(100);
+            jTableServico.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTableServico.getColumnModel().getColumn(3).setPreferredWidth(30);
+            jTableServico.getColumnModel().getColumn(3).setMaxWidth(80);
+        }
 
-        jToggleButton2.setText("Editar Corte");
+        jButtonEditarServico.setText("Editar");
+        jButtonEditarServico.setEnabled(false);
+        jButtonEditarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarServicoActionPerformed(evt);
+            }
+        });
 
-        jToggleButton3.setText("Novo Corte");
+        jButtonNovoServicoAba.setText("Novo");
+        jButtonNovoServicoAba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoServicoAbaActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanelAgendamentoLayout = new javax.swing.GroupLayout(jPanelAgendamento);
-        jPanelAgendamento.setLayout(jPanelAgendamentoLayout);
-        jPanelAgendamentoLayout.setHorizontalGroup(
-            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(259, 259, 259))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))
-                    .addGroup(jPanelAgendamentoLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jToggleButton2)
-                        .addGap(64, 64, 64)
-                        .addComponent(jToggleButton1)
-                        .addGap(76, 76, 76)
-                        .addComponent(jToggleButton3)
-                        .addContainerGap())))
+        jButtonRemoverServico.setText("Remover");
+        jButtonRemoverServico.setEnabled(false);
+        jButtonRemoverServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverServicoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCortesLayout = new javax.swing.GroupLayout(jPanelCortes);
+        jPanelCortes.setLayout(jPanelCortesLayout);
+        jPanelCortesLayout.setHorizontalGroup(
+            jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCortesLayout.createSequentialGroup()
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
+            .addGroup(jPanelCortesLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jButtonNovoServicoAba, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jButtonEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(jButtonRemoverServico, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
         );
-        jPanelAgendamentoLayout.setVerticalGroup(
-            jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendamentoLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
+        jPanelCortesLayout.setVerticalGroup(
+            jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCortesLayout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(jPanelAgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3))
-                .addGap(25, 25, 25))
+                .addGap(31, 31, 31)
+                .addGroup(jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonNovoServicoAba, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRemoverServico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
 
-        jTabbedPanePessoas.addTab("Cortes", jPanelAgendamento);
+        jTabbedPaneMenu.addTab("Cortes", jPanelCortes);
 
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -455,9 +490,6 @@ public class ViewAdmin extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTableClientes);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Clientes");
-
         jButton4.setText("Remover ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,42 +504,34 @@ public class ViewAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanelPessoasLayout = new javax.swing.GroupLayout(jPanelPessoas);
-        jPanelPessoas.setLayout(jPanelPessoasLayout);
-        jPanelPessoasLayout.setHorizontalGroup(
-            jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
-                    .addGroup(jPanelPessoasLayout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
+        jPanelClientes.setLayout(jPanelClientesLayout);
+        jPanelClientesLayout.setHorizontalGroup(
+            jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientesLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jButtonEditarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(122, 122, 122))
         );
-        jPanelPessoasLayout.setVerticalGroup(
-            jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPessoasLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+        jPanelClientesLayout.setVerticalGroup(
+            jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientesLayout.createSequentialGroup()
+                .addContainerGap(122, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanelPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButtonEditarCli))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jTabbedPanePessoas.addTab("Clientes", jPanelPessoas);
+        jTabbedPaneMenu.addTab("Clientes", jPanelClientes);
 
         jLabel6.setText("Nome");
 
@@ -573,53 +597,81 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPanePessoas.addTab("Adiciona Funcionario", jPanelAdicionaFuncionario);
+        jTabbedPaneMenu.addTab("Adiciona Funcionario", jPanelAdicionaFuncionario);
 
-        jLabel5.setText("Nome ");
+        jLabelNovoServicoNome.setText("Nome ");
 
-        jButton2.setText("Novo Corte");
+        jLabelNovoServicoValor.setText("Valor");
 
-        jLabel10.setText("Valor");
+        jLabelNovoServicoDuracao.setText("Tempo (1 = 15 minutos)");
 
-        jLabel11.setText("Tempo (1 = 15 minutos)");
+        jButtonNovoServico.setText("Novo Corte");
+        jButtonNovoServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoServicoActionPerformed(evt);
+            }
+        });
+
+        jButtonNovoServicoVoltar.setText("Cancelar");
+        jButtonNovoServicoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoServicoVoltarActionPerformed(evt);
+            }
+        });
+
+        jLabelAvisoNovoServico.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelAvisoNovoServico.setForeground(new java.awt.Color(255, 0, 51));
+        jLabelAvisoNovoServico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanelAdicionaCorteLayout = new javax.swing.GroupLayout(jPanelAdicionaCorte);
         jPanelAdicionaCorte.setLayout(jPanelAdicionaCorteLayout);
         jPanelAdicionaCorteLayout.setHorizontalGroup(
             jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAdicionaCorteLayout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addGroup(jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNomeCorte)
-                    .addComponent(jTextFieldValorCorte)
-                    .addComponent(jTextFieldTempoCorte))
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNovoServicoDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNovoServicoDuracao)
+                    .addComponent(jLabelNovoServicoValor)
+                    .addComponent(jLabelNovoServicoNome)
+                    .addGroup(jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextFieldNovoServicoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldNovoServicoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAdicionaCorteLayout.createSequentialGroup()
+                        .addComponent(jButtonNovoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonNovoServicoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(183, 183, 183))
+            .addGroup(jPanelAdicionaCorteLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(jLabelAvisoNovoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanelAdicionaCorteLayout.setVerticalGroup(
             jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAdicionaCorteLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldNomeCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldValorCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldTempoCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(19, 19, 19))
+                .addGap(121, 121, 121)
+                .addComponent(jLabelNovoServicoNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNovoServicoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelNovoServicoValor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNovoServicoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelNovoServicoDuracao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNovoServicoDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabelAvisoNovoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNovoServico)
+                    .addComponent(jButtonNovoServicoVoltar))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        jTabbedPanePessoas.addTab("Adiciona Corte", jPanelAdicionaCorte);
+        jTabbedPaneMenu.addTab("Adiciona Corte", jPanelAdicionaCorte);
 
         jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -663,7 +715,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE))
                     .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
                         .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
@@ -694,9 +746,82 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPanePessoas.addTab("Funcionarios", jPanelFuncionarios);
+        jTabbedPaneMenu.addTab("Funcionarios", jPanelFuncionarios);
 
-        jPanelFundo.add(jTabbedPanePessoas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 620, 480));
+        jTextFieldEditarServicoNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jTextFieldEditarServicoValor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabelEditarServicoValor.setText("Valor: (xx,xx)");
+
+        jLabelEditarServicoNome.setText("Nome");
+
+        jButtonConfirmarEditarServico.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonConfirmarEditarServico.setText("Confirmar");
+        jButtonConfirmarEditarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarEditarServicoActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelarEditarServico.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonCancelarEditarServico.setText("Voltar");
+        jButtonCancelarEditarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarEditarServicoActionPerformed(evt);
+            }
+        });
+
+        jLabelAvisoEditarServico.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelAvisoEditarServico.setForeground(new java.awt.Color(255, 0, 51));
+        jLabelAvisoEditarServico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanelEditarCortesLayout = new javax.swing.GroupLayout(jPanelEditarCortes);
+        jPanelEditarCortes.setLayout(jPanelEditarCortesLayout);
+        jPanelEditarCortesLayout.setHorizontalGroup(
+            jPanelEditarCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditarCortesLayout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addGroup(jPanelEditarCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditarCortesLayout.createSequentialGroup()
+                        .addGroup(jPanelEditarCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelEditarServicoNome)
+                            .addComponent(jLabelEditarServicoValor)
+                            .addComponent(jTextFieldEditarServicoValor, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(jTextFieldEditarServicoNome)
+                            .addGroup(jPanelEditarCortesLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jButtonConfirmarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCancelarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(180, 180, 180))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditarCortesLayout.createSequentialGroup()
+                        .addComponent(jLabelAvisoEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50))))
+        );
+        jPanelEditarCortesLayout.setVerticalGroup(
+            jPanelEditarCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditarCortesLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jLabelEditarServicoNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldEditarServicoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelEditarServicoValor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldEditarServicoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelAvisoEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEditarCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonConfirmarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneMenu.addTab("tab7", jPanelEditarCortes);
+
+        jPanelFundo.add(jTabbedPaneMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 620, 480));
 
         getContentPane().add(jPanelFundo, "card2");
 
@@ -710,13 +835,14 @@ public class ViewAdmin extends javax.swing.JFrame {
     private void JPanelBtnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseClicked
 
         // TODO add your handling code here:
-        jTabbedPanePessoas.setSelectedIndex(0);
+        jTabbedPaneMenu.setSelectedIndex(0);
         colorDefaultInicio = new Color(121, 121, 121);
         colorDefaultCortes = new Color(78, 78, 78);
         colorDefaultPessoas = new Color(78, 78, 78);
         JPanelBtnInicio.setBackground(colorDefaultInicio);
         jPanelBtnCortes.setBackground(colorDefaultCortes);
         jPanelBtnPessoas.setBackground(colorDefaultPessoas);
+        jLabelTituloPrincipal.setText("Início");
 
 
     }//GEN-LAST:event_JPanelBtnInicioMouseClicked
@@ -733,14 +859,17 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseClicked
         // TODO add your handling code here:
-
-        jTabbedPanePessoas.setSelectedIndex(1);
+        
+        jTabbedPaneMenu.setSelectedIndex(1);
         colorDefaultInicio = new Color(78, 78, 78);
         colorDefaultCortes = new Color(121, 121, 121);
         colorDefaultPessoas = new Color(78, 78, 78);
         JPanelBtnInicio.setBackground(colorDefaultInicio);
         jPanelBtnCortes.setBackground(colorDefaultCortes);
         jPanelBtnPessoas.setBackground(colorDefaultPessoas);
+        jLabelTituloPrincipal.setText("Serviços");
+        controller.atualizaTabelas();
+        
     }//GEN-LAST:event_jPanelBtnCortesMouseClicked
 
     private void jPanelBtnCortesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseEntered
@@ -755,13 +884,14 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnPessoasMouseClicked
 
-        jTabbedPanePessoas.setSelectedIndex(2);
+        jTabbedPaneMenu.setSelectedIndex(2);
         colorDefaultInicio = new Color(78, 78, 78);
         colorDefaultCortes = new Color(78, 78, 78);
         colorDefaultPessoas = new Color(121, 121, 121);
         JPanelBtnInicio.setBackground(colorDefaultInicio);
         jPanelBtnCortes.setBackground(colorDefaultCortes);
         jPanelBtnPessoas.setBackground(colorDefaultPessoas);
+        jLabelTituloPrincipal.setText("Clientes");
 
     }//GEN-LAST:event_jPanelBtnPessoasMouseClicked
 
@@ -785,13 +915,13 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBtnSair.setBackground(new Color(78, 78, 78));
     }//GEN-LAST:event_jPanelBtnSairMouseExited
 
-    private void jPanelAgendamentoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanelAgendamentoAncestorAdded
+    private void jPanelCortesAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanelCortesAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanelAgendamentoAncestorAdded
+    }//GEN-LAST:event_jPanelCortesAncestorAdded
 
-    private void jTabbedPanePessoasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPanePessoasAncestorAdded
+    private void jTabbedPaneMenuAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPaneMenuAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPanePessoasAncestorAdded
+    }//GEN-LAST:event_jTabbedPaneMenuAncestorAdded
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
         // TODO add your handling code here:
@@ -803,7 +933,7 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        jTabbedPanePessoas.setSelectedIndex(5);
+        jTabbedPaneMenu.setSelectedIndex(5);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
@@ -818,8 +948,41 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        controller.removerCliente();
+        //controller.removerCliente();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButtonNovoServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoServicoActionPerformed
+        controller.adicionarNovoServico();
+    }//GEN-LAST:event_jButtonNovoServicoActionPerformed
+
+    private void jButtonEditarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarServicoActionPerformed
+        // TODO add your handling code here:
+        jTabbedPaneMenu.setSelectedIndex(6);
+        controller.atualizaLabelEditarServico();
+        mostrarAvisoEditarServico("");
+    }//GEN-LAST:event_jButtonEditarServicoActionPerformed
+
+    private void jButtonCancelarEditarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarEditarServicoActionPerformed
+        controller.voltarParaCortes();
+    }//GEN-LAST:event_jButtonCancelarEditarServicoActionPerformed
+
+    private void jButtonConfirmarEditarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarEditarServicoActionPerformed
+        controller.editarServico();
+    }//GEN-LAST:event_jButtonConfirmarEditarServicoActionPerformed
+
+    private void jButtonRemoverServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverServicoActionPerformed
+        controller.apagarServico();
+    }//GEN-LAST:event_jButtonRemoverServicoActionPerformed
+
+    private void jButtonNovoServicoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoServicoVoltarActionPerformed
+        controller.voltarParaCortes();
+        controller.limparNovoServico();
+    }//GEN-LAST:event_jButtonNovoServicoVoltarActionPerformed
+
+    private void jButtonNovoServicoAbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoServicoAbaActionPerformed
+        jTabbedPaneMenu.setSelectedIndex(4);
+        controller.limparNovoServico();
+    }//GEN-LAST:event_jButtonNovoServicoAbaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -865,75 +1028,90 @@ public class ViewAdmin extends javax.swing.JFrame {
         this.atualizaTabela();
         this.setVisible(true); 
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelBtnInicio;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonCancelarEditarServico;
+    private javax.swing.JButton jButtonConfirmarEditarServico;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEditarCli;
+    private javax.swing.JButton jButtonEditarServico;
     private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonNovoServico;
+    private javax.swing.JButton jButtonNovoServicoAba;
+    private javax.swing.JButton jButtonNovoServicoVoltar;
     private javax.swing.JButton jButtonRemover;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JButton jButtonRemoverServico;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAvisoEditarServico;
+    private javax.swing.JLabel jLabelAvisoNovoServico;
+    private javax.swing.JLabel jLabelEditarServicoNome;
+    private javax.swing.JLabel jLabelEditarServicoValor;
     private javax.swing.JLabel jLabelIconCalendario;
     private javax.swing.JLabel jLabelIconInicio;
     private javax.swing.JLabel jLabelIconPerfil;
     private javax.swing.JLabel jLabelIconPerfil1;
     private javax.swing.JLabel jLabelIconSair;
-    private javax.swing.JLabel jLabelTituloAgendamento;
+    private javax.swing.JLabel jLabelNovoServicoDuracao;
+    private javax.swing.JLabel jLabelNovoServicoNome;
+    private javax.swing.JLabel jLabelNovoServicoValor;
     private javax.swing.JLabel jLabelTituloInicio;
     private javax.swing.JLabel jLabelTituloPerfi;
     private javax.swing.JLabel jLabelTituloPerfi2;
+    private javax.swing.JLabel jLabelTituloPrincipal;
     private javax.swing.JLabel jLabelTituloSair;
+    private javax.swing.JLabel jLabelTituloServicosPainel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAdicionaCorte;
     private javax.swing.JPanel jPanelAdicionaFuncionario;
-    private javax.swing.JPanel jPanelAgendamento;
     private javax.swing.JPanel jPanelBarraPanel;
     private javax.swing.JPanel jPanelBarraPrincipal;
     private javax.swing.JPanel jPanelBtnCortes;
     private javax.swing.JPanel jPanelBtnPessoas;
     private javax.swing.JPanel jPanelBtnSair;
+    private javax.swing.JPanel jPanelClientes;
+    private javax.swing.JPanel jPanelCortes;
+    private javax.swing.JPanel jPanelEditarCortes;
     private javax.swing.JPanel jPanelFuncionarios;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JPanel jPanelInicio;
-    private javax.swing.JPanel jPanelPessoas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPanePessoas;
+    private javax.swing.JTabbedPane jTabbedPaneMenu;
     private javax.swing.JTable jTableClientes;
-    private javax.swing.JTable jTableCortes;
     private javax.swing.JTable jTableFuncionarios;
+    private javax.swing.JTable jTableServico;
     private javax.swing.JTextField jTextFieldDataNascimento;
+    private javax.swing.JTextField jTextFieldEditarServicoNome;
+    private javax.swing.JTextField jTextFieldEditarServicoValor;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldNomeCorte;
+    private javax.swing.JTextField jTextFieldNovoServicoDuracao;
+    private javax.swing.JTextField jTextFieldNovoServicoNome;
+    private javax.swing.JTextField jTextFieldNovoServicoValor;
     private javax.swing.JTextField jTextFieldTelefone;
-    private javax.swing.JTextField jTextFieldTempoCorte;
-    private javax.swing.JTextField jTextFieldValorCorte;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 
     public void atualizaTabela(){
-        controller.adicionaCamposTabelaCortes(); 
-        controller.adicionaCamposFuncionarios();
-        controller.adicionaCamposClientes();
+        controller.adicionaCamposTabelaServico(); 
+        controller.adicionaCamposTabaleaFuncionario();
+        controller.adicionaCamposTabelaCliente();
     }
+    
+    
+    
+    
+    
+    
 //    public void atualizaTabela(){
 //        controller.adicionaCamposTabelaCortes();
 //    }
@@ -954,5 +1132,71 @@ public class ViewAdmin extends javax.swing.JFrame {
 //                }
 //            }
 //        });
-//        
+    
+    public JTable getjTableServico() {
+        return jTableServico;
+        
+    }     
+
+
+    public JTextField getjTextFieldEditarServicoNome() {
+        return jTextFieldEditarServicoNome;
     }
+
+    public JLabel getjLabelAvisoEditarServico() {
+        return jLabelAvisoEditarServico;
+    }
+
+    public JTextField getjTextFieldNovoServicoDuracao() {
+        return jTextFieldNovoServicoDuracao;
+    }
+
+    public JTextField getjTextFieldNovoServicoNome() {
+        return jTextFieldNovoServicoNome;
+    }
+
+    public JTextField getjTextFieldNovoServicoValor() {
+        return jTextFieldNovoServicoValor;
+    }
+    
+
+    public JTextField getjTextFieldEditarServicoValor() {
+        return jTextFieldEditarServicoValor;
+    }
+    
+    
+
+    public JButton getjButtonEditarServico() {
+        return jButtonEditarServico;
+    }
+
+    public JButton getjButtonRemoverServico() {
+        return jButtonRemoverServico;
+    }
+
+    public JTabbedPane getjTabbedPaneMenu() {
+        return jTabbedPaneMenu;
+    }
+    
+    public void mostrarAvisoEditarServico(String mensagem){
+        jLabelAvisoEditarServico.setText(mensagem);
+    }
+    
+    public void mostrarAvisoNovoServico(String mensagem){
+        jLabelAvisoNovoServico.setText(mensagem);
+    }
+
+    private void initTableListenersCortes() {
+        jTableServico.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {        
+            if (!event.getValueIsAdjusting()) {
+                int selectedRow = jTableServico.getSelectedRow();
+                jButtonEditarServico.setEnabled(false);
+                jButtonRemoverServico.setEnabled(false);
+                if (selectedRow >= 0) {
+                    jButtonEditarServico.setEnabled(true);
+                    jButtonRemoverServico.setEnabled(true);                 
+                }
+            }
+        });
+    }     
+}
