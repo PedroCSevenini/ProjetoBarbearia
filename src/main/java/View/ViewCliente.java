@@ -4,22 +4,15 @@
  */
 package View;
 
-import BDO.PessoaBanco;
 import Controller.ClienteController;
 import Model.Pessoa;
 import Model.Servico;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
-import java.awt.event.ItemListener;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 

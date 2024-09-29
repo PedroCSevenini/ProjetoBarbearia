@@ -2,10 +2,7 @@ package Controller.Helper;
 
 import BDO.PessoaBanco;
 import BDO.UsuarioBanco;
-import Exception.EmailExistenteException;
-import Exception.RegistroException;
-import Exception.TelefoneExistenteException;
-import Exception.UsuarioExistenteException;
+import Exception.*;
 import Model.Cliente;
 import View.ViewRegistro;
 
@@ -22,6 +19,8 @@ public class RegistroHelper {
     }
 
     public boolean verificaCamposObrigatorios() {
+        Validador validador = new Validador();
+
         String nome = view.getjTextFieldNome().getText();
         String telefone = view.getjTextFieldTelefone().getText();
         String email = view.getjTextFieldEmail().getText();
@@ -29,70 +28,19 @@ public class RegistroHelper {
         String usuario = view.getjTextFieldUsuario().getText();
         String senha = new String(view.getjPasswordFieldSenha().getPassword());
 
-        // Verifica campo Nome
-        if (nome.isEmpty()) {
-            view.getjLabelAviso().setText("Campo obrigatório faltando: Nome");
-            return false;
-        }
-        String regexNome = "^[A-Za-zÀ-ÖØ-ÿ]+(?: [A-Za-zÀ-ÖØ-ÿ]+)*$";
-        if (!nome.matches(regexNome)) {
-            view.getjLabelAviso().setText("Nome inválido");
+        try {
+            validador.validaNome(nome);
+            validador.validaTelefone(telefone);
+            validador.validaEmail(email);
+            validador.validaDataNasc(dataNasc);
+            validador.validaUsuario(usuario);
+            validador.validaSenha(senha);
+
+        } catch (NomeException | TelefoneException | EmailException | DataNascException | UsuarioException | SenhaException e) {
+            view.getjLabelAviso().setText(e.getMessage());
             return false;
         }
 
-        // Verifica campo Telefone
-        if (telefone.isEmpty()) {
-            view.getjLabelAviso().setText("Campo obrigatório faltando: Telefone");
-            return false;
-        }
-        String regexTelefone = "^\\d{10,11}$"; // 10 ou 11 dígitos
-        if (!telefone.matches(regexTelefone)) {
-            view.getjLabelAviso().setText("Telefone inválido (Somente números)");
-            return false;
-        }
-
-        // Verifica campo Email
-        if (email.isEmpty()) {
-            view.getjLabelAviso().setText("Campo obrigatório faltando: Email");
-            return false;
-        }
-        String regexEmail = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
-        if (!email.matches(regexEmail)) {
-            view.getjLabelAviso().setText("Email inválido");
-            return false;
-        }
-
-        // Verifica campo Data de Nascimento
-        if (dataNasc.isEmpty()) {
-            view.getjLabelAviso().setText("Campo obrigatório faltando: Data de nascimento");
-            return false;
-        }
-        String regexDataNasc = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";
-        if (!dataNasc.matches(regexDataNasc)) {
-            view.getjLabelAviso().setText("Data de nascimento inválida (Formato: XX/XX/XXXX)");
-            return false;
-        }
-
-        // Verifica campo Usuário
-        if (usuario.isEmpty()) {
-            view.getjLabelAviso().setText("Campo obrigatório faltando: Usuário");
-            return false;
-        }
-        String regexUsuario = "^[a-zA-Z0-9]+$";
-        if (!usuario.matches(regexUsuario)) {
-            view.getjLabelAviso().setText("Usuário inválido (Apenas letras e números, sem espaços)");
-            return false;
-        }
-        // Verifica campo Senha
-        if (senha.isEmpty()) {
-            view.getjLabelAviso().setText("Campo obrigatório faltando: Senha");
-            return false;
-        }
-        String regexSenha = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
-        if (!senha.matches(regexSenha)) {
-            view.getjLabelAviso().setText("Senha inválida (No mínimo 8 dígitos, apenas letras e números)");
-            return false;
-        }
         return true;
     }
 
