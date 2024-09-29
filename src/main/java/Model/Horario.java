@@ -1,21 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 import java.time.LocalTime;
 import java.util.Date;
 
-/**
- *
- * @author pedro
- */
 public class Horario {
     protected int id;
     protected Servico servico;
     protected String data;
-    protected String  horarioInicio;
+    protected String  horaInicio;
     protected Funcionario  funcionario;
     protected Cliente cliente;
     protected boolean marcado;
@@ -25,7 +17,7 @@ public class Horario {
         this.id = id;
         this.servico = servico;
         this.data = data;
-        this.horarioInicio = horarioInicio;
+        this.horaInicio = horarioInicio;
         this.funcionario = funcionario;
         this.cliente = cliente;
         this.marcado = false;
@@ -35,7 +27,7 @@ public class Horario {
         this.id = id;
         this.servico = servico;
         this.data = data;
-        this.horarioInicio = horarioInicio;
+        this.horaInicio = horarioInicio;
         this.funcionario = funcionario;
         this.cliente = cliente;
         this.marcado = marcado;
@@ -93,11 +85,11 @@ public class Horario {
     }
 
     public String getHorarioInicio() {
-        return horarioInicio;
+        return horaInicio;
     }
 
     public void setHorarioInicio(String horarioInicio) {
-        this.horarioInicio = horarioInicio;
+        this.horaInicio = horarioInicio;
     }
 
  

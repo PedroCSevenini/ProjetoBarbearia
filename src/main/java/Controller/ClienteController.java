@@ -1,4 +1,3 @@
-
 package Controller;
 
 import BDO.HorarioBanco;
@@ -111,8 +110,7 @@ public class  ClienteController{
     
     public void marcarHorario(){
         HorarioBanco bdHorario = new HorarioBanco();
-        ServicoBanco bdServico = new ServicoBanco();
-        PessoaBanco bdPessoa = new PessoaBanco();
+        PessoaBanco bd = new PessoaBanco();
         if(!bdHorario.verificaHorarioPorId(view.getPessoa().getId())){
             Servico servico = (Servico)(view.getjComboBoxServico().getSelectedItem());
             Date dataSelecionada = view.getjSelecionaData().getDate();
@@ -124,9 +122,8 @@ public class  ClienteController{
             }
             String horario = (String)view.getjComboBoxHorarios().getSelectedItem();
             
-                
             Funcionario funcionario = (Funcionario) view.getjComboBoxFuncionario().getSelectedItem();
-            Cliente cliente = PessoaBanco.procuraClientePorID(view.getPessoa().getId());
+            Cliente cliente = bd.procuraClientePorID(view.getPessoa().getId());
             boolean marcado = false;
             if(bdHorario.adicionarHorario(servico, data, horario, funcionario, cliente, marcado)){
                 view.mostrarAviso("Horário marcado!");

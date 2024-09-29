@@ -1,19 +1,19 @@
-
 package Controller;
 
-import BDO.HorarioBanco;
 import BDO.PessoaBanco;
 import BDO.ServicoBanco;
-import Exception.NomeServicoException;
-import Exception.ServicoException;
-import Exception.ValorServicoException;
-import Model.Funcionario;
+import BDO.UsuarioBanco;
+import Controller.Helper.Validador;
+import Exception.*;
+import Model.Cliente;
 import Model.Pessoa;
 import Model.Servico;
+import Model.Usuario;
 import View.ViewAdmin;
 import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class AdminController {
@@ -81,136 +81,93 @@ public class AdminController {
         PessoaBanco bd = new PessoaBanco();
 
         try {
-            List<Pessoa> FuncionarioAdmin = bd.retornaPessoas(); // Obtém todas as pessoas
-            for (Pessoa funcionario : FuncionarioAdmin) {
-                if (funcionario.getNivelAcesso() == 1) {
+            List<Pessoa> ClienteAdmin = bd.retornaPessoas(); // Obtém todas as pessoas
+            for (Pessoa cliente : ClienteAdmin) {
+                if (cliente.getNivelAcesso() == 1) {
                     model.addRow(new Object[]{
-                        funcionario.getId(),
-                        funcionario.getNome(),
-                        funcionario.getDataNasc(),
-                        funcionario.getTelefone(),
-                        funcionario.getNivelAcesso(),
-                        funcionario.getEmail(),});
+                        cliente.getId(),
+                        cliente.getNome(),
+                        cliente.getDataNasc(),
+                        cliente.getTelefone(),
+                        cliente.getEmail(),});
                 }
             }
             // Ajusta o tamanho da tabela de funcionários
             int tamanho = model.getRowCount() * 20;
-            view.getjTableFuncionarios().setPreferredSize(new java.awt.Dimension(view.getjTableFuncionarios().getWidth(), tamanho));
+            view.getjTableClientes().setPreferredSize(new java.awt.Dimension(view.getjTableClientes().getWidth(), tamanho));
 
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void editarFuncionario() {
-        int selectedRow = view.getjTableFuncionarios().getSelectedRow();
-        if (selectedRow == -1) {
-            // Nenhuma linha selecionada
-            System.out.println("Por favor, selecione um funcionário para editar.");
-            return;
-        }
-
-        DefaultTableModel model = (DefaultTableModel) view.getjTableFuncionarios().getModel();
-        int id = (int) model.getValueAt(selectedRow, 0);
-        String nome = (String) model.getValueAt(selectedRow, 1);
-        String dataNasc = (String) model.getValueAt(selectedRow, 2);
-        String telefone = (String) model.getValueAt(selectedRow, 3);
-        String email = (String) model.getValueAt(selectedRow, 5);
-
-        // Criar um formulário ou diálogo para editar os valores
-        String novoNome = JOptionPane.showInputDialog(view, "Editar Nome", nome);
-        String novaDataNasc = JOptionPane.showInputDialog(view, "Editar Data de Nascimento", dataNasc);
-        String novoTelefone = JOptionPane.showInputDialog(view, "Editar Telefone", telefone);
-        String novoEmail = JOptionPane.showInputDialog(view, "Editar Email", email);
-
-        // Atualizar os dados no modelo da tabela
-        model.setValueAt(novoNome, selectedRow, 1);
-        model.setValueAt(novaDataNasc, selectedRow, 2);
-        model.setValueAt(novoTelefone, selectedRow, 3);
-        model.setValueAt(novoEmail, selectedRow, 5);
-
-        // Atualizar no arquivo CSV
-        PessoaBanco banco = new PessoaBanco();
-        Funcionario funcionarioEditado = banco.procuraFuncionarioPorID(id);
-        if (funcionarioEditado != null) {
-            funcionarioEditado.setNome(novoNome);
-            funcionarioEditado.setDataNasc(novaDataNasc);
-            funcionarioEditado.setTelefone(novoTelefone);
-            funcionarioEditado.setEmail(novoEmail);
-            banco.atualizaFuncionario(funcionarioEditado);  // Implementar esse método
-        }
+    public void atualizaLabelEditarCliente() {
+        PessoaBanco bd = new PessoaBanco();
+        int selectedRow = view.getjTableClientes().getSelectedRow();
+        int idCliente = Integer.parseInt(view.getjTableClientes().getValueAt(selectedRow, 0).toString());
+        Cliente clienteId = bd.procuraClientePorID(idCliente);
+        view.getjTextFieldEditarClienteNome().setText(clienteId.getNome());
+        view.getjTextFieldEditarClienteTelefone().setText(clienteId.getTelefone());
+        System.out.println(clienteId.getTelefone());
+        view.getjTextFieldEditarClienteDataNasc().setText(clienteId.getDataNasc());
+        view.getjTextFieldEditarClienteEmail().setText(clienteId.getEmail());
     }
 
     public void editarCliente() {
-        int selectedRow = view.getjTableClientes().getSelectedRow();
-        if (selectedRow == -1) {
-            // Nenhuma linha selecionada
-            System.out.println("Por favor, selecione um funcionário para editar.");
-            return;
-        }
+        PessoaBanco bdPessoa = new PessoaBanco();
+        String nome = view.getjTextFieldEditarClienteNome().getText();
+        String telefone = view.getjTextFieldEditarClienteTelefone().getText();
+        String email = view.getjTextFieldEditarClienteEmail().getText();
+        String dataNasc = view.getjTextFieldEditarClienteDataNasc().getText();
 
-        DefaultTableModel model = (DefaultTableModel) view.getjTableClientes().getModel();
-        int id = (int) model.getValueAt(selectedRow, 0);
-        String nome = (String) model.getValueAt(selectedRow, 1);
-        String dataNasc = (String) model.getValueAt(selectedRow, 2);
-        String telefone = (String) model.getValueAt(selectedRow, 3);
-        String email = (String) model.getValueAt(selectedRow, 5);
+        try {
+            Validador validador = new Validador();
 
-        // Criar um formulário ou diálogo para editar os valores
-        String novoNome = JOptionPane.showInputDialog(view, "Editar Nome", nome);
-        String novaDataNasc = JOptionPane.showInputDialog(view, "Editar Data de Nascimento", dataNasc);
-        String novoTelefone = JOptionPane.showInputDialog(view, "Editar Telefone", telefone);
-        String novoEmail = JOptionPane.showInputDialog(view, "Editar Email", email);
+            validador.validaNome(nome);
+            validador.validaTelefone(telefone);
+            validador.validaEmail(email);
+            validador.validaDataNasc(dataNasc);
 
-        // Atualizar os dados no modelo da tabela
-        model.setValueAt(novoNome, selectedRow, 1);
-        model.setValueAt(novaDataNasc, selectedRow, 2);
-        model.setValueAt(novoTelefone, selectedRow, 3);
-        model.setValueAt(novoEmail, selectedRow, 5);
+            int selectedRow = view.getjTableClientes().getSelectedRow();
+            int idCliente = Integer.parseInt(view.getjTableClientes().getValueAt(selectedRow, 0).toString());
 
-        // Atualizar no arquivo CSV
-        PessoaBanco banco = new PessoaBanco();
-        Funcionario funcionarioEditado = banco.procuraFuncionarioPorID(id);
-        if (funcionarioEditado != null) {
-            funcionarioEditado.setNome(novoNome);
-            funcionarioEditado.setDataNasc(novaDataNasc);
-            funcionarioEditado.setTelefone(novoTelefone);
-            funcionarioEditado.setEmail(novoEmail);
-            banco.atualizaFuncionario(funcionarioEditado);  // Implementar esse método
+            bdPessoa.editarCliente(idCliente, nome, telefone, email, dataNasc);
+
+            view.getjLabelEditarClienteAviso().setText("Cliente editado!");
+
+        } catch (NomeException | TelefoneException | EmailException | DataNascException e) {
+
+            view.getjLabelEditarClienteAviso().setText(e.getMessage());
         }
     }
 
-//    public void removerCliente() {
-//        int selectedRow = view.getjTableClientes().getSelectedRow();
-//        if (selectedRow == -1) {
-//            // Nenhuma linha selecionada
-//            JOptionPane.showMessageDialog(view, "Por favor, selecione um cliente para remover.");
-//            return;
-//        }
-//
-//        // Obtém os dados do cliente selecionado
-//        DefaultTableModel model = (DefaultTableModel) view.getjTableClientes().getModel();
-//        int clienteId = (int) model.getValueAt(selectedRow, 0); // Supondo que o ID está na coluna 0
-//        String nomeCliente = (String) model.getValueAt(selectedRow, 1); // Supondo que o nome está na coluna 1
-//
-//        // Confirmação da remoção
-//        int confirm = JOptionPane.showConfirmDialog(view, "Você tem certeza que deseja remover " + nomeCliente + "?", "Confirmação", JOptionPane.YES_NO_OPTION);
-//        if (confirm != JOptionPane.YES_OPTION) {
-//            return; // Se o usuário não confirmar, não remove
-//        }
-//
-//        // Remove o cliente da tabela
-//        model.removeRow(selectedRow);
-//
-//        // Atualiza o arquivo CSV
-//        PessoaBanco banco = new PessoaBanco();
-//        List<Pessoa> pessoas = banco.retornaClientes(); // Obtém todos os clientes
-//        // Remove o cliente da lista de clientes
-//        pessoas.removeIf(cliente -> cliente.getId() == clienteId);
-//        // Atualiza o arquivo CSV com a lista modificada
-//        banco.atualizaArquivoCSV(pessoas);
-//    }
+    public void apagarCliente() {
+        PessoaBanco bdPessoa = new PessoaBanco();
+        try {
+            int selectedRow = view.getjTableClientes().getSelectedRow();
+            int idCliente = Integer.parseInt(view.getjTableClientes().getValueAt(selectedRow, 0).toString());
+            Object[] options = {"Sim", "Cancelar"};
+            int opcao = JOptionPane.showOptionDialog(
+                    null,
+                    "Deseja remover esse Cliente? \n Ao remover o serviço você irá remover todos horários relacionados a ele e seu usuário",
+                    "Confirmação de Remoção",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[0]
+            );
+            if (opcao == JOptionPane.YES_OPTION) {
+                bdPessoa.removeCliente(idCliente);
+                view.getjLabelAvisoClientes().setText("Cliente removido!");
+                atualizaTabelas();
+            }
+        } catch (HeadlessException | NumberFormatException e) {
+            System.out.println("Nenhum valor selecionado!");
+        }
+    }
 
+//TABELA SERVICO
     public void atualizaLabelEditarServico() {
         ServicoBanco bd = new ServicoBanco();
         int selectedRow = view.getjTableServico().getSelectedRow();
@@ -220,34 +177,36 @@ public class AdminController {
         view.getjTextFieldEditarServicoValor().setText(servicoId.getPreco());
 
     }
-    
-    public void adicionarNovoServico (){
-        
+
+    public void adicionarNovoServico() {
         String nome = view.getjTextFieldNovoServicoNome().getText();
         String valor = view.getjTextFieldNovoServicoValor().getText();
         int duracao;
+
         try {
             duracao = Integer.parseInt(view.getjTextFieldNovoServicoDuracao().getText());
-            if(!(duracao >= 1 && duracao<=40)){
+            if (duracao < 1 || duracao > 40) {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            view.mostrarAvisoNovoServico("Duração deve ser um número inteiro de 1 a 40");
+            view.mostrarAvisoNovoServico("Duração deve ser um número inteiro entre 1 e 40.");
             return;
         }
+
         try {
-            if (verificaNomeServico(nome) && verificaValorServico(valor)) {
+            if (Validador.verificaNomeServico(nome) && Validador.verificaValorServico(valor)) {
                 ServicoBanco banco = new ServicoBanco();
-                
                 if (banco.adicionarServico(nome, valor, duracao)) {
-                    view.mostrarAvisoNovoServico("Serviço Adicionado!");
-                    limparNovoServico();
+                    view.mostrarAvisoNovoServico("Serviço adicionado com sucesso!");
+                    limparNovoServico(); // Limpa o formulário
                 } else {
-                    view.mostrarAvisoNovoServico("Erro ao adicionar serviço...");
+                    view.mostrarAvisoNovoServico("Erro ao adicionar o serviço...");
                 }
             }
-        } catch (ServicoException e) {
+        } catch (NomeServicoException | ValorServicoException e) {
             view.mostrarAvisoNovoServico(e.getMessage());
+        } catch (Exception e) {
+            view.mostrarAvisoNovoServico("Ocorreu um erro inesperado: " + e.getMessage());
         }
     }
 
@@ -256,68 +215,97 @@ public class AdminController {
         String valor = view.getjTextFieldEditarServicoValor().getText();
 
         try {
-            if (verificaNomeServico(nome) && verificaValorServico(valor)) {
+            if (Validador.verificaNomeServico(nome) && Validador.verificaValorServico(valor)) {
                 ServicoBanco banco = new ServicoBanco();
 
                 int selectedRow = view.getjTableCortes().getSelectedRow();
-                int idServico = Integer.parseInt(view.getjTableCortes().getValueAt(selectedRow, 0).toString());
+                if (selectedRow == -1) {
+                    view.mostrarAvisoEditarServico("Nenhum serviço selecionado.");
+                    return;
+                }
 
+                int idServico = Integer.parseInt(view.getjTableCortes().getValueAt(selectedRow, 0).toString());
                 if (banco.editarServico(idServico, nome, valor)) {
-                    view.mostrarAvisoEditarServico("Serviço editado!");
+                    view.mostrarAvisoEditarServico("Serviço editado com sucesso!");
                 } else {
-                    view.mostrarAvisoEditarServico("Erro ao editar serviço...");
+                    view.mostrarAvisoEditarServico("Erro ao editar o serviço...");
                 }
             }
-        } catch (ServicoException e) {
+        } catch (NomeServicoException | ValorServicoException e) {
             view.mostrarAvisoEditarServico(e.getMessage());
+        } catch (NumberFormatException e) {
+            view.mostrarAvisoEditarServico("Erro ao converter ID do serviço.");
+        } catch (Exception e) {
+            view.mostrarAvisoEditarServico("Ocorreu um erro inesperado: " + e.getMessage());
         }
     }
-    
-    public void apagarServico(){
+
+    public void apagarServico() {
         ServicoBanco bdServico = new ServicoBanco();
-        try{
+        try {
             int selectedRow = view.getjTableCortes().getSelectedRow();
             int idServico = Integer.parseInt(view.getjTableCortes().getValueAt(selectedRow, 0).toString());
             Object[] options = {"Sim", "Cancelar"};
             int opcao = JOptionPane.showOptionDialog(
-                    null, 
-                    "Deseja remover esse Serviço? Ao remover o serviço você irá remover todos horários relacionados a ele", 
-                    "Confirmação de Remoção",      
-                    JOptionPane.YES_NO_OPTION,     
-                    JOptionPane.WARNING_MESSAGE,   
-                    null,                          
-                    options,                       
-                    options[0]                     
+                    null,
+                    "Deseja remover esse Serviço? Ao remover o serviço você irá remover todos horários relacionados a ele",
+                    "Confirmação de Remoção",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[0]
             );
             if (opcao == JOptionPane.YES_OPTION) {
                 bdServico.removerServicoPorID(idServico);
                 view.mostrarAvisoEditarServico("Serviço removido!");
                 atualizaTabelas();
-            }  
-        }catch(HeadlessException | NumberFormatException e){
+            }
+        } catch (HeadlessException | NumberFormatException e) {
             System.out.println("Nenhum valor selecionado!");
         }
     }
-    
-    public void limparNovoServico(){
+
+    public void limparNovoServico() {
         view.getjTextFieldNovoServicoNome().setText("");
         view.getjTextFieldNovoServicoValor().setText("");
         view.getjTextFieldNovoServicoDuracao().setText("");
     }
+    //USUARIO
 
-    //Verificação Servico
-    public boolean verificaNomeServico(String nome) throws NomeServicoException {
-        if (nome.matches("^[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+$")) {
-            return true;
-        }
-        throw new NomeServicoException("Nome inválido");
+    public void atualizaLabelEditarUsuario(int idUsuario) {
+        UsuarioBanco bd = new UsuarioBanco();
+        Usuario usuarioId = bd.buscaUsuarioPorId(idUsuario);
+        view.getjTextFieldEditarUsuario().setText(usuarioId.getUsuario());
+        view.getjTextFieldEditarUsuarioSenha().setText(usuarioId.getSenha());
+
     }
 
-    public boolean verificaValorServico(String valor) throws ValorServicoException {
-        if (valor.matches("^\\d{1,3}(?:\\.\\d{3})*,\\d{2}$")) {
-            return true;
+    public void editarUsuario(JTable tabela) {
+        UsuarioBanco bd = new UsuarioBanco();
+        String usuario = view.getjTextFieldEditarUsuario().getText();
+        String senha = view.getjTextFieldEditarUsuarioSenha().getText();
+        
+
+        try {
+            Validador validador = new Validador();
+            
+            validador.validaUsuario(usuario);
+            validador.validaSenha(senha);
+            
+
+            int selectedRow = tabela.getSelectedRow();
+            int idUsuario = Integer.parseInt(tabela.getValueAt(selectedRow, 0).toString());
+
+            bd.editaUsuarioPorId(idUsuario, usuario, senha);
+
+            view.getjLabelEditarUsuarioAviso().setText("Usuário editado!");
+
+        } catch (UsuarioException | SenhaException e) {
+
+            view.getjLabelEditarUsuarioAviso().setText(e.getMessage());
         }
-        throw new ValorServicoException("Valor inválido");
+
     }
 
     //Fim verificação Serviço
@@ -325,12 +313,21 @@ public class AdminController {
         resetarBotoesGerais();
         atualizaTabelas();
         view.getjTabbedPaneMenu().setSelectedIndex(1);
+    }
+
+    public void voltarParaClientes() {
+        resetarBotoesGerais();
+        atualizaTabelas();
+        view.getjTabbedPaneMenu().setSelectedIndex(2);
 
     }
 
     public void resetarBotoesGerais() {
         view.getjButtonEditarServico().setEnabled(false);
         view.getjButtonRemoverServico().setEnabled(false);
+        view.getjButtonEditarCliente().setEnabled(false);
+        view.getjButtonRemoverCliente().setEnabled(false);
+        view.getjButtonVerUsuario().setEnabled(false);
     }
 
     public void atualizaTabelas() {

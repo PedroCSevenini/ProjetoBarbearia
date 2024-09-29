@@ -4,10 +4,7 @@ package Model;
 import java.util.Date;
 import java.time.LocalTime;
 import java.util.Objects;
-/**
- *
- * @author pedro
- */
+
 public class Cliente extends Usuario{
 
     public Cliente(String usuario, String senha, int id, String nome, String telefone, String dataNasc, String email) {
@@ -43,11 +40,6 @@ public class Cliente extends Usuario{
 
   
     
-    
-    public boolean agendarHorario(Date data, LocalTime horaInicio, Servico servico, Funcionario funcionario){
-        
-        //horario = Horario.adicionaHorarioListaGeral(servico, data, horaInicio, funcionario);
-        return true;
-    }
+   
     
 }

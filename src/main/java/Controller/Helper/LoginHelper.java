@@ -3,10 +3,7 @@ package Controller.Helper;
 import Model.Usuario;
 import View.ViewLogin;
 
-/**
- *
- * @author pedro
- */
+
 public class LoginHelper {
     private final ViewLogin view;
 

@@ -1,4 +1,3 @@
-
 package Controller.Helper;
 
 import BDO.HorarioBanco;
@@ -6,13 +5,8 @@ import BDO.PessoaBanco;
 import Model.Horario;
 import Model.Pessoa;
 import View.ViewCliente;
-import java.util.List;
 
 
-/**
- *
- * @author pedro
- */
 public class ClienteHelper {
     private final ViewCliente view;
 
@@ -21,7 +15,8 @@ public class ClienteHelper {
     }
     
     public void mostrarMensagemNoText(int id){
-        Horario horario = HorarioBanco.retornaHorarioDoCliente(PessoaBanco.procuraClientePorID(id));
+        PessoaBanco bd = new PessoaBanco();
+        Horario horario = HorarioBanco.retornaHorarioDoCliente(bd.procuraClientePorID(id));
         if(horario != null){
             String line = "Dia: " + horario.getData() + "\nHorário: " + horario.getHorarioInicio()
                     + "\nFuncionário: " + horario.getFuncionario().getNome() + "\nPreço: R$" + horario.getServico().getPreco();

@@ -2,6 +2,7 @@ package BDO;
 
 import Model.Cliente;
 import Model.Funcionario;
+import Model.Horario;
 import Model.Pessoa;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class PessoaBanco {
 
     private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Pessoa.txt");
 
-    public List retornaPessoas(){
+    public List retornaPessoas() {
         List<Pessoa> pessoas = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
@@ -24,18 +26,18 @@ public class PessoaBanco {
             if (line == null) {
                 return pessoas;
             }
-            while (line != null){
+            while (line != null) {
                 String[] vet = line.split(",");
                 int id = Integer.parseInt(vet[0]);
                 String nome = vet[1];
-                String email = vet[2];
+                String email = vet[2]; 
                 String telefone = vet[3];
                 String dataNasc = vet[4];
                 int nivelAcesso = Integer.parseInt(vet[5]);
                 pessoas.add(new Cliente(id, nome, telefone, dataNasc, email, nivelAcesso));
                 line = br.readLine();
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
@@ -45,14 +47,12 @@ public class PessoaBanco {
     public void atualizaFuncionario(Funcionario funcionarioEditado) {
         List<Pessoa> todasPessoas = retornaPessoas();
 
-
         for (int i = 0; i < todasPessoas.size(); i++) {
             if (todasPessoas.get(i).getId() == funcionarioEditado.getId()) {
                 todasPessoas.set(i, funcionarioEditado);
                 break;
             }
         }
-
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, false))) {
             for (Pessoa pessoa : todasPessoas) {
@@ -66,7 +66,7 @@ public class PessoaBanco {
         }
     }
 
-    public static List retornaClientes(){
+    public static List retornaClientes() {
         List<Cliente> clientes = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
@@ -79,7 +79,7 @@ public class PessoaBanco {
                 int id = Integer.parseInt(vet[0]);
                 String nome = vet[1];
                 String email = vet[2];
-                String telefone = vet[3];
+                String telefone = vet[3];              
                 String dataNasc = vet[4];
                 int nivelAcesso = Integer.parseInt(vet[5]);
                 if (nivelAcesso == 1) {
@@ -87,7 +87,7 @@ public class PessoaBanco {
                 }
                 line = br.readLine();
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
@@ -200,7 +200,7 @@ public class PessoaBanco {
         return null;
     }
 
-    public static Cliente procuraClientePorID(int id) {
+    public Cliente procuraClientePorID(int id) {
         List<Cliente> clientes = retornaClientes();
         if (clientes == null || clientes.isEmpty()) {
             return null;
@@ -213,8 +213,6 @@ public class PessoaBanco {
         return null;
     }
 
-    
-    
 //    public void atualizaArquivoCSV(List<Pessoa> pessoas){
 //        
 //        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, false))) {
@@ -229,4 +227,89 @@ public class PessoaBanco {
 //            System.out.println("Erro ao atualizar arquivo: " + e.getMessage());
 //        }
 //    }
+    public boolean editarCliente(int idCliente, String nome, String telefone, String email, String dataNasc) {
+        List<Cliente> clientes = retornaClientes();
+
+        boolean clienteEditado = false;
+        if (clientes == null || clientes.isEmpty()) {
+            return false;
+        }
+
+        // Encontra o cliente pelo ID e atualiza as informações
+        for (Cliente c : clientes) {
+            if (c.getId() == idCliente) {
+                c.setNome(nome);
+                c.setTelefone(telefone);
+                c.setEmail(email);
+                c.setDataNasc(dataNasc);
+                clienteEditado = true;
+                break;
+            }
+        }
+
+        // Se o cliente foi editado, reescreve o arquivo
+        if (clienteEditado) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                pw.println("id,nome,telefone,email,dataNasc,nivelAcesso");
+                for (Cliente c : clientes) {
+                    pw.println(c.getId() + ","
+                            + c.getNome() + ","
+                            + c.getTelefone() + ","
+                            + c.getEmail() + ","
+                            + c.getDataNasc() + ","
+                            + c.getNivelAcesso());
+                }
+                return true;
+            } catch (IOException e) {
+                System.out.println("Erro ao editar o cliente: " + e.getMessage());
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeCliente(int idCliente) {
+        List<Cliente> clientes = retornaClientes();
+        boolean clienteRemovido = false;
+        HorarioBanco bdHorario = new HorarioBanco();
+        UsuarioBanco bdUsuario = new UsuarioBanco();
+
+        // Se não houver clientes, retorna false
+        if (clientes == null || clientes.isEmpty()) {
+            return false;
+        }
+
+        // Encontra o cliente pelo ID e o remove
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId() == idCliente) {
+                // Aqui você pode chamar a função para remover os horários marcados desse cliente
+                bdHorario.removerHorariosPorClienteId(idCliente);
+                bdUsuario.removeUsuarioPorId(idCliente);
+                clientes.remove(i);
+                clienteRemovido = true;
+                break;
+            }
+        }
+
+        // Se o cliente foi removido, reescreve o arquivo
+        if (clienteRemovido) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                // Escreve o cabeçalho novamente
+                pw.println("id,nome,telefone,email,dataNasc,nivelAcesso");
+                for (Cliente c : clientes) {
+                    pw.println(c.getId() + ","
+                            + c.getNome() + ","
+                            + c.getTelefone() + ","
+                            + c.getEmail() + ","
+                            + c.getDataNasc() + ","
+                            + c.getNivelAcesso());
+                }
+                return true;
+            } catch (IOException e) {
+                System.out.println("Erro ao remover o cliente: " + e.getMessage());
+                return false;
+            }
+        }
+        return false;
+    }
 }

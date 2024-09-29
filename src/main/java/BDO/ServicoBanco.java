@@ -13,10 +13,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author pedro
- */
 public class ServicoBanco {
 
     private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Servico.txt");

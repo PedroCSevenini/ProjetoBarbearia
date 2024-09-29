@@ -14,7 +14,7 @@ public class RegistroController {
     public RegistroController(ViewRegistro view) {
         this.view = view;
         this.helper = new RegistroHelper(view);
-    }
+}
 
     public void registrar() {
         if (helper.verificaCamposObrigatorios()) {

@@ -16,10 +16,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author pedro
- */
 public class HorarioBanco {
 
     private static final File path = new File(System.getProperty("user.dir") + "/src/main/java/BDO/Arquivo/Horario.txt");
@@ -41,7 +37,7 @@ public class HorarioBanco {
                 String horaInicio = vet[3];
                 PessoaBanco banco = new PessoaBanco();
                 Funcionario funcionario = banco.procuraFuncionarioPorID(Integer.parseInt(vet[4]));
-                Cliente cliente = PessoaBanco.procuraClientePorID(Integer.parseInt(vet[5]));
+                Cliente cliente = banco.procuraClientePorID(Integer.parseInt(vet[5]));
                 boolean marcado = Boolean.parseBoolean(vet[6]);
 
                 horarios.add(new Horario(id, servico, data, horaInicio, funcionario, cliente, marcado));
@@ -547,6 +543,44 @@ public class HorarioBanco {
         }
         return houveRemocao; // Retorna se houve remoção ou não
     }
-    
-    
+
+    public boolean removerHorariosPorClienteId(int idCliente) {
+        List<Horario> horariosAtualizados = new ArrayList<>();
+        List<Horario> horarios = retornaHorarios();
+        boolean houveRemocao = false;
+
+        if (horarios == null || horarios.isEmpty()) {
+            return false;
+        }
+
+        // Itera sobre os horários e remove os que estão relacionados ao id do cliente
+        for (Horario horario : horarios) {
+            if (horario.getCliente().getId() != idCliente) {
+                horariosAtualizados.add(horario); // Adiciona apenas os que não estão relacionados ao cliente
+            } else {
+                houveRemocao = true; // Indica que ao menos um horário foi removido
+            }
+        }
+
+        if (houveRemocao) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                pw.println("id,servicoId,data,horaInicio,funcionarioId,clienteId,marcado");
+                for (Horario horario : horariosAtualizados) {
+                    pw.println(horario.getId() + ","
+                            + horario.getServico().getId() + ","
+                            + horario.getData() + ","
+                            + horario.getHorarioInicio() + ","
+                            + horario.getFuncionario().getId() + ","
+                            + horario.getCliente().getId() + ","
+                            + horario.isMarcado());
+                }
+                return true; // Retorna true para indicar que a remoção foi bem-sucedida
+            } catch (IOException e) {
+                System.out.println("Erro ao atualizar o banco de horários: " + e.getMessage());
+                return false; // Retorna false em caso de erro
+            }
+        }
+        return houveRemocao; // Retorna se houve remoção ou não
+    }
+
 }
