@@ -6,6 +6,7 @@ import BDO.UsuarioBanco;
 import Controller.Helper.Validador;
 import Exception.*;
 import Model.Cliente;
+import Model.Funcionario;
 import Model.Pessoa;
 import Model.Servico;
 import Model.Usuario;
@@ -61,7 +62,6 @@ public class AdminController {
                         funcionario.getNome(),
                         funcionario.getDataNasc(),
                         funcionario.getTelefone(),
-                        funcionario.getNivelAcesso(),
                         funcionario.getEmail(),});
                 }
             }
@@ -116,13 +116,14 @@ public class AdminController {
         PessoaBanco bd = new PessoaBanco();
         int selectedRow = view.getjTableFuncionarios().getSelectedRow();
         int idFuncionarios = Integer.parseInt(view.getjTableFuncionarios().getValueAt(selectedRow, 0).toString());
-        Pessoa pessoaId = bd.procuraFuncionarioPorID(idFuncionarios);
+        Funcionario pessoaId = bd.procuraFuncionarioPorID(idFuncionarios);
         System.out.println(pessoaId.getNome());
         System.out.println(pessoaId.getDataNasc());
+        System.out.println(pessoaId.getDataNasc());
         view.getjTextFieldEditarFuncionariosNome().setText(pessoaId.getNome());
-        view.getjTextFieldEditarFuncionariosTelefone().setText(pessoaId.getTelefone());
+        view.getjTextFieldEditarFuncionariosTele().setText(pessoaId.getTelefone());
         
-        view.getjTextFieldEditarFuncionariosDataNasc().setText(pessoaId.getDataNasc());
+        view.getjTextFieldEditarFuncionariosData().setText(pessoaId.getDataNasc());
         view.getjTextFieldEditarFuncionariosEmail().setText(pessoaId.getEmail());
     }
 

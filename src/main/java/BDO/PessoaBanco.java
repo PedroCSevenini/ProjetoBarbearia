@@ -150,13 +150,32 @@ public class PessoaBanco {
     }
 
     public void inserePessoa(Pessoa novo) {
+        boolean arquivoVazio = false;
+
+        // Verifica se o arquivo está vazio ou tem apenas uma quebra de linha
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            if (path.length() == 0 || br.readLine() == null) {
+                arquivoVazio = true;
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
-            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getEmail() + ","
+            // Se o arquivo está vazio, escreve o cabeçalho
+            if (arquivoVazio) {
+                String cabecalho = "ID,Nome,Email,Telefone,Data de Nascimento,Nivel de Acesso";
+                bw.write(cabecalho);
+                bw.newLine();
+            }
+            
+            // Escreve os dados da nova pessoa
+            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getEmail() + "," 
                     + novo.getTelefone() + "," + novo.getDataNasc() + "," + novo.getNivelAcesso();
             bw.write(newLine);
             bw.newLine();
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error writing to file: " + e.getMessage());
         }
     }
 
@@ -228,7 +247,7 @@ public class PessoaBanco {
 //        }
 //    }
     public boolean editarCliente(int idCliente, String nome, String telefone, String email, String dataNasc) {
-        List<Cliente> clientes = retornaClientes();
+        List<Pessoa> clientes = retornaPessoas();
 
         boolean clienteEditado = false;
         if (clientes == null || clientes.isEmpty()) {
@@ -236,7 +255,7 @@ public class PessoaBanco {
         }
 
         // Encontra o cliente pelo ID e atualiza as informações
-        for (Cliente c : clientes) {
+        for (Pessoa c : clientes) {
             if (c.getId() == idCliente) {
                 c.setNome(nome);
                 c.setTelefone(telefone);
@@ -251,7 +270,7 @@ public class PessoaBanco {
         if (clienteEditado) {
             try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
                 pw.println("id,nome,email,telefone,dataNasc,nivelAcesso");
-                for (Cliente c : clientes) {
+                for (Pessoa c : clientes) {
                     pw.println(c.getId() + ","
                             + c.getNome() + ","
                             + c.getEmail()+ ","
@@ -269,7 +288,7 @@ public class PessoaBanco {
     }
 
     public boolean removeCliente(int idCliente) {
-        List<Cliente> clientes = retornaClientes();
+        List<Cliente> clientes = retornaPessoas();
         boolean clienteRemovido = false;
         HorarioBanco bdHorario = new HorarioBanco();
         UsuarioBanco bdUsuario = new UsuarioBanco();

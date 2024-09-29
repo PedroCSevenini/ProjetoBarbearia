@@ -201,10 +201,8 @@ public class ViewFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TabelaConfirmados.setCellSelectionEnabled(false);
         TabelaConfirmados.setName(""); // NOI18N
         TabelaConfirmados.setPreferredSize(new java.awt.Dimension(0, 400));
-        TabelaConfirmados.setRowSelectionAllowed(true);
         TabelaConfirmados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TabelaConfirmados.getTableHeader().setReorderingAllowed(false);
         TabelaConfirmados.addMouseListener(new java.awt.event.MouseAdapter() {

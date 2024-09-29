@@ -1730,21 +1730,23 @@ public class ViewAdmin extends javax.swing.JFrame {
         return jButtonRemoverCliente;
     }
 
-    public JTextField getjTextFieldEditarFuncionariosDataNasc() {
-        return jTextFieldEditarFuncionariosEmail;
+    public JTextField getjTextFieldEditarFuncionariosData() {
+        return jTextFieldEditarFuncionariosData;
     }
 
     public JTextField getjTextFieldEditarFuncionariosEmail() {
-        return jTextFieldEditarFuncionariosTele;
+        return jTextFieldEditarFuncionariosEmail;
     }
 
     public JTextField getjTextFieldEditarFuncionariosNome() {
         return jTextFieldEditarFuncionariosNome;
     }
 
-    public JTextField getjTextFieldEditarFuncionariosTelefone() {
-        return jTextFieldEditarFuncionariosData;
+    public JTextField getjTextFieldEditarFuncionariosTele() {
+        return jTextFieldEditarFuncionariosTele;
     }
+
+ 
 
     public JButton getjButtonVerUsuario() {
         return jButtonVerUsuarioCliente;
