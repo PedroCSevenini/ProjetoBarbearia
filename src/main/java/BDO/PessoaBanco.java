@@ -250,12 +250,12 @@ public class PessoaBanco {
         // Se o cliente foi editado, reescreve o arquivo
         if (clienteEditado) {
             try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
-                pw.println("id,nome,telefone,email,dataNasc,nivelAcesso");
+                pw.println("id,nome,email,telefone,dataNasc,nivelAcesso");
                 for (Cliente c : clientes) {
                     pw.println(c.getId() + ","
                             + c.getNome() + ","
+                            + c.getEmail()+ ","
                             + c.getTelefone() + ","
-                            + c.getEmail() + ","
                             + c.getDataNasc() + ","
                             + c.getNivelAcesso());
                 }
@@ -295,12 +295,12 @@ public class PessoaBanco {
         if (clienteRemovido) {
             try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
                 // Escreve o cabeçalho novamente
-                pw.println("id,nome,telefone,email,dataNasc,nivelAcesso");
+                pw.println("id,nome,email,telefone,dataNasc,nivelAcesso");
                 for (Cliente c : clientes) {
                     pw.println(c.getId() + ","
                             + c.getNome() + ","
-                            + c.getTelefone() + ","
                             + c.getEmail() + ","
+                            + c.getTelefone() + ","
                             + c.getDataNasc() + ","
                             + c.getNivelAcesso());
                 }

@@ -30,6 +30,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         initTableListenersCortes();
         initTableListenersClientes();
         this.tabelaVerUsuario = null;
+        initTableListenersFuncionarios();
         
     }
 
@@ -40,7 +41,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         initTableListenersCortes();
         initTableListenersClientes();
         this.tabelaVerUsuario = null;
-
+        initTableListenersFuncionarios();
     }
 
     public JTable getjTableClientes() {
@@ -98,7 +99,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabelTituloPerfi2 = new javax.swing.JLabel();
         jPanelBarraPanel = new javax.swing.JPanel();
         jLabelTituloPrincipal = new javax.swing.JLabel();
-        jTabbedPaneMenu = new javax.swing.JTabbedPane();
+        jTabbedEdiFun = new javax.swing.JTabbedPane();
         jPanelInicio = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanelCortes = new javax.swing.JPanel();
@@ -138,9 +139,10 @@ public class ViewAdmin extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableFuncionarios = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
-        jButtonEditar = new javax.swing.JButton();
-        jButtonRemover = new javax.swing.JButton();
-        jButtonNovo = new javax.swing.JButton();
+        jButtonEditarFun = new javax.swing.JButton();
+        jButtonRemoverFun = new javax.swing.JButton();
+        jButtonNovoFun = new javax.swing.JButton();
+        jButtonUsuarioFun = new javax.swing.JButton();
         jPanelEditarServicos = new javax.swing.JPanel();
         jTextFieldEditarServicoNome = new javax.swing.JTextField();
         jTextFieldEditarServicoValor = new javax.swing.JTextField();
@@ -169,6 +171,24 @@ public class ViewAdmin extends javax.swing.JFrame {
         jButtonEditarUsuarioVoltar = new javax.swing.JButton();
         jTextFieldEditarUsuarioSenha = new javax.swing.JPasswordField();
         jLabelEditarUsuarioAviso = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelEditarUsuario1 = new javax.swing.JLabel();
+        jTextFieldEditarUsuario1 = new javax.swing.JTextField();
+        jLabelEditarUsuarioSenha1 = new javax.swing.JLabel();
+        jTextFieldEditarUsuarioSenha1 = new javax.swing.JPasswordField();
+        jButtonEditarUsuarioConfirmar1 = new javax.swing.JButton();
+        jButtonEditarUsuarioVoltar1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelEditarClienteNome1 = new javax.swing.JLabel();
+        jTextFieldEditarFuncionariosNome = new javax.swing.JTextField();
+        jLabelEditarClienteTelefone1 = new javax.swing.JLabel();
+        jTextFieldEditarFuncionariosData = new javax.swing.JTextField();
+        jLabelEditarClienteDataNasc1 = new javax.swing.JLabel();
+        jTextFieldEditarFuncionariosEmail = new javax.swing.JTextField();
+        jLabelEditarClienteEmail1 = new javax.swing.JLabel();
+        jTextFieldEditarFuncionariosTele = new javax.swing.JTextField();
+        jButtonEditarFuncionariosConfirmar = new javax.swing.JButton();
+        jButtonEditarFuncionariosVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -347,9 +367,9 @@ public class ViewAdmin extends javax.swing.JFrame {
 
         jPanelFundo.add(jPanelBarraPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 620, 90));
 
-        jTabbedPaneMenu.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jTabbedEdiFun.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTabbedPaneMenuAncestorAdded(evt);
+                jTabbedEdiFunAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -368,16 +388,16 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelInicio.setLayout(jPanelInicioLayout);
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
         );
 
-        jTabbedPaneMenu.addTab("Inicio", jPanelInicio);
+        jTabbedEdiFun.addTab("Inicio", jPanelInicio);
 
         jPanelCortes.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -452,7 +472,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelCortesLayout.setHorizontalGroup(
             jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCortesLayout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(170, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
             .addGroup(jPanelCortesLayout.createSequentialGroup()
@@ -467,7 +487,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelCortesLayout.setVerticalGroup(
             jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCortesLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -477,7 +497,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGap(53, 53, 53))
         );
 
-        jTabbedPaneMenu.addTab("Cortes", jPanelCortes);
+        jTabbedEdiFun.addTab("Cortes", jPanelCortes);
 
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -558,7 +578,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jButtonVerUsuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButtonRemoverCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
             .addGroup(jPanelClientesLayout.createSequentialGroup()
@@ -574,7 +594,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelClientesLayout.setVerticalGroup(
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientesLayout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -583,10 +603,10 @@ public class ViewAdmin extends javax.swing.JFrame {
                     .addComponent(jButtonVerUsuarioCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelAvisoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jTabbedPaneMenu.addTab("Clientes", jPanelClientes);
+        jTabbedEdiFun.addTab("Clientes", jPanelClientes);
 
         jLabel6.setText("Nome");
 
@@ -647,12 +667,12 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
 
-        jTabbedPaneMenu.addTab("Adiciona Funcionario", jPanelAdicionaFuncionario);
+        jTabbedEdiFun.addTab("Adi Fun", jPanelAdicionaFuncionario);
 
         jLabelNovoServicoNome.setText("Nome ");
 
@@ -700,7 +720,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             .addGroup(jPanelAdicionaCorteLayout.createSequentialGroup()
                 .addGap(141, 141, 141)
                 .addComponent(jLabelAvisoNovoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         jPanelAdicionaCorteLayout.setVerticalGroup(
             jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -723,10 +743,10 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNovoServico)
                     .addComponent(jButtonNovoServicoVoltar))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        jTabbedPaneMenu.addTab("Adiciona Corte", jPanelAdicionaCorte);
+        jTabbedEdiFun.addTab("Adi Corte", jPanelAdicionaCorte);
 
         jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -751,57 +771,71 @@ public class ViewAdmin extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel13.setText("Funcionarios");
 
-        jButtonEditar.setText("Editar");
-        jButtonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonEditarFun.setText("Editar");
+        jButtonEditarFun.setEnabled(false);
+        jButtonEditarFun.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonEditarMouseClicked(evt);
+                jButtonEditarFunMouseClicked(evt);
+            }
+        });
+        jButtonEditarFun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarFunActionPerformed(evt);
             }
         });
 
-        jButtonRemover.setText("Remover");
+        jButtonRemoverFun.setText("Remover");
+        jButtonRemoverFun.setEnabled(false);
 
-        jButtonNovo.setText("Novo");
+        jButtonNovoFun.setText("Novo");
+
+        jButtonUsuarioFun.setText("Usuario");
+        jButtonUsuarioFun.setEnabled(false);
+        jButtonUsuarioFun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUsuarioFunActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelFuncionariosLayout = new javax.swing.GroupLayout(jPanelFuncionarios);
         jPanelFuncionarios.setLayout(jPanelFuncionariosLayout);
         jPanelFuncionariosLayout.setHorizontalGroup(
             jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFuncionariosLayout.createSequentialGroup()
+                        .addComponent(jButtonEditarFun, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRemoverFun, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonNovoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonUsuarioFun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE))
-                    .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                        .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                                .addGap(244, 244, 244)
-                                .addComponent(jLabel13))
-                            .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(239, 239, 239)
+                        .addComponent(jLabel13)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelFuncionariosLayout.setVerticalGroup(
             jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFuncionariosLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEditar)
-                    .addComponent(jButtonRemover)
-                    .addComponent(jButtonNovo))
+                    .addComponent(jButtonEditarFun)
+                    .addComponent(jButtonRemoverFun)
+                    .addComponent(jButtonNovoFun)
+                    .addComponent(jButtonUsuarioFun))
                 .addContainerGap())
         );
 
-        jTabbedPaneMenu.addTab("Funcionarios", jPanelFuncionarios);
+        jTabbedEdiFun.addTab("Funcionarios", jPanelFuncionarios);
 
         jTextFieldEditarServicoNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
@@ -836,7 +870,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelEditarServicosLayout.setHorizontalGroup(
             jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEditarServicosLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addGroup(jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditarServicosLayout.createSequentialGroup()
                         .addGroup(jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -871,10 +905,10 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConfirmarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
-        jTabbedPaneMenu.addTab("Editar Cortes", jPanelEditarServicos);
+        jTabbedEdiFun.addTab("Editar Cortes", jPanelEditarServicos);
 
         jLabelEditarClienteNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelEditarClienteNome.setText("Nome");
@@ -939,7 +973,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             .addGroup(jPanelEditarClientesLayout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addComponent(jLabelEditarClienteAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         jPanelEditarClientesLayout.setVerticalGroup(
             jPanelEditarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -966,10 +1000,10 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelEditarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarClienteConfirmar)
                     .addComponent(jButtonEditarClienteVoltar))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
-        jTabbedPaneMenu.addTab("Editar Clientes", jPanelEditarClientes);
+        jTabbedEdiFun.addTab("Edi Clie", jPanelEditarClientes);
 
         jLabelEditarUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelEditarUsuario.setText("Usuário");
@@ -1009,12 +1043,12 @@ public class ViewAdmin extends javax.swing.JFrame {
                     .addComponent(jTextFieldEditarUsuarioSenha)
                     .addComponent(jLabelEditarUsuarioSenha)
                     .addComponent(jLabelEditarUsuario)
-                    .addComponent(jTextFieldEditarUsuario)
                     .addGroup(jPanelEditarUsuarioLayout.createSequentialGroup()
                         .addComponent(jButtonEditarUsuarioConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonEditarUsuarioVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                        .addComponent(jButtonEditarUsuarioVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEditarUsuario))
+                .addContainerGap(204, Short.MAX_VALUE))
             .addGroup(jPanelEditarUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelEditarUsuarioAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1036,12 +1070,159 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarUsuarioConfirmar)
                     .addComponent(jButtonEditarUsuarioVoltar))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
-        jTabbedPaneMenu.addTab("tab9", jPanelEditarUsuario);
+        jTabbedEdiFun.addTab("tab9", jPanelEditarUsuario);
 
-        jPanelFundo.add(jTabbedPaneMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 620, 510));
+        jLabelEditarUsuario1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelEditarUsuario1.setText("Usuário");
+
+        jTextFieldEditarUsuario1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabelEditarUsuarioSenha1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelEditarUsuarioSenha1.setText("Senha");
+
+        jButtonEditarUsuarioConfirmar1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonEditarUsuarioConfirmar1.setText("Confirmar");
+        jButtonEditarUsuarioConfirmar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarUsuarioConfirmar1ActionPerformed(evt);
+            }
+        });
+
+        jButtonEditarUsuarioVoltar1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonEditarUsuarioVoltar1.setText("Voltar");
+        jButtonEditarUsuarioVoltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarUsuarioVoltar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonEditarUsuarioConfirmar1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEditarUsuarioVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelEditarUsuarioSenha1)
+                        .addComponent(jLabelEditarUsuario1)
+                        .addComponent(jTextFieldEditarUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEditarUsuarioSenha1)))
+                .addContainerGap(201, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jLabelEditarUsuario1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditarUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelEditarUsuarioSenha1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditarUsuarioSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarUsuarioConfirmar1)
+                    .addComponent(jButtonEditarUsuarioVoltar1))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        jTabbedEdiFun.addTab("tab10", jPanel1);
+
+        jLabelEditarClienteNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelEditarClienteNome1.setText("Nome");
+
+        jTextFieldEditarFuncionariosNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabelEditarClienteTelefone1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelEditarClienteTelefone1.setText("Telefone");
+
+        jTextFieldEditarFuncionariosData.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabelEditarClienteDataNasc1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelEditarClienteDataNasc1.setText("Data de Nascimento");
+
+        jTextFieldEditarFuncionariosEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jLabelEditarClienteEmail1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabelEditarClienteEmail1.setText("Email");
+
+        jTextFieldEditarFuncionariosTele.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jButtonEditarFuncionariosConfirmar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonEditarFuncionariosConfirmar.setText("Confirmar");
+        jButtonEditarFuncionariosConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarFuncionariosConfirmarActionPerformed(evt);
+            }
+        });
+
+        jButtonEditarFuncionariosVoltar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonEditarFuncionariosVoltar.setText("Voltar");
+        jButtonEditarFuncionariosVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarFuncionariosVoltarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelEditarClienteDataNasc1)
+                    .addComponent(jTextFieldEditarFuncionariosNome, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEditarClienteNome1)
+                    .addComponent(jTextFieldEditarFuncionariosData, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEditarClienteTelefone1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonEditarFuncionariosConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEditarFuncionariosVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextFieldEditarFuncionariosTele, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEditarFuncionariosEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEditarClienteEmail1))
+                .addContainerGap(199, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabelEditarClienteNome1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditarFuncionariosNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelEditarClienteTelefone1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditarFuncionariosTele, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelEditarClienteDataNasc1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditarFuncionariosData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelEditarClienteEmail1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldEditarFuncionariosEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarFuncionariosConfirmar)
+                    .addComponent(jButtonEditarFuncionariosVoltar))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        jTabbedEdiFun.addTab("EdiFun", jPanel2);
+
+        jPanelFundo.add(jTabbedEdiFun, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 620, 510));
 
         getContentPane().add(jPanelFundo, "card2");
 
@@ -1055,7 +1236,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     private void JPanelBtnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JPanelBtnInicioMouseClicked
 
         // TODO add your handling code here:
-        jTabbedPaneMenu.setSelectedIndex(0);
+        jTabbedEdiFun.setSelectedIndex(0);
         colorDefaultInicio = new Color(121, 121, 121);
         colorDefaultCortes = new Color(78, 78, 78);
         colorDefaultPessoas = new Color(78, 78, 78);
@@ -1080,7 +1261,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     private void jPanelBtnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnCortesMouseClicked
         // TODO add your handling code here:
 
-        jTabbedPaneMenu.setSelectedIndex(1);
+        jTabbedEdiFun.setSelectedIndex(1);
         colorDefaultInicio = new Color(78, 78, 78);
         colorDefaultCortes = new Color(121, 121, 121);
         colorDefaultPessoas = new Color(78, 78, 78);
@@ -1104,7 +1285,7 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnClientesMouseClicked
 
-        jTabbedPaneMenu.setSelectedIndex(2);
+        jTabbedEdiFun.setSelectedIndex(2);
         colorDefaultInicio = new Color(78, 78, 78);
         colorDefaultCortes = new Color(78, 78, 78);
         colorDefaultPessoas = new Color(121, 121, 121);
@@ -1139,9 +1320,9 @@ public class ViewAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanelCortesAncestorAdded
 
-    private void jTabbedPaneMenuAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedPaneMenuAncestorAdded
+    private void jTabbedEdiFunAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedEdiFunAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPaneMenuAncestorAdded
+    }//GEN-LAST:event_jTabbedEdiFunAncestorAdded
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
         // TODO add your handling code here:
@@ -1153,13 +1334,13 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jPanelBtnFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnFuncionariosMouseClicked
         // TODO add your handling code here:
-        jTabbedPaneMenu.setSelectedIndex(5);
+        jTabbedEdiFun.setSelectedIndex(5);
     }//GEN-LAST:event_jPanelBtnFuncionariosMouseClicked
 
-    private void jButtonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarMouseClicked
+    private void jButtonEditarFunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarFunMouseClicked
 
         //controller.editarFuncionario();
-    }//GEN-LAST:event_jButtonEditarMouseClicked
+    }//GEN-LAST:event_jButtonEditarFunMouseClicked
 
     private void jButtonEditarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarClienteMouseClicked
 
@@ -1176,7 +1357,7 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     private void jButtonEditarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarServicoActionPerformed
         // TODO add your handling code here:
-        jTabbedPaneMenu.setSelectedIndex(6);
+        jTabbedEdiFun.setSelectedIndex(6);
         controller.atualizaLabelEditarServico();
         mostrarAvisoEditarServico("");
     }//GEN-LAST:event_jButtonEditarServicoActionPerformed
@@ -1199,7 +1380,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNovoServicoVoltarActionPerformed
 
     private void jButtonNovoServicoAbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoServicoAbaActionPerformed
-        jTabbedPaneMenu.setSelectedIndex(4);
+        jTabbedEdiFun.setSelectedIndex(4);
         controller.limparNovoServico();
     }//GEN-LAST:event_jButtonNovoServicoAbaActionPerformed
 
@@ -1208,7 +1389,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditarClienteConfirmarActionPerformed
 
     private void jButtonEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarClienteActionPerformed
-        jTabbedPaneMenu.setSelectedIndex(7);
+        jTabbedEdiFun.setSelectedIndex(7);
         controller.atualizaLabelEditarCliente();
     }//GEN-LAST:event_jButtonEditarClienteActionPerformed
 
@@ -1217,7 +1398,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditarClienteVoltarActionPerformed
 
     private void jButtonVerUsuarioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerUsuarioClienteActionPerformed
-        jTabbedPaneMenu.setSelectedIndex(8);
+        jTabbedEdiFun.setSelectedIndex(8);
         tabelaVerUsuario = jTableClientes;
         controller.atualizaLabelEditarUsuario(Integer.parseInt(jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0).toString()));
         
@@ -1228,8 +1409,39 @@ public class ViewAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditarUsuarioConfirmarActionPerformed
 
     private void jButtonEditarUsuarioVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarUsuarioVoltarActionPerformed
-        controller.voltarParaClientes();
+        controller.voltarParaFuncionarios();
     }//GEN-LAST:event_jButtonEditarUsuarioVoltarActionPerformed
+
+    private void jButtonUsuarioFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioFunActionPerformed
+        // TODO add your handling code here:
+        jTabbedEdiFun.setSelectedIndex(8);
+        tabelaVerUsuario = jTableFuncionarios;
+        controller.atualizaLabelEditarUsuario(Integer.parseInt(jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0).toString()));
+    }//GEN-LAST:event_jButtonUsuarioFunActionPerformed
+
+    private void jButtonEditarUsuarioConfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarUsuarioConfirmar1ActionPerformed
+        // TODO add your handling code here:
+        controller.editarUsuario(tabelaVerUsuario);
+    }//GEN-LAST:event_jButtonEditarUsuarioConfirmar1ActionPerformed
+
+    private void jButtonEditarUsuarioVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarUsuarioVoltar1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonEditarUsuarioVoltar1ActionPerformed
+
+    private void jButtonEditarFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFunActionPerformed
+        // TODO add your handling code here:
+        jTabbedEdiFun.setSelectedIndex(10);
+        controller.atualizaLabelEditarFuncionarios();
+    }//GEN-LAST:event_jButtonEditarFunActionPerformed
+
+    private void jButtonEditarFuncionariosConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFuncionariosConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarFuncionariosConfirmarActionPerformed
+
+    private void jButtonEditarFuncionariosVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFuncionariosVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarFuncionariosVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1283,20 +1495,25 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelarEditarServico;
     private javax.swing.JButton jButtonConfirmarEditarServico;
-    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEditarCliente;
     private javax.swing.JButton jButtonEditarClienteConfirmar;
     private javax.swing.JButton jButtonEditarClienteVoltar;
+    private javax.swing.JButton jButtonEditarFun;
+    private javax.swing.JButton jButtonEditarFuncionariosConfirmar;
+    private javax.swing.JButton jButtonEditarFuncionariosVoltar;
     private javax.swing.JButton jButtonEditarServico;
     private javax.swing.JButton jButtonEditarUsuarioConfirmar;
+    private javax.swing.JButton jButtonEditarUsuarioConfirmar1;
     private javax.swing.JButton jButtonEditarUsuarioVoltar;
-    private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonEditarUsuarioVoltar1;
+    private javax.swing.JButton jButtonNovoFun;
     private javax.swing.JButton jButtonNovoServico;
     private javax.swing.JButton jButtonNovoServicoAba;
     private javax.swing.JButton jButtonNovoServicoVoltar;
-    private javax.swing.JButton jButtonRemover;
     private javax.swing.JButton jButtonRemoverCliente;
+    private javax.swing.JButton jButtonRemoverFun;
     private javax.swing.JButton jButtonRemoverServico;
+    private javax.swing.JButton jButtonUsuarioFun;
     private javax.swing.JButton jButtonVerUsuarioCliente;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -1309,14 +1526,20 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAvisoNovoServico;
     private javax.swing.JLabel jLabelEditarClienteAviso;
     private javax.swing.JLabel jLabelEditarClienteDataNasc;
+    private javax.swing.JLabel jLabelEditarClienteDataNasc1;
     private javax.swing.JLabel jLabelEditarClienteEmail;
+    private javax.swing.JLabel jLabelEditarClienteEmail1;
     private javax.swing.JLabel jLabelEditarClienteNome;
+    private javax.swing.JLabel jLabelEditarClienteNome1;
     private javax.swing.JLabel jLabelEditarClienteTelefone;
+    private javax.swing.JLabel jLabelEditarClienteTelefone1;
     private javax.swing.JLabel jLabelEditarServicoNome;
     private javax.swing.JLabel jLabelEditarServicoValor;
     private javax.swing.JLabel jLabelEditarUsuario;
+    private javax.swing.JLabel jLabelEditarUsuario1;
     private javax.swing.JLabel jLabelEditarUsuarioAviso;
     private javax.swing.JLabel jLabelEditarUsuarioSenha;
+    private javax.swing.JLabel jLabelEditarUsuarioSenha1;
     private javax.swing.JLabel jLabelIconCalendario;
     private javax.swing.JLabel jLabelIconInicio;
     private javax.swing.JLabel jLabelIconPerfil;
@@ -1331,6 +1554,8 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTituloPrincipal;
     private javax.swing.JLabel jLabelTituloSair;
     private javax.swing.JLabel jLabelTituloServicosPainel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAdicionaCorte;
     private javax.swing.JPanel jPanelAdicionaFuncionario;
     private javax.swing.JPanel jPanelBarraPanel;
@@ -1350,7 +1575,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPaneMenu;
+    private javax.swing.JTabbedPane jTabbedEdiFun;
     private javax.swing.JTable jTableClientes;
     private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JTable jTableServico;
@@ -1359,10 +1584,16 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEditarClienteEmail;
     private javax.swing.JTextField jTextFieldEditarClienteNome;
     private javax.swing.JTextField jTextFieldEditarClienteTelefone;
+    private javax.swing.JTextField jTextFieldEditarFuncionariosData;
+    private javax.swing.JTextField jTextFieldEditarFuncionariosEmail;
+    private javax.swing.JTextField jTextFieldEditarFuncionariosNome;
+    private javax.swing.JTextField jTextFieldEditarFuncionariosTele;
     private javax.swing.JTextField jTextFieldEditarServicoNome;
     private javax.swing.JTextField jTextFieldEditarServicoValor;
     private javax.swing.JTextField jTextFieldEditarUsuario;
+    private javax.swing.JTextField jTextFieldEditarUsuario1;
     private javax.swing.JPasswordField jTextFieldEditarUsuarioSenha;
+    private javax.swing.JPasswordField jTextFieldEditarUsuarioSenha1;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNovoServicoDuracao;
@@ -1472,7 +1703,7 @@ public class ViewAdmin extends javax.swing.JFrame {
     }
 
     public JTabbedPane getjTabbedPaneMenu() {
-        return jTabbedPaneMenu;
+        return jTabbedEdiFun;
     }
 
     public void mostrarAvisoEditarServico(String mensagem) {
@@ -1497,6 +1728,22 @@ public class ViewAdmin extends javax.swing.JFrame {
 
     public JButton getjButtonRemoverCliente() {
         return jButtonRemoverCliente;
+    }
+
+    public JTextField getjTextFieldEditarFuncionariosDataNasc() {
+        return jTextFieldEditarFuncionariosEmail;
+    }
+
+    public JTextField getjTextFieldEditarFuncionariosEmail() {
+        return jTextFieldEditarFuncionariosTele;
+    }
+
+    public JTextField getjTextFieldEditarFuncionariosNome() {
+        return jTextFieldEditarFuncionariosNome;
+    }
+
+    public JTextField getjTextFieldEditarFuncionariosTelefone() {
+        return jTextFieldEditarFuncionariosData;
     }
 
     public JButton getjButtonVerUsuario() {
@@ -1531,6 +1778,21 @@ public class ViewAdmin extends javax.swing.JFrame {
                     jButtonEditarCliente.setEnabled(true);
                     jButtonRemoverCliente.setEnabled(true);
                     jButtonVerUsuarioCliente.setEnabled(true);
+                }
+            }
+        });
+    }
+    private void initTableListenersFuncionarios() {
+        jTableFuncionarios.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            if (!event.getValueIsAdjusting()) {
+                int selectedRow = jTableFuncionarios.getSelectedRow();
+                jButtonEditarFun.setEnabled(false);
+                jButtonRemoverFun.setEnabled(false);
+                jButtonUsuarioFun.setEnabled(false);
+                if (selectedRow >= 0) {
+                    jButtonEditarFun.setEnabled(true);
+                    jButtonRemoverFun.setEnabled(true);
+                    jButtonUsuarioFun.setEnabled(true);
                 }
             }
         });

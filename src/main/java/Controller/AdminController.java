@@ -108,10 +108,24 @@ public class AdminController {
         Cliente clienteId = bd.procuraClientePorID(idCliente);
         view.getjTextFieldEditarClienteNome().setText(clienteId.getNome());
         view.getjTextFieldEditarClienteTelefone().setText(clienteId.getTelefone());
-        System.out.println(clienteId.getTelefone());
+        
         view.getjTextFieldEditarClienteDataNasc().setText(clienteId.getDataNasc());
         view.getjTextFieldEditarClienteEmail().setText(clienteId.getEmail());
     }
+    public void atualizaLabelEditarFuncionarios() {
+        PessoaBanco bd = new PessoaBanco();
+        int selectedRow = view.getjTableFuncionarios().getSelectedRow();
+        int idFuncionarios = Integer.parseInt(view.getjTableFuncionarios().getValueAt(selectedRow, 0).toString());
+        Pessoa pessoaId = bd.procuraFuncionarioPorID(idFuncionarios);
+        System.out.println(pessoaId.getNome());
+        System.out.println(pessoaId.getDataNasc());
+        view.getjTextFieldEditarFuncionariosNome().setText(pessoaId.getNome());
+        view.getjTextFieldEditarFuncionariosTelefone().setText(pessoaId.getTelefone());
+        
+        view.getjTextFieldEditarFuncionariosDataNasc().setText(pessoaId.getDataNasc());
+        view.getjTextFieldEditarFuncionariosEmail().setText(pessoaId.getEmail());
+    }
+
 
     public void editarCliente() {
         PessoaBanco bdPessoa = new PessoaBanco();
@@ -177,6 +191,7 @@ public class AdminController {
         view.getjTextFieldEditarServicoValor().setText(servicoId.getPreco());
 
     }
+
 
     public void adicionarNovoServico() {
         String nome = view.getjTextFieldNovoServicoNome().getText();
@@ -319,6 +334,12 @@ public class AdminController {
         resetarBotoesGerais();
         atualizaTabelas();
         view.getjTabbedPaneMenu().setSelectedIndex(2);
+
+    }
+    public void voltarParaFuncionarios() {
+        resetarBotoesGerais();
+        atualizaTabelas();
+        view.getjTabbedPaneMenu().setSelectedIndex(5);
 
     }
 
