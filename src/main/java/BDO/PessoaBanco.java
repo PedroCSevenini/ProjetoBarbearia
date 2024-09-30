@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
 
 public class PessoaBanco {
 
@@ -30,7 +31,7 @@ public class PessoaBanco {
                 String[] vet = line.split(",");
                 int id = Integer.parseInt(vet[0]);
                 String nome = vet[1];
-                String email = vet[2]; 
+                String email = vet[2];
                 String telefone = vet[3];
                 String dataNasc = vet[4];
                 int nivelAcesso = Integer.parseInt(vet[5]);
@@ -79,7 +80,7 @@ public class PessoaBanco {
                 int id = Integer.parseInt(vet[0]);
                 String nome = vet[1];
                 String email = vet[2];
-                String telefone = vet[3];              
+                String telefone = vet[3];
                 String dataNasc = vet[4];
                 int nivelAcesso = Integer.parseInt(vet[5]);
                 if (nivelAcesso == 1) {
@@ -111,7 +112,7 @@ public class PessoaBanco {
                 String dataNasc = vet[4];
                 int nivelAcesso = Integer.parseInt(vet[5]);
                 if (nivelAcesso == 2) {
-                    funcionarios.add(new Funcionario(id, nome, telefone, dataNasc, email, nivelAcesso));
+                    funcionarios.add(new Funcionario(id, nome, telefone, dataNasc, email));
                 }
                 line = br.readLine();
             }
@@ -168,9 +169,9 @@ public class PessoaBanco {
                 bw.write(cabecalho);
                 bw.newLine();
             }
-            
+
             // Escreve os dados da nova pessoa
-            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getEmail() + "," 
+            String newLine = novo.getId() + "," + novo.getNome() + "," + novo.getEmail() + ","
                     + novo.getTelefone() + "," + novo.getDataNasc() + "," + novo.getNivelAcesso();
             bw.write(newLine);
             bw.newLine();
@@ -178,6 +179,7 @@ public class PessoaBanco {
             System.out.println("Error writing to file: " + e.getMessage());
         }
     }
+
 
     public boolean buscaEmail(String email) {
         List<Pessoa> pessoas = retornaPessoas();
@@ -273,7 +275,7 @@ public class PessoaBanco {
                 for (Pessoa c : clientes) {
                     pw.println(c.getId() + ","
                             + c.getNome() + ","
-                            + c.getEmail()+ ","
+                            + c.getEmail() + ","
                             + c.getTelefone() + ","
                             + c.getDataNasc() + ","
                             + c.getNivelAcesso());
@@ -331,4 +333,50 @@ public class PessoaBanco {
         }
         return false;
     }
+
+    public boolean removeFuncionario(int idFuncionario) {
+        List<Pessoa> pessoa = retornaPessoas();
+        boolean funcionarioRemovido = false;
+        HorarioBanco bdHorario = new HorarioBanco();
+        UsuarioBanco bdUsuario = new UsuarioBanco();
+
+        // Se não houver clientes, retorna false
+        if (pessoa == null || pessoa.isEmpty()) {
+            return false;
+        }
+
+        // Encontra o cliente pelo ID e o remove
+        for (int i = 0; i < pessoa.size(); i++) {
+            if (pessoa.get(i).getId() == idFuncionario) {
+                // Aqui você pode chamar a função para remover os horários marcados desse cliente
+                bdHorario.removerHorariosPorClienteId(idFuncionario);
+                bdUsuario.removeUsuarioPorId(idFuncionario);
+                pessoa.remove(i);
+                funcionarioRemovido = true;
+                break;
+            }
+        }
+
+        // Se o cliente foi removido, reescreve o arquivo
+        if (funcionarioRemovido) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                // Escreve o cabeçalho novamente
+                pw.println("id,nome,email,telefone,dataNasc,nivelAcesso");
+                for (Pessoa c : pessoa) {
+                    pw.println(c.getId() + ","
+                            + c.getNome() + ","
+                            + c.getEmail() + ","
+                            + c.getTelefone() + ","
+                            + c.getDataNasc() + ","
+                            + c.getNivelAcesso());
+                }
+                return true;
+            } catch (IOException e) {
+                System.out.println("Erro ao remover o cliente: " + e.getMessage());
+                return false;
+            }
+        }
+        return false;
+    }
+
 }

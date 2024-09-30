@@ -108,10 +108,11 @@ public class AdminController {
         Cliente clienteId = bd.procuraClientePorID(idCliente);
         view.getjTextFieldEditarClienteNome().setText(clienteId.getNome());
         view.getjTextFieldEditarClienteTelefone().setText(clienteId.getTelefone());
-        
+
         view.getjTextFieldEditarClienteDataNasc().setText(clienteId.getDataNasc());
         view.getjTextFieldEditarClienteEmail().setText(clienteId.getEmail());
     }
+
     public void atualizaLabelEditarFuncionarios() {
         PessoaBanco bd = new PessoaBanco();
         int selectedRow = view.getjTableFuncionarios().getSelectedRow();
@@ -122,11 +123,10 @@ public class AdminController {
         System.out.println(pessoaId.getDataNasc());
         view.getjTextFieldEditarFuncionariosNome().setText(pessoaId.getNome());
         view.getjTextFieldEditarFuncionariosTele().setText(pessoaId.getTelefone());
-        
+
         view.getjTextFieldEditarFuncionariosData().setText(pessoaId.getDataNasc());
         view.getjTextFieldEditarFuncionariosEmail().setText(pessoaId.getEmail());
     }
-
 
     public void editarCliente() {
         PessoaBanco bdPessoa = new PessoaBanco();
@@ -156,6 +156,34 @@ public class AdminController {
         }
     }
 
+    public void editarFuncionario() {
+        PessoaBanco bdPessoa = new PessoaBanco();
+        String nome = view.getjTextFieldEditarFuncionariosNome().getText();
+        String telefone = view.getjTextFieldEditarFuncionariosTele().getText();
+        String email = view.getjTextFieldEditarFuncionariosEmail().getText();
+        String dataNasc = view.getjTextFieldEditarFuncionariosData().getText();
+
+        try {
+            Validador validador = new Validador();
+
+            validador.validaNome(nome);
+            validador.validaTelefone(telefone);
+            validador.validaEmail(email);
+            validador.validaDataNasc(dataNasc);
+
+            int selectedRow = view.getjTableFuncionarios().getSelectedRow();
+            int idPessoa = Integer.parseInt(view.getjTableFuncionarios().getValueAt(selectedRow, 0).toString());
+
+            bdPessoa.editarCliente(idPessoa, nome, telefone, email, dataNasc);
+
+            view.getjLabelEditarFuncionarioAviso().setText("Cliente editado!");
+
+        } catch (NomeException | TelefoneException | EmailException | DataNascException e) {
+
+            view.getjLabelEditarFuncionarioAviso().setText(e.getMessage());
+        }
+    }
+
     public void apagarCliente() {
         PessoaBanco bdPessoa = new PessoaBanco();
         try {
@@ -182,7 +210,33 @@ public class AdminController {
         }
     }
 
+    public void apagarFuncionario() {
+        PessoaBanco bdPessoa = new PessoaBanco();
+        try {
+            int selectedRow = view.getjTableFuncionarios().getSelectedRow();
+            int idPessoa = Integer.parseInt(view.getjTableFuncionarios().getValueAt(selectedRow, 0).toString());
+            Object[] options = {"Sim", "Cancelar"};
+            int opcao = JOptionPane.showOptionDialog(
+                    null,
+                    "Deseja remover esse Funcionario? \nAo remover o Funcionario você irá remover todos horários relacionados a ele e seu usuário",
+                    "Confirmação de Remoção",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[0]
+            );
+            if (opcao == JOptionPane.YES_OPTION) {
+                bdPessoa.removeFuncionario(idPessoa);
+                view.getjLabelAvisoFuncionario().setText("Funcionario removido!");
+                atualizaTabelas();
+            }
+        } catch (HeadlessException | NumberFormatException e) {
+            System.out.println("Nenhum valor selecionado!");
+        }
+    }
 //TABELA SERVICO
+
     public void atualizaLabelEditarServico() {
         ServicoBanco bd = new ServicoBanco();
         int selectedRow = view.getjTableServico().getSelectedRow();
@@ -192,7 +246,6 @@ public class AdminController {
         view.getjTextFieldEditarServicoValor().setText(servicoId.getPreco());
 
     }
-
 
     public void adicionarNovoServico() {
         String nome = view.getjTextFieldNovoServicoNome().getText();
@@ -301,14 +354,12 @@ public class AdminController {
         UsuarioBanco bd = new UsuarioBanco();
         String usuario = view.getjTextFieldEditarUsuario().getText();
         String senha = view.getjTextFieldEditarUsuarioSenha().getText();
-        
 
         try {
             Validador validador = new Validador();
-            
+
             validador.validaUsuario(usuario);
             validador.validaSenha(senha);
-            
 
             int selectedRow = tabela.getSelectedRow();
             int idUsuario = Integer.parseInt(tabela.getValueAt(selectedRow, 0).toString());
@@ -337,6 +388,7 @@ public class AdminController {
         view.getjTabbedPaneMenu().setSelectedIndex(2);
 
     }
+
     public void voltarParaFuncionarios() {
         resetarBotoesGerais();
         atualizaTabelas();
@@ -357,5 +409,53 @@ public class AdminController {
         adicionaCamposTabelaCliente();
         adicionaCamposTabaleaFuncionario();
     }
+
+    public void adicionarNovoFuncionario() {
+        String nome = view.getjTextFieldFunNovoNome().getText();
+        String telefone = view.getjTextFieldFunNovoTelefone().getText();
+        String email = view.getjTextFieldFunNovoEmail().getText();
+        String dataNasc = view.getjTextFieldFunNovaDataNascimento().getText();
+        String senha = view.getjTextFieldFunNovaSenha().getText();
+        String usuario = view.getjTextFieldFunNovoUsuario().getText();
+
+        try {
+            Validador validador = new Validador();
+
+            // Valida os dados de entrada
+            validador.validaNome(nome);
+            validador.validaTelefone(telefone);
+            validador.validaEmail(email);
+            validador.validaDataNasc(dataNasc);
+            validador.validaUsuario(usuario);
+            validador.validaSenha(senha);
+
+            PessoaBanco banco = new PessoaBanco();
+            int id = banco.retornaProximoID();
+            banco.inserePessoa(new Funcionario(id, nome,  telefone,  dataNasc, email));
+            // Se não houver exceção, exibe mensagem de sucesso
+            view.getjLabelAvisoNovoFuncionario().setText("Funcionario adcionado com sucesso!");
+            
+            UsuarioBanco bancoo = new UsuarioBanco();
+            
+            bancoo.insereUsuario(new Usuario(id ,usuario, senha));
+            // Limpa o formulário
+            limparNovoFuncionario();
+            } catch (NomeException | TelefoneException | EmailException | DataNascException e) {
+                view.getjLabelAvisoNovoFuncionario().setText(e.getMessage());
+            } catch (Exception e) {
+                view.getjLabelAvisoNovoFuncionario().setText("Ocorreu um erro inesperado" + e.getMessage());
+            }
+    }
+
+// Método para limpar os campos do formulário de novo funcionário
+    private void limparNovoFuncionario() {
+        view.getjTextFieldFunNovoNome().setText("");
+        view.getjTextFieldFunNovoTelefone().setText("");
+        view.getjTextFieldFunNovoEmail().setText("");
+        view.getjTextFieldFunNovaDataNascimento().setText("");
+        view.getjTextFieldFunNovaSenha().setText("");
+        view.getjTextFieldFunNovoUsuario().setText("");
+    }
+
 
 }
