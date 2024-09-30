@@ -349,7 +349,7 @@ public class PessoaBanco {
         for (int i = 0; i < pessoa.size(); i++) {
             if (pessoa.get(i).getId() == idFuncionario) {
                 // Aqui você pode chamar a função para remover os horários marcados desse cliente
-                bdHorario.removerHorariosPorClienteId(idFuncionario);
+                bdHorario.removerHorariosPorFuncionarioId(idFuncionario);
                 bdUsuario.removeUsuarioPorId(idFuncionario);
                 pessoa.remove(i);
                 funcionarioRemovido = true;

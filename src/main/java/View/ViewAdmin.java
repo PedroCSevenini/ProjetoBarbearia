@@ -154,7 +154,6 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelFuncionarios = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableFuncionarios = new javax.swing.JTable();
-        jLabel13 = new javax.swing.JLabel();
         jButtonEditarFun = new javax.swing.JButton();
         jButtonRemoverFun = new javax.swing.JButton();
         jButtonNovoFun = new javax.swing.JButton();
@@ -313,6 +312,9 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBtnSair.setBackground(new java.awt.Color(78, 78, 78));
         jPanelBtnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelBtnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelBtnSairMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelBtnSairMouseEntered(evt);
             }
@@ -413,13 +415,13 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelInicio.setLayout(jPanelInicioLayout);
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("Inicio", jPanelInicio);
@@ -497,7 +499,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelCortesLayout.setHorizontalGroup(
             jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCortesLayout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
+                .addContainerGap(162, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
             .addGroup(jPanelCortesLayout.createSequentialGroup()
@@ -512,7 +514,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelCortesLayout.setVerticalGroup(
             jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCortesLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanelCortesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -603,7 +605,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addComponent(jButtonEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jButtonVerUsuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButtonRemoverCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
             .addGroup(jPanelClientesLayout.createSequentialGroup()
@@ -619,7 +621,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelClientesLayout.setVerticalGroup(
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientesLayout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -628,7 +630,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                     .addComponent(jButtonVerUsuarioCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelAvisoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("Clientes", jPanelClientes);
@@ -718,7 +720,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                     .addGroup(jPanelAdicionaFuncionarioLayout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jLabelAvisoNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanelAdicionaFuncionarioLayout.setVerticalGroup(
             jPanelAdicionaFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -804,7 +806,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             .addGroup(jPanelAdicionaCorteLayout.createSequentialGroup()
                 .addGap(141, 141, 141)
                 .addComponent(jLabelAvisoNovoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanelAdicionaCorteLayout.setVerticalGroup(
             jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -827,7 +829,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelAdicionaCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNovoServico)
                     .addComponent(jButtonNovoServicoVoltar))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("Adi Corte", jPanelAdicionaCorte);
@@ -851,9 +853,6 @@ public class ViewAdmin extends javax.swing.JFrame {
             jTableFuncionarios.getColumnModel().getColumn(3).setResizable(false);
             jTableFuncionarios.getColumnModel().getColumn(4).setResizable(false);
         }
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel13.setText("Funcionarios");
 
         jButtonEditarFun.setText("Editar");
         jButtonEditarFun.setEnabled(false);
@@ -883,7 +882,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButtonUsuarioFun.setText("Usuario");
+        jButtonUsuarioFun.setText("Usuário");
         jButtonUsuarioFun.setEnabled(false);
         jButtonUsuarioFun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -902,7 +901,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFuncionariosLayout.createSequentialGroup()
                         .addComponent(jButtonEditarFun, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -910,11 +909,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonNovoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonUsuarioFun, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
-                    .addGroup(jPanelFuncionariosLayout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel13)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jButtonUsuarioFun, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFuncionariosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -924,9 +919,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelFuncionariosLayout.setVerticalGroup(
             jPanelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFuncionariosLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(18, 18, 18)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabelAvisoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -935,7 +928,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                     .addComponent(jButtonEditarFun)
                     .addComponent(jButtonRemoverFun)
                     .addComponent(jButtonUsuarioFun)
-                    .addComponent(jButtonNovoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonNovoFun))
                 .addContainerGap())
         );
 
@@ -974,7 +967,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelEditarServicosLayout.setHorizontalGroup(
             jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEditarServicosLayout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditarServicosLayout.createSequentialGroup()
                         .addGroup(jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1009,7 +1002,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelEditarServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConfirmarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelarEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("Editar Cortes", jPanelEditarServicos);
@@ -1077,7 +1070,7 @@ public class ViewAdmin extends javax.swing.JFrame {
             .addGroup(jPanelEditarClientesLayout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addComponent(jLabelEditarClienteAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanelEditarClientesLayout.setVerticalGroup(
             jPanelEditarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1104,7 +1097,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelEditarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarClienteConfirmar)
                     .addComponent(jButtonEditarClienteVoltar))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("Edi Clie", jPanelEditarClientes);
@@ -1152,7 +1145,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEditarUsuarioVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextFieldEditarUsuario))
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
             .addGroup(jPanelEditarUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelEditarUsuarioAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1174,7 +1167,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarUsuarioConfirmar)
                     .addComponent(jButtonEditarUsuarioVoltar))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("tab9", jPanelEditarUsuario);
@@ -1219,7 +1212,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                         .addComponent(jLabelEditarUsuario1)
                         .addComponent(jTextFieldEditarUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addComponent(jTextFieldEditarUsuarioSenha1)))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1236,7 +1229,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarUsuarioConfirmar1)
                     .addComponent(jButtonEditarUsuarioVoltar1))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("tab10", jPanel1);
@@ -1302,7 +1295,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                     .addComponent(jLabelEditarClienteEmail1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(181, Short.MAX_VALUE)
+                .addContainerGap(173, Short.MAX_VALUE)
                 .addComponent(jLabelEditarFuncionarioAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(162, 162, 162))
         );
@@ -1331,7 +1324,7 @@ public class ViewAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarFuncionariosConfirmar)
                     .addComponent(jButtonEditarFuncionariosVoltar))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedEdiFun.addTab("EdiFun", jPanel2);
@@ -1447,7 +1440,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBtnCortes.setBackground(colorDefaultCortes);
         jPanelBtnClientes.setBackground(colorDefaultPessoas);
         jPanelBtnFuncionarios.setBackground(colorDefaultFuncionarios);
-        jLabelTituloPrincipal.setText("Funcionarios");
+        jLabelTituloPrincipal.setText("Funcionários");
     }//GEN-LAST:event_jPanelBtnFuncionariosMouseClicked
 
     private void jTabbedEdiFunAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabbedEdiFunAncestorAdded
@@ -1613,6 +1606,10 @@ public class ViewAdmin extends javax.swing.JFrame {
         jPanelBtnFuncionarios.setBackground(colorDefaultFuncionarios);
     }//GEN-LAST:event_jPanelBtnFuncionariosMouseExited
 
+    private void jPanelBtnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBtnSairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jPanelBtnSairMouseClicked
+
     public JLabel getjLabelAvisoFuncionario() {
         return jLabelAvisoFuncionario;
     }
@@ -1700,7 +1697,6 @@ public class ViewAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRemoverServico;
     private javax.swing.JButton jButtonUsuarioFun;
     private javax.swing.JButton jButtonVerUsuarioCliente;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
