@@ -16,8 +16,8 @@ import javax.swing.event.ListSelectionEvent;
 
 public class ViewAdmin extends javax.swing.JFrame {
 
-    private AdminController controller;
-    private final Pessoa admin;
+    private final AdminController controller;
+    private Pessoa admin;
     private JTable tabelaVerUsuario;
     private Color colorDefaultInicio;
     private Color colorDefaultCortes;
@@ -33,6 +33,7 @@ public class ViewAdmin extends javax.swing.JFrame {
         this.tabelaVerUsuario = null;
         initTableListenersFuncionarios();
         colorDefaultInicio = new Color(121,121,121);
+        JPanelBtnInicio.setBackground(colorDefaultInicio);
         colorDefaultCortes = new Color(78,78,78);
         colorDefaultPessoas = new Color(78,78,78);
         colorDefaultFuncionarios = new Color(78,78,78);

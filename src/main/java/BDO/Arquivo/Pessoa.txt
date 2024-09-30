@@ -1,9 +1,2 @@
 id,nome,email,telefone,dataNasc,nivelAcesso
-1,Ana Clara Oliveira,ana.oliveira@gmail.com,11987654321,15/03/1990,1
-2,João Pedro Silva,joao.pedro.silva@gmail.com,21987654321,25/07/1985,2
-3,Maria Fernanda Sousa,maria.fernanda@hotmail.com,31976543210,10/12/1992,1
-4,Felipe Augusto Lima,felipe.lima@yahoo.com,41987632323,30/06/1998,2
-5,Larissa Rodrigues Santos,larissa.rodrigues@outlook.com,51987654321,05/05/1995,1
-6,Gustavo Henrique Almeida,gustavo.almeida@gmail.com,61987654321,08/11/1990,2
-9,Juliana Aparecida Ribeiro,juliana.ribeiro@gmail.com,91987654321,13/01/1991,1
-10,Pedro Ultimo Teste,pedroultimo@gmail.com,32928371232,20/02/2001,1
+1,Admin Vandernelsonsupremo,admin@gmail.com,11999999999,15/03/1990,3
